@@ -1,0 +1,468 @@
+/* About.css - Enhanced with optimized hover effects and pop-ups for all devices */
+
+.about-page {
+  position: relative;
+  overflow-x: hidden; /* Prevent horizontal overflow */
+}
+
+/* Page Header */
+.page-header {
+  background-color: #2196F3; /* Brighter blue replacing #0056b3 */
+  color: white;
+  padding: 8rem 0 4rem;
+  text-align: center;
+  position: relative;
+}
+
+.page-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #2196F3, #00BCD4); /* Gradient background */
+  opacity: 1;
+  z-index: 0;
+}
+
+.page-header .container {
+  position: relative;
+  z-index: 1;
+}
+
+.page-header h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle text shadow */
+}
+
+.page-header p {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  max-width: 600px;
+  margin: 0 auto;
+  opacity: 0.9;
+}
+
+/* Bio Section */
+.bio-section {
+  padding: 5rem 0;
+  background-color: #F5F7FA; /* Light blue-gray instead of #f8f9fa */
+}
+
+.bio-content {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.bio-image {
+  position: relative;
+  transition: transform 0.3s ease-out;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+/* Hover effect for image */
+.bio-image:hover {
+  transform: translateY(-10px);
+}
+
+.bio-image img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 15px 30px rgba(33, 150, 243, 0.15); /* Blue shadow instead of black */
+  transition: all 0.5s ease;
+  transform-origin: center;
+}
+
+/* Scale effect on hover (works on all devices) */
+.bio-image:hover img {
+  transform: scale(1.03);
+}
+
+.experience-badge {
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  background: linear-gradient(135deg, #2196F3, #7C4DFF); /* Gradient badge */
+  color: white;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(33, 150, 243, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Badge hover effect */
+.bio-image:hover .experience-badge {
+  transform: scale(1.1) translateY(-5px);
+  box-shadow: 0 15px 30px rgba(33, 150, 243, 0.3);
+}
+
+.experience-years {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.experience-text {
+  font-size: 0.8rem;
+  margin-top: 5px;
+}
+
+.bio-text h2 {
+  font-size: 2rem;
+  text-transform: capitalize;
+  margin-bottom: 1rem;
+  color: #455A64; /* Deep blue-gray instead of #333 */
+  transition: color 0.3s ease;
+}
+
+.bio-text .position {
+  font-size: 1.3rem;
+  color: #2196F3; /* Brighter blue */
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.bio-text p {
+  color: #546E7A; /* Medium blue-gray instead of #4a4a4a */
+  line-height: 1.7;
+  transition: color 0.3s ease;
+  text-align: justify;
+}
+
+.bio-highlights {
+  margin-top: 1rem;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(33, 150, 243, 0.08); /* Blue shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Card hover effect */
+.bio-highlights:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(33, 150, 243, 0.15);
+}
+
+.bio-highlights h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: #455A64; /* Deep blue-gray */
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+/* Underline effect for heading */
+.bio-highlights h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, #2196F3, #7C4DFF); /* Gradient underline */
+  transition: width 0.3s ease;
+}
+
+.bio-highlights:hover h3::after {
+  width: 100px;
+}
+
+.bio-highlights ul {
+  padding-left: 1.5rem;
+}
+
+.bio-highlights li {
+  color: #546E7A; /* Medium blue-gray */
+  text-align: justify;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  transition: transform 0.2s ease;
+  position: relative;
+}
+
+/* List item hover effect */
+.bio-highlights li:hover {
+  transform: translateX(5px);
+  color: #2196F3; /* Bright blue on hover */
+}
+
+/* Add markers to list items */
+.bio-highlights li::marker {
+  color: #FF4081; /* Pink marker color */
+}
+
+/* Philosophy Section */
+.philosophy-section {
+  padding: 5rem 0;
+  background-color: #fff;
+}
+
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.philosophy-card {
+  background-color: #F5F7FA; /* Light blue-gray */
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(33, 150, 243, 0.08);
+  border-top: 3px solid transparent;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+/* Different colored tops for cards */
+.philosophy-card:nth-child(1) {
+  border-top-color: #2196F3; /* Blue */
+}
+
+.philosophy-card:nth-child(2) {
+  border-top-color: #FF4081; /* Pink */
+}
+
+.philosophy-card:nth-child(3) {
+  border-top-color: #7C4DFF; /* Purple */
+}
+
+.philosophy-card:nth-child(4) {
+  border-top-color: #00E676; /* Green */
+}
+
+.philosophy-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(33, 150, 243, 0.15);
+}
+
+.philosophy-card h3 {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: #455A64;
+  transition: color 0.3s ease;
+}
+
+.philosophy-card:hover h3 {
+  color: #2196F3;
+}
+
+.philosophy-card p {
+  color: #546E7A;
+  text-align: justify;
+  font-size: 1rem;
+  line-height: 1.6;
+  transition: color 0.3s ease;
+}
+
+/* Pop-up Styles - Works on all devices including Apple */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  -webkit-backdrop-filter: blur(5px); /* For Safari */
+  backdrop-filter: blur(5px);
+}
+
+.popup-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.popup-content {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  position: relative;
+  box-shadow: 0 25px 50px rgba(33, 150, 243, 0.25);
+  
+  /* Improve scrolling on iOS devices */
+}
+
+.popup-overlay.active .popup-content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Close button for popup - optimized for touch */
+.popup-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #F5F7FA;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  
+  /* Make touch target larger */
+  padding: 10px;
+  margin: -10px;
+}
+
+.popup-close:hover {
+  background-color: #FF4081;
+}
+
+.popup-close:before,
+.popup-close:after {
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 2px;
+  background-color: #455A64;
+  transition: background-color 0.3s ease;
+}
+
+.popup-close:hover:before,
+.popup-close:hover:after {
+  background-color: white;
+}
+
+.popup-close:before {
+  transform: rotate(45deg);
+}
+
+.popup-close:after {
+  transform: rotate(-45deg);
+}
+
+.popup-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #455A64;
+  padding-right: 30px; /* Space for close button */
+}
+
+.popup-body {
+  color: #546E7A;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .bio-content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .bio-image {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-header {
+    padding: 6rem 0 3rem;
+  }
+  
+  .bio-section,
+  .philosophy-section {
+    padding: 4rem 0;
+  }
+  
+  .experience-badge {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .experience-years {
+    font-size: 2rem;
+  }
+  
+  .experience-text {
+    font-size: 0.7rem;
+  }
+  
+  .philosophy-grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) {
+  /* Modify hover states for touch devices */
+  .bio-image:hover,
+  .bio-highlights:hover,
+  .philosophy-card:hover {
+    transform: none;
+  }
+  
+  .bio-image:hover .experience-badge {
+    transform: none;
+  }
+  
+  .bio-highlights li:hover {
+    transform: none;
+  }
+  
+  /* Create active states for touch */
+  .bio-image:active,
+  .bio-highlights:active,
+  .philosophy-card:active {
+    transform: scale(0.98);
+  }
+  
+  /* Make popup close button larger for touch */
+  .popup-close {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* Safari-specific fixes */
+@supports (-webkit-touch-callout: none) {
+  /* iOS-specific tweaks */
+  .popup-content {
+    /* Prevent rubber-band scrolling issues */
+    position: relative;
+    z-index: 1001;
+  }
+  
+  /* Fix for Safari sticky hover issues */
+  .bio-image:hover,
+  .bio-highlights:hover,
+  .philosophy-card:hover {
+    transform: translateY(-10px) translateZ(0);
+  }
+}
