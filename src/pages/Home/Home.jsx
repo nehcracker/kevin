@@ -11,25 +11,109 @@ const Home = () => {
       <Header />
       
       <main>
-        {/* Hero Section */}
+        {/* Enhanced Hero Section */}
         <section className="hero-section">
-            <div className="container">
-                <div className="hero-content">
-                    <h1>Global Financial Agent</h1>
-                    <h2>Kevin Graham Karimi</h2>
-                    <p>global financial advisor, Risk Management & compliance director Specializing in meeting 
-                        the domestic and international investing needs of high-net worth individuals, 
-                        families and corporations.</p>
-                    <div className="hero-cta">
-                        <a href="#contact" className="btn btn-primary">Get in Touch</a>
-                        <a href="#expertise" className="btn btn-secondary">Explore Expertise</a>
-                    </div>
+          {/* Floating Particles */}
+          <div className="floating-particles">
+            <div className="particle"></div>
+            <div className="particle"></div>
+            <div className="particle"></div>
+            <div className="particle"></div>
+            <div className="particle"></div>
+          </div>
+
+          <div className="container">
+            <div className="hero-content">
+              {/* Eyebrow Text */}
+              <span className="hero-eyebrow">Trusted by Global Corporations</span>
+              
+              {/* Main Title */}
+              <h1>Global Financial Advisor</h1>
+              
+              {/* Name with Credentials */}
+              <h3>Kevin Graham Karimi</h3>
+              <span className="hero-credentials">MBA | Director of Risk Management & Compliance</span>
+              
+              {/* Power Tagline */}
+              <p className="hero-tagline">
+                Transforming Complex Financial Challenges into Strategic Opportunities
+              </p>
+              
+              {/* Stats Bar */}
+              <div className="hero-stats">
+                <div className="stat-card">
+                  <span className="stat-number">15+</span>
+                  <span className="stat-label">Years Experience</span>
                 </div>
-                <div className="hero-image">
-                    <img src={profilePhoto} alt="kevin Graham Karimi" />
+                <div className="stat-card">
+                  <span className="stat-number">$500M+</span>
+                  <span className="stat-label">Transactions</span>
                 </div>
+                <div className="stat-card">
+                  <span className="stat-number">100+</span>
+                  <span className="stat-label">Corporate Clients</span>
+                </div>
+                <div className="stat-card">
+                  <span className="stat-number">40+</span>
+                  <span className="stat-label">Countries</span>
+                </div>
+              </div>
+              
+              {/* Description */}
+              <p>
+                Global financial advisor and Risk Management & Compliance Director specializing in 
+                meeting the domestic and international investing needs of high-net-worth individuals, 
+                and corporations. Expert in debt structuring, cross-border financial solutions, Project Funding & regulatory compliance.
+              </p>
+              
+              {/* Enhanced CTA Buttons */}
+              <div className="hero-cta">
+                <a href="#contact" className="btn btn-primary">
+                  <i className="fas fa-calendar-check"></i>
+                  Schedule Consultation
+                </a>
+                <a href="#expertise" className="btn btn-secondary">
+                  <i className="fas fa-arrow-down"></i>
+                  Explore 6 Expertise Areas
+                </a>
+              </div>
+              
+              {/* Trust Badges */}
+              <div className="trust-badges">
+                <div className="trust-badge">
+                  <i className="fas fa-certificate"></i>
+                  <span>Certified Financial Advisor</span>
+                </div>
+                <div className="trust-badge">
+                  <i className="fas fa-award"></i>
+                  <span>Industry Leader</span>
+                </div>
+                <div className="trust-badge">
+                  <i className="fas fa-shield-alt"></i>
+                  <span>Regulatory Expert</span>
+                </div>
+              </div>
             </div>
+            
+            {/* Hero Image with Badge */}
+            <div className="hero-image">
+              <div className="hero-image-wrapper">
+                <img src={profilePhoto} alt="Kevin Graham Karimi - Global Financial Strategist" />
+                <div className="image-badge">
+                  <i className="fas fa-star"></i> Top Rated
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          {/* Scroll Indicator */}
+          <div className="scroll-indicator">
+            <i className="fas fa-chevron-down"></i>
+            <span>Discover More</span>
+          </div>
         </section>
+
+        {/* Expertise Section */}
         <section id="expertise" className="expertise-section">
           <div className="container">
             <div className="section-header">
@@ -131,58 +215,56 @@ const Home = () => {
                     ventures and underperforming assets.</p>
                 </div>
               <div className="react-logo">
-                <img src={Graham} alt="React Logo" />
+                <img src={Graham} alt="Kevin Graham Professional" />
               </div>
             </div>
           </div>
         </section>
         
         {/* Contact Section */}
-<section id="contact" className="contact-section">
-  <div className="container">
-    <div className="section-header">
-      <h2>Get in touch with financial Advisor</h2>
-      <p>Connect with Kevin Graham Karimi through these channels</p>
-    </div>
-    
-    <div className="social-media-container">
-      <h3>Connect With Me Now</h3>
-      <div className="social-icons-grid">
-        <a href="https://linkedin.com/in/kevingrahamkarimi" className="social-icon" title="LinkedIn Profile">
-          <i className="fab fa-linkedin"></i>
-          <span className="icon-popup">LinkedIn</span>
-        </a>
-        <a href="https://www.facebook.com/kevingrahamkarimi" className="social-icon" title="Facebook Profile">
-          <i className="fab fa-facebook-f"></i>
-          <span className="icon-popup">Facebook</span>
-        </a>
-        <a href="https://t.me/kevingrahamkarimi" className="social-icon" title="Telegram">
-          <i className="fab fa-telegram"></i>
-          <span className="icon-popup">Telegram</span>
-        </a>
-        
-        <a href="https://wa.me/+447445323529" className="social-icon" title="WhatsApp">
-          <i className="fab fa-whatsapp"></i>
-          <span className="icon-popup">WhatsApp</span>
-        </a>
-        <a href="tel:+447445323529" className="social-icon" title="Phone">
-          <i className="fas fa-phone"></i>
-          <span className="icon-popup">Call</span>
-        </a>
-        <a href="mailto:kevin.karimi@inbestconsultant.com" className="social-icon" title="Email">
-          <i className="fas fa-envelope"></i>
-          <span className="icon-popup">Email</span>
-        </a>
-      </div>
-      
-      <div className="contact-cta">
-        <a href="https://calendly.com/kevingraham" className="btn btn-primary">Schedule a Meeting</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-
+        <section id="contact" className="contact-section">
+          <div className="container">
+            <div className="section-header">
+              <h2>Get in touch with financial Advisor</h2>
+              <p>Connect with Kevin Graham Karimi through these channels</p>
+            </div>
+            
+            <div className="social-media-container">
+              <h3>Connect With Me Now</h3>
+              <div className="social-icons-grid">
+                <a href="https://linkedin.com/in/kevingrahamkarimi" className="social-icon" title="LinkedIn Profile">
+                  <i className="fab fa-linkedin"></i>
+                  <span className="icon-popup">LinkedIn</span>
+                </a>
+                <a href="https://www.facebook.com/kevingrahamkarimi" className="social-icon" title="Facebook Profile">
+                  <i className="fab fa-facebook-f"></i>
+                  <span className="icon-popup">Facebook</span>
+                </a>
+                <a href="https://t.me/kevingrahamkarimi" className="social-icon" title="Telegram">
+                  <i className="fab fa-telegram"></i>
+                  <span className="icon-popup">Telegram</span>
+                </a>
+                
+                <a href="https://wa.me/+447445323529" className="social-icon" title="WhatsApp">
+                  <i className="fab fa-whatsapp"></i>
+                  <span className="icon-popup">WhatsApp</span>
+                </a>
+                <a href="tel:+447445323529" className="social-icon" title="Phone">
+                  <i className="fas fa-phone"></i>
+                  <span className="icon-popup">Call</span>
+                </a>
+                <a href="mailto:kevin.karimi@inbestconsultant.com" className="social-icon" title="Email">
+                  <i className="fas fa-envelope"></i>
+                  <span className="icon-popup">Email</span>
+                </a>
+              </div>
+              
+              <div className="contact-cta">
+                <a href="https://calendly.com/kevingraham" className="btn btn-primary">Schedule a Meeting</a>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
       
       <Footer />
@@ -191,4 +273,3 @@ const Home = () => {
 };
 
 export default Home;
-
