@@ -1,44 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Essential Meta Tags -->
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    
+    <!-- SEO Meta Tags -->
+    <meta name="robots" content="index,follow" />
+    <meta name="author" content="Kevin Graham Karimi" />
+    <meta 
+      name="description" 
+      content="Global Financial Advisor, Risk Management & Compliance expert in international investment strategies 
+      & financing for high-net-worth corporations." 
     />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
+    <meta 
+      name="keywords" 
+      content="Kevin Graham Karimi, Global Financial Advisor, Investment Strategies, Corevest Liaison Group, 
+      Inbest Consultant Solutions, Risk Management, Compliance, international investors,  International Investments, 
+      Financial Planning, Wealth Management, Financial Consulting, Investment Advisory, Financial Services, Investment Banking, 
+      Business Consultant, Financial Expert, Portfolio Management, real estate development funding, project funding, top financial companies in the world
+      debt financing and equity financing, commercial finance companies, investment banking companies, international investment banking companies, 
+      international investment advisory companies, international investment advisory services, international investment advisory firms," 
+    />
+    
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Kevin Graham Karimi | Global Financial Advisor" />
+    <meta property="og:description" content="Global Financial Advisor & Risk Management expert specializing in international investment strategies & financing for high-net-worth corporations." />
+    <meta property="og:url" content="https://grahamkarimi.com" />
+    <meta property="og:image" content="%PUBLIC_URL%/assets/images/Graham.png" />
+    <meta property="og:site_name" content="Kevin Graham Karimi" />
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Kevin Graham Karimi | Global Financial Advisor" />
+    <meta name="twitter:description" content="Global Financial Advisor & Risk Management expert specializing in international investment strategies." />
+    <meta name="twitter:image" content="%PUBLIC_URL%/assets/images/Graham.png" />
+    <meta name="twitter:image" content="https://grahamkarimi.com/assets/images/Graham.png" />
+    
+    <!-- Favicons -->
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicon-16x16.png" />
+    
+    <!-- Manifest -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+    
+    <!-- Theme Color (platform-specific alternatives for compatibility) -->
+    <!-- Removed unsupported 'meta[name=theme-color]' to avoid compatibility issues on some browsers -->
+    <meta name="msapplication-TileColor" content="#1a1a1a" />
+    <!-- iOS Safari status bar style -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    
+    <!-- Google Fonts - Roboto -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link 
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" 
+      rel="stylesheet" 
+    />
+    
+    <!-- Font Awesome -->
+    <link 
+      rel="stylesheet" 
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+      crossorigin="anonymous" 
+    />
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" as="style" />
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://grahamkarimi.com/" />
+    
+    <!-- DNS Prefetch -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+    
+    <!-- Page Title -->
+    <title>Kevin Graham Karimi | Global Financial Advisor & Investment Strategist</title>
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Kevin Graham Karimi",
+      "jobTitle": "Global Financial Advisor",
+      "description": "Risk Management & Compliance Director expert in international investment strategies & financing for high-net-worth corporations.",
+      "url": "https://grahamkarimi.com",
+      "sameAs": [
+        "https://www.linkedin.com/in/kevingrahamkarimi",
+        "https://www.facebook.com/kevingrahamkarimi",
+        "https://t.me/kevingrahamkarimi",
+        "https://wa.me/+447445323529"
+      ],
+      "knowsAbout": [
+        "Financial Advisory",
+        "Financial Services",
+        "Investment Strategies",
+        "Financlial consultant solutions",
+        "Investment Banking",
+        "Wealth Management",
+        "Risk Management",
+        "Investment banker",
+        "International Financing"
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
+      ]
+    }
+    </script>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>
+      You need to enable JavaScript to run this app. 
+      Kevin Graham Karimi - Global Financial Advisor specializing in investment strategies and wealth management.
+    </noscript>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
   </body>
 </html>
