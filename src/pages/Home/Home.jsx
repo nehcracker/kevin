@@ -11,6 +11,79 @@ const Home = () => {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
   }, []);
 
+  useEffect(() => {
+    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://grahamkarimi.com';
+    const ogImage = `${origin}${Graham}`;
+    const profileImage = `${origin}${profilePhoto}`;
+    const pageUrl = `${origin}/`;
+
+    const created = [];
+    const prevTitle = document.title;
+
+    // helper to upsert meta
+    const upsertMeta = (attrName, attrValue, content) => {
+      const selector = `meta[${attrName}="${attrValue}"]`;
+      let el = document.head.querySelector(selector);
+      if (!el) {
+        el = document.createElement('meta');
+        el.setAttribute(attrName, attrValue);
+        document.head.appendChild(el);
+        created.push(el);
+      }
+      el.setAttribute('content', content);
+    };
+
+    // set title and canonical
+    document.title = 'Kevin Graham Karimi | Global Financial Advisor & Funding Strategist';
+    const canonical = document.querySelector('link[rel="canonical"]') ?? document.createElement('link');
+    canonical.setAttribute('rel', 'canonical');
+    canonical.setAttribute('href', pageUrl);
+    if (!document.head.contains(canonical)) { document.head.appendChild(canonical); created.push(canonical); }
+
+    // core metas
+    upsertMeta('name', 'description', 'Global financial advisor & risk management expert. Debt structuring, cross-border financing, and regulatory compliance for high-net-worth corporations.');
+    upsertMeta('name', 'robots', 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1');
+    upsertMeta('name', 'twitter:card', 'summary_large_image');
+    upsertMeta('name', 'twitter:title', 'Kevin Graham Karimi | Global Financial Advisor');
+    upsertMeta('name', 'twitter:description', 'Expert in international financing, debt advisory and compliance. $500M+ in managed transactions across 40+ countries.');
+    upsertMeta('name', 'twitter:image', ogImage);
+
+    // open graph / og:
+    upsertMeta('property', 'og:type', 'profile');
+    upsertMeta('property', 'og:title', 'Kevin Graham Karimi | Global Financial Advisor & Risk Management Expert');
+    upsertMeta('property', 'og:description', 'Award-winning Financial Advisor with 15+ years experience in international investment strategies, risk management, and wealth management.');
+    upsertMeta('property', 'og:url', pageUrl);
+    upsertMeta('property', 'og:image', ogImage);
+    upsertMeta('property', 'og:image:secure_url', ogImage);
+    upsertMeta('property', 'og:image:alt', 'Kevin Graham Karimi - Global Financial Advisor');
+
+    // JSON-LD Person schema
+    const ld = document.createElement('script');
+    ld.type = 'application/ld+json';
+    ld.text = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Kevin Graham Karimi",
+      "url": pageUrl,
+      "image": profileImage,
+      "sameAs": [
+        "https://linkedin.com/in/kevingrahamkarimi",
+        "https://www.facebook.com/kevingrahamkarimi",
+        "https://t.me/kevingrahamkarimi"
+      ],
+      "jobTitle": "Global Financial Advisor",
+      "worksFor": { "@type": "Organization", "name": "InBest Consultant Solutions" }
+    });
+    document.head.appendChild(ld);
+    created.push(ld);
+
+    // cleanup on unmount: remove created elements and restore title
+    return () => {
+      created.forEach(el => el.parentNode && el.parentNode.removeChild(el));
+      document.title = prevTitle;
+    };
+  }, []);
+
   return (
     <div className="home-page">
       <Header />

@@ -1,5 +1,10 @@
-# https://www.robotstxt.org/robotstxt.html
+# Allow all crawlers
 User-agent: *
-Disallow:
+Allow: /
 
-Sitemap: https://grahamkarimi.com/sitemap.xml
+# Disallow admin or private areas (if any)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Sitemap location
+Sitemap: https://kevingrahamkarimi.com/sitemap.xml
