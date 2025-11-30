@@ -1,17 +1,31 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Header.css';
 
 const Header = () => {
+  const navigate = useNavigate();
+
+  const goHomeAndScrollHero = (e) => {
+    e.preventDefault();
+    // navigate to home route
+    navigate('/');
+    // small delay to let route render, then scroll to #hero (or top)
+    setTimeout(() => {
+      const hero = document.getElementById('hero');
+      if (hero) hero.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      else window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    }, 50);
+  };
+
   return (
     <header className="site-header">
       <div className="container">
         <div className="header-content">
           <div className="logo">
-            <Link to="/">
+            <a href="/" className="site-logo" onClick={goHomeAndScrollHero}>
               <h1>Kevin Graham Karimi</h1>
               <span className="tagline">financial advisor, Risk Management & compliance director</span>
-            </Link>
+            </a>
           </div>
           
           <nav className="main-nav">

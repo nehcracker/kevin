@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from '../../components/layout/Header/Header';
 import Footer from '../../components/layout/Footer/Footer';
 import profilePhoto from '../../assets/images/Kevin-graham.png';
@@ -6,13 +6,18 @@ import Graham from '../../assets/images/Graham.png';
 import './Home.css';
 
 const Home = () => {
+  useEffect(() => {
+    // Ensure page resets to hero/top when this component mounts (on reload or navigation)
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  }, []);
+
   return (
     <div className="home-page">
       <Header />
       
       <main>
         {/* Enhanced Hero Section */}
-        <section className="hero-section">
+        <section id="hero" className="hero-section">
           {/* Floating Particles */}
           <div className="floating-particles">
             <div className="particle"></div>
