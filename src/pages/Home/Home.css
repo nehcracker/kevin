@@ -539,7 +539,7 @@ body {
     color: var(--text-light);
     max-width: 850px;
     margin: 1.5rem auto 0;
-    text-align: justify;
+    text-align: center;
     line-height: 1.8;
 }
 
