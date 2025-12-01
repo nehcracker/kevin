@@ -46,6 +46,9 @@
     },
     "resolve-url-loader": {
       "postcss": "8.4.45"
+    },
+    "react-helmet-async": {
+      "react": "^19.1.0"
     }
   }
 }
