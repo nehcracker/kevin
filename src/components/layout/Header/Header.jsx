@@ -1,20 +1,32 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './Header.css';
 
 const Header = () => {
-  const navigate = useNavigate();
-
   const goHomeAndScrollHero = (e) => {
     e.preventDefault();
-    // navigate to home route
-    navigate('/');
-    // small delay to let route render, then scroll to #hero (or top)
-    setTimeout(() => {
+    // Check if we're already on home page
+    if (window.location.pathname === '/') {
+      // Just scroll to hero
       const hero = document.getElementById('hero');
       if (hero) hero.scrollIntoView({ behavior: 'smooth', block: 'start' });
       else window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-    }, 50);
+    } else {
+      // Navigate to home and scroll
+      window.location.href = '/#hero';
+    }
+  };
+
+  const goToAboutAndScrollTop = (e) => {
+    e.preventDefault();
+    // Check if we're already on about page
+    if (window.location.pathname === '/about') {
+      // Just scroll to top
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    } else {
+      // Navigate to about and scroll to top
+      window.location.href = '/about';
+    }
   };
 
   return (
@@ -31,7 +43,7 @@ const Header = () => {
           <nav className="main-nav">
             <ul>
               <li><Link to="/" className="nav-link">Home</Link></li>
-              <li><Link to="/about" className="nav-link">About</Link></li>
+              <li><a href="/about" className="nav-link" onClick={goToAboutAndScrollTop}>About</a></li>
               <li><a href="#contact" className="nav-link contact-link">Contact</a></li>
             </ul>
           </nav>

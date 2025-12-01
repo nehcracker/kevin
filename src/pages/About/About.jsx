@@ -1,15 +1,16 @@
-import React from 'react';
-import Header from '../../components/layout/Header/Header';
-import Footer from '../../components/layout/Footer/Footer';
+import React, { useEffect } from 'react';
 import profilePhoto from '../../assets/images/Kevin-kevin.jpg';
 import './About.css';
 
 const About = () => {
+  useEffect(() => {
+    // Ensure page resets to top when this component mounts (on reload or navigation)
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  }, []);
   return (
     <div className="about-page">
-      <Header />
       
-      <main>
+      <main id="main-content">
         {/* Page Header */}
         <section className="page-header">
           <div className="container">
@@ -101,8 +102,6 @@ const About = () => {
           </div>
         </section>
       </main>
-      
-      <Footer />
     </div>
   );
 };

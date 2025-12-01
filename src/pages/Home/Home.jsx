@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
-import Header from '../../components/layout/Header/Header';
-import Footer from '../../components/layout/Footer/Footer';
+import { Helmet } from 'react-helmet-async';
 import profilePhoto from '../../assets/images/Kevin-graham.png';
 import Graham from '../../assets/images/Graham.png';
 import './Home.css';
@@ -11,84 +10,56 @@ const Home = () => {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
   }, []);
 
-  useEffect(() => {
-    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://grahamkarimi.com';
-    const ogImage = `${origin}${Graham}`;
-    const profileImage = `${origin}${profilePhoto}`;
-    const pageUrl = `${origin}/`;
 
-    const created = [];
-    const prevTitle = document.title;
 
-    // helper to upsert meta
-    const upsertMeta = (attrName, attrValue, content) => {
-      const selector = `meta[${attrName}="${attrValue}"]`;
-      let el = document.head.querySelector(selector);
-      if (!el) {
-        el = document.createElement('meta');
-        el.setAttribute(attrName, attrValue);
-        document.head.appendChild(el);
-        created.push(el);
-      }
-      el.setAttribute('content', content);
-    };
-
-    // set title and canonical
-    document.title = 'Kevin Graham Karimi | Global Financial Advisor & Funding Strategist';
-    const canonical = document.querySelector('link[rel="canonical"]') ?? document.createElement('link');
-    canonical.setAttribute('rel', 'canonical');
-    canonical.setAttribute('href', pageUrl);
-    if (!document.head.contains(canonical)) { document.head.appendChild(canonical); created.push(canonical); }
-
-    // core metas
-    upsertMeta('name', 'description', 'Global financial advisor & risk management expert. Debt structuring, cross-border financing, and regulatory compliance for high-net-worth corporations.');
-    upsertMeta('name', 'robots', 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1');
-    upsertMeta('name', 'twitter:card', 'summary_large_image');
-    upsertMeta('name', 'twitter:title', 'Kevin Graham Karimi | Global Financial Advisor');
-    upsertMeta('name', 'twitter:description', 'Expert in international financing, debt advisory and compliance. $500M+ in managed transactions across 40+ countries.');
-    upsertMeta('name', 'twitter:image', ogImage);
-
-    // open graph / og:
-    upsertMeta('property', 'og:type', 'profile');
-    upsertMeta('property', 'og:title', 'Kevin Graham Karimi | Global Financial Advisor & Risk Management Expert');
-    upsertMeta('property', 'og:description', 'Award-winning Financial Advisor with 15+ years experience in international investment strategies, risk management, and wealth management.');
-    upsertMeta('property', 'og:url', pageUrl);
-    upsertMeta('property', 'og:image', ogImage);
-    upsertMeta('property', 'og:image:secure_url', ogImage);
-    upsertMeta('property', 'og:image:alt', 'Kevin Graham Karimi - Global Financial Advisor');
-
-    // JSON-LD Person schema
-    const ld = document.createElement('script');
-    ld.type = 'application/ld+json';
-    ld.text = JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Kevin Graham Karimi",
-      "url": pageUrl,
-      "image": profileImage,
-      "sameAs": [
-        "https://linkedin.com/in/kevingrahamkarimi",
-        "https://www.facebook.com/kevingrahamkarimi",
-        "https://t.me/kevingrahamkarimi"
-      ],
-      "jobTitle": "Global Financial Advisor",
-      "worksFor": { "@type": "Organization", "name": "InBest Consultant Solutions" }
-    });
-    document.head.appendChild(ld);
-    created.push(ld);
-
-    // cleanup on unmount: remove created elements and restore title
-    return () => {
-      created.forEach(el => el.parentNode && el.parentNode.removeChild(el));
-      document.title = prevTitle;
-    };
-  }, []);
+  const origin = typeof window !== 'undefined' ? window.location.origin : 'https://grahamkarimi.com';
+  const ogImage = `${origin}/Kevin-graham.png`;
+  const profileImage = `${origin}/Kevin-graham.png`;
+  const pageUrl = `${origin}/`;
 
   return (
     <div className="home-page">
-      <Header />
-      
-      <main>
+      <Helmet>
+        <title>Kevin Graham Karimi | Global Financial Advisor & Funding Strategist</title>
+        <meta name="description" content="Global financial advisor & risk management expert. Debt structuring, cross-border financing, and regulatory compliance for high-net-worth corporations." />
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+        <link rel="canonical" href={pageUrl} />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="profile" />
+        <meta property="og:title" content="Kevin Graham Karimi | Global Financial Advisor & Risk Management Expert" />
+        <meta property="og:description" content="Award-winning Financial Advisor with 15+ years experience in international investment strategies, risk management, and wealth management." />
+        <meta property="og:url" content={pageUrl} />
+        <meta property="og:image" content={ogImage} />
+        <meta property="og:image:secure_url" content={ogImage} />
+        <meta property="og:image:alt" content="Kevin Graham Karimi - Global Financial Advisor" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Kevin Graham Karimi | Global Financial Advisor" />
+        <meta name="twitter:description" content="Expert in international financing, debt advisory and compliance. $500M+ in managed transactions across 40+ countries." />
+        <meta name="twitter:image" content={ogImage} />
+
+        {/* Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Kevin Graham Karimi",
+            "url": pageUrl,
+            "image": profileImage,
+            "sameAs": [
+              "https://linkedin.com/in/kevingrahamkarimi",
+              "https://www.facebook.com/kevingrahamkarimi",
+              "https://t.me/kevingrahamkarimi"
+            ],
+            "jobTitle": "Global Financial Advisor",
+            "worksFor": { "@type": "Organization", "name": "InBest Consultant Solutions" }
+          })}
+        </script>
+      </Helmet>
+
+      <main id="main-content">
         {/* Enhanced Hero Section */}
         <section id="hero" className="hero-section">
           {/* Floating Particles */}
@@ -299,53 +270,8 @@ const Home = () => {
           </div>
         </section>
         
-        {/* Contact Section */}
-        <section id="contact" className="contact-section">
-          <div className="container">
-            <div className="section-header">
-              <h2>Get in touch with financial Advisor</h2>
-              <p>Connect with Kevin Graham Karimi through these channels</p>
-            </div>
-            
-            <div className="social-media-container">
-              <h3>Connect With Me Now</h3>
-              <div className="social-icons-grid">
-                <a href="https://linkedin.com/in/kevingrahamkarimi" className="social-icon" title="LinkedIn Profile">
-                  <i className="fab fa-linkedin"></i>
-                  <span className="icon-popup">LinkedIn</span>
-                </a>
-                <a href="https://www.facebook.com/kevingrahamkarimi" className="social-icon" title="Facebook Profile">
-                  <i className="fab fa-facebook-f"></i>
-                  <span className="icon-popup">Facebook</span>
-                </a>
-                <a href="https://t.me/kevingrahamkarimi" className="social-icon" title="Telegram">
-                  <i className="fab fa-telegram"></i>
-                  <span className="icon-popup">Telegram</span>
-                </a>
-                
-                <a href="https://wa.me/+447445323529" className="social-icon" title="WhatsApp">
-                  <i className="fab fa-whatsapp"></i>
-                  <span className="icon-popup">WhatsApp</span>
-                </a>
-                <a href="tel:+447445323529" className="social-icon" title="Phone">
-                  <i className="fas fa-phone"></i>
-                  <span className="icon-popup">Call</span>
-                </a>
-                <a href="mailto:kevin.karimi@inbestconsultant.com" className="social-icon" title="Email">
-                  <i className="fas fa-envelope"></i>
-                  <span className="icon-popup">Email</span>
-                </a>
-              </div>
-              
-              <div className="contact-cta">
-                <a href="https://calendly.com/kevingraham" className="btn btn-primary">Schedule a Meeting</a>
-              </div>
-            </div>
-          </div>
-        </section>
+
       </main>
-      
-      <Footer />
     </div>
   );
 };

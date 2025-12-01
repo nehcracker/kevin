@@ -7,4 +7,4 @@ Allow: /
 # Disallow: /private/
 
 # Sitemap location
-Sitemap: https://kevingrahamkarimi.com/sitemap.xml
+Sitemap: https://grahamkarimi.com/sitemap.xml
