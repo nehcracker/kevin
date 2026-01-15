@@ -1,8 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Header.css';
 
 const Header = () => {
+  const navigate = useNavigate();
+
   const goHomeAndScrollHero = (e) => {
     e.preventDefault();
     // Check if we're already on home page
@@ -12,8 +14,8 @@ const Header = () => {
       if (hero) hero.scrollIntoView({ behavior: 'smooth', block: 'start' });
       else window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     } else {
-      // Navigate to home and scroll
-      window.location.href = '/#hero';
+      // Navigate to home using React Router
+      navigate('/');
     }
   };
 
@@ -24,8 +26,8 @@ const Header = () => {
       // Just scroll to top
       window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     } else {
-      // Navigate to about and scroll to top
-      window.location.href = '/about';
+      // Navigate to about using React Router
+      navigate('/about');
     }
   };
 
@@ -34,16 +36,16 @@ const Header = () => {
       <div className="container">
         <div className="header-content">
           <div className="logo">
-            <a href="/" className="site-logo" onClick={goHomeAndScrollHero}>
+            <Link to="/" className="site-logo" onClick={goHomeAndScrollHero}>
               <h1>Kevin Graham Karimi</h1>
               <span className="tagline">financial advisor, Risk Management & compliance director</span>
-            </a>
+            </Link>
           </div>
           
           <nav className="main-nav">
             <ul>
               <li><Link to="/" className="nav-link">Home</Link></li>
-              <li><a href="/about" className="nav-link" onClick={goToAboutAndScrollTop}>About</a></li>
+              <li><Link to="/about" className="nav-link" onClick={goToAboutAndScrollTop}>About</Link></li>
               <li><a href="#contact" className="nav-link contact-link">Contact</a></li>
             </ul>
           </nav>
