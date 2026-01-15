@@ -1,5 +1,8 @@
+# Serve index.html directly to avoid infinite loop
+/index.html /index.html 200
+
 # SPA fallback - serve index.html for all routes except static assets
-/*    /index.html   200
+/* /index.html 200
 
 # Optional: Force HTTPS (if needed)
 # http://:splat  https://:splat  301
