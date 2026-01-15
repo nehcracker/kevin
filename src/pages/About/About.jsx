@@ -82,6 +82,16 @@ const About = () => {
                 <h3>Transparent Communication</h3>
                 <p>Maintaining clear, open dialogue with all stakeholders to ensure alignment and informed decision-making.</p>
               </div>
+
+              <div className="philosophy-card">
+                <h3>Collaborative Approach</h3>
+                <p>Collaborating with clients, regulators, and stakeholders to understand their needs and challenges.</p>
+              </div>
+
+              <div className="philosophy-card">
+                <h3>Customer Focus</h3>
+                <p>Providing personalized solutions that align with client goals and objectives.</p>
+              </div>
               
               <div className="philosophy-card">
                 <h3>Continuous Improvement</h3>
