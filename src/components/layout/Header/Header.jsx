@@ -7,27 +7,30 @@ const Header = () => {
 
   const goHomeAndScrollHero = (e) => {
     e.preventDefault();
-    // Check if we're already on home page
     if (window.location.pathname === '/') {
-      // Just scroll to hero
       const hero = document.getElementById('hero');
       if (hero) hero.scrollIntoView({ behavior: 'smooth', block: 'start' });
       else window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     } else {
-      // Navigate to home using React Router
       navigate('/');
     }
   };
 
   const goToAboutAndScrollTop = (e) => {
     e.preventDefault();
-    // Check if we're already on about page
     if (window.location.pathname === '/about') {
-      // Just scroll to top
       window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     } else {
-      // Navigate to about using React Router
       navigate('/about');
+    }
+  };
+
+  const goToServicesAndScrollTop = (e) => {
+    e.preventDefault();
+    if (window.location.pathname === '/services') {
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    } else {
+      navigate('/services');
     }
   };
 
@@ -41,11 +44,12 @@ const Header = () => {
               <span className="tagline">financial advisor, Risk Management & compliance director</span>
             </Link>
           </div>
-          
+
           <nav className="main-nav">
             <ul>
               <li><Link to="/" className="nav-link">Home</Link></li>
               <li><Link to="/about" className="nav-link" onClick={goToAboutAndScrollTop}>About</Link></li>
+              <li><Link to="/services" className="nav-link" onClick={goToServicesAndScrollTop}>Services</Link></li>
               <li><a href="#contact" className="nav-link contact-link">Contact</a></li>
             </ul>
           </nav>

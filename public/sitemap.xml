@@ -7,15 +7,27 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://grahamkarimi.com/#expertise</loc>
+    <loc>https://grahamkarimi.com/about</loc>
     <lastmod>2024-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://grahamkarimi.com/services</loc>
+    <lastmod>2025-02-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://grahamkarimi.com/#expertise</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://grahamkarimi.com/#contact</loc>
     <lastmod>2024-01-15</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
 </urlset>
