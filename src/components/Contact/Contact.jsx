@@ -26,11 +26,11 @@ const Contact = () => {
               <span className="icon-popup">Telegram</span>
             </a>
 
-            <a href="https://wa.me/+447445323529" className="social-icon" title="WhatsApp">
+            <a href="https://wa.me/+44773339858" className="social-icon" title="WhatsApp">
               <i className="fab fa-whatsapp"></i>
               <span className="icon-popup">WhatsApp</span>
             </a>
-            <a href="tel:+447445323529" className="social-icon" title="Phone">
+            <a href="tel:+44773339858" className="social-icon" title="Phone">
               <i className="fas fa-phone"></i>
               <span className="icon-popup">Call</span>
             </a>
