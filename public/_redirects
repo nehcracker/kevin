@@ -1,6 +1,5 @@
 # SPA fallback: let React Router handle client-side routes
-# Redirect all paths to index.html, except static files and actual files with extensions
-/*    /index.html   200  !/:path*.:ext
+/* /index.html 200
 
 # Optional: Force HTTPS (if needed)
 # http://:splat  https://:splat  301
