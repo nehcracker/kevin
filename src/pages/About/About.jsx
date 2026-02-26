@@ -1,26 +1,52 @@
 import React, { useEffect } from 'react';
+import SEO from '../../components/common/SEO/SEO';
 import profilePhoto from '../../assets/images/Kevin-kevin.jpg';
 import './About.css';
 
 const About = () => {
   useEffect(() => {
-    // Ensure page resets to top when this component mounts (on reload or navigation)
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
   }, []);
+
   return (
     <div className="about-page">
-      
+
+      {/* ── PAGE SEO ─────────────────────────────────────────────────── */}
+      <SEO
+        title="About – Financial Advisor & Risk Management Director"
+        description="Kevin Graham Karimi is Director of Risk Management & Compliance at InBest Consultant Solutions. With 15+ years of international experience, he advises corporations and high-net-worth investors on regulatory compliance, risk frameworks, and global financial strategy."
+        keywords="Kevin Graham Karimi about, financial advisor background, risk management director, InBest Consultant Solutions, international compliance expert, regulatory advisory experience"
+        canonical="https://grahamkarimi.com/about"
+        ogType="profile"
+        schema={{
+          '@context': 'https://schema.org',
+          '@type': 'ProfilePage',
+          name: 'About Kevin Graham Karimi',
+          url: 'https://grahamkarimi.com/about',
+          mainEntity: {
+            '@type': 'Person',
+            name: 'Kevin Graham Karimi',
+            jobTitle: 'Director of Risk Management & Compliance',
+            worksFor: {
+              '@type': 'Organization',
+              name: 'InBest Consultant Solutions',
+              url: 'https://inbestconsultant.com',
+            },
+          },
+        }}
+      />
+      {/* ─────────────────────────────────────────────────────────────── */}
+
       <main id="main-content">
-        {/* Page Header */}
+
         <section className="page-header">
           <div className="container">
-            <h1>Financial Advisor & consultant</h1>
+            <h1>Financial Advisor & Consultant</h1>
             <h2>Kevin Graham Karimi</h2>
             <p>Learn more about my background, expertise, and professional journey</p>
           </div>
         </section>
-        
-        {/* Bio Section */}
+
         <section className="bio-section">
           <div className="container">
             <div className="bio-content">
@@ -31,24 +57,25 @@ const About = () => {
                   <span className="experience-text">Years Experience</span>
                 </div>
               </div>
-              
               <div className="bio-text">
                 <h2>Professional Background</h2>
                 <p className="position">Director, Risk Management & Compliance</p>
-                
-                <p>As Director of Risk Management & Compliance at InBest Consultant Solutions, 
-                  Kevin Graham Karimi brings a wealth of expertise in safeguarding investments, 
+                <p>
+                  As Director of Risk Management & Compliance at InBest Consultant Solutions,
+                  Kevin Graham Karimi brings a wealth of expertise in safeguarding investments,
                   ensuring regulatory excellence, and structuring high-value financial solutions
-                  across global markets. His keen ability to anticipate potential compliance challenges and 
-                  proactively address them has made him a cornerstone in every project he undertakes.</p>
-                  <p>Kevin is dedicated to protecting client interests, promoting transparency, and fostering 
-                  sustainable growth in every transaction. His commitment to excellence, combined with a forward-thinking
-                  approach to international finance, positions him as a key player in today's evolving financial landscape.</p>
-                
+                  across global markets.
+                </p>
+                <p>
+                  Kevin is dedicated to protecting client interests, promoting transparency, and
+                  fostering sustainable growth in every transaction. His commitment to excellence,
+                  combined with a forward-thinking approach to international finance, positions him
+                  as a key player in today's evolving financial landscape.
+                </p>
                 <div className="bio-highlights">
                   <h3>Career Highlights</h3>
                   <ul>
-                    <li>Led the implementation of comprehensive risk assessment frameworks for multinational financial institutions</li>
+                    <li>Led implementation of comprehensive risk assessment frameworks for multinational financial institutions</li>
                     <li>Orchestrated compliance strategies for high-profile international transactions</li>
                     <li>Advised on regulatory matters across diverse global markets</li>
                     <li>Developed innovative approaches to complex financial risk management</li>
@@ -58,50 +85,31 @@ const About = () => {
             </div>
           </div>
         </section>
-        
-        {/* Philosophy Section */}
+
         <section className="philosophy-section">
           <div className="container">
             <div className="section-header">
               <h2>Professional Philosophy</h2>
               <p>Guiding principles that drive my approach to risk management and compliance</p>
             </div>
-            
             <div className="philosophy-grid">
-              <div className="philosophy-card">
-                <h3>Proactive Risk Management</h3>
-                <p>Identifying and addressing potential risks before they materialize is always more effective than reactive management.</p>
-              </div>
-              
-              <div className="philosophy-card">
-                <h3>Regulatory Excellence</h3>
-                <p>Viewing compliance not as a constraint but as a foundation for sustainable business growth and stakeholder trust.</p>
-              </div>
-              
-              <div className="philosophy-card">
-                <h3>Transparent Communication</h3>
-                <p>Maintaining clear, open dialogue with all stakeholders to ensure alignment and informed decision-making.</p>
-              </div>
-
-              <div className="philosophy-card">
-                <h3>Collaborative Approach</h3>
-                <p>Collaborating with clients, regulators, and stakeholders to understand their needs and challenges.</p>
-              </div>
-
-              <div className="philosophy-card">
-                <h3>Customer Focus</h3>
-                <p>Providing personalized solutions that align with client goals and objectives.</p>
-              </div>
-              
-              <div className="philosophy-card">
-                <h3>Continuous Improvement</h3>
-                <p>Constantly evaluating and enhancing risk management processes to adapt to evolving market conditions.</p>
-              </div>
+              {[
+                { title: 'Proactive Risk Management', body: 'Identifying and addressing potential risks before they materialize is always more effective than reactive management.' },
+                { title: 'Regulatory Excellence', body: 'Viewing compliance not as a constraint but as a foundation for sustainable business growth and stakeholder trust.' },
+                { title: 'Transparent Communication', body: 'Maintaining clear, open dialogue with all stakeholders to ensure alignment and informed decision-making.' },
+                { title: 'Collaborative Approach', body: 'Collaborating with clients, regulators, and stakeholders to understand their needs and challenges.' },
+                { title: 'Customer Focus', body: 'Providing personalized solutions that align with client goals and objectives.' },
+                { title: 'Continuous Improvement', body: 'Constantly evaluating and enhancing risk management processes to adapt to evolving market conditions.' },
+              ].map((card, i) => (
+                <div key={i} className="philosophy-card">
+                  <h3>{card.title}</h3>
+                  <p>{card.body}</p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
-        
-        {/* Call to Action */}
+
         <section className="about-cta-section">
           <div className="container">
             <div className="cta-content">
@@ -111,6 +119,7 @@ const About = () => {
             </div>
           </div>
         </section>
+
       </main>
     </div>
   );

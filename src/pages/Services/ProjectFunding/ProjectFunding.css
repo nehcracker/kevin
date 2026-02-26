@@ -1,0 +1,825 @@
+/* ProjectFunding.css */
+
+/* ===================================
+   PAGE HEADER
+   =================================== */
+.pf-header {
+  background: linear-gradient(135deg, #0D1B4E 0%, #1565C0 60%, #1976D2 100%);
+  color: white;
+  padding: 9rem 0 5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.pf-header::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -5%;
+  width: 55%;
+  height: 160%;
+  background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 65%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.pf-header::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  left: -5%;
+  width: 40%;
+  height: 120%;
+  background: radial-gradient(circle, rgba(124,77,255,0.12) 0%, transparent 65%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.pf-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 2.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.pf-breadcrumb a {
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.pf-breadcrumb a:hover {
+  color: white;
+}
+
+.pf-breadcrumb .separator {
+  color: rgba(255,255,255,0.4);
+  font-size: 0.8rem;
+}
+
+.pf-breadcrumb .current {
+  color: rgba(255,255,255,0.9);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.pf-header-body {
+  position: relative;
+  z-index: 1;
+  max-width: 750px;
+}
+
+.pf-header-label {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 1.25rem;
+  padding: 0.4rem 1rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 50px;
+}
+
+.pf-header h1 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 900;
+  color: white;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+  letter-spacing: -1px;
+}
+
+.pf-header h1 span {
+  display: block;
+  background: linear-gradient(90deg, #64B5F6, #B39DDB);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.pf-header-tagline {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: rgba(255,255,255,0.75);
+  line-height: 1.7;
+  margin: 1.5rem 0 2.5rem;
+  max-width: 600px;
+}
+
+.pf-header-cta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.pf-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1rem 2rem;
+  background: white;
+  color: #1565C0;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+.pf-btn-primary:hover {
+  background: #E3F2FD;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.pf-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1rem 2rem;
+  background: transparent;
+  color: white;
+  border: 2px solid rgba(255,255,255,0.5);
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.pf-btn-outline:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: white;
+  transform: translateY(-3px);
+}
+
+/* ===================================
+   OVERVIEW SECTION
+   =================================== */
+.pf-overview {
+  padding: 6rem 0;
+  background: #ffffff;
+}
+
+.pf-overview-text {
+  max-width: 820px;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+
+.pf-overview-text p {
+  font-size: 1.1rem;
+  color: #546E7A;
+  line-height: 1.9;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.pf-overview-text p:last-child {
+  margin-bottom: 0;
+}
+
+.pf-sector-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 2.5rem;
+}
+
+.pf-sector-tag {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.25rem;
+  background: linear-gradient(135deg, #E3F2FD, #EDE7F6);
+  border: 1px solid #BBDEFB;
+  border-radius: 50px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #1565C0;
+  transition: all 0.3s ease;
+}
+
+.pf-sector-tag:hover {
+  background: linear-gradient(135deg, #2196F3, #7C4DFF);
+  color: white;
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(33,150,243,0.3);
+}
+
+.pf-sector-tag i {
+  font-size: 0.9rem;
+}
+
+/* ===================================
+   CORE SERVICES SECTION
+   =================================== */
+.pf-core-services {
+  padding: 6rem 0;
+  background: #F5F7FA;
+}
+
+.pf-section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.pf-section-header h2 {
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  color: #1a237e;
+  font-weight: 700;
+  display: inline-block;
+  position: relative;
+  margin-bottom: 0;
+}
+
+.pf-section-header h2::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 55px;
+  height: 3px;
+  background: linear-gradient(90deg, #2196F3, #7C4DFF);
+  border-radius: 2px;
+}
+
+.pf-section-header p {
+  font-size: 1.05rem;
+  color: #78909C;
+  max-width: 600px;
+  margin: 1.75rem auto 0;
+  text-align: center;
+  line-height: 1.7;
+}
+
+.pf-services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.75rem;
+}
+
+.pf-service-card {
+  background: white;
+  border-radius: 14px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(33,150,243,0.07);
+  border-top: 3px solid transparent;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.pf-service-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, rgba(33,150,243,0.03), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.pf-service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 40px rgba(33,150,243,0.14);
+}
+
+.pf-service-card:hover::before {
+  opacity: 1;
+}
+
+.pf-service-card:nth-child(1) { border-top-color: #2196F3; }
+.pf-service-card:nth-child(2) { border-top-color: #7C4DFF; }
+.pf-service-card:nth-child(3) { border-top-color: #00BCD4; }
+.pf-service-card:nth-child(4) { border-top-color: #FF4081; }
+.pf-service-card:nth-child(5) { border-top-color: #FF9800; }
+.pf-service-card:nth-child(6) { border-top-color: #4CAF50; }
+
+.pf-card-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  margin-bottom: 1.25rem;
+  color: white;
+}
+
+.pf-service-card:nth-child(1) .pf-card-icon { background: linear-gradient(135deg, #1565C0, #2196F3); }
+.pf-service-card:nth-child(2) .pf-card-icon { background: linear-gradient(135deg, #4527A0, #7C4DFF); }
+.pf-service-card:nth-child(3) .pf-card-icon { background: linear-gradient(135deg, #00838F, #00BCD4); }
+.pf-service-card:nth-child(4) .pf-card-icon { background: linear-gradient(135deg, #C2185B, #FF4081); }
+.pf-service-card:nth-child(5) .pf-card-icon { background: linear-gradient(135deg, #E65100, #FF9800); }
+.pf-service-card:nth-child(6) .pf-card-icon { background: linear-gradient(135deg, #1B5E20, #4CAF50); }
+
+.pf-service-card h3 {
+  font-size: 1.15rem;
+  color: #1a237e;
+  font-weight: 700;
+  margin-bottom: 0.85rem;
+  position: relative;
+  z-index: 1;
+}
+
+.pf-service-card p {
+  font-size: 0.95rem;
+  color: #546E7A;
+  line-height: 1.7;
+  text-align: justify;
+  margin-bottom: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.pf-bullet-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0 0;
+  position: relative;
+  z-index: 1;
+}
+
+.pf-bullet-list li {
+  font-size: 0.9rem;
+  color: #546E7A;
+  padding: 0.3rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0;
+}
+
+.pf-bullet-list li::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2196F3, #7C4DFF);
+  flex-shrink: 0;
+}
+
+/* ===================================
+   PROCESS SECTION
+   =================================== */
+.pf-process {
+  padding: 6rem 0;
+  background: white;
+}
+
+.pf-steps {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  position: relative;
+  margin-top: 3rem;
+}
+
+/* Connector line */
+.pf-steps::before {
+  content: '';
+  position: absolute;
+  top: 38px;
+  left: 10%;
+  width: 80%;
+  height: 2px;
+  background: linear-gradient(90deg, #2196F3, #7C4DFF);
+  z-index: 0;
+}
+
+.pf-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.pf-step-number {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1565C0, #2196F3);
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 8px 25px rgba(33,150,243,0.3);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.pf-step:hover .pf-step-number {
+  transform: scale(1.1);
+  box-shadow: 0 12px 35px rgba(33,150,243,0.45);
+  background: linear-gradient(135deg, #7C4DFF, #2196F3);
+}
+
+.pf-step h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1a237e;
+  margin-bottom: 0.6rem;
+  line-height: 1.3;
+}
+
+.pf-step p {
+  font-size: 0.83rem;
+  color: #78909C;
+  line-height: 1.6;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+/* ===================================
+   WHY STRUCTURED DEBT SECTION
+   =================================== */
+.pf-why-section {
+  padding: 6rem 0;
+  background: #F5F7FA;
+}
+
+.pf-why-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.pf-why-panel {
+  border-radius: 16px;
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.pf-why-panel.problem {
+  background: linear-gradient(135deg, #FFF3F3, #FFEBEE);
+  border: 1px solid #FFCDD2;
+}
+
+.pf-why-panel.solution {
+  background: linear-gradient(135deg, #E8F5E9, #E3F2FD);
+  border: 1px solid #BBDEFB;
+}
+
+.pf-why-panel-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.75rem;
+}
+
+.pf-why-panel-header .panel-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: white;
+}
+
+.problem .panel-icon {
+  background: linear-gradient(135deg, #C62828, #EF5350);
+}
+
+.solution .panel-icon {
+  background: linear-gradient(135deg, #1B5E20, #4CAF50);
+}
+
+.pf-why-panel h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+.problem h3 { color: #C62828; }
+.solution h3 { color: #1B5E20; }
+
+.pf-why-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pf-why-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  font-size: 0.97rem;
+  color: #37474F;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+.pf-why-list li:last-child {
+  border-bottom: none;
+}
+
+.pf-why-list li .list-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.problem .list-icon { color: #EF5350; }
+.solution .list-icon { color: #4CAF50; }
+
+/* ===================================
+   WHO THIS IS FOR
+   =================================== */
+.pf-who-section {
+  padding: 6rem 0;
+  background: white;
+}
+
+.pf-who-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.25rem;
+  margin-top: 3rem;
+}
+
+.pf-who-card {
+  background: linear-gradient(145deg, #F5F7FA, #EEF2FF);
+  border-radius: 14px;
+  padding: 1.75rem 1.25rem;
+  text-align: center;
+  border: 1px solid #BBDEFB;
+  transition: all 0.3s ease;
+}
+
+.pf-who-card:hover {
+  transform: translateY(-8px);
+  background: linear-gradient(135deg, #2196F3, #1565C0);
+  border-color: transparent;
+  box-shadow: 0 15px 35px rgba(33,150,243,0.25);
+}
+
+.pf-who-card:hover .who-icon,
+.pf-who-card:hover h4,
+.pf-who-card:hover p {
+  color: white;
+}
+
+.who-icon {
+  font-size: 2rem;
+  color: #2196F3;
+  margin-bottom: 1rem;
+  display: block;
+  transition: color 0.3s ease;
+}
+
+.pf-who-card h4 {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #1a237e;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+  transition: color 0.3s ease;
+}
+
+.pf-who-card p {
+  font-size: 0.8rem;
+  color: #78909C;
+  line-height: 1.5;
+  margin-bottom: 0;
+  transition: color 0.3s ease;
+}
+
+/* ===================================
+   ENGAGEMENT MODEL
+   =================================== */
+.pf-engagement {
+  padding: 6rem 0;
+  background: #F5F7FA;
+}
+
+.pf-engagement-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.pf-engagement-inner p {
+  font-size: 1.1rem;
+  color: #546E7A;
+  line-height: 1.9;
+  margin-bottom: 1.25rem;
+  text-align: center;
+}
+
+.pf-quote-block {
+  background: linear-gradient(135deg, #0D1B4E, #1565C0);
+  color: white;
+  border-radius: 16px;
+  padding: 2.5rem 3rem;
+  margin-top: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.pf-quote-block::before {
+  content: '\201C';
+  position: absolute;
+  top: -20px;
+  left: 20px;
+  font-size: 10rem;
+  color: rgba(255,255,255,0.06);
+  font-family: Georgia, serif;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.pf-quote-block blockquote {
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  font-weight: 700;
+  color: white;
+  font-style: italic;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+  line-height: 1.4;
+}
+
+.pf-quote-block cite {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.65);
+  font-style: normal;
+  font-weight: 500;
+  position: relative;
+  z-index: 1;
+  display: block;
+}
+
+/* ===================================
+   CTA SECTION
+   =================================== */
+.pf-cta-section {
+  padding: 6rem 0;
+  background: linear-gradient(135deg, #0D1B4E, #1565C0);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.pf-cta-section::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -5%;
+  width: 45%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 60%);
+  border-radius: 50%;
+}
+
+.pf-cta-section h2 {
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  color: white;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.pf-cta-section p {
+  color: rgba(255,255,255,0.75);
+  font-size: 1.1rem;
+  max-width: 520px;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+  line-height: 1.7;
+  position: relative;
+  z-index: 1;
+}
+
+.pf-cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===================================
+   RESPONSIVE
+   =================================== */
+@media (max-width: 1100px) {
+  .pf-who-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .pf-services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pf-steps {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .pf-steps::before {
+    display: none;
+  }
+
+  .pf-step {
+    flex-direction: row;
+    text-align: left;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 0;
+  }
+
+  .pf-step-number {
+    flex-shrink: 0;
+    margin-bottom: 0;
+    width: 60px;
+    height: 60px;
+    font-size: 1.2rem;
+  }
+
+  .pf-step h4,
+  .pf-step p {
+    text-align: left;
+  }
+
+  .pf-why-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pf-who-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .pf-header {
+    padding: 7rem 0 4rem;
+  }
+
+  .pf-overview,
+  .pf-core-services,
+  .pf-process,
+  .pf-why-section,
+  .pf-who-section,
+  .pf-engagement,
+  .pf-cta-section {
+    padding: 4rem 0;
+  }
+
+  .pf-quote-block {
+    padding: 2rem 1.75rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .pf-header-cta {
+    flex-direction: column;
+  }
+
+  .pf-header-cta a {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .pf-who-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .pf-cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .pf-cta-buttons a {
+    width: 100%;
+    justify-content: center;
+  }
+}
