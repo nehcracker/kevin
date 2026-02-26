@@ -1,10 +1,10 @@
-name = "kevingraham"
-compatibility_date = "2025-11-30"
-
-[pages]
-dir = "./build"
-
-[[pages.routing]]
-pattern = "/*"
-destination = "/index.html"
-status = 200
+{
+  "name": "kevingraham",
+  "main": "server.js",
+  "compatibility_date": "2025-11-30",
+  "assets": {
+    "directory": "./build",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application"
+  }
+}
