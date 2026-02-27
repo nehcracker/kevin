@@ -96,6 +96,7 @@ const services = [
     iconLabel: 'Document Alignment',
     bgClass: 'bg-light',
     reverse: true,
+    detailPath: '/services/document-alignment-services',
     description:
       'Kevin aligns your business documentation — from feasibility studies to financial models — with the precise standards demanded by international lenders, institutional investors, and regulatory bodies.',
     solutions: [
@@ -110,7 +111,7 @@ const services = [
       'Investment Proposal Writing',
       'Funding Document Preparation',
       'Financial Model Review',
-      'Project Proposal Alignment',
+      'Document Alignment Services DAS',
     ],
   },
   {
@@ -122,6 +123,7 @@ const services = [
     icon: 'fas fa-users',
     iconLabel: 'Global Workforce',
     bgClass: 'bg-white',
+    externalUrl: 'https://jobs.grahamkarimi.com/',
     description:
       'Kevin supports companies and professionals with international workforce solutions — from executive search and overseas job sourcing to talent mobility strategy and cross-border recruitment compliance.',
     solutions: [
@@ -152,7 +154,7 @@ const Services = () => {
       <SEO
         title="Services – Project Funding, Risk Advisory & International Finance"
         description="Explore Kevin Graham Karimi's five core advisory services: international project funding and debt structuring, cross-border financial advisory, risk management and regulatory compliance, document alignment, and global HR placement."
-        keywords="project funding services, international project finance, cross border finance advisory, international financial advisor, financial risk management, regulatory compliance advisory, business plan writing services, international job placement"
+        keywords="project funding services, international project finance, cross border finance advisory, international financial advisor, financial risk management, regulatory compliance advisory, document alignment services, business plan writing, international job placement"
         canonical="https://grahamkarimi.com/services"
         schema={{
           '@context': 'https://schema.org',
@@ -228,6 +230,15 @@ const Services = () => {
                     <Link to={service.detailPath} className="service-cta-link">
                       Learn More <i className="fas fa-arrow-right"></i>
                     </Link>
+                  ) : service.externalUrl ? (
+                    <a
+                      href={service.externalUrl}
+                      className="service-cta-link"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Visit Jobs Portal <i className="fas fa-external-link-alt"></i>
+                    </a>
                   ) : (
                     <a href="#contact" className="service-cta-link">
                       Get in Touch <i className="fas fa-arrow-right"></i>
