@@ -98,7 +98,8 @@
   }
   
   .footer-bottom p {
-    color: #777;
+    /* ensure sufficient contrast with dark background */
+    color: #ccc;
     text-align: justify;
     font-size: 0.9rem;
   }

@@ -13,7 +13,7 @@ const Home = () => {
     <div className="home-page">
 
       <SEO
-        title="Global Financial Advisor & Director of Risk Management"
+        title="Global Financial Advisor & Project Funding Specialist"
         description="Kevin Graham brings over a decade of strategic insight and execution in global finance, with a focus on risk management, compliance, and debt advisory."
         keywords="
         Kevin Graham Karimi, 
@@ -61,7 +61,7 @@ const Home = () => {
             <div className="hero-content">
               <span className="hero-eyebrow">Trusted by Global Corporations</span>
               <h1>Global Financial Advisor</h1>
-              <h2>Kevin Graham</h2>
+              <h2>Project Funding Specialist</h2>
               <span className="hero-credentials">MBA | Director of Risk Management & Compliance</span>
               <p className="hero-tagline">
                 Transforming Complex Financial Challenges into Strategic Opportunities
