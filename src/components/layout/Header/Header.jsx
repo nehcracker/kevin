@@ -2,6 +2,9 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Header.css';
 
+// logo image for header
+import logo from '../../../assets/images/Graham.png';
+
 const Header = () => {
   const navigate = useNavigate();
 
@@ -40,8 +43,7 @@ const Header = () => {
         <div className="header-content">
           <div className="logo">
             <Link to="/" className="site-logo" onClick={goHomeAndScrollHero}>
-              <h1>Kevin Graham Karimi</h1>
-              <span className="tagline">financial advisor, Risk Management & compliance director</span>
+              <img src={logo} alt="Kevin Graham Logo" className="site-logo-image" />
             </Link>
           </div>
 

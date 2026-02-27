@@ -9,7 +9,7 @@ const Footer = () => {
       <div className="container">
         <div className="footer-content">
           <div className="footer-info">
-            <h3>Kevin Graham Karimi</h3>
+            <h3>Kevin Graham</h3>
             <p>Global Financial Advisor, Risk Management & Compliance expert in international investment strategies
               & financing for high-net-worth corporations.</p>
           </div>
@@ -20,8 +20,8 @@ const Footer = () => {
               <li><a href="/">Home</a></li>
               <li><a href="/about">About</a></li>
               <li><a href="/services">Services</a></li>
-              <li><a href="#expertise">Expertise</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li><a href="/services/project-funding">Project Funding</a></li>
+              <li><a href="/services/document-alignment-services">Document Alignment Services</a></li>
             </ul>
           </div>
 
@@ -34,7 +34,7 @@ const Footer = () => {
               <a href="https://www.facebook.com/kevingrahamkarimi" className="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                 <i className="fab fa-facebook"></i>
               </a>
-              <a href="https://wa.me/+447445323529" className="social-icon" title="WhatsApp">
+              <a href="https://wa.me/+44773339858" className="social-icon" title="WhatsApp">
                 <i className="fab fa-whatsapp"></i>
                 <span className="icon-popup">WhatsApp</span>
               </a>
@@ -47,7 +47,7 @@ const Footer = () => {
         </div>
 
         <div className="footer-bottom">
-          <p>&copy; {currentYear} Kevin Graham Karimi. All rights reserved.</p>
+          <p>&copy; {currentYear} Kevin Graham . All rights reserved.</p>
         </div>
       </div>
     </footer>

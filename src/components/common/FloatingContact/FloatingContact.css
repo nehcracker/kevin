@@ -1,0 +1,141 @@
+/* FloatingContact.css */
+
+.floating-contact {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ── Base button ─────────────────────────────────────────────── */
+.floating-btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 0 14px 0 16px;
+  height: 50px;
+  border-radius: 30px 0 0 30px;  /* pill on the LEFT side only */
+  text-decoration: none;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  white-space: nowrap;
+  cursor: pointer;
+  box-shadow: -3px 3px 12px rgba(0, 0, 0, 0.2);
+
+  /* Start fully off-screen to the RIGHT */
+  transform: translateX(100%);
+  opacity: 0;
+
+  /* Slide-in on load */
+  transition:
+    transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    opacity   0.5s ease,
+    width     0.35s ease,
+    box-shadow 0.3s ease;
+
+  /* Collapsed width shows icon + small peek */
+  width: 54px;
+  overflow: hidden;
+}
+
+/* ── Animate in on load (class added via JS/state) ───────────── */
+.floating-btn.visible {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* Once visible, clear the slide-in delay so hover feels snappy */
+.floating-btn.email.visible {
+  transition-delay: 0s;
+}
+
+/* ── Hover — slide fully open ────────────────────────────────── */
+.floating-btn:hover {
+  width: 160px;
+  box-shadow: -6px 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* ── WhatsApp ─────────────────────────────────────────────────── */
+.floating-btn.whatsapp {
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  transition-delay: 0s; /* slides in first */
+}
+
+.floating-btn.whatsapp:hover {
+  background: linear-gradient(135deg, #2be070, #128C7E);
+}
+
+/* ── Email ────────────────────────────────────────────────────── */
+.floating-btn.email {
+  background: linear-gradient(135deg, #0056b3, #003d82);
+  transition-delay: 0.6s; /* slides in after WhatsApp finishes (0.5s anim + gap) */
+}
+
+.floating-btn.email .btn-label {
+  color: #ffffff; /* explicit white on email label */
+}
+
+.floating-btn.email:hover {
+  background: linear-gradient(135deg, #0066cc, #003d82);
+}
+
+/* ── Icon ─────────────────────────────────────────────────────── */
+.floating-btn i {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  /* Icon sits on the RIGHT (closest to screen edge) */
+  order: 2;
+}
+
+/* ── Label ────────────────────────────────────────────────────── */
+.floating-btn .btn-label {
+  order: 1;
+  opacity: 0;
+  transform: translateX(10px);
+  transition:
+    opacity   0.25s ease 0.05s,
+    transform 0.25s ease 0.05s;
+  pointer-events: none;
+}
+
+.floating-btn:hover .btn-label {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ── Responsive — smaller on mobile ─────────────────────────── */
+@media (max-width: 576px) {
+  .floating-btn {
+    height: 44px;
+    width: 46px;
+    padding: 0 10px 0 12px;
+  }
+
+  .floating-btn:hover {
+    width: 140px;
+  }
+
+  .floating-btn i {
+    font-size: 1.1rem;
+  }
+
+  .floating-btn .btn-label {
+    font-size: 0.82rem;
+  }
+}
+
+/* ── Reduced motion ──────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .floating-btn {
+    transition: width 0.2s ease, box-shadow 0.2s ease;
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

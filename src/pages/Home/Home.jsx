@@ -61,7 +61,7 @@ const Home = () => {
             <div className="hero-content">
               <span className="hero-eyebrow">Trusted by Global Corporations</span>
               <h1>Global Financial Advisor</h1>
-              <h3>Kevin Graham Karimi</h3>
+              <h2>Kevin Graham</h2>
               <span className="hero-credentials">MBA | Director of Risk Management & Compliance</span>
               <p className="hero-tagline">
                 Transforming Complex Financial Challenges into Strategic Opportunities
