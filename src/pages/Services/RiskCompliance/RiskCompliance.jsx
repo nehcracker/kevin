@@ -153,7 +153,7 @@ const RiskCompliance = () => {
       {/* ── PAGE SEO ─────────────────────────────────────────────────── */}
       <SEO
         title="Risk Management & Regulatory Compliance Advisory"
-        description="Kevin Graham Karimi provides financial risk management and regulatory compliance advisory for corporations, project sponsors, and investors. Services include enterprise risk assessment, AML and KYC compliance, corporate governance structuring, and cross-border compliance coordination."
+        description="financial risk management and regulatory compliance advisory for corporations, project sponsors, and investors."
         keywords="financial risk management services, regulatory compliance advisory, AML KYC compliance, corporate governance structuring, enterprise risk assessment, compliance risk audit, cross border compliance, investment risk assessment, internal controls review"
         canonical="https://grahamkarimi.com/services/risk-compliance"
         schema={{

@@ -15,7 +15,7 @@ const services = [
     bgClass: 'bg-white',
     detailPath: '/services/project-funding',
     description:
-      'Kevin Graham Karimi specializes in securing structured financing for large-scale infrastructure, energy, real estate, manufacturing, and corporate expansion projects across global markets.',
+      'Kevin specializes in securing structured financing for large-scale infrastructure, energy, real estate, manufacturing, and corporate expansion projects across global markets.',
     solutions: [
       'Project Finance',
       'Debt Structuring & Restructuring',
@@ -152,14 +152,14 @@ const Services = () => {
     <div className="services-page">
 
       <SEO
-        title="Services – Project Funding, Risk Advisory & International Finance"
-        description="Explore Kevin Graham Karimi's five core advisory services: international project funding and debt structuring, cross-border financial advisory, risk management and regulatory compliance, document alignment, and global HR placement."
+        title="Project Funding, Risk Advisory & International Finance"
+        description="Core finance and advisory services: Project funding, debt structuring, cross border finance, regulatory compliance, document alignment, global HR placement"
         keywords="project funding services, international project finance, cross border finance advisory, international financial advisor, financial risk management, regulatory compliance advisory, document alignment services, business plan writing, international job placement"
         canonical="https://grahamkarimi.com/services"
         schema={{
           '@context': 'https://schema.org',
           '@type': 'ProfessionalService',
-          name: 'Kevin Graham Karimi Financial Advisory Services',
+          name: 'Kevin Financial Advisory Services',
           url: 'https://grahamkarimi.com/services',
           description:
             'Five core advisory services: project funding, cross-border investment structuring, risk management, document alignment, and global HR placement.',

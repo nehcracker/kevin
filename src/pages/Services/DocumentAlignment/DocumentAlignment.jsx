@@ -209,8 +209,8 @@ const DocumentAlignment = () => {
 
       {/* ── PAGE SEO ─────────────────────────────────────────────────── */}
       <SEO
-        title="Document Alignment Services DAS – Business Plan & Funding Document Preparation"
-        description="Kevin Graham Karimi provides Document Alignment Services (DAS) for corporations and project sponsors seeking funding. Services include business plan writing, financial model review, investment proposal development, feasibility study review, and full funding submission pack preparation."
+        title="Document Alignment Services DAS Business Plan & Funding Prep"
+        description="Document Alignment Services for project funding, business plans, financial model review, feasibility studies, and full investor ready submission packs."
         keywords="document alignment services, business plan writing, investment proposal development, financial model review, funding submission pack, feasibility study review, executive summary preparation, lender ready documents, DAS financial advisory"
         canonical="https://grahamkarimi.com/services/document-alignment-services"
         schema={{

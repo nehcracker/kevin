@@ -1,90 +1,132 @@
-import React from 'react';
-import { Helmet } from 'react-helmet-async';
+import { useEffect } from 'react';
 
 /**
- * SEO Component
+ * SEO Component — Direct DOM Meta Tag Manager
  *
- * Injects all page-level meta tags via react-helmet-async.
- * Each tag uses data-rh="true" so Helmet correctly deduplicates
- * and replaces tags on every route change — titles AND descriptions.
+ * Replaces react-helmet-async with direct DOM manipulation via useEffect.
+ * This is 100% reliable page-to-page in CRA because it directly sets
+ * document.title and meta tags on every render — no library ownership
+ * confusion, no data-rh issues, no deduplication bugs.
  *
  * Usage:
  *   <SEO
  *     title="Page Title"
  *     description="Unique description for this page."
+ *     keywords="keyword1, keyword2"
  *     canonical="https://grahamkarimi.com/page"
- *     keywords="optional, comma, separated"
- *     ogType="website"           // optional, default: website
- *     ogImage="https://..."      // optional, defaults to Kevin-graham.png
- *     schema={{...}}             // optional JSON-LD object
+ *     ogType="website"
+ *     ogImage="https://grahamkarimi.com/Kevin-graham.png"
+ *     schema={{ '@context': 'https://schema.org', ... }}
  *   />
  */
 
-const SITE_NAME  = 'Kevin Graham';
-const BASE_URL   = 'https://grahamkarimi.com';
-const OG_DEFAULT = `${BASE_URL}/Kevin-graham.png`;
+const SITE_NAME      = 'Kevin Graham';
+const BASE_URL       = 'https://grahamkarimi.com';
+const OG_DEFAULT     = `${BASE_URL}/Kevin-graham.png`;
 const TWITTER_HANDLE = '@kevingrahamkarimi';
+
+// ── Helpers ───────────────────────────────────────────────────────────────────
+
+/** Find tag by selector, or create + append it if it doesn't exist */
+function getOrCreate(selector, tagName, initAttrs = {}) {
+  let el = document.querySelector(selector);
+  if (!el) {
+    el = document.createElement(tagName);
+    Object.entries(initAttrs).forEach(([k, v]) => el.setAttribute(k, v));
+    document.head.appendChild(el);
+  }
+  return el;
+}
+
+function setMeta(name, content) {
+  getOrCreate(`meta[name="${name}"]`, 'meta', { name })
+    .setAttribute('content', content);
+}
+
+function setProperty(property, content) {
+  getOrCreate(`meta[property="${property}"]`, 'meta', { property })
+    .setAttribute('content', content);
+}
+
+function setCanonical(href) {
+  getOrCreate('link[rel="canonical"]', 'link', { rel: 'canonical' })
+    .setAttribute('href', href);
+}
+
+function setJsonLd(schema) {
+  // Remove previous JSON-LD injected by this component
+  document.querySelectorAll('script[data-seo-jsonld]')
+    .forEach(el => el.remove());
+
+  if (!schema) return;
+
+  const script = document.createElement('script');
+  script.type = 'application/ld+json';
+  script.setAttribute('data-seo-jsonld', 'true');
+  script.textContent = JSON.stringify(schema);
+  document.head.appendChild(script);
+}
+
+// ── Component ─────────────────────────────────────────────────────────────────
 
 const SEO = ({
   title,
   description = '',
-  keywords,
+  keywords    = '',
   canonical,
-  ogType   = 'website',
-  ogImage  = OG_DEFAULT,
-  schema   = null,
+  ogType      = 'website',
+  ogImage     = OG_DEFAULT,
+  schema      = null,
 }) => {
-  // Full title shown in browser tab and search results
   const fullTitle = title
     ? `${title} | ${SITE_NAME}`
     : `${SITE_NAME} | Global Financial Advisor`;
 
   const pageUrl = canonical || BASE_URL;
 
-  // Debug logging
-  console.log('SEO Component Rendered:', { title, description, keywords, canonical });
+  useEffect(() => {
 
-  return (
-    <Helmet prioritizeSeoTags>
+    // ── Title ─────────────────────────────────────────────────────────────────
+    document.title = fullTitle;
 
-      {/* ── Primary ─────────────────────────────────── */}
-      <title>{fullTitle}</title>
-      <meta name="description" content={description || ''} data-rh="true" />
-      <meta name="keywords" content={keywords || ''} data-rh="true" />
-      <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" data-rh="true" />
-      <link rel="canonical" href={pageUrl} data-rh="true" />
+    // ── Primary meta ──────────────────────────────────────────────────────────
+    setMeta('description', description);
+    setMeta('keywords',    keywords);
+    setMeta('robots',      'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1');
 
-      {/* ── Open Graph ──────────────────────────────── */}
-      <meta property="og:site_name" content={SITE_NAME} data-rh="true" />
-      <meta property="og:type" content={ogType} data-rh="true" />
-      <meta property="og:title" content={fullTitle} data-rh="true" />
-      <meta property="og:description" content={description || ''} data-rh="true" />
-      <meta property="og:url" content={pageUrl} data-rh="true" />
-      <meta property="og:image" content={ogImage} data-rh="true" />
-      <meta property="og:image:secure_url" content={ogImage} data-rh="true" />
-      <meta property="og:image:width" content="1200" data-rh="true" />
-      <meta property="og:image:height" content="630" data-rh="true" />
-      <meta property="og:image:alt" content={`${SITE_NAME} – Global Financial Advisor`} data-rh="true" />
-      <meta property="og:locale" content="en_US" data-rh="true" />
+    // ── Canonical ─────────────────────────────────────────────────────────────
+    setCanonical(pageUrl);
 
-      {/* ── Twitter Card ────────────────────────────── */}
-      <meta name="twitter:card" content="summary_large_image" data-rh="true" />
-      <meta name="twitter:site" content={TWITTER_HANDLE} data-rh="true" />
-      <meta name="twitter:creator" content={TWITTER_HANDLE} data-rh="true" />
-      <meta name="twitter:title" content={fullTitle} data-rh="true" />
-      <meta name="twitter:description" content={description || ''} data-rh="true" />
-      <meta name="twitter:image" content={ogImage} data-rh="true" />
-      <meta name="twitter:image:alt" content={`${SITE_NAME} – Global Financial Advisor`} data-rh="true" />
+    // ── Open Graph ────────────────────────────────────────────────────────────
+    setProperty('og:site_name',        SITE_NAME);
+    setProperty('og:type',             ogType);
+    setProperty('og:title',            fullTitle);
+    setProperty('og:description',      description);
+    setProperty('og:url',              pageUrl);
+    setProperty('og:image',            ogImage);
+    setProperty('og:image:secure_url', ogImage);
+    setProperty('og:image:width',      '1200');
+    setProperty('og:image:height',     '630');
+    setProperty('og:image:alt',        `${SITE_NAME} – Global Financial Advisor`);
+    setProperty('og:locale',           'en_US');
 
-      {/* ── JSON-LD Structured Data ─────────────────── */}
-      {schema && (
-        <script type="application/ld+json">
-          {JSON.stringify(schema)}
-        </script>
-      )}
+    // ── Twitter Card ──────────────────────────────────────────────────────────
+    setMeta('twitter:card',        'summary_large_image');
+    setMeta('twitter:site',        TWITTER_HANDLE);
+    setMeta('twitter:creator',     TWITTER_HANDLE);
+    setMeta('twitter:title',       fullTitle);
+    setMeta('twitter:description', description);
+    setMeta('twitter:image',       ogImage);
+    setMeta('twitter:image:alt',   `${SITE_NAME} – Global Financial Advisor`);
 
-    </Helmet>
-  );
+    // ── JSON-LD ───────────────────────────────────────────────────────────────
+    setJsonLd(schema);
+
+  // Re-run every time any SEO value changes (i.e. on every page navigation)
+  }, [fullTitle, description, keywords, pageUrl, ogType, ogImage, schema]);
+
+  // Renders nothing to the DOM — all work happens in useEffect
+  return null;
 };
 
 export default SEO;

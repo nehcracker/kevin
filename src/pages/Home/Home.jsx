@@ -1,10 +1,5 @@
-// Home.jsx — replace only the SEO block at the top of the component.
-// Everything below <main> stays exactly as it is in your current file.
-// Only the import and the <SEO /> call change.
-
 import React, { useEffect } from 'react';
 import SEO from '../../components/common/SEO/SEO';
-// keep all your existing imports below this line:
 import profilePhoto from '../../assets/images/Kevin-graham.png';
 import Graham from '../../assets/images/Graham.png';
 import './Home.css';
@@ -17,17 +12,25 @@ const Home = () => {
   return (
     <div className="home-page">
 
-      {/* ── PAGE SEO ─────────────────────────────────────────────────── */}
       <SEO
-        title="Global Financial Advisor & Funding Strategist"
-        description="Kevin Graham Karimi is a global financial advisor and Director of Risk Management & Compliance specializing in international project funding, debt structuring, cross-border investment, and regulatory compliance for high-net-worth corporations worldwide."
-        keywords="Kevin Graham Karimi, Global Financial Advisor, project funding, debt structuring, international investment, risk management, compliance, InBest Consultant Solutions, cross border finance"
+        title="Global Financial Advisor & Director of Risk Management"
+        description="Kevin Graham brings over a decade of strategic insight and execution in global finance, with a focus on risk management, compliance, and debt advisory."
+        keywords="
+        Kevin Graham Karimi, 
+        International Project Funding & Debt Structuring, 
+        Kevin Graham financial advisor, 
+        InBest Consultant Solutions, 
+        global financial advisor, 
+        director risk management compliance, 
+        HNW corporate finance advisor, 
+        debt structuring expert, 
+        international finance director UK"
         canonical="https://grahamkarimi.com/"
         ogType="profile"
         schema={{
           '@context': 'https://schema.org',
           '@type': 'Person',
-          name: 'Kevin Graham Karimi',
+          name: 'Kevin Graham',
           url: 'https://grahamkarimi.com/',
           image: 'https://grahamkarimi.com/Kevin-graham.png',
           jobTitle: 'Global Financial Advisor & Director of Risk Management',
@@ -43,9 +46,7 @@ const Home = () => {
           ],
         }}
       />
-      {/* ─────────────────────────────────────────────────────────────── */}
 
-      {/* YOUR EXISTING JSX BELOW — DO NOT CHANGE ANYTHING FROM HERE DOWN */}
       <main id="main-content">
 
         <section id="hero" className="hero-section">

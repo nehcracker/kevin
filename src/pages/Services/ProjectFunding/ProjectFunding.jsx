@@ -91,7 +91,7 @@ const ProjectFunding = () => {
       {/* ── PAGE SEO ─────────────────────────────────────────────────── */}
       <SEO
         title="International Project Funding & Debt Structuring"
-        description="Kevin Graham Karimi provides structured project funding advisory and debt structuring for infrastructure, energy, real estate, and manufacturing. Services include project finance, syndicated loans, private capital placement, debt restructuring, and cross-border funding."
+        description="project funding & debt structuring for infrastructure, energy, real estate, private capital placement, debt restructuring, & cross border funding solution."
         keywords="project funding services, international project finance, debt structuring advisory, syndicated loan arrangement, private capital placement, cross border funding solutions, acquisition funding, project finance structuring, mezzanine finance"
         canonical="https://grahamkarimi.com/services/project-funding"
         schema={{

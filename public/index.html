@@ -2,61 +2,19 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Kevin Graham</title>
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
     <!--
-      ============================================================
-      ALL SEO META TAGS (title, description, og:*, twitter:*, etc.)
-      ARE MANAGED PER-PAGE BY react-helmet-async via the SEO component.
-      DO NOT add any meta description, og:description, twitter:description,
-      og:title, twitter:title, or canonical tags here.
-      ============================================================
+      NO SEO tags here (no title, description, og:*, twitter:*, canonical).
+      The SEO component in src/components/common/SEO/SEO.jsx handles all of
+      them via useEffect on every page render — guaranteed page-to-page updates.
     -->
 
-    <!-- Geo & Language (site-wide, not page-specific) -->
-    <meta name="geo.region" content="UK-110" />
-    <meta name="geo.placename" content="United Kingdom" />
-    <meta http-equiv="content-language" content="en-US" />
-    <meta name="language" content="English" />
-    <meta name="robots" content="index, follow" />
-
-    <!-- Fallback title (replaced dynamically by react-helmet-async per page) -->
-    <title>Kevin Graham Karimi</title>
-
-    <!-- Google Verification -->
-    <meta name="google-site-verification" content="EcmOSnt53Frj6MW3AR6aI_tg9DURmt_YMxlVxnLikdw" />
-
-    <!-- Security -->
-    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
-    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
-
-    <!-- Favicons -->
-    <link rel="icon" type="image/x-icon" href="%PUBLIC_URL%/favicon.ico" />
-    <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicon-16x16.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon-32x32.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-
-    <!-- Theme -->
-    <meta name="msapplication-TileColor" content="#2196F3" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="apple-mobile-web-app-title" content="Kevin Graham Karimi" />
-
-    <!-- DNS Prefetch & Preconnect -->
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-    <!-- Google Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
-      rel="stylesheet"
-    />
 
     <!-- Font Awesome -->
     <link
@@ -66,54 +24,16 @@
       crossorigin="anonymous"
     />
 
-    <!--
-      Site-wide Person schema only — does NOT contain page descriptions.
-      Page-specific schemas are injected by the SEO component per route.
-    -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Kevin Graham Karimi",
-      "alternateName": "Kevin Graham",
-      "jobTitle": "Global Financial Advisor & Director of Risk Management",
-      "url": "https://grahamkarimi.com/",
-      "image": "https://grahamkarimi.com/Kevin-graham.png",
-      "email": "kevin.karimi@inbestconsultant.com",
-      "telephone": "+447445323529",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "London",
-        "addressCountry": "UK"
-      },
-      "worksFor": {
-        "@type": "Organization",
-        "name": "InBest Consultant Solutions",
-        "url": "https://inbestconsultant.com"
-      },
-      "sameAs": [
-        "https://www.linkedin.com/in/kevingrahamkarimi",
-        "https://www.facebook.com/kevingrahamkarimi",
-        "https://t.me/kevingrahamkarimi"
-      ]
-    }
-    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
-
   <body>
-    <a href="#main-content" class="skip-to-main">Skip to main content</a>
-
-    <noscript>
-      <div style="padding: 20px; text-align: center; background: #f0f0f0;">
-        <h1>Kevin Graham Karimi – Global Financial Advisor</h1>
-        <p>Enable JavaScript to use this site.</p>
-        <p>
-          <a href="mailto:kevin.karimi@inbestconsultant.com">kevin.karimi@inbestconsultant.com</a> |
-          <a href="tel:+447445323529">+44 744 532 3529</a>
-        </p>
-      </div>
-    </noscript>
-
+    <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
   </body>
 </html>

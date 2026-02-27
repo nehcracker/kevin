@@ -13,19 +13,19 @@ const About = () => {
 
       {/* ── PAGE SEO ─────────────────────────────────────────────────── */}
       <SEO
-        title="About – Financial Advisor & Risk Management Director"
-        description="Kevin Graham Karimi is Director of Risk Management & Compliance at InBest Consultant Solutions. With 15+ years of international experience, he advises corporations and high-net-worth investors on regulatory compliance, risk frameworks, and global financial strategy."
-        keywords="Kevin Graham Karimi about, financial advisor background, risk management director, InBest Consultant Solutions, international compliance expert, regulatory advisory experience"
+        title="Financial Advisor & Risk Management Director"
+        description="With international experience, he advises corporations & high-net-worth investors on regulatory compliance, risk frameworks, and global financial strategy."
+        keywords="Kevin Graham, financial advisor background, risk management director, InBest Consultant Solutions, international compliance expert, regulatory advisory experience"
         canonical="https://grahamkarimi.com/about"
         ogType="profile"
         schema={{
           '@context': 'https://schema.org',
           '@type': 'ProfilePage',
-          name: 'About Kevin Graham Karimi',
+          name: 'Kevin Graham',
           url: 'https://grahamkarimi.com/about',
           mainEntity: {
             '@type': 'Person',
-            name: 'Kevin Graham Karimi',
+            name: 'Kevin Graham',
             jobTitle: 'Director of Risk Management & Compliance',
             worksFor: {
               '@type': 'Organization',
@@ -42,7 +42,7 @@ const About = () => {
         <section className="page-header">
           <div className="container">
             <h1>Financial Advisor & Consultant</h1>
-            <h2>Kevin Graham Karimi</h2>
+            <h2>Kevin Graham</h2>
             <p>Learn more about my background, expertise, and professional journey</p>
           </div>
         </section>
@@ -59,7 +59,7 @@ const About = () => {
               </div>
               <div className="bio-text">
                 <h2>Professional Background</h2>
-                <p className="position">Director, Risk Management & Compliance</p>
+                <p className="position">Director, Risk Management, global finance, & Compliance</p>
                 <p>
                   As Director of Risk Management & Compliance at InBest Consultant Solutions,
                   Kevin Graham Karimi brings a wealth of expertise in safeguarding investments,

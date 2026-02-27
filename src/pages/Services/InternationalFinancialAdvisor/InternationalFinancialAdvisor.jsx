@@ -153,8 +153,8 @@ const InternationalFinancialAdvisor = () => {
 
       {/* ── PAGE SEO ─────────────────────────────────────────────────── */}
       <SEO
-        title="International Financial Advisor & Cross Border Investment Structuring"
-        description="Kevin Graham Karimi is an international financial advisor specializing in cross-border investment structuring, offshore investment planning, international capital raising, and regulatory compliance across multiple jurisdictions."
+        title="Financial Advisor & Cross Border Investment Structuring"
+        description="Structured project funding & debt structuring for infrastructure, energy, real estate, & manufacturing, including project finance and cross border funding."
         keywords="international financial advisor, cross border investment structuring, offshore investment planning, international capital raising, investment risk assessment, due diligence coordination, corporate structuring, global expansion advisory, cross border finance"
         canonical="https://grahamkarimi.com/services/international-financial-advisor"
         schema={{
@@ -165,7 +165,7 @@ const InternationalFinancialAdvisor = () => {
             'Cross-border investment structuring, offshore investment planning, international capital raising strategy, and regulatory compliance for HNW individuals and corporations.',
           provider: {
             '@type': 'Person',
-            name: 'Kevin Graham Karimi',
+            name: 'Kevin Graham',
             url: 'https://grahamkarimi.com',
           },
           serviceType: 'International Financial Advisory',
