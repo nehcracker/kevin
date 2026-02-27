@@ -1,4 +1,6 @@
 import { useEffect } from 'react';
+// default social preview image imported from assets; CRA will handle hashing
+import ogImageAsset from '../../../assets/images/Kevin-graham.png';
 
 /**
  * SEO Component — Direct DOM Meta Tag Manager
@@ -22,7 +24,7 @@ import { useEffect } from 'react';
 
 const SITE_NAME      = 'Kevin Graham';
 const BASE_URL       = 'https://grahamkarimi.com';
-const OG_DEFAULT     = `${BASE_URL}/Kevin-graham.png`;
+const OG_DEFAULT     = ogImageAsset;
 const TWITTER_HANDLE = '@kevingrahamkarimi';
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
