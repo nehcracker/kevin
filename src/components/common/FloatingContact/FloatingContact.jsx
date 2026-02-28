@@ -9,7 +9,7 @@ const SERVICES = [
   'General Enquiry',
 ];
 
-const PHONE = '44773339858'; // no + or spaces
+const PHONE = '447723339858'; // no + or spaces
 
 const buildWhatsAppUrl = (service) => {
   const message =
