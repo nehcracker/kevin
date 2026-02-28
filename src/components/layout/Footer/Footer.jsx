@@ -34,7 +34,7 @@ const Footer = () => {
               <a href="https://www.facebook.com/kevingrahamkarimi" className="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                 <i className="fab fa-facebook"></i>
               </a>
-              <a href="https://wa.me/+44773339858" className="social-icon" title="WhatsApp">
+              <a href="https://wa.me/+447723339858" className="social-icon" title="WhatsApp">
                 <i className="fab fa-whatsapp"></i>
                 <span className="icon-popup">WhatsApp</span>
               </a>

@@ -25,7 +25,7 @@ const FloatingContact = () => {
 
       {/* ── WhatsApp ────────────────────────────────────────────── */}
       <a
-        href="https://wa.me/+44773339858"
+        href="https://wa.me/+447723339858"
         target="_blank"
         rel="noopener noreferrer"
         className={`floating-btn whatsapp ${visible ? 'visible' : ''}`}
