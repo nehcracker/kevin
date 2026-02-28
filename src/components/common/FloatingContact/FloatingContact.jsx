@@ -1,53 +1,146 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './FloatingContact.css';
 
-/**
- * FloatingContact
- *
- * Two buttons fixed to the RIGHT edge of the screen on every page.
- * They start off-screen and slide in 1.5 s after mount.
- * On hover each button expands to reveal its label.
- *
- * Place once in App.js — no changes needed to any page file.
- */
+const SERVICES = [
+  'Project Funding',
+  'International Financial Advisory',
+  'Risk & Compliance',
+  'Document Alignment Services',
+  'General Enquiry',
+];
+
+const PHONE = '44773339858'; // no + or spaces
+
+const buildWhatsAppUrl = (service) => {
+  const message =
+    `Hi Kevin, I'm interested in: ${service}.\n\n` +
+    `Please let me know your availability — I understand you operate on London (GMT/BST) time and will respond promptly.`;
+  return `https://wa.me/${PHONE}?text=${encodeURIComponent(message)}`;
+};
 
 const FloatingContact = () => {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible]     = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selected, setSelected]   = useState('');
+  const modalRef                  = useRef(null);
 
+  /* ── Slide-in delay ──────────────────────────────────────────── */
   useEffect(() => {
-    // Delay slide-in so it doesn't compete with page load paint
     const timer = setTimeout(() => setVisible(true), 1500);
     return () => clearTimeout(timer);
   }, []);
 
+  /* ── Close modal on outside click or Escape ──────────────────── */
+  useEffect(() => {
+    if (!modalOpen) return;
+    const handleClick = (e) => {
+      if (modalRef.current && !modalRef.current.contains(e.target)) closeModal();
+    };
+    const handleKey = (e) => { if (e.key === 'Escape') closeModal(); };
+    document.addEventListener('mousedown', handleClick);
+    document.addEventListener('keydown', handleKey);
+    return () => {
+      document.removeEventListener('mousedown', handleClick);
+      document.removeEventListener('keydown', handleKey);
+    };
+  }, [modalOpen]);
+
+  const openModal  = (e) => { e.preventDefault(); setSelected(''); setModalOpen(true); };
+  const closeModal = () => setModalOpen(false);
+
+  const handleProceed = () => {
+    if (!selected) return;
+    window.open(buildWhatsAppUrl(selected), '_blank', 'noopener,noreferrer');
+    closeModal();
+  };
+
   return (
-    <div className="floating-contact" aria-label="Quick contact buttons">
+    <>
+      {/* ── Floating buttons ─────────────────────────────────────── */}
+      <div className="floating-contact" aria-label="Quick contact buttons">
 
-      {/* ── WhatsApp ────────────────────────────────────────────── */}
-      <a
-        href="https://wa.me/+447723339858"
-        target="_blank"
-        rel="noopener noreferrer"
-        className={`floating-btn whatsapp ${visible ? 'visible' : ''}`}
-        aria-label="Contact on WhatsApp"
-        title="WhatsApp"
-      >
-        <span className="btn-label">WhatsApp</span>
-        <i className="fab fa-whatsapp"></i>
-      </a>
+        {/* WhatsApp — opens service picker modal */}
+        <button
+          onClick={openModal}
+          className={`floating-btn whatsapp ${visible ? 'visible' : ''}`}
+          aria-label="Contact on WhatsApp"
+          title="WhatsApp"
+        >
+          <span className="btn-label">WhatsApp</span>
+          <i className="fab fa-whatsapp"></i>
+        </button>
 
-      {/* ── Email ───────────────────────────────────────────────── */}
-      <a
-        href="mailto:kevin.karimi@inbestconsultant.com"
-        className={`floating-btn email ${visible ? 'visible' : ''}`}
-        aria-label="Send an email"
-        title="Email"
-      >
-        <span className="btn-label">Email Us</span>
-        <i className="fas fa-envelope"></i>
-      </a>
+        {/* Email */}
+        <a
+          href="mailto:kevin.karimi@inbestconsultant.com"
+          className={`floating-btn email ${visible ? 'visible' : ''}`}
+          aria-label="Send an email"
+          title="Email"
+        >
+          <span className="btn-label">Email Us</span>
+          <i className="fas fa-envelope"></i>
+        </a>
 
-    </div>
+      </div>
+
+      {/* ── Service Picker Modal ─────────────────────────────────── */}
+      {modalOpen && (
+        <div className="wa-overlay" role="dialog" aria-modal="true" aria-labelledby="wa-modal-title">
+          <div className="wa-modal" ref={modalRef}>
+
+            {/* Header */}
+            <div className="wa-modal__header">
+              <div className="wa-modal__icon">
+                <i className="fab fa-whatsapp"></i>
+              </div>
+              <div className="wa-modal__header-text">
+                <h2 id="wa-modal-title" className="wa-modal__title">Chat on WhatsApp</h2>
+                <p className="wa-modal__subtitle">Select the service you're interested in</p>
+              </div>
+              <button className="wa-modal__close" onClick={closeModal} aria-label="Close">
+                <i className="fas fa-times"></i>
+              </button>
+            </div>
+
+            {/* Service list */}
+            <ul className="wa-modal__services" role="listbox" aria-label="Services">
+              {SERVICES.map((svc) => (
+                <li
+                  key={svc}
+                  role="option"
+                  aria-selected={selected === svc}
+                  className={`wa-modal__service-item ${selected === svc ? 'selected' : ''}`}
+                  onClick={() => setSelected(svc)}
+                >
+                  <span className="wa-modal__radio"></span>
+                  {svc}
+                </li>
+              ))}
+            </ul>
+
+            {/* Timezone note */}
+            <p className="wa-modal__note">
+              <i className="fas fa-clock"></i>
+              Kevin operates on <strong>London (GMT/BST)</strong> time and will respond promptly.
+            </p>
+
+            {/* Actions */}
+            <div className="wa-modal__actions">
+              <button className="wa-modal__btn-cancel" onClick={closeModal}>Cancel</button>
+              <button
+                className={`wa-modal__btn-proceed ${selected ? 'active' : ''}`}
+                onClick={handleProceed}
+                disabled={!selected}
+              >
+                <i className="fab fa-whatsapp"></i>
+                Open WhatsApp
+              </button>
+            </div>
+
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 
