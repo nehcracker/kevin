@@ -10,8 +10,9 @@ const Footer = () => {
         <div className="footer-content">
           <div className="footer-info">
             <h3>Kevin Graham</h3>
-            <p>Global Financial Advisor, Risk Management & Compliance expert in international investment strategies
-              & financing for high-net-worth corporations.</p>
+            <p>With over 15 years of global experience, Kevin delivers specialist 
+              advisory across project funding, international financial strategy, risk & compliance, 
+              and document alignment services, serving high-net-worth corporations across 40+ countries.</p>
           </div>
 
           <div className="footer-links">
