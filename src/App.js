@@ -10,6 +10,7 @@ import RiskCompliance from './pages/Services/RiskCompliance/RiskCompliance';
 import DocumentAlignment from './pages/Services/DocumentAlignment/DocumentAlignment';
 import BusinessFunding from './pages/Services/BusinessFunding/BusinessFunding';
 import Contact from './components/Contact/Contact';
+import FloatingContact from './components/common/FloatingContact/FloatingContact';
 import Footer from './components/layout/Footer/Footer';
 import './styles/global.css';
 
@@ -30,6 +31,8 @@ function App() {
         </Routes>
         <Contact />
         <Footer />
+        {/* FloatingContact renders fixed over all pages */}
+        <FloatingContact />
       </div>
     </Router>
   );

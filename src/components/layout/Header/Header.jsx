@@ -10,13 +10,9 @@ const Header = () => {
 
   const goHomeAndScrollHero = (e) => {
     e.preventDefault();
-    if (window.location.pathname === '/') {
-      const hero = document.getElementById('hero');
-      if (hero) hero.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      else window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-    } else {
-      navigate('/');
-    }
+    // Force a full page navigation to the site root so the page reloads
+    // and always lands on the home page (refresh behavior requested).
+    window.location.href = '/';
   };
 
   const goToAboutAndScrollTop = (e) => {

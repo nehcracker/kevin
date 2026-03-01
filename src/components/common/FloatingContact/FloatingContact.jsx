@@ -3,6 +3,7 @@ import './FloatingContact.css';
 
 const SERVICES = [
   'Project Funding',
+  'Business Funding & Loans',
   'International Financial Advisory',
   'Risk & Compliance',
   'Document Alignment Services',

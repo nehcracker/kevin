@@ -44,7 +44,7 @@ const Home = () => {
           sameAs: [
             'https://linkedin.com/in/kevingrahamkarimi',
             'https://www.facebook.com/kevingrahamkarimi',
-            'https://t.me/kevingrahamkarimi',
+            'https://t.me/kevingrahamUK',
           ],
         }}
       />

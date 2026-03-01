@@ -1,0 +1,550 @@
+/* Contact.css — Redesigned contact section */
+
+/* ===================================
+   SECTION WRAPPER
+   =================================== */
+.contact-section {
+  background: linear-gradient(135deg, #0D1B4E 0%, #1565C0 60%, #1976D2 100%);
+  padding: 6rem 0 5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative blob top-right */
+.contact-section::before {
+  content: '';
+  position: absolute;
+  top: -15%;
+  right: -8%;
+  width: 50%;
+  height: 160%;
+  background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 65%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Decorative blob bottom-left */
+.contact-section::after {
+  content: '';
+  position: absolute;
+  bottom: -20%;
+  left: -5%;
+  width: 40%;
+  height: 120%;
+  background: radial-gradient(circle, rgba(124,77,255,0.12) 0%, transparent 65%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.contact-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===================================
+   HEADER
+   =================================== */
+.contact-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.contact-eyebrow {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 1rem;
+  padding: 0.4rem 1rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 50px;
+}
+
+.contact-header h2 {
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 900;
+  color: white;
+  margin-bottom: 0.75rem;
+  letter-spacing: -1px;
+  line-height: 1.1;
+}
+
+.contact-header p {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.72);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.contact-header strong {
+  color: rgba(255,255,255,0.95);
+}
+
+/* ===================================
+   PRIMARY CARD ROW  (Schedule / WA / Email)
+   =================================== */
+.contact-primary-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+/* Base card */
+.contact-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.1rem;
+  padding: 1.75rem 1.5rem;
+  border-radius: 16px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: 'Poppins', sans-serif;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(255,255,255,0.06);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-6px);
+}
+
+.contact-card:hover::before {
+  opacity: 1;
+}
+
+/* Individual card colours */
+.card-schedule {
+  background: linear-gradient(135deg, #1B5E20, #388E3C);
+  box-shadow: 0 10px 35px rgba(27,94,32,0.35);
+}
+
+.card-schedule:hover {
+  box-shadow: 0 20px 50px rgba(27,94,32,0.5);
+}
+
+.card-whatsapp {
+  background: linear-gradient(135deg, #006621, #25D366);
+  box-shadow: 0 10px 35px rgba(37,211,102,0.30);
+}
+
+.card-whatsapp:hover {
+  box-shadow: 0 20px 50px rgba(37,211,102,0.45);
+}
+
+.card-email {
+  background: linear-gradient(135deg, #0D47A1, #1976D2);
+  box-shadow: 0 10px 35px rgba(25,118,210,0.35);
+}
+
+.card-email:hover {
+  box-shadow: 0 20px 50px rgba(25,118,210,0.5);
+}
+
+/* Icon */
+.cc-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: white;
+  flex-shrink: 0;
+  transition: background 0.3s ease;
+}
+
+.contact-card:hover .cc-icon {
+  background: rgba(255,255,255,0.28);
+}
+
+/* Body */
+.cc-body {
+  flex: 1;
+}
+
+.cc-label {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 0.35rem;
+}
+
+.cc-body h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 0.35rem;
+  line-height: 1.2;
+}
+
+.cc-body p {
+  font-size: 0.83rem;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Arrow */
+.cc-arrow {
+  display: flex;
+  align-items: center;
+  color: rgba(255,255,255,0.4);
+  font-size: 1rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+  align-self: center;
+  flex-shrink: 0;
+}
+
+.contact-card:hover .cc-arrow {
+  color: white;
+  transform: translateX(4px);
+}
+
+/* ===================================
+   SECONDARY PILL ROW  (Phone / TG / LI / FB)
+   =================================== */
+.contact-secondary-row {
+  display: flex;
+  justify-content: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.contact-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem 1.4rem;
+  border-radius: 50px;
+  border: 1.5px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.07);
+  color: rgba(255,255,255,0.85);
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.contact-pill i {
+  font-size: 1.05rem;
+}
+
+.contact-pill:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255,255,255,0.5);
+  background: rgba(255,255,255,0.15);
+  color: white;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Per-pill accent on hover */
+.pill-phone:hover    { border-color: #A5D6A7; background: rgba(56,142,60,0.25); }
+.pill-telegram:hover { border-color: #80D8FF; background: rgba(3,155,229,0.25); }
+.pill-linkedin:hover { border-color: #81D4FA; background: rgba(2,136,209,0.25); }
+.pill-facebook:hover { border-color: #90CAF9; background: rgba(25,118,210,0.25); }
+
+/* ===================================
+   TIMEZONE NOTE
+   =================================== */
+.contact-tz-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-size: 0.83rem;
+  color: rgba(255,255,255,0.45);
+  font-family: 'Poppins', sans-serif;
+}
+
+.contact-tz-note i {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.35);
+}
+
+/* ===================================
+   WHATSAPP MODAL  (reused from FloatingContact)
+   =================================== */
+.wa-overlay {
+  position: fixed;
+  background: rgba(0,20,60,0.55);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: waOverlayIn 0.2s ease;
+}
+
+@keyframes waOverlayIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.wa-modal {
+  background: #fff;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 24px 60px rgba(0,30,80,0.22);
+  overflow: hidden;
+  animation: waModalIn 0.3s cubic-bezier(0.34,1.56,0.64,1);
+}
+
+@keyframes waModalIn {
+  from { opacity: 0; transform: scale(0.92) translateY(16px); }
+  to   { opacity: 1; transform: scale(1)    translateY(0);    }
+}
+
+.wa-modal__header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 20px 16px;
+  background: linear-gradient(135deg, #003d82, #0056b3);
+  color: white;
+}
+
+.wa-modal__icon {
+  width: 44px;
+  height: 44px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.wa-modal__header-text { flex: 1; }
+
+.wa-modal__title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+}
+
+.wa-modal__subtitle {
+  margin: 2px 0 0;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.8);
+  font-family: 'Poppins', sans-serif;
+}
+
+.wa-modal__close {
+  background: rgba(255,255,255,0.15);
+  border: none;
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  transition: background 0.2s ease;
+  flex-shrink: 0;
+}
+
+.wa-modal__close:hover { background: rgba(255,255,255,0.28); }
+
+.wa-modal__services {
+  list-style: none;
+  margin: 0;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.wa-modal__service-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 2px solid #e4ecf7;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: #1a2a4a;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.wa-modal__service-item:hover {
+  border-color: #0056b3;
+  background: #f0f6ff;
+}
+
+.wa-modal__service-item.selected {
+  border-color: #0056b3;
+  background: linear-gradient(135deg, #e8f0fc, #f0f6ff);
+  color: #003d82;
+  font-weight: 600;
+}
+
+.wa-modal__radio {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid #c0cfe8;
+  flex-shrink: 0;
+  position: relative;
+  transition: border-color 0.2s ease;
+}
+
+.wa-modal__service-item.selected .wa-modal__radio {
+  border-color: #0056b3;
+}
+
+.wa-modal__service-item.selected .wa-modal__radio::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px; height: 8px;
+  background: #0056b3;
+  border-radius: 50%;
+}
+
+.wa-modal__note {
+  margin: 0 16px 14px;
+  padding: 10px 14px;
+  background: #f0f6ff;
+  border-left: 3px solid #0056b3;
+  border-radius: 0 8px 8px 0;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.78rem;
+  color: #2a4070;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.5;
+}
+
+.wa-modal__note i { color: #0056b3; flex-shrink: 0; }
+
+.wa-modal__actions {
+  display: flex;
+  gap: 10px;
+  padding: 0 16px 20px;
+}
+
+.wa-modal__btn-cancel {
+  flex: 1;
+  padding: 11px;
+  border-radius: 10px;
+  border: 2px solid #e4ecf7;
+  background: transparent;
+  color: #5a7099;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.wa-modal__btn-cancel:hover {
+  border-color: #0056b3;
+  color: #003d82;
+}
+
+.wa-modal__btn-proceed {
+  flex: 2;
+  padding: 11px 16px;
+  border-radius: 10px;
+  border: none;
+  background: #ccc;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: not-allowed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.25s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.wa-modal__btn-proceed.active {
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(37,211,102,0.35);
+}
+
+.wa-modal__btn-proceed.active:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(37,211,102,0.45);
+}
+
+.wa-modal__btn-proceed.active:active { transform: translateY(0); }
+
+/* ===================================
+   RESPONSIVE
+   =================================== */
+@media (max-width: 900px) {
+  .contact-primary-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 4.5rem 0 4rem;
+  }
+
+  .contact-header {
+    margin-bottom: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-secondary-row {
+    gap: 0.6rem;
+  }
+
+  .contact-pill {
+    font-size: 0.82rem;
+    padding: 0.6rem 1rem;
+  }
+
+  .wa-modal__actions {
+    flex-direction: column;
+  }
+
+  .wa-modal__btn-proceed { flex: unset; }
+  .wa-modal__btn-cancel  { flex: unset; order: 2; }
+}
