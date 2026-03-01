@@ -223,6 +223,8 @@ const DocumentAlignment = () => {
             '@type': 'Person',
             name: 'Kevin Graham Karimi',
             url: 'https://grahamkarimi.com',
+            telephone: '+447723339858',
+            email: 'kevin.karimi@inbestconsultant.com',
           },
           serviceType: 'Financial Document Advisory',
           areaServed: { '@type': 'Country', name: 'Global' },

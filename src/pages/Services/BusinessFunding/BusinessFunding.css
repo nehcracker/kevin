@@ -1,0 +1,863 @@
+/* BusinessFunding.css */
+
+/* ===================================
+   PAGE HEADER — forest green gradient
+   =================================== */
+.bf-header {
+  background: linear-gradient(135deg, #1B5E20 0%, #2E7D32 55%, #43A047 100%);
+  color: white;
+  padding: 9rem 0 5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.bf-header::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -5%;
+  width: 55%;
+  height: 160%;
+  background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 65%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.bf-header::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  left: -5%;
+  width: 40%;
+  height: 120%;
+  background: radial-gradient(circle, rgba(67,160,71,0.2) 0%, transparent 65%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.bf-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 2.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.bf-breadcrumb a {
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.bf-breadcrumb a:hover { color: white; }
+
+.bf-breadcrumb .separator {
+  color: rgba(255,255,255,0.4);
+  font-size: 0.8rem;
+}
+
+.bf-breadcrumb .current {
+  color: rgba(255,255,255,0.9);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.bf-header-body {
+  position: relative;
+  z-index: 1;
+  max-width: 750px;
+}
+
+.bf-header-label {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 1.25rem;
+  padding: 0.4rem 1rem;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 50px;
+}
+
+.bf-header h1 {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 900;
+  color: white;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+  letter-spacing: -1px;
+}
+
+.bf-header h1 span {
+  display: block;
+  background: linear-gradient(90deg, #C8E6C9, #E8F5E9);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bf-header-tagline {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: rgba(255,255,255,0.8);
+  line-height: 1.7;
+  margin: 1.5rem 0 2.5rem;
+  max-width: 620px;
+}
+
+.bf-header-cta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.bf-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1rem 2rem;
+  background: white;
+  color: #1B5E20;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+.bf-btn-primary:hover {
+  background: #E8F5E9;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.bf-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1rem 2rem;
+  background: transparent;
+  color: white;
+  border: 2px solid rgba(255,255,255,0.5);
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.bf-btn-outline:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: white;
+  transform: translateY(-3px);
+}
+
+/* ===================================
+   FIVE ALIGNMENT FACTORS STRIP
+   =================================== */
+.bf-factors-strip {
+  background: linear-gradient(135deg, #0A3D0A, #1B5E20);
+  padding: 3.5rem 0;
+}
+
+.bf-factors-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.25rem;
+}
+
+.bf-factor-card {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 14px;
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.bf-factor-card:hover {
+  background: rgba(255,255,255,0.13);
+  transform: translateY(-5px);
+}
+
+.bf-factor-icon {
+  font-size: 1.9rem;
+  color: #C8E6C9;
+  margin-bottom: 0.85rem;
+  display: block;
+}
+
+.bf-factor-card h3 {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.bf-factor-card p {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.62);
+  line-height: 1.55;
+  text-align: center;
+  margin: 0;
+}
+
+/* ===================================
+   OVERVIEW 
+   =================================== */
+.bf-overview {
+  padding: 6rem 0;
+  background: white;
+}
+
+.bf-overview-text {
+  max-width: 820px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.bf-overview-text p {
+  font-size: 1.1rem;
+  color: #546E7A;
+  line-height: 1.9;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.bf-overview-text p:last-child { margin-bottom: 0; }
+
+/* ===================================
+   SHARED SECTION HEADER
+   =================================== */
+.bf-section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.bf-section-header h2 {
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  color: #1a237e;
+  font-weight: 700;
+  display: inline-block;
+  position: relative;
+  margin-bottom: 0;
+}
+
+.bf-section-header h2::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 55px;
+  height: 3px;
+  background: linear-gradient(90deg, #2E7D32, #43A047);
+  border-radius: 2px;
+}
+
+.bf-section-header p {
+  font-size: 1.05rem;
+  color: #78909C;
+  max-width: 600px;
+  margin: 1.75rem auto 0;
+  text-align: center;
+  line-height: 1.7;
+}
+
+/* ===================================
+   TYPES OF FUNDING — three tall cards
+   =================================== */
+.bf-funding-types {
+  padding: 6rem 0;
+  background: #F5F7FA;
+}
+
+.bf-funding-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+  align-items: start;
+}
+
+.bf-funding-card {
+  background: white;
+  border-radius: 16px;
+  padding: 2.25rem;
+  box-shadow: 0 4px 24px rgba(27,94,32,0.08);
+  border-top: 4px solid transparent;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.bf-funding-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.bf-funding-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(27,94,32,0.15);
+}
+
+.bf-funding-card:hover::before { opacity: 1; }
+
+.bf-funding-card.secured   { border-top-color: #2E7D32; }
+.bf-funding-card.unsecured { border-top-color: #00897B; }
+.bf-funding-card.longterm  { border-top-color: #1565C0; }
+
+.bf-funding-card.secured::before   { background: linear-gradient(135deg, rgba(46,125,50,0.03), transparent); }
+.bf-funding-card.unsecured::before { background: linear-gradient(135deg, rgba(0,137,123,0.03), transparent); }
+.bf-funding-card.longterm::before  { background: linear-gradient(135deg, rgba(21,101,192,0.03), transparent); }
+
+.bf-funding-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+
+.secured .bf-funding-badge   { background: #E8F5E9; color: #1B5E20; }
+.unsecured .bf-funding-badge { background: #E0F2F1; color: #00695C; }
+.longterm .bf-funding-badge  { background: #E3F2FD; color: #0D47A1; }
+
+.bf-funding-card h3 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #1a237e;
+  margin-bottom: 0.75rem;
+  line-height: 1.2;
+}
+
+.bf-funding-card > p {
+  font-size: 0.95rem;
+  color: #546E7A;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  text-align: justify;
+}
+
+.bf-funding-divider {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: #90A4AE;
+  margin: 1.25rem 0 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.bf-funding-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #E0E0E0;
+}
+
+.bf-funding-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0.5rem;
+}
+
+.bf-funding-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 0.45rem 0;
+  font-size: 0.9rem;
+  color: #37474F;
+  border-bottom: 1px solid #F5F5F5;
+}
+
+.bf-funding-list li:last-child { border-bottom: none; }
+
+.bf-funding-list li i {
+  font-size: 0.75rem;
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+.secured .bf-funding-list li i   { color: #43A047; }
+.unsecured .bf-funding-list li i { color: #26A69A; }
+.longterm .bf-funding-list li i  { color: #1E88E5; }
+
+.bf-benefits-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.bf-benefits-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 0.45rem 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #2E7D32;
+  border-bottom: 1px solid #F1F8E9;
+}
+
+.bf-benefits-list li:last-child { border-bottom: none; }
+
+.bf-benefits-list li i {
+  font-size: 0.8rem;
+  color: #43A047;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+.bf-tenor-note {
+  margin-top: 1.25rem;
+  padding: 0.85rem 1rem;
+  background: linear-gradient(135deg, #E3F2FD, #E8EAF6);
+  border-radius: 8px;
+  font-size: 0.88rem;
+  color: #1565C0;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* ===================================
+   KEY APPROVAL FACTORS
+   =================================== */
+.bf-approval-section {
+  padding: 6rem 0;
+  background: white;
+}
+
+.bf-approval-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.25rem;
+  margin-top: 3rem;
+}
+
+.bf-approval-card {
+  background: linear-gradient(145deg, #F5F7FA, #E8F5E9);
+  border-radius: 14px;
+  padding: 1.75rem 1.25rem;
+  text-align: center;
+  border: 1px solid #A5D6A7;
+  transition: all 0.3s ease;
+}
+
+.bf-approval-card:hover {
+  transform: translateY(-8px);
+  background: linear-gradient(135deg, #1B5E20, #43A047);
+  border-color: transparent;
+  box-shadow: 0 15px 35px rgba(27,94,32,0.25);
+}
+
+.bf-approval-card:hover .bf-approval-icon,
+.bf-approval-card:hover h4,
+.bf-approval-card:hover p { color: white; }
+
+.bf-approval-icon {
+  font-size: 2rem;
+  color: #2E7D32;
+  margin-bottom: 1rem;
+  display: block;
+  transition: color 0.3s ease;
+}
+
+.bf-approval-card h4 {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #1a237e;
+  margin-bottom: 0.45rem;
+  line-height: 1.3;
+  transition: color 0.3s ease;
+}
+
+.bf-approval-card p {
+  font-size: 0.78rem;
+  color: #78909C;
+  line-height: 1.5;
+  margin-bottom: 0;
+  transition: color 0.3s ease;
+}
+
+/* ===================================
+   WHY PROFESSIONAL SOURCING MATTERS
+   =================================== */
+.bf-why-section {
+  padding: 6rem 0;
+  background: #F5F7FA;
+}
+
+.bf-why-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.bf-why-panel {
+  border-radius: 16px;
+  padding: 2.5rem;
+}
+
+.bf-why-panel.problem {
+  background: linear-gradient(135deg, #FFF5F5, #FFEBEE);
+  border: 1px solid #FFCDD2;
+}
+
+.bf-why-panel.solution {
+  background: linear-gradient(135deg, #E8F5E9, #F1F8E9);
+  border: 1px solid #A5D6A7;
+}
+
+.bf-why-panel-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.75rem;
+}
+
+.bf-why-panel-header .panel-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: white;
+}
+
+.problem .panel-icon  { background: linear-gradient(135deg, #B71C1C, #E53935); }
+.solution .panel-icon { background: linear-gradient(135deg, #1B5E20, #43A047); }
+
+.bf-why-panel h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+.problem h3  { color: #B71C1C; }
+.solution h3 { color: #1B5E20; }
+
+.bf-why-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.bf-why-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  font-size: 0.97rem;
+  color: #37474F;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+.bf-why-list li:last-child { border-bottom: none; }
+
+.bf-why-list li .list-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.problem .list-icon  { color: #E53935; }
+.solution .list-icon { color: #43A047; }
+
+/* ===================================
+   PROCESS — forest green step circles
+   =================================== */
+.bf-process {
+  padding: 6rem 0;
+  background: white;
+}
+
+.bf-steps {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  position: relative;
+  margin-top: 3rem;
+}
+
+.bf-steps::before {
+  content: '';
+  position: absolute;
+  top: 38px;
+  left: 10%;
+  width: 80%;
+  height: 2px;
+  background: linear-gradient(90deg, #2E7D32, #43A047);
+  z-index: 0;
+}
+
+.bf-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 0.75rem;
+  position: relative;
+  z-index: 1;
+}
+
+.bf-step-number {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1B5E20, #43A047);
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 8px 25px rgba(27,94,32,0.35);
+  transition: all 0.3s ease;
+}
+
+.bf-step:hover .bf-step-number {
+  transform: scale(1.1);
+  box-shadow: 0 12px 35px rgba(27,94,32,0.5);
+  background: linear-gradient(135deg, #43A047, #1B5E20);
+}
+
+.bf-step h4 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #1a237e;
+  margin-bottom: 0.6rem;
+  line-height: 1.3;
+}
+
+.bf-step p {
+  font-size: 0.82rem;
+  color: #78909C;
+  line-height: 1.6;
+  text-align: center;
+  margin-bottom: 0;
+}
+
+/* ===================================
+   WHO THIS IS FOR
+   =================================== */
+.bf-who-section {
+  padding: 6rem 0;
+  background: #F5F7FA;
+}
+
+.bf-who-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.25rem;
+  margin-top: 3rem;
+}
+
+.bf-who-card {
+  background: linear-gradient(145deg, #F5F7FA, #E8F5E9);
+  border-radius: 14px;
+  padding: 1.75rem 1.25rem;
+  text-align: center;
+  border: 1px solid #A5D6A7;
+  transition: all 0.3s ease;
+}
+
+.bf-who-card:hover {
+  transform: translateY(-8px);
+  background: linear-gradient(135deg, #1B5E20, #43A047);
+  border-color: transparent;
+  box-shadow: 0 15px 35px rgba(27,94,32,0.25);
+}
+
+.bf-who-card:hover .bf-who-icon,
+.bf-who-card:hover h4,
+.bf-who-card:hover p { color: white; }
+
+.bf-who-icon {
+  font-size: 2rem;
+  color: #2E7D32;
+  margin-bottom: 1rem;
+  display: block;
+  transition: color 0.3s ease;
+}
+
+.bf-who-card h4 {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #1a237e;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+  transition: color 0.3s ease;
+}
+
+.bf-who-card p {
+  font-size: 0.78rem;
+  color: #78909C;
+  line-height: 1.5;
+  margin-bottom: 0;
+  transition: color 0.3s ease;
+}
+
+/* ===================================
+   CTA — deep blue + green quote block
+   =================================== */
+.bf-cta-section {
+  padding: 6rem 0;
+  background: linear-gradient(135deg, #0D1B4E, #1565C0);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.bf-cta-section::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -5%;
+  width: 45%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 60%);
+  border-radius: 50%;
+}
+
+.bf-cta-section h2 {
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  color: white;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.bf-cta-section > .container > p {
+  color: rgba(255,255,255,0.75);
+  font-size: 1.05rem;
+  max-width: 520px;
+  margin: 0 auto 2.5rem;
+  text-align: center;
+  line-height: 1.7;
+  position: relative;
+  z-index: 1;
+}
+
+.bf-quote-block {
+  background: rgba(27,94,32,0.35);
+  border: 1px solid rgba(67,160,71,0.4);
+  border-radius: 14px;
+  padding: 2rem 2.5rem;
+  max-width: 640px;
+  margin: 0 auto 2.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.bf-quote-block blockquote {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  font-weight: 700;
+  color: white;
+  font-style: italic;
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+
+.bf-quote-block cite {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.6);
+  font-style: normal;
+  font-weight: 500;
+  display: block;
+}
+
+.bf-cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===================================
+   RESPONSIVE
+   =================================== */
+@media (max-width: 1100px) {
+  .bf-factors-grid  { grid-template-columns: repeat(3, 1fr); }
+  .bf-approval-grid { grid-template-columns: repeat(3, 1fr); }
+  .bf-who-grid      { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 992px) {
+  .bf-funding-grid { grid-template-columns: 1fr; }
+  .bf-why-grid     { grid-template-columns: 1fr; }
+
+  .bf-steps { grid-template-columns: 1fr; gap: 2rem; }
+  .bf-steps::before { display: none; }
+
+  .bf-step {
+    flex-direction: row;
+    text-align: left;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 0;
+  }
+
+  .bf-step-number {
+    flex-shrink: 0;
+    margin-bottom: 0;
+    width: 60px;
+    height: 60px;
+    font-size: 1.2rem;
+  }
+
+  .bf-step h4, .bf-step p { text-align: left; }
+  .bf-approval-grid { grid-template-columns: repeat(2, 1fr); }
+  .bf-who-grid      { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .bf-header { padding: 7rem 0 4rem; }
+
+  .bf-factors-strip, .bf-overview, .bf-funding-types,
+  .bf-approval-section, .bf-why-section,
+  .bf-process, .bf-who-section, .bf-cta-section { padding: 4rem 0; }
+
+  .bf-factors-grid { grid-template-columns: repeat(2, 1fr); }
+  .bf-quote-block  { padding: 1.5rem 1.75rem; }
+}
+
+@media (max-width: 576px) {
+  .bf-header-cta    { flex-direction: column; }
+  .bf-header-cta a  { width: 100%; justify-content: center; }
+  .bf-factors-grid  { grid-template-columns: 1fr; }
+  .bf-approval-grid { grid-template-columns: 1fr 1fr; }
+  .bf-who-grid      { grid-template-columns: 1fr 1fr; }
+  .bf-cta-buttons   { flex-direction: column; align-items: center; }
+  .bf-cta-buttons a { width: 100%; justify-content: center; }
+}

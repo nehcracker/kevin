@@ -39,6 +39,8 @@ const Home = () => {
             name: 'InBest Consultant Solutions',
             url: 'https://inbestconsultant.com',
           },
+          telephone: '+447723339858',
+          email: 'kevin.karimi@inbestconsultant.com',
           sameAs: [
             'https://linkedin.com/in/kevingrahamkarimi',
             'https://www.facebook.com/kevingrahamkarimi',

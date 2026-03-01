@@ -32,6 +32,8 @@ const About = () => {
               name: 'InBest Consultant Solutions',
               url: 'https://inbestconsultant.com',
             },
+            telephone: '+447723339858',
+            email: 'kevin.karimi@inbestconsultant.com',
           },
         }}
       />

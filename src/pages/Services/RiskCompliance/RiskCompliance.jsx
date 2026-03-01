@@ -166,6 +166,8 @@ const RiskCompliance = () => {
             '@type': 'Person',
             name: 'Kevin Graham Karimi',
             url: 'https://grahamkarimi.com',
+            telephone: '+447723339858',
+            email: 'kevin.karimi@inbestconsultant.com',
           },
           serviceType: 'Risk Management & Compliance Advisory',
           areaServed: { '@type': 'Country', name: 'Global' },

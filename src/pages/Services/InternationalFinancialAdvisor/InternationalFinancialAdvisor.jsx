@@ -167,6 +167,8 @@ const InternationalFinancialAdvisor = () => {
             '@type': 'Person',
             name: 'Kevin Graham',
             url: 'https://grahamkarimi.com',
+            telephone: '+447723339858',
+            email: 'kevin.karimi@inbestconsultant.com',
           },
           serviceType: 'International Financial Advisory',
           areaServed: { '@type': 'Country', name: 'Global' },

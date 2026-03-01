@@ -8,9 +8,9 @@ import ProjectFunding from './pages/Services/ProjectFunding/ProjectFunding';
 import InternationalFinancialAdvisor from './pages/Services/InternationalFinancialAdvisor/InternationalFinancialAdvisor';
 import RiskCompliance from './pages/Services/RiskCompliance/RiskCompliance';
 import DocumentAlignment from './pages/Services/DocumentAlignment/DocumentAlignment';
+import BusinessFunding from './pages/Services/BusinessFunding/BusinessFunding';
 import Contact from './components/Contact/Contact';
 import Footer from './components/layout/Footer/Footer';
-import FloatingContact from './components/common/FloatingContact/FloatingContact';
 import './styles/global.css';
 
 function App() {
@@ -19,19 +19,17 @@ function App() {
       <div className="app">
         <Header />
         <Routes>
-          <Route path="/"                                              element={<Home />} />
-          <Route path="/about"                                         element={<About />} />
-          <Route path="/services"                                      element={<Services />} />
-          <Route path="/services/project-funding"                      element={<ProjectFunding />} />
-          <Route path="/services/international-financial-advisor"      element={<InternationalFinancialAdvisor />} />
-          <Route path="/services/risk-compliance"                      element={<RiskCompliance />} />
-          <Route path="/services/document-alignment-services"         element={<DocumentAlignment />} />
+          <Route path="/"                                             element={<Home />} />
+          <Route path="/about"                                        element={<About />} />
+          <Route path="/services"                                     element={<Services />} />
+          <Route path="/services/project-funding"                     element={<ProjectFunding />} />
+          <Route path="/services/international-financial-advisor"     element={<InternationalFinancialAdvisor />} />
+          <Route path="/services/risk-compliance"                     element={<RiskCompliance />} />
+          <Route path="/services/document-alignment-services"        element={<DocumentAlignment />} />
+          <Route path="/services/business-funding-loans"             element={<BusinessFunding />} />
         </Routes>
         <Contact />
         <Footer />
-
-        {/* Floating WhatsApp + Email buttons — fixed to right edge, all pages */}
-        <FloatingContact />
       </div>
     </Router>
   );

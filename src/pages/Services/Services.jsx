@@ -15,7 +15,7 @@ const services = [
     bgClass: 'bg-white',
     detailPath: '/services/project-funding',
     description:
-      'Kevin specializes in securing structured financing for large-scale infrastructure, energy, real estate, manufacturing, and corporate expansion projects across global markets.',
+      'Kevin Graham Karimi specializes in securing structured financing for large-scale infrastructure, energy, real estate, manufacturing, and corporate expansion projects across global markets.',
     solutions: [
       'Project Finance',
       'Debt Structuring & Restructuring',
@@ -141,6 +141,34 @@ const services = [
       'International Employment Consulting',
     ],
   },
+  {
+    id: 'business-funding',
+    number: '06',
+    title: 'Sourcing Business Funding',
+    subtitle: '& Long Term Loans',
+    cardClass: 'card-forest',
+    icon: 'fas fa-comments-dollar',
+    iconLabel: 'Business Funding',
+    bgClass: 'bg-light',
+    reverse: true,
+    detailPath: '/services/business-funding-loans',
+    description:
+      'Kevin sources domestic and international business funding for corporations, project sponsors, and enterprises — covering secured loans, unsecured facilities, and long-term structured debt from 3 to 15 years.',
+    solutions: [
+      'Secured Business Loans',
+      'Unsecured Corporate Facilities',
+      'Long Term Loan Structuring',
+      'Working Capital & Revolving Credit',
+      'Contract & Acquisition Financing',
+    ],
+    keywords: [
+      'Business Funding Sourcing',
+      'Long Term Business Loans',
+      'Secured Business Loans',
+      'Unsecured Corporate Loans',
+      'Business Expansion Financing',
+    ],
+  },
 ];
 
 const Services = () => {
@@ -152,21 +180,23 @@ const Services = () => {
     <div className="services-page">
 
       <SEO
-        title="Project Funding, Risk Advisory & International Finance"
-        description="Core finance and advisory services: Project funding, debt structuring, cross border finance, regulatory compliance, document alignment, global HR placement"
-        keywords="project funding services, international project finance, cross border finance advisory, international financial advisor, financial risk management, regulatory compliance advisory, document alignment services, business plan writing, international job placement"
+        title="Services – Project Funding, Risk Advisory & International Finance"
+        description="Explore Kevin Graham Karimi's six core advisory services: international project funding, cross-border financial advisory, risk management and regulatory compliance, document alignment, global HR placement, and business funding sourcing."
+        keywords="project funding services, international project finance, cross border finance advisory, international financial advisor, financial risk management, regulatory compliance advisory, document alignment services, business plan writing, international job placement, business funding loans"
         canonical="https://grahamkarimi.com/services"
         schema={{
           '@context': 'https://schema.org',
           '@type': 'ProfessionalService',
-          name: 'Kevin Financial Advisory Services',
+          name: 'Kevin Graham Karimi Financial Advisory Services',
           url: 'https://grahamkarimi.com/services',
           description:
-            'Five core advisory services: project funding, cross-border investment structuring, risk management, document alignment, and global HR placement.',
+            'Six core advisory services: project funding, cross-border investment structuring, risk management, document alignment, global HR placement, and business funding sourcing.',
           provider: {
             '@type': 'Person',
             name: 'Kevin Graham Karimi',
             jobTitle: 'Global Financial Advisor & Director of Risk Management',
+            telephone: '+447723339858',
+            email: 'kevin.karimi@inbestconsultant.com',
           },
           areaServed: { '@type': 'Country', name: 'Global' },
         }}
@@ -259,7 +289,7 @@ const Services = () => {
         <section className="why-choose-section">
           <div className="container">
             <div className="section-header">
-              <h2>Why Work With Kevin Graham Karimi</h2>
+              <h2>Why Work With Kevin Graham</h2>
               <p>A track record built on results, relationships, and regulatory excellence.</p>
             </div>
             <div className="stats-grid">

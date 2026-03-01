@@ -484,6 +484,10 @@
   transform: translateY(-3px);
 }
 
+.service-icon-card.card-forest { background: linear-gradient(135deg, #1B5E20, #43A047); }
+.service-icon-card.card-forest i { color: rgba(255,255,255,0.9); }
+.service-icon-card.card-forest .icon-label { color: rgba(255,255,255,0.75); }
+
 /* ===================================
    RESPONSIVE
    =================================== */
