@@ -792,6 +792,178 @@ body {
 }
 
 /* ===================================
+   REVIEWS SECTION
+   =================================== */
+
+.reviews-section {
+  padding: var(--section-padding);
+  background: linear-gradient(160deg, #F5F7FA 0%, #EEF2F7 50%, #E8F0FE 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle background accent */
+.reviews-section::before {
+  content: '';
+  position: absolute;
+  top: -10%;
+  right: -8%;
+  width: 45%;
+  height: 60%;
+  background: radial-gradient(circle, rgba(33,150,243,0.06) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.reviews-section::after {
+  content: '';
+  position: absolute;
+  bottom: -10%;
+  left: -5%;
+  width: 35%;
+  height: 50%;
+  background: radial-gradient(circle, rgba(124,77,255,0.05) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Override section-header bottom margin specifically here */
+.reviews-header {
+  margin-bottom: 1.25rem !important;
+}
+
+/* ── Five-star summary bar ─────────────────────────────────── */
+.reviews-summary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 2.5rem;
+}
+
+.reviews-stars {
+  display: flex;
+  gap: 3px;
+}
+
+.reviews-stars i {
+  font-size: 1.1rem;
+  color: #FFD700;
+  filter: drop-shadow(0 1px 3px rgba(255,215,0,0.4));
+}
+
+.reviews-score {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  letter-spacing: -0.5px;
+}
+
+.reviews-divider {
+  color: #B0BEC5;
+  font-size: 1.1rem;
+}
+
+.reviews-platform {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #78909C;
+  letter-spacing: 0.3px;
+}
+
+/* ── TrustIndex widget wrapper ─────────────────────────────── */
+.trustindex-wrapper {
+  position: relative;
+  z-index: 1;
+  /* TrustIndex injects its own markup here — give it room */
+  min-height: 240px;
+}
+
+/* ── Override TrustIndex widget chrome to match site ──────── */
+
+/* Widget container */
+.trustindex-wrapper .ti-widget,
+.trustindex-wrapper [class*="ti-"] {
+  font-family: 'Poppins', 'Roboto', sans-serif !important;
+}
+
+/* Remove TrustIndex branding bar if present */
+.trustindex-wrapper .ti-logo-wrapper,
+.trustindex-wrapper .ti-footer { 
+  display: none !important; 
+}
+
+/* Card shadow lift */
+.trustindex-wrapper .ti-review-item {
+  border-radius: 12px !important;
+  box-shadow: 0 6px 24px rgba(13,27,78,0.08) !important;
+  border: 1px solid rgba(33,150,243,0.08) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.trustindex-wrapper .ti-review-item:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 14px 36px rgba(13,27,78,0.14) !important;
+}
+
+/* Star colour */
+.trustindex-wrapper .ti-stars svg path,
+.trustindex-wrapper .ti-stars .ti-star { 
+  fill: #FFD700 !important; 
+  color: #FFD700 !important;
+}
+
+/* Reviewer name */
+.trustindex-wrapper .ti-name {
+  color: var(--text-dark) !important;
+  font-weight: 700 !important;
+}
+
+/* Review body */
+.trustindex-wrapper .ti-text {
+  color: #546E7A !important;
+  line-height: 1.7 !important;
+}
+
+/* Navigation arrows */
+.trustindex-wrapper .ti-arrow,
+.trustindex-wrapper .ti-prev,
+.trustindex-wrapper .ti-next {
+  background: linear-gradient(135deg, #1565C0, #2196F3) !important;
+  border-radius: 50% !important;
+  color: white !important;
+  border: none !important;
+  box-shadow: 0 4px 14px rgba(33,150,243,0.3) !important;
+}
+
+/* Pagination dots */
+.trustindex-wrapper .ti-dot,
+.trustindex-wrapper .ti-bullets span {
+  background: #BBDEFB !important;
+  border-radius: 50% !important;
+}
+
+.trustindex-wrapper .ti-dot.active,
+.trustindex-wrapper .ti-bullets span.active {
+  background: #1565C0 !important;
+}
+
+/* ── Responsive ────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .reviews-section {
+    padding: var(--section-padding-mobile);
+  }
+
+  .reviews-summary {
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+}
+
+
+/* ===================================
    RESPONSIVE DESIGN
    =================================== */
 

@@ -1,12 +1,35 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import SEO from '../../components/common/SEO/SEO';
 import profilePhoto from '../../assets/images/Kevin-graham.png';
 import Graham from '../../assets/images/Graham.png';
 import './Home.css';
 
 const Home = () => {
+  const reviewsRef = useRef(null);
+
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  }, []);
+
+  /* ── Load TrustIndex widget script once ─────────────────────── */
+  useEffect(() => {
+    if (!reviewsRef.current) return;
+
+    // Avoid double-loading on hot-reload / StrictMode
+    if (document.querySelector('script[data-trustindex]')) return;
+
+    const script = document.createElement('script');
+    script.src   = 'https://cdn.trustindex.io/loader.js?cdcf0b566094050a043696663f1';
+    script.defer = true;
+    script.async = true;
+    script.setAttribute('data-trustindex', 'true');
+    reviewsRef.current.appendChild(script);
+
+    return () => {
+      // cleanup on unmount — remove the script so it can reload if needed
+      const existing = document.querySelector('script[data-trustindex]');
+      if (existing) existing.remove();
+    };
   }, []);
 
   return (
@@ -16,14 +39,14 @@ const Home = () => {
         title="Global Financial Advisor & Project Funding Specialist"
         description="Kevin Graham brings over a decade of strategic insight and execution in global finance, with a focus on risk management, compliance, and debt advisory."
         keywords="
-        Kevin Graham Karimi, 
-        International Project Funding & Debt Structuring, 
-        Kevin Graham financial advisor, 
-        InBest Consultant Solutions, 
-        global financial advisor, 
-        director risk management compliance, 
-        HNW corporate finance advisor, 
-        debt structuring expert, 
+        Kevin Graham Karimi,
+        International Project Funding & Debt Structuring,
+        Kevin Graham financial advisor,
+        InBest Consultant Solutions,
+        global financial advisor,
+        director risk management compliance,
+        HNW corporate finance advisor,
+        debt structuring expert,
         international finance director UK"
         canonical="https://grahamkarimi.com/"
         ogType="profile"
@@ -44,13 +67,14 @@ const Home = () => {
           sameAs: [
             'https://linkedin.com/in/kevingrahamkarimi',
             'https://www.facebook.com/kevingrahamkarimi',
-            'https://t.me/kevingrahamUK',
+            'https://t.me/kevingrahamkarimi',
           ],
         }}
       />
 
       <main id="main-content">
 
+        {/* ── HERO ──────────────────────────────────────────────────── */}
         <section id="hero" className="hero-section">
           <div className="floating-particles">
             <div className="particle"></div>
@@ -64,7 +88,7 @@ const Home = () => {
               <span className="hero-eyebrow">Trusted by Global Corporations</span>
               <h1>Global Financial Advisor</h1>
               <h2>Project Funding Specialist</h2>
-              <span className="hero-credentials">MBA | Director of Risk Management & Compliance</span>
+              <span className="hero-credentials">MBA | Director of Risk Management &amp; Compliance</span>
               <p className="hero-tagline">
                 Transforming Complex Financial Challenges into Strategic Opportunities
               </p>
@@ -87,10 +111,10 @@ const Home = () => {
                 </div>
               </div>
               <p>
-                Global financial advisor and Risk Management & Compliance Director specializing in
+                Global financial advisor and Risk Management &amp; Compliance Director specializing in
                 meeting the domestic and international investing needs of high-net-worth individuals
                 and corporations. Expert in debt structuring, cross-border financial solutions,
-                Project Funding & regulatory compliance.
+                Project Funding &amp; regulatory compliance.
               </p>
               <div className="hero-cta">
                 <a href="#contact" className="btn btn-primary">
@@ -130,12 +154,13 @@ const Home = () => {
           </div>
         </section>
 
+        {/* ── EXPERTISE ─────────────────────────────────────────────── */}
         <section id="expertise" className="expertise-section">
           <div className="container">
             <div className="section-header">
               <h2>Financial Agent</h2>
               <p>
-                As a seasoned global financial agent and Director of Risk Management & Compliance at
+                As a seasoned global financial agent and Director of Risk Management &amp; Compliance at
                 InBest Consultant Solutions, Kevin Graham Karimi offers deep, practical expertise across
                 core pillars of financial structuring and regulatory advisory.
               </p>
@@ -143,7 +168,7 @@ const Home = () => {
             <div className="expertise-grid">
               <div className="expertise-card">
                 <div className="expertise-icon"><i className="fas fa-shield-alt"></i></div>
-                <h3>Sourcing Loans & Debt Advisory</h3>
+                <h3>Sourcing Loans &amp; Debt Advisory</h3>
                 <p>Expert in connecting businesses and projects with credible local and international lenders. Specializes in structuring tailored debt solutions that align with client goals, risk appetite, and regulatory frameworks.</p>
               </div>
               <div className="expertise-card">
@@ -153,12 +178,12 @@ const Home = () => {
               </div>
               <div className="expertise-card">
                 <div className="expertise-icon"><i className="fas fa-chart-line"></i></div>
-                <h3>Debt, Restructuring & Recovery</h3>
+                <h3>Debt, Restructuring &amp; Recovery</h3>
                 <p>Skilled in high-stakes negotiations with financial institutions and creditors, offering recovery pathways, restructuring plans, and sustainable repayment strategies for distressed assets.</p>
               </div>
               <div className="expertise-card">
                 <div className="expertise-icon"><i className="fas fa-balance-scale"></i></div>
-                <h3>Due Diligence & Statutory Services</h3>
+                <h3>Due Diligence &amp; Statutory Services</h3>
                 <p>Oversees comprehensive due diligence for both investors and investees. Ensures regulatory compliance, risk profiling, and statutory document verification across multiple jurisdictions.</p>
               </div>
               <div className="expertise-card">
@@ -168,24 +193,25 @@ const Home = () => {
               </div>
               <div className="expertise-card">
                 <div className="expertise-icon"><i className="fas fa-globe"></i></div>
-                <h3>Risk & Regulatory Compliance</h3>
+                <h3>Risk &amp; Regulatory Compliance</h3>
                 <p>Designs and implements comprehensive risk frameworks for high-value transactions. Ensures full alignment with international regulatory standards, AML policies, and compliance protocols.</p>
               </div>
             </div>
           </div>
         </section>
 
+        {/* ── EXPERIENCE ────────────────────────────────────────────── */}
         <section className="react-section">
           <div className="container">
             <div className="section-header">
-              <h2>Expertise & Experience</h2>
+              <h2>Expertise &amp; Experience</h2>
             </div>
             <div className="react-content">
               <div className="react-info">
                 <p>
                   Kevin Graham Karimi brings over a decade of strategic insight and execution in global
                   finance, with a focus on risk management, compliance, and debt advisory. As Director of
-                  Risk Management & Compliance at{' '}
+                  Risk Management &amp; Compliance at{' '}
                   <a href="https://inbestconsultant.com/" target="_blank" rel="noopener noreferrer">
                     InBest Consultant Solutions
                   </a>
@@ -202,6 +228,39 @@ const Home = () => {
                 <img src={Graham} alt="Kevin Graham Professional" />
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* ── REVIEWS ───────────────────────────────────────────────── */}
+        <section className="reviews-section">
+          <div className="container">
+
+            {/* Section header */}
+            <div className="section-header reviews-header">
+              <h2>What Clients Say</h2>
+              <p>
+                Trusted by corporations and investors across 40+ countries — here's what they
+                say about working with Kevin Graham.
+              </p>
+            </div>
+
+            {/* Five-star summary bar */}
+            <div className="reviews-summary">
+              <div className="reviews-stars">
+                {[1,2,3,4,5].map(i => (
+                  <i key={i} className="fas fa-star"></i>
+                ))}
+              </div>
+              <span className="reviews-score">5.0</span>
+              <span className="reviews-divider">·</span>
+              <span className="reviews-platform">Verified Reviews</span>
+            </div>
+
+            {/* TrustIndex widget mount point */}
+            <div className="trustindex-wrapper" ref={reviewsRef}>
+              {/* TrustIndex script appended here via useEffect */}
+            </div>
+
           </div>
         </section>
 
