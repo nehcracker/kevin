@@ -167,7 +167,7 @@ const RiskCompliance = () => {
             name: 'Kevin Graham Karimi',
             url: 'https://grahamkarimi.com',
             telephone: '+447723339858',
-            email: 'kevin.karimi@inbestconsultant.com',
+            email: 'kevin.uk@grahamkarimi.com',
           },
           serviceType: 'Risk Management & Compliance Advisory',
           areaServed: { '@type': 'Country', name: 'Global' },
@@ -435,7 +435,7 @@ const RiskCompliance = () => {
               <a href="#contact" className="rc-btn-primary">
                 <i className="fas fa-calendar-check"></i> Schedule a Consultation
               </a>
-              <a href="mailto:kevin.karimi@inbestconsultant.com" className="rc-btn-outline">
+              <a href="mailto:kevin.uk@grahamkarimi.com" className="rc-btn-outline">
                 <i className="fas fa-envelope"></i> Send an Email
               </a>
             </div>

@@ -190,7 +190,7 @@ const BusinessFunding = () => {
             name: 'Kevin Graham',
             url: 'https://grahamkarimi.com',
             telephone: '+447723339858',
-            email: 'kevin.karimi@inbestconsultant.com',
+            email: 'kevin.uk@grahamkarimi.com',
           },
           serviceType: 'Business Funding Advisory',
           areaServed: { '@type': 'Country', name: 'Global' },
@@ -494,7 +494,7 @@ const BusinessFunding = () => {
               <a href="#contact" className="bf-btn-primary">
                 <i className="fas fa-comments-dollar"></i> Discuss Your Funding Need
               </a>
-              <a href="mailto:kevin.karimi@inbestconsultant.com" className="bf-btn-outline">
+              <a href="mailto:kevin.uk@grahamkarimi.com" className="bf-btn-outline">
                 <i className="fas fa-envelope"></i> Send an Email
               </a>
             </div>

@@ -8,11 +8,14 @@ const Footer = () => {
     <footer className="site-footer">
       <div className="container">
         <div className="footer-content">
+
           <div className="footer-info">
             <h3>Kevin Graham</h3>
-            <p>With over 15 years of global experience, Kevin delivers specialist 
-              advisory across project funding, international financial strategy, risk & compliance, 
-              and document alignment services, serving high-net-worth corporations across 40+ countries.</p>
+            <p>
+              With over 15 years of global experience, Kevin delivers specialist advisory across
+              project funding, international financial strategy, risk &amp; compliance, and document
+              alignment services, serving high-net-worth corporations across 40+ countries.
+            </p>
           </div>
 
           <div className="footer-links">
@@ -29,26 +32,61 @@ const Footer = () => {
           <div className="footer-social">
             <h4>Connect</h4>
             <div className="social-icons">
-              <a href="https://linkedin.com/in/kevingrahamkarimi" className="social-icon" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+
+              <a
+                href="https://linkedin.com/in/kevingrahamkarimi"
+                className="social-icon"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                title="LinkedIn"
+              >
                 <i className="fab fa-linkedin"></i>
+                <span className="icon-popup">LinkedIn</span>
               </a>
-              <a href="https://www.facebook.com/kevingrahamkarimi" className="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+
+              <a
+                href="https://www.facebook.com/kevingrahamkarimi"
+                className="social-icon"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                title="Facebook"
+              >
                 <i className="fab fa-facebook"></i>
+                <span className="icon-popup">Facebook</span>
               </a>
-              <a href="https://wa.me/+447723339858" className="social-icon" title="WhatsApp">
+
+              {/* wa.me requires no + prefix */}
+              <a
+                href="https://wa.me/447723339858"
+                className="social-icon"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp"
+                title="WhatsApp"
+              >
                 <i className="fab fa-whatsapp"></i>
                 <span className="icon-popup">WhatsApp</span>
               </a>
-              <a href="mailto:kevin.karimi@inbestconsultant.com" className="social-icon" title="Email">
+
+              <a
+                href="mailto:kevin.uk@grahamkarimi.com"
+                className="social-icon"
+                aria-label="Email"
+                title="Email"
+              >
                 <i className="fas fa-envelope"></i>
                 <span className="icon-popup">Email</span>
               </a>
+
             </div>
           </div>
+
         </div>
 
         <div className="footer-bottom">
-          <p>&copy; {currentYear} Kevin Graham . All rights reserved.</p>
+          <p>&copy; {currentYear} Kevin Graham. All rights reserved.</p>
         </div>
       </div>
     </footer>

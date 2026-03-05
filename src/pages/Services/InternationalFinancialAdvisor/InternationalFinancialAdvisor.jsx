@@ -168,7 +168,7 @@ const InternationalFinancialAdvisor = () => {
             name: 'Kevin Graham',
             url: 'https://grahamkarimi.com',
             telephone: '+447723339858',
-            email: 'kevin.karimi@inbestconsultant.com',
+            email: 'kevin.uk@grahamkarimi.com',
           },
           serviceType: 'International Financial Advisory',
           areaServed: { '@type': 'Country', name: 'Global' },
@@ -402,7 +402,7 @@ const InternationalFinancialAdvisor = () => {
               <a href="#contact" className="ifa-btn-primary">
                 <i className="fas fa-calendar-check"></i> Schedule a Consultation
               </a>
-              <a href="mailto:kevin.karimi@inbestconsultant.com" className="ifa-btn-outline">
+              <a href="mailto:kevin.uk@grahamkarimi.com" className="ifa-btn-outline">
                 <i className="fas fa-envelope"></i> Send an Email
               </a>
             </div>

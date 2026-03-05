@@ -104,7 +104,7 @@ const ProjectFunding = () => {
             name: 'Kevin Graham Karimi',
             url: 'https://grahamkarimi.com',
             telephone: '+447723339858',
-            email: 'kevin.karimi@inbestconsultant.com',
+            email: 'kevin.uk@grahamkarimi.com',
           },
           serviceType: 'Project Finance Advisory',
           areaServed: { '@type': 'Country', name: 'Global' },
@@ -288,7 +288,7 @@ const ProjectFunding = () => {
               <a href="#contact" className="pf-btn-primary">
                 <i className="fas fa-calendar-check"></i> Schedule a Consultation
               </a>
-              <a href="mailto:kevin.karimi@inbestconsultant.com" className="pf-btn-outline">
+              <a href="mailto:kevin.uk@grahamkarimi.com" className="pf-btn-outline">
                 <i className="fas fa-envelope"></i> Send an Email
               </a>
             </div>

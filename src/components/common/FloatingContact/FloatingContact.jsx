@@ -73,7 +73,7 @@ const FloatingContact = () => {
 
         {/* Email */}
         <a
-          href="mailto:kevin.karimi@inbestconsultant.com"
+          href="mailto:kevin.uk@grahamkarimi.com"
           className={`floating-btn email ${visible ? 'visible' : ''}`}
           aria-label="Send an email"
           title="Email"
