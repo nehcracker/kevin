@@ -144,7 +144,7 @@
 /* ── Footer note ────────────────────────────────────────────────────────── */
 .reviews-footer-note {
   font-size: 0.78rem;
-  color: rgba(255,255,255,0.35);
+  color: rgb(255, 255, 255);
   text-align: center;
   display: flex;
   align-items: center;
@@ -154,7 +154,7 @@
 }
 
 .reviews-footer-note a {
-  color: rgba(255,255,255,0.55);
+  color: rgba(255, 208, 0, 0.841);
   text-decoration: underline;
   transition: color 0.2s;
 }
