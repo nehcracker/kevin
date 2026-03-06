@@ -11,9 +11,6 @@
 /* ══════════════════════════════════════════════════════════════════════════
    SECTION WRAPPER
 ══════════════════════════════════════════════════════════════════════════ */
-@import './Home.hero.css';
-@import './Home.sections.css';
-
 .hero-section {
   background: linear-gradient(130deg, #08122e 0%, #0d1b4e 45%, #10205a 100%);
   min-height: 100vh;

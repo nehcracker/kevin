@@ -1,0 +1,453 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   Home.sections.css
+   Styles for: Expertise Section  +  Experience / Bio Section
+   @import or append into Home.css
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Shared eyebrow (reused across both sections) ─────────────────────────── */
+.exp-eyebrow {
+  display: inline-block;
+  font-size: 0.70rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  padding: 0.32rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 50px;
+  margin-bottom: 1rem;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   EXPERTISE SECTION
+══════════════════════════════════════════════════════════════════════════ */
+.exp-section {
+  background: linear-gradient(180deg, #0d1b4e 0%, #091540 100%);
+  padding: 5rem 0 4.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle diagonal rule behind the grid */
+.exp-section::before {
+  content: '';
+  position: absolute;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+}
+
+.exp-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Section header ── */
+.exp-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  max-width: 620px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.exp-header h2 {
+  font-size: clamp(1.75rem, 3.5vw, 2.4rem);
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -1.5px;
+  margin-bottom: 0.65rem;
+  line-height: 1.1;
+}
+
+.exp-header p {
+  font-size: 0.97rem;
+  color: rgba(255, 255, 255, 0.58);
+  line-height: 1.75;
+}
+
+/* ── Card grid ── */
+.exp-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.1rem;
+}
+
+/* ── Individual card ── */
+.exp-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 1.5rem 1.4rem 1.6rem;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.28s ease, background 0.28s ease, transform 0.22s ease;
+}
+
+.exp-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--icon-color, #1565C0), transparent);
+  opacity: 0;
+  transition: opacity 0.28s ease;
+}
+
+.exp-card:hover {
+  border-color: rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.07);
+  transform: translateY(-4px);
+}
+
+.exp-card:hover::after {
+  opacity: 1;
+}
+
+/* Top row: number + icon */
+.exp-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.exp-card-num {
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: rgba(255, 255, 255, 0.18);
+}
+
+.exp-card-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 11px;
+  background: var(--icon-color, #1565C0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+  color: #ffffff;
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.exp-card:hover .exp-card-icon {
+  transform: scale(1.1) rotate(-3deg);
+}
+
+.exp-card-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.55rem;
+  line-height: 1.3;
+}
+
+.exp-card-body {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   EXPERIENCE / BIO SECTION
+══════════════════════════════════════════════════════════════════════════ */
+.bio-section {
+  background: linear-gradient(160deg, #060f26 0%, #0a1640 60%, #0d1b4e 100%);
+  padding: 5rem 0 4.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gold glow bottom-right */
+.bio-section::before {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  bottom: -15%;
+  right: -8%;
+  background: radial-gradient(circle, rgba(250, 204, 21, 0.07) 0%, transparent 65%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.bio-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 4rem;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Left column ── */
+.bio-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.bio-left h2 {
+  font-size: clamp(1.75rem, 3.5vw, 2.4rem);
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -1.5px;
+  margin-bottom: 1.25rem;
+  line-height: 1.1;
+}
+
+.bio-lead {
+  font-size: 0.97rem;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.bio-lead a {
+  color: #facc15;
+  text-decoration: none;
+  font-weight: 600;
+  transition: opacity 0.2s;
+}
+
+.bio-lead a:hover {
+  opacity: 0.75;
+}
+
+.bio-body {
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.52);
+  line-height: 1.8;
+  margin-bottom: 2.25rem;
+}
+
+/* ── Timeline ── */
+.bio-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.bio-milestone {
+  display: grid;
+  grid-template-columns: 52px 28px 1fr;
+  align-items: flex-start;
+  gap: 0 0.75rem;
+  padding-bottom: 1.5rem;
+  position: relative;
+}
+
+.bio-milestone:last-child {
+  padding-bottom: 0;
+}
+
+.bio-milestone-year {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #facc15;
+  letter-spacing: 1px;
+  padding-top: 2px;
+  text-align: right;
+}
+
+.bio-milestone-line {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.bio-milestone-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #facc15;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  margin-top: 3px;
+}
+
+/* Vertical connector between dots */
+.bio-milestone-line::after {
+  content: '';
+  position: absolute;
+  top: 13px;
+  bottom: -1.5rem;
+  width: 1px;
+  background: rgba(250, 204, 21, 0.2);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.bio-milestone:last-child .bio-milestone-line::after {
+  display: none;
+}
+
+.bio-milestone-text {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.62);
+  line-height: 1.65;
+  padding-top: 2px;
+}
+
+/* ── Right column ── */
+.bio-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Photo */
+.bio-photo-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 340px;
+}
+
+.bio-photo {
+  width: 100%;
+  border-radius: 20px;
+  display: block;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+}
+
+/* Floating credential chips on photo corners */
+.bio-chip {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(13, 27, 78, 0.90);
+  border: 1px solid rgba(250, 204, 21, 0.35);
+  border-radius: 8px;
+  padding: 0.5rem 0.85rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.bio-chip i {
+  color: #facc15;
+  font-size: 0.82rem;
+}
+
+.bio-chip--tl {
+  top: -14px;
+  left: -14px;
+}
+
+.bio-chip--br {
+  bottom: -14px;
+  right: -14px;
+}
+
+/* Credential list */
+.bio-creds {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.bio-cred-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.72rem 1.1rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.72);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  transition: background 0.2s, color 0.2s;
+}
+
+.bio-cred-item:last-child {
+  border-bottom: none;
+}
+
+.bio-cred-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+}
+
+.bio-cred-item i {
+  color: #facc15;
+  font-size: 0.78rem;
+  flex-shrink: 0;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════════════════════════════════════ */
+
+/* Tablet */
+@media (max-width: 960px) {
+  .exp-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .bio-inner {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .bio-right {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  .bio-photo-wrap {
+    max-width: 240px;
+    flex-shrink: 0;
+  }
+
+  .bio-creds {
+    flex: 1;
+  }
+}
+
+/* Mobile */
+@media (max-width: 620px) {
+  .exp-section,
+  .bio-section {
+    padding: 3.5rem 0 3rem;
+  }
+
+  .exp-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bio-right {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .bio-photo-wrap {
+    max-width: 100%;
+  }
+
+  .bio-milestone {
+    grid-template-columns: 44px 22px 1fr;
+  }
+}
