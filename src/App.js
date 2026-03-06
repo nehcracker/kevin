@@ -9,6 +9,7 @@ import InternationalFinancialAdvisor from './pages/Services/InternationalFinanci
 import RiskCompliance from './pages/Services/RiskCompliance/RiskCompliance';
 import DocumentAlignment from './pages/Services/DocumentAlignment/DocumentAlignment';
 import BusinessFunding from './pages/Services/BusinessFunding/BusinessFunding';
+import Reviews from './components/Reviews/Reviews';
 import Contact from './components/Contact/Contact';
 import FloatingContact from './components/common/FloatingContact/FloatingContact';
 import Footer from './components/layout/Footer/Footer';
@@ -29,6 +30,7 @@ function App() {
           <Route path="/services/document-alignment-services"        element={<DocumentAlignment />} />
           <Route path="/services/business-funding-loans"             element={<BusinessFunding />} />
         </Routes>
+        <Reviews />
         <Contact />
         <Footer />
         {/* FloatingContact renders fixed over all pages */}

@@ -1,0 +1,179 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   Reviews.css  —  Trustpilot reviews section
+   Palette matches Contact.css (blue deep / gold accent)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Section wrapper ────────────────────────────────────────────────────── */
+.reviews-section {
+  background: linear-gradient(160deg, #081236 0%, #0D1B4E 50%, #0f2060 100%);
+  padding: 5rem 0 4.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative radial blobs */
+.reviews-blob {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.reviews-blob--tl {
+  width: 40%;
+  height: 120%;
+  top: -30%;
+  left: -8%;
+  background: radial-gradient(circle, rgba(250,204,21,0.06) 0%, transparent 65%);
+}
+
+.reviews-blob--br {
+  width: 45%;
+  height: 130%;
+  bottom: -25%;
+  right: -8%;
+  background: radial-gradient(circle, rgba(25,118,210,0.10) 0%, transparent 65%);
+}
+
+.reviews-inner {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+/* ── Header ─────────────────────────────────────────────────────────────── */
+.reviews-header {
+  text-align: center;
+}
+
+.reviews-eyebrow {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.50);
+  padding: 0.35rem 1.1rem;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 50px;
+  margin-bottom: 0.9rem;
+}
+
+.reviews-header h2 {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 900;
+  color: #ffffff;
+  letter-spacing: -1.5px;
+  margin-bottom: 0.65rem;
+  line-height: 1.1;
+}
+
+.reviews-header p {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.75;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.reviews-header p strong {
+  color: rgba(255,255,255,0.90);
+  font-weight: 600;
+}
+
+/* ── Widget card ─────────────────────────────────────────────────────────── */
+.reviews-widget-card {
+  width: 100%;
+  background: rgba(255,255,255,0.045);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-top: 4px solid #facc15;
+  border-radius: 18px;
+  padding: 1.75rem 2rem 1.5rem;
+}
+
+/* ── Trustpilot branding row ──────────────────────────────────────────── */
+.reviews-tp-branding {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.35rem;
+}
+
+.reviews-tp-logo {
+  height: 26px;
+  width: auto;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.reviews-tp-verified {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  padding-left: 0.75rem;
+  border-left: 1px solid rgba(255,255,255,0.18);
+}
+
+/* ── Trustpilot widget wrapper ─────────────────────────────────────────── */
+.trustpilot-widget {
+  width: 100%;
+}
+
+/* Fallback link (shown only before script loads) */
+.reviews-tp-fallback {
+  display: inline-block;
+  font-size: 0.875rem;
+  color: #facc15;
+  text-decoration: underline;
+  padding: 0.5rem 0;
+  transition: opacity 0.2s;
+}
+
+.reviews-tp-fallback:hover {
+  opacity: 0.75;
+}
+
+/* ── Footer note ────────────────────────────────────────────────────────── */
+.reviews-footer-note {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.35);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.reviews-footer-note a {
+  color: rgba(255,255,255,0.55);
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.reviews-footer-note a:hover {
+  color: #facc15;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .reviews-section {
+    padding: 3.5rem 0 3rem;
+  }
+
+  .reviews-widget-card {
+    padding: 1.4rem 1.25rem 1.25rem;
+  }
+
+  .reviews-header h2 {
+    font-size: 1.75rem;
+  }
+}

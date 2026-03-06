@@ -1,35 +1,13 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import SEO from '../../components/common/SEO/SEO';
 import profilePhoto from '../../assets/images/Kevin-graham.png';
 import Graham from '../../assets/images/Graham.png';
+//import Reviews from '../../components/Reviews/Reviews';
 import './Home.css';
 
 const Home = () => {
-  const reviewsRef = useRef(null);
-
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
-  }, []);
-
-  /* ── Load TrustIndex widget script once ─────────────────────── */
-  useEffect(() => {
-    if (!reviewsRef.current) return;
-
-    // Avoid double-loading on hot-reload / StrictMode
-    if (document.querySelector('script[data-trustindex]')) return;
-
-    const script = document.createElement('script');
-    script.src   = 'https://cdn.trustindex.io/loader.js?cdcf0b566094050a043696663f1';
-    script.defer = true;
-    script.async = true;
-    script.setAttribute('data-trustindex', 'true');
-    reviewsRef.current.appendChild(script);
-
-    return () => {
-      // cleanup on unmount — remove the script so it can reload if needed
-      const existing = document.querySelector('script[data-trustindex]');
-      if (existing) existing.remove();
-    };
   }, []);
 
   return (
@@ -232,37 +210,11 @@ const Home = () => {
         </section>
 
         {/* ── REVIEWS ───────────────────────────────────────────────── */}
-        <section className="reviews-section">
-          <div className="container">
-
-            {/* Section header */}
-            <div className="section-header reviews-header">
-              <h2>What Clients Say</h2>
-              <p>
-                Trusted by corporations and investors across 40+ countries — here's what they
-                say about working with Kevin Graham.
-              </p>
-            </div>
-
-            {/* Five-star summary bar */}
-            <div className="reviews-summary">
-              <div className="reviews-stars">
-                {[1,2,3,4,5].map(i => (
-                  <i key={i} className="fas fa-star"></i>
-                ))}
-              </div>
-              <span className="reviews-score">5.0</span>
-              <span className="reviews-divider">·</span>
-              <span className="reviews-platform">Verified Reviews</span>
-            </div>
-
-            {/* TrustIndex widget mount point */}
-            <div className="trustindex-wrapper" ref={reviewsRef}>
-              {/* TrustIndex script appended here via useEffect */}
-            </div>
-
-          </div>
-        </section>
+      
+            {/* Reviews section (Trustpilot widget handled inside component) 
+            <Reviews />
+*/}
+       
 
       </main>
     </div>
