@@ -136,7 +136,7 @@ const Home = () => {
       <SEO
         title="Global Financial Advisor & Project Funding Specialist"
         description="Kevin Graham brings over a decade of strategic insight and execution in global finance, with a focus on risk management, compliance, and debt advisory."
-        keywords="Kevin Graham Karimi, Kevin Graham financial advisor, InBest Consultant Solutions, global financial advisor, director risk management compliance, HNW corporate finance advisor, debt structuring expert, international finance director UK"
+        keywords="Kevin Graham, Graham financial advisor, InBest Consultant Solutions, global financial advisor, director risk management compliance, HNW corporate finance advisor, debt structuring expert, international finance director UK"
         canonical="https://grahamkarimi.com/"
         ogType="profile"
         schema={{
