@@ -92,8 +92,20 @@ const ProjectFunding = () => {
       <SEO
         title="International Project Funding & Debt Structuring"
         description="project funding & debt structuring for infrastructure, energy, real estate, private capital placement, debt restructuring, & cross border funding solution."
-        keywords="project funding services, international project finance, debt structuring advisory, syndicated loan arrangement, private capital placement, cross border funding solutions, acquisition funding, project finance structuring, mezzanine finance"
-        canonical="https://grahamkarimi.com/services/project-funding"
+       keywords="project funding services,
+       international project finance, 
+       debt structuring advisory, 
+       syndicated loan arrangement, 
+       private capital placement, 
+       cross border funding solutions, 
+       acquisition funding, project 
+       finance structuring, 
+       mezzanine finance,
+       project funding, 
+       funding for african projects, 
+       how to find investors, 
+       business funding, 
+       investors looking for projects to fund, apply for funding, financing for projects, project debt financing, find investors, how to get funding for a project, private lender, funding companies, trade finance, trade credit, venture capital financing, project funders worldwide, private finance, international finance, green financing, real estate financing, agriculture funding, real estate funding, apply for project funding, international investors, how to get funders for my project, private investors in nigeria, investors in nigeria, investors looking for projects to fund in africa, investors looking for projects to fund in ghana, africa investors, funding opportunities 2026, development finance, peer to peer lending sites, agriculture funding opportunities, credit finance, world funding organizations, chinese investors contacts, farm funding, entrepreneurs looking for business partners"canonical="https://grahamkarimi.com/services/project-funding"
         schema={{
           '@context': 'https://schema.org',
           '@type': 'Service',
@@ -101,7 +113,7 @@ const ProjectFunding = () => {
           description: 'Advisory and structuring solutions for large-scale project funding, debt restructuring, syndicated loans, and cross-border financing.',
           provider: {
             '@type': 'Person',
-            name: 'Kevin Graham Karimi',
+            name: 'Kevin Graham',
             url: 'https://grahamkarimi.com',
             telephone: '+447723339858',
             email: 'kevin.uk@grahamkarimi.com',
