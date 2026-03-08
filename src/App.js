@@ -9,6 +9,7 @@ import InternationalFinancialAdvisor from './pages/Services/InternationalFinanci
 import RiskCompliance from './pages/Services/RiskCompliance/RiskCompliance';
 import DocumentAlignment from './pages/Services/DocumentAlignment/DocumentAlignment';
 import BusinessFunding from './pages/Services/BusinessFunding/BusinessFunding';
+import BusinessConsultant from './pages/Services/BusinessConsultant/BusinessConsultant';
 import Reviews from './components/Reviews/Reviews';
 import Contact from './components/Contact/Contact';
 import FloatingContact from './components/common/FloatingContact/FloatingContact';
@@ -27,8 +28,9 @@ function App() {
           <Route path="/services/project-funding"                     element={<ProjectFunding />} />
           <Route path="/services/international-financial-advisor"     element={<InternationalFinancialAdvisor />} />
           <Route path="/services/risk-compliance"                     element={<RiskCompliance />} />
-          <Route path="/services/document-alignment-services"        element={<DocumentAlignment />} />
-          <Route path="/services/business-funding-loans"             element={<BusinessFunding />} />
+          <Route path="/services/document-alignment-services"         element={<DocumentAlignment />} />
+          <Route path="/services/business-funding-loans"              element={<BusinessFunding />} />
+          <Route path="/services/business-consultant"                 element={<BusinessConsultant />} />
         </Routes>
         <Reviews />
         <Contact />

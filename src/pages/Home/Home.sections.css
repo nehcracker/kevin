@@ -1,7 +1,6 @@
 /* ═══════════════════════════════════════════════════════════════════════════
    Home.sections.css
-   Styles for: Expertise Section  +  Experience / Bio Section
-   @import or append into Home.css
+   Styles for: Global Financial Services Section  +  Experience / Bio Section
    ═══════════════════════════════════════════════════════════════════════════ */
 
 /* ── Shared eyebrow (reused across both sections) ─────────────────────────── */
@@ -19,24 +18,65 @@
 }
 
 /* ══════════════════════════════════════════════════════════════════════════
-   EXPERTISE SECTION
+   GLOBAL FINANCIAL SERVICES SECTION
+   Background: deep charcoal #0b0e1a — distinct from navy hero above
+   and near-black bio below. Diagonal colour wash + dot mesh + ambient glows.
 ══════════════════════════════════════════════════════════════════════════ */
 .exp-section {
-  background: linear-gradient(180deg, #0d1b4e 0%, #091540 100%);
-  padding: 5rem 0 4.5rem;
+  background: #0b0e1a;
+  padding: 5.5rem 0 5rem;
   position: relative;
   overflow: hidden;
+  isolation: isolate;
 }
 
-/* Subtle diagonal rule behind the grid */
+/* Diagonal gold-to-blue colour wash */
 .exp-section::before {
   content: '';
   position: absolute;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-  background-size: 48px 48px;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(250, 204, 21, 0.05)  0%,
+      transparent                35%,
+      rgba(21, 101, 192, 0.08)  65%,
+      transparent                100%
+    );
   pointer-events: none;
+  z-index: 0;
+}
+
+/* Fine dot-mesh overlay */
+.exp-mesh {
+  position: absolute;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Ambient glow blobs */
+.exp-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.exp-glow--1 {
+  width: 600px;
+  height: 600px;
+  top: -20%;
+  left: -10%;
+  background: radial-gradient(circle, rgba(250, 204, 21, 0.06) 0%, transparent 65%);
+}
+
+.exp-glow--2 {
+  width: 500px;
+  height: 500px;
+  bottom: -15%;
+  right: -8%;
+  background: radial-gradient(circle, rgba(21, 101, 192, 0.10) 0%, transparent 65%);
 }
 
 .exp-inner {
@@ -67,7 +107,7 @@
 
 .exp-header p {
   font-size: 0.97rem;
-  color: rgba(255, 255, 255, 0.58);
+  color: rgba(255, 255, 255, 0.55);
   line-height: 1.75;
 }
 
@@ -78,7 +118,7 @@
   gap: 1.1rem;
 }
 
-/* ── Individual card ── */
+/* ── Individual card — <a> tag ── */
 .exp-card {
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -86,13 +126,20 @@
   padding: 1.5rem 1.4rem 1.6rem;
   position: relative;
   overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
   transition: border-color 0.28s ease, background 0.28s ease, transform 0.22s ease;
 }
 
+/* Bottom accent bar */
 .exp-card::after {
   content: '';
   position: absolute;
-  bottom: 0; left: 0; right: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   height: 3px;
   background: linear-gradient(90deg, var(--icon-color, #1565C0), transparent);
   opacity: 0;
@@ -100,9 +147,9 @@
 }
 
 .exp-card:hover {
-  border-color: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.18);
   background: rgba(255, 255, 255, 0.07);
-  transform: translateY(-4px);
+  transform: translateY(-5px);
 }
 
 .exp-card:hover::after {
@@ -146,15 +193,44 @@
   font-size: 0.95rem;
   font-weight: 700;
   color: #ffffff;
+  margin-bottom: 0.25rem;
+  line-height: 1.3;
+}
+
+.exp-card-sub {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--icon-color, #1565C0);
   margin-bottom: 0.55rem;
   line-height: 1.3;
+  opacity: 0.85;
 }
 
 .exp-card-body {
   font-size: 0.82rem;
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(255, 255, 255, 0.52);
   line-height: 1.7;
-  margin: 0;
+  margin: 0 0 auto;
+  flex: 1;
+}
+
+/* "Learn more" link — slides in on hover */
+.exp-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1.1rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--icon-color, #1565C0);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.exp-card:hover .exp-card-link {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 /* ══════════════════════════════════════════════════════════════════════════

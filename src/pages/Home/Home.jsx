@@ -52,6 +52,14 @@ const SERVICES = [
     path:   '/services/global-hr',
     accent: '#059669',
   },
+  {
+    number: '06',
+    icon:   'fas fa-briefcase',
+    title:  'Business Consultant',
+    sub:    'Registration · Accounting · Tax · HR · Strategy',
+    path:   '/services/business-consultant',
+    accent: '#facc15',
+  },
 ];
 
 const STATS = [
@@ -61,48 +69,60 @@ const STATS = [
   { number: '100+',   label: 'Clients'       },
 ];
 
-const EXPERTISE = [
+const SERVICES_CARDS = [
   {
     num:   '01',
-    icon:  'fas fa-hand-holding-usd',
+    icon:  'fas fa-landmark',
     color: '#1565C0',
-    title: 'Sourcing Loans & Debt Advisory',
-    body:  'Connecting businesses and projects with credible local and international lenders. Structures tailored debt solutions aligned with client goals, risk appetite, and regulatory frameworks.',
+    title: 'International Project Funding',
+    sub:   '& Debt Structuring',
+    body:  'Connecting businesses and projects with credible local and international lenders. Structures tailored debt solutions aligned with client goals and regulatory frameworks.',
+    path:  '/services/project-funding',
   },
   {
     num:   '02',
-    icon:  'fas fa-file-signature',
+    icon:  'fas fa-globe-americas',
     color: '#0891b2',
-    title: 'Credit Proposal Alignment',
-    body:  'Strategic oversight ensuring project documents and business proposals meet investor, lender, and statutory expectations — increasing fundability and reducing bottlenecks.',
+    title: 'Cross Border Financial Advisory',
+    sub:   '& Investment Structuring',
+    body:  'Strategic financial advisory for cross-border transactions, international investment structuring, and multi-jurisdictional capital deployment.',
+    path:  '/services/international-financial-advisor',
   },
   {
     num:   '03',
-    icon:  'fas fa-chart-line',
+    icon:  'fas fa-shield-alt',
     color: '#7c3aed',
-    title: 'Debt, Restructuring & Recovery',
-    body:  'High-stakes negotiations with financial institutions and creditors — offering recovery pathways, restructuring plans, and sustainable repayment strategies for distressed assets.',
+    title: 'Risk Management',
+    sub:   '& Regulatory Compliance Advisory',
+    body:  'Comprehensive risk frameworks for high-value transactions. Full alignment with international regulatory standards, AML policies, and compliance protocols.',
+    path:  '/services/risk-compliance',
   },
   {
     num:   '04',
-    icon:  'fas fa-search-dollar',
+    icon:  'fas fa-file-contract',
     color: '#b45309',
-    title: 'Due Diligence & Statutory Services',
-    body:  'Comprehensive due diligence for both investors and investees. Regulatory compliance, risk profiling, and statutory document verification across multiple jurisdictions.',
+    title: 'Document Alignment Services',
+    sub:   'DAS — Lender-Ready Documentation',
+    body:  'Strategic oversight ensuring project documents and business proposals meet investor, lender, and statutory expectations — increasing fundability and reducing bottlenecks.',
+    path:  '/services/document-alignment-services',
   },
   {
     num:   '05',
-    icon:  'fas fa-network-wired',
+    icon:  'fas fa-users',
     color: '#059669',
-    title: 'Financial Market Networking',
-    body:  'High-level network across financial institutions, private equity firms, project sponsors, and sovereign investors — unlocking cross-border funding and joint venture opportunities.',
+    title: 'Global HR & International',
+    sub:   'Job Placement Services',
+    body:  'End-to-end international HR solutions and job placement services connecting talent with global opportunities across 40+ countries.',
+    path:  '/services/global-hr',
   },
   {
     num:   '06',
-    icon:  'fas fa-shield-alt',
-    color: '#dc2626',
-    title: 'Risk & Regulatory Compliance',
-    body:  'Comprehensive risk frameworks for high-value transactions. Full alignment with international regulatory standards, AML policies, and compliance protocols across jurisdictions.',
+    icon:  'fas fa-briefcase',
+    color: '#ca8a04',
+    title: 'Business Consultant',
+    sub:   'Registration · Accounting · Tax · HR · Strategy',
+    body:  'From company formation and accounting to tax planning, HR consulting, management strategy, and specialist advisory — all coordinated by one expert.',
+    path:  '/services/business-consultant',
   },
 ];
 
@@ -165,7 +185,6 @@ const Home = () => {
             HERO
             Layout:  desktop → 2-col grid  (left: identity | right: services)
                      ≤ 960px → 1-col stack (identity first, services below)
-            Mobile order is purely DOM order — no CSS `order` property used.
         ══════════════════════════════════════════════════════════════════ */}
         <section id="hero" className="hero-section" aria-labelledby="hero-name">
 
@@ -175,7 +194,7 @@ const Home = () => {
 
           <div className="hero-inner">
 
-            {/* ── LEFT — Identity + CTAs (DOM pos 1 → always on top on mobile) ── */}
+            {/* ── LEFT — Identity + CTAs ── */}
             <div className="hero-left">
 
               <span className="hero-eyebrow">
@@ -189,9 +208,9 @@ const Home = () => {
               </h1>
 
               <h2>
-              <p className="hero-role">
-              Global Financial Advisor | Finance Broker | Financial Consultant
-              </p>
+                <p className="hero-role">
+                  Global Financial Advisor | Finance Broker | Financial Consultant
+                </p>
               </h2>
 
               <div className="hero-stats" aria-label="Key statistics">
@@ -209,9 +228,9 @@ const Home = () => {
               </div>
 
               <p className="hero-tagline">
-              With over 15 years of global experience, Kevin delivers specialist advisory across project funding, 
-              international financial strategy, risk & compliance, and document alignment services, serving high-net-worth 
-              corporations across 40+ countries.
+                With over 15 years of global experience, Kevin delivers specialist advisory across
+                project funding, international financial strategy, risk &amp; compliance, and
+                document alignment services, serving high-net-worth corporations across 40+ countries.
               </p>
 
               <div className="hero-cta">
@@ -253,9 +272,9 @@ const Home = () => {
             </div>
             {/* end hero-left */}
 
-            {/* ── RIGHT — Service cards (DOM pos 2 → stacks BELOW on mobile) ── */}
+            {/* ── RIGHT — Service cards ── */}
             <div className="hero-right">
-              <p className="hero-services-label" aria-hidden="true">5 Core Services</p>
+              <p className="hero-services-label" aria-hidden="true">6 Core Services</p>
 
               <nav aria-label="Core services">
                 {SERVICES.map(svc => (
@@ -296,33 +315,47 @@ const Home = () => {
         </section>
 
         {/* ══════════════════════════════════════════════════════════════════
-            EXPERTISE SECTION
-            6 capability cards in a 3-col grid with numbered accent style.
+            GLOBAL FINANCIAL SERVICES SECTION
         ══════════════════════════════════════════════════════════════════ */}
         <section id="expertise" className="exp-section" aria-labelledby="expertise-heading">
+
+          <div className="exp-mesh"             aria-hidden="true" />
+          <div className="exp-glow exp-glow--1" aria-hidden="true" />
+          <div className="exp-glow exp-glow--2" aria-hidden="true" />
+
           <div className="exp-inner">
 
             <div className="exp-header">
-              <span className="exp-eyebrow">Core Capabilities</span>
-              <h2 id="expertise-heading">What Kevin Brings to the Table</h2>
+              <span className="exp-eyebrow">What We Offer</span>
+              <h2 id="expertise-heading">Global Financial Services</h2>
               <p>
-                Decades of hands-on execution across global markets — from sourcing structured
-                financing to navigating multi-jurisdictional regulatory frameworks.
+                Six specialist disciplines under one advisory roof — from project funding
+                and compliance to business formation and HR, deployed across 40+ countries.
               </p>
             </div>
 
             <div className="exp-grid">
-              {EXPERTISE.map((item) => (
-                <div key={item.num} className="exp-card">
+              {SERVICES_CARDS.map((item) => (
+                <a
+                  key={item.num}
+                  href={item.path}
+                  className="exp-card"
+                  style={{ '--icon-color': item.color }}
+                  aria-label={`${item.title} — ${item.sub}`}
+                >
                   <div className="exp-card-top">
                     <span className="exp-card-num">{item.num}</span>
-                    <div className="exp-card-icon" style={{ '--icon-color': item.color }}>
-                      <i className={item.icon} aria-hidden="true" />
+                    <div className="exp-card-icon" aria-hidden="true">
+                      <i className={item.icon} />
                     </div>
                   </div>
                   <h3 className="exp-card-title">{item.title}</h3>
+                  <p className="exp-card-sub">{item.sub}</p>
                   <p className="exp-card-body">{item.body}</p>
-                </div>
+                  <span className="exp-card-link">
+                    Learn more <i className="fas fa-arrow-right" aria-hidden="true" />
+                  </span>
+                </a>
               ))}
             </div>
 
@@ -353,9 +386,9 @@ const Home = () => {
               </p>
 
               <p className="bio-body">
-                With over 15 years of global experience, Kevin delivers specialist advisory across project funding, 
-                international financial strategy, risk & compliance, and document alignment services, serving high-net-worth
-                 corporations across 40+ countries.
+                With over 15 years of global experience, Kevin delivers specialist advisory across
+                project funding, international financial strategy, risk &amp; compliance, and
+                document alignment services, serving high-net-worth corporations across 40+ countries.
               </p>
 
               {/* Milestone timeline */}
@@ -380,7 +413,6 @@ const Home = () => {
                   alt="Kevin Graham Karimi — Global Financial Advisor"
                   className="bio-photo"
                 />
-                {/* Floating credential chips */}
                 <div className="bio-chip bio-chip--tl">
                   <i className="fas fa-award" aria-hidden="true" />
                   <span>15+ Years</span>
@@ -391,7 +423,6 @@ const Home = () => {
                 </div>
               </div>
 
-              {/* Credential list */}
               <ul className="bio-creds" aria-label="Credentials">
                 {CREDENTIALS.map((c) => (
                   <li key={c} className="bio-cred-item">

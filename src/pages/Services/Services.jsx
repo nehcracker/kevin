@@ -169,6 +169,34 @@ const services = [
       'Business Expansion Financing',
     ],
   },
+  {
+    id: 'business-consultant',
+    number: '07',
+    title: 'Business Consultant',
+    subtitle: 'Business Consulting Services',
+    cardClass: 'card-orange',
+    icon: 'fas fa-briefcase',
+    iconLabel: 'Business Consulting',
+    bgClass: 'bg-white',
+    reverse: true,
+    detailPath: '/services/business-consultant',
+    description:
+      'End-to-end advisory covering company formation, management strategy, HR accounting, tax, consulting, and specialist disciplines — all under one roof.',
+    solutions: [
+      'Business Registration & Formation',
+      'Accounting & Bookkeeping',
+      'Tax Services',
+      'Management & Strategy Consulting',
+      'HR Consulting',
+    ],
+    keywords: [
+      'Business Consultant',
+      'Business Consulting Services',
+      'Company Formation',
+      'Accounting Services',
+      'Tax Advisory',
+    ],
+  }
 ];
 
 const Services = () => {

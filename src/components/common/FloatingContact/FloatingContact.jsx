@@ -7,6 +7,7 @@ const SERVICES = [
   'International Financial Advisory',
   'Risk & Compliance',
   'Document Alignment Services',
+  'Business Consultant',
   'General Enquiry',
 ];
 
