@@ -12,6 +12,7 @@ import BusinessFunding from './pages/Services/BusinessFunding/BusinessFunding';
 import BusinessConsultant from './pages/Services/BusinessConsultant/BusinessConsultant';
 import Reviews from './components/Reviews/Reviews';
 import Contact from './components/Contact/Contact';
+import Partners from './components/Partners/Partners';
 import FloatingContact from './components/common/FloatingContact/FloatingContact';
 import Footer from './components/layout/Footer/Footer';
 import './styles/global.css';
@@ -34,6 +35,7 @@ function App() {
         </Routes>
         <Reviews />
         <Contact />
+        <Partners />
         <Footer />
         {/* FloatingContact renders fixed over all pages */}
         <FloatingContact />
