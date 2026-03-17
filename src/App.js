@@ -10,6 +10,7 @@ import RiskCompliance from './pages/Services/RiskCompliance/RiskCompliance';
 import DocumentAlignment from './pages/Services/DocumentAlignment/DocumentAlignment';
 import BusinessFunding from './pages/Services/BusinessFunding/BusinessFunding';
 import BusinessConsultant from './pages/Services/BusinessConsultant/BusinessConsultant';
+import GrantsDonations from './pages/Services/GrantsDonations/GrantsDonations';
 import Reviews from './components/Reviews/Reviews';
 import Contact from './components/Contact/Contact';
 import Partners from './components/Partners/Partners';
@@ -32,6 +33,7 @@ function App() {
           <Route path="/services/document-alignment-services"         element={<DocumentAlignment />} />
           <Route path="/services/business-funding-loans"              element={<BusinessFunding />} />
           <Route path="/services/business-consultant"                 element={<BusinessConsultant />} />
+          <Route path="/services/grants-donations"                    element={<GrantsDonations />} />
         </Routes>
         <Reviews />
         <Contact />

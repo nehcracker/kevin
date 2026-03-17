@@ -178,10 +178,9 @@ const services = [
     icon: 'fas fa-briefcase',
     iconLabel: 'Business Consulting',
     bgClass: 'bg-white',
-    reverse: true,
     detailPath: '/services/business-consultant',
     description:
-      'End-to-end advisory covering company formation, management strategy, HR accounting, tax, consulting, and specialist disciplines — all under one roof.',
+      'End-to-end advisory covering company formation, management strategy, HR, accounting, tax consulting, and specialist disciplines — all under one roof.',
     solutions: [
       'Business Registration & Formation',
       'Accounting & Bookkeeping',
@@ -196,7 +195,35 @@ const services = [
       'Accounting Services',
       'Tax Advisory',
     ],
-  }
+  },
+  {
+    id: 'grants-donations',
+    number: '08',
+    title: 'Grants & Donations',
+    subtitle: 'Sourcing Advisory',
+    cardClass: 'card-amber',
+    icon: 'fas fa-search-dollar',
+    iconLabel: 'Grants & Donations',
+    bgClass: 'bg-light',
+    reverse: true,
+    detailPath: '/services/grants-donations',
+    description:
+      'Kevin sources grants and donations for NGOs, non-profits, infrastructure developers, and community groups from government programmes, charitable foundations, corporate CSR budgets, and international aid networks.',
+    solutions: [
+      'Government & Public Grants',
+      'Charitable Foundation Grants',
+      'Corporate Donations & CSR Funding',
+      'International Aid & Development Grants',
+      'Impact & ESG Fund Sourcing',
+    ],
+    keywords: [
+      'Grant Sourcing Advisory',
+      'NGO Funding Support',
+      'Non-Profit Grant Applications',
+      'Corporate Donations Advisory',
+      'International Aid Grants',
+    ],
+  },
 ];
 
 const Services = () => {
@@ -209,8 +236,8 @@ const Services = () => {
 
       <SEO
         title="Services – Project Funding, Risk Advisory & International Finance"
-        description="Explore Kevin Graham Karimi's six core advisory services: international project funding, cross-border financial advisory, risk management and regulatory compliance, document alignment, global HR placement, and business funding sourcing."
-        keywords="project funding services, international project finance, cross border finance advisory, international financial advisor, financial risk management, regulatory compliance advisory, document alignment services, business plan writing, international job placement, business funding loans"
+        description="Explore Kevin Graham Karimi's eight core advisory services: international project funding, cross-border financial advisory, risk management, document alignment, global HR placement, business funding, business consulting, and grants & donations sourcing."
+        keywords="project funding services, international project finance, cross border finance advisory, international financial advisor, financial risk management, regulatory compliance advisory, document alignment services, business plan writing, international job placement, business funding loans, grants sourcing advisory, donations sourcing"
         canonical="https://grahamkarimi.com/services"
         schema={{
           '@context': 'https://schema.org',
@@ -218,7 +245,7 @@ const Services = () => {
           name: 'Kevin Graham Karimi Financial Advisory Services',
           url: 'https://grahamkarimi.com/services',
           description:
-            'Six core advisory services: project funding, cross-border investment structuring, risk management, document alignment, global HR placement, and business funding sourcing.',
+            'Eight core advisory services: project funding, cross-border investment structuring, risk management, document alignment, global HR placement, business funding, business consulting, and grants & donations sourcing.',
           provider: {
             '@type': 'Person',
             name: 'Kevin Graham Karimi',
@@ -237,7 +264,8 @@ const Services = () => {
             <h1>Our Services</h1>
             <p>
               Comprehensive financial solutions for corporations, project promoters, and high-net-worth
-              clients — spanning funding, compliance, investment structuring, and global workforce advisory.
+              clients — spanning funding, compliance, investment structuring, global workforce advisory,
+              and grants &amp; donations sourcing.
             </p>
           </div>
         </section>

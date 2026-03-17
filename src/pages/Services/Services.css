@@ -488,6 +488,18 @@
 .service-icon-card.card-forest i { color: rgba(255,255,255,0.9); }
 .service-icon-card.card-forest .icon-label { color: rgba(255,255,255,0.75); }
 
+.service-icon-card.card-amber {
+  background: linear-gradient(135deg, #92400E, #D97706);
+  box-shadow: 0 20px 50px rgba(180, 83, 9, 0.30);
+}
+ 
+.service-icon-card.card-amber:hover {
+  box-shadow: 0 30px 60px rgba(180, 83, 9, 0.42);
+}
+ 
+.service-icon-card.card-amber i        { color: rgba(255,255,255,0.92); }
+.service-icon-card.card-amber .icon-label { color: rgba(255,255,255,0.78); }
+
 /* ===================================
    RESPONSIVE
    =================================== */

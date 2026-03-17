@@ -11,6 +11,7 @@ const WA_URL = `https://wa.me/${PHONE}?text=${encodeURIComponent(
   "Hi Kevin, I'd like to discuss your financial advisory services. Please let me know your availability."
 )}`;
 
+/* Hero right-column service cards */
 const SERVICES = [
   {
     number: '01',
@@ -60,6 +61,14 @@ const SERVICES = [
     path:   '/services/business-consultant',
     accent: '#facc15',
   },
+  {
+    number: '07',
+    icon:   'fas fa-search-dollar',
+    title:  'Grants & Donations',
+    sub:    'Sourcing Advisory',
+    path:   '/services/grants-donations',
+    accent: '#D97706',
+  },
 ];
 
 const STATS = [
@@ -69,6 +78,7 @@ const STATS = [
   { number: '100+',   label: 'Clients'       },
 ];
 
+/* Expertise section cards */
 const SERVICES_CARDS = [
   {
     num:   '01',
@@ -123,6 +133,15 @@ const SERVICES_CARDS = [
     sub:   'Registration · Accounting · Tax · HR · Strategy',
     body:  'From company formation and accounting to tax planning, HR consulting, management strategy, and specialist advisory — all coordinated by one expert.',
     path:  '/services/business-consultant',
+  },
+  {
+    num:   '07',
+    icon:  'fas fa-search-dollar',
+    color: '#D97706',
+    title: 'Grants & Donations',
+    sub:   'Sourcing Advisory',
+    body:  'Sourcing grants and donations for NGOs, non-profits, infrastructure developers, and community groups from government, foundation, corporate, and international networks.',
+    path:  '/services/grants-donations',
   },
 ];
 
@@ -183,8 +202,6 @@ const Home = () => {
 
         {/* ══════════════════════════════════════════════════════════════════
             HERO
-            Layout:  desktop → 2-col grid  (left: identity | right: services)
-                     ≤ 960px → 1-col stack (identity first, services below)
         ══════════════════════════════════════════════════════════════════ */}
         <section id="hero" className="hero-section" aria-labelledby="hero-name">
 
@@ -229,8 +246,9 @@ const Home = () => {
 
               <p className="hero-tagline">
                 With over 15 years of global experience, Kevin delivers specialist advisory across
-                project funding, international financial strategy, risk &amp; compliance, and
-                document alignment services, serving high-net-worth corporations across 40+ countries.
+                project funding, international financial strategy, risk &amp; compliance, grants
+                &amp; donations sourcing, and document alignment services — serving high-net-worth
+                corporations and organisations across 40+ countries.
               </p>
 
               <div className="hero-cta">
@@ -274,7 +292,7 @@ const Home = () => {
 
             {/* ── RIGHT — Service cards ── */}
             <div className="hero-right">
-              <p className="hero-services-label" aria-hidden="true">6 Core Services</p>
+              <p className="hero-services-label" aria-hidden="true">7 Core Services</p>
 
               <nav aria-label="Core services">
                 {SERVICES.map(svc => (
@@ -305,7 +323,6 @@ const Home = () => {
             {/* end hero-right */}
 
           </div>
-          {/* end hero-inner */}
 
           <div className="hero-scroll" aria-hidden="true">
             <i className="fas fa-chevron-down" />
@@ -329,8 +346,9 @@ const Home = () => {
               <span className="exp-eyebrow">What We Offer</span>
               <h2 id="expertise-heading">Global Financial Services</h2>
               <p>
-                Six specialist disciplines under one advisory roof — from project funding
-                and compliance to business formation and HR, deployed across 40+ countries.
+                Seven specialist disciplines under one advisory roof — from project funding
+                and compliance to business formation, grants sourcing, and HR — deployed
+                across 40+ countries.
               </p>
             </div>
 
@@ -364,7 +382,6 @@ const Home = () => {
 
         {/* ══════════════════════════════════════════════════════════════════
             EXPERIENCE SECTION
-            Two-column: bio + milestones left, photo + credentials right.
         ══════════════════════════════════════════════════════════════════ */}
         <section id="experience" className="bio-section" aria-labelledby="experience-heading">
           <div className="bio-inner">

@@ -15,7 +15,8 @@ const SERVICES = [
   { id: 'risk-compliance',      label: 'Risk & Compliance' },
   { id: 'document-alignment',   label: 'Document Alignment' },
   { id: 'business-funding',     label: 'Business Funding & Loans' },
-  { id: 'Business-Consultant',  label: 'Business Consultant'},
+  { id: 'Business-Consultant',  label: 'Business Consultant' },
+  { id: 'grants-donations',     label: 'Grants & Donations' },
   { id: 'general-enquiry',      label: 'General Enquiry' },
 ];
 
