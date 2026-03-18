@@ -131,8 +131,8 @@ const GrantsDonations = () => {
 
       {/* ── SEO ────────────────────────────────────────────────────── */}
       <SEO
-        title="Grants & Donations Sourcing – NGOs, Non-Profits & Projects"
-        description="Kevin Graham sources grants and donations for NGOs, non-profits, infrastructure developers, and community groups from government, foundation, corporate, and international funding networks."
+        title="Grants & Donations Sourcing | NGOs, Non-Profits & Projects"
+        description="Kevin secures grants and donations for NGOs, nonprofits, infrastructure developers, and groups from government, corporate, and key global funding networks."
         keywords="grants sourcing advisory, donations sourcing, NGO funding, non-profit grants, government grants, charitable foundation grants, CSR donations, international aid grants, impact funds, grant application advisory, community grants, infrastructure grants"
         canonical="https://grahamkarimi.com/services/grants-donations"
         schema={{
@@ -148,6 +148,15 @@ const GrantsDonations = () => {
             telephone: '+447723339858',
             email: 'kevin.uk@grahamkarimi.com',
           },
+            "offers": {
+            "@type": "Offer",
+            "priceSpecification": {
+                "@type": "PriceSpecification",
+                "price": "300",
+                "priceCurrency": "USD",
+                "description": "Minimum upfront advisory service fee ..."
+            }
+            },
           serviceType: 'Grant Sourcing & Donations Advisory',
           areaServed: { '@type': 'Country', name: 'Global' },
           url: 'https://grahamkarimi.com/services/grants-donations',
@@ -184,8 +193,8 @@ const GrantsDonations = () => {
               <p className="gd-header-tagline">
                 Securing grants and donations requires expert knowledge of funding landscapes,
                 eligibility criteria, and application standards. Kevin sources opportunities from
-                government programmes, charitable foundations, corporate CSR budgets, and
-                international aid networks — and prepares applications on your behalf.
+                government programmes, charitable foundations, corporate CSR budgets,
+                international aid networks, and prepares applications on your behalf.
               </p>
               <div className="gd-header-cta">
                 <a href="#contact" className="gd-btn-primary">

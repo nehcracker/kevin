@@ -1,10 +1,15 @@
-# Allow all crawlers
+# ═══════════════════════════════════════════════════
+# robots.txt — grahamkarimi.com
+# ═══════════════════════════════════════════════════
+
+# Allow all well-behaved crawlers full access
 User-agent: *
 Allow: /
 
-# Disallow admin or private areas (if any)
-# Disallow: /admin/
-# Disallow: /private/
+# Block access to CRA build internals (not useful to index)
+Disallow: /static/
+Disallow: /*.json$
+Disallow: /*.map$
 
 # Sitemap location
 Sitemap: https://grahamkarimi.com/sitemap.xml
