@@ -264,7 +264,7 @@ const Services = () => {
             <h1>Our Services</h1>
             <p>
               Comprehensive financial solutions for corporations, project promoters, and high-net-worth
-              clients — spanning funding, compliance, investment structuring, global workforce advisory,
+              clients, spanning funding, compliance, investment structuring, global workforce advisory,
               and grants &amp; donations sourcing.
             </p>
           </div>

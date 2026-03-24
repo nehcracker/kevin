@@ -2,37 +2,100 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Graham</title>
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-    <!--
-      NO SEO tags here (no title, description, og:*, twitter:*, canonical).
-      The SEO component in src/components/common/SEO/SEO.jsx handles all of
-      them via useEffect on every page render — guaranteed page-to-page updates.
-    -->
+    <!-- ═══════════════════════════════════════════════════════════════
+         FAVICONS
+         Place favicon.ico + favicon.svg in /public
+         Generate all sizes at https://realfavicongenerator.net
+    ═══════════════════════════════════════════════════════════════ -->
+    <link rel="icon"             href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="icon"             href="%PUBLIC_URL%/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/apple-touch-icon.png" />
+    <link rel="manifest"         href="%PUBLIC_URL%/manifest.json" />
 
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!-- ═══════════════════════════════════════════════════════════════
+         VIEWPORT & THEME
+    ═══════════════════════════════════════════════════════════════ -->
+    <meta name="viewport"    content="width=device-width, initial-scale=1" />
 
-    <!-- Font Awesome -->
-    
+    <!-- ═══════════════════════════════════════════════════════════════
+         PRIMARY META — shown before React hydrates
+         The SEO component overwrites these per-page after load.
+         These values serve crawlers, link previews, and the browser tab.
+    ═══════════════════════════════════════════════════════════════ -->
+    <title>Kevin Graham | Global Financial Advisor &amp; Project Funding Specialist</title>
 
-    <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W=="
-    crossorigin="anonymous"
-    />
+    <meta name="description"
+          content="Kevin Graham  — Global Financial Advisor and Director of Risk Management. Expert in project funding, international finance, risk &amp; compliance, and grants sourcing across 40+ countries." />
 
-    <!-- Google Fonts -->
+    <meta name="keywords"
+          content="Kevin Graham, Kevin Graham Karimi, global financial advisor, project funding specialist, risk management director, InBest Consultant Solutions, international finance advisor, compliance advisory, grants sourcing" />
+
+    <meta name="robots"   content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="author"   content="Kevin Graham Karimi" />
+    <link rel="canonical" href="https://grahamkarimi.com/" />
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         OPEN GRAPH
+    ═══════════════════════════════════════════════════════════════ -->
+    <meta property="og:site_name"        content="Kevin Graham" />
+    <meta property="og:type"             content="website" />
+    <meta property="og:title"            content="Kevin Graham | Global Financial Advisor &amp; Project Funding Specialist" />
+    <meta property="og:description"      content="Kevin Graham Karimi — Global Financial Advisor and Director of Risk Management. Expert in project funding, international finance, risk &amp; compliance, and grants sourcing across 40+ countries." />
+    <meta property="og:url"              content="https://grahamkarimi.com/" />
+    <meta property="og:image"            content="https://grahamkarimi.com/Kevin-graham.png" />
+    <meta property="og:image:secure_url" content="https://grahamkarimi.com/Kevin-graham.png" />
+    <meta property="og:image:width"      content="1200" />
+    <meta property="og:image:height"     content="630" />
+    <meta property="og:image:alt"        content="Kevin Graham Karimi – Global Financial Advisor" />
+    <meta property="og:locale"           content="en_US" />
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         TWITTER CARD
+    ═══════════════════════════════════════════════════════════════ -->
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:site"        content="@kevingrahamkarimi" />
+    <meta name="twitter:creator"     content="@kevingrahamkarimi" />
+    <meta name="twitter:title"       content="Kevin Graham | Global Financial Advisor &amp; Project Funding Specialist" />
+    <meta name="twitter:description" content="Kevin Graham Karimi — Global Financial Advisor and Director of Risk Management. Expert in project funding, international finance, risk &amp; compliance, and grants sourcing across 40+ countries." />
+    <meta name="twitter:image"       content="https://grahamkarimi.com/Kevin-graham.png" />
+    <meta name="twitter:image:alt"   content="Kevin Graham Karimi – Global Financial Advisor" />
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SCHEMA.ORG — Person (static baseline, SEO component extends per page)
+    ═══════════════════════════════════════════════════════════════ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Kevin Graham Karimi",
+      "url": "https://grahamkarimi.com/",
+      "image": "https://grahamkarimi.com/Kevin-graham.png",
+      "jobTitle": "Global Financial Advisor & Director of Risk Management",
+      "description": "Expert financial advisor specialising in project funding, international finance, risk management, regulatory compliance, and grants sourcing across 40+ countries.",
+      "telephone": "+447723339858",
+      "email": "kevin.uk@grahamkarimi.com",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "InBest Consultant Solutions",
+        "url": "https://inbestconsultant.com"
+      },
+      "sameAs": [
+        "https://linkedin.com/in/kevingrahamkarimi",
+        "https://www.facebook.com/kevingrahamkarimi",
+        "https://t.me/kevingrahamUK"
+      ]
+    }
+    </script>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         FONTS — Poppins (headings) + Crimson Pro (body serif)
+         Already used across the site; preconnect reduces TTFB.
+    ═══════════════════════════════════════════════════════════════ -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&family=Roboto:wght@300;400;500;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&family=Crimson+Pro:wght@400;600;700&display=swap" rel="stylesheet" />
+
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
