@@ -10,7 +10,7 @@ const Footer = () => {
         <div className="footer-content">
 
           <div className="footer-info">
-            <h3>Kevin Graham</h3>
+<h3><a href="https://register.fca.org.uk/s/individual?id=003b000000LUZUPAA5" target="_blank" rel="noopener noreferrer">Kevin Graham</a></h3>
             <p>
               With over 15 years of global experience, Kevin delivers specialist advisory across
               project funding, international financial strategy, risk &amp; compliance, and document
