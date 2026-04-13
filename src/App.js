@@ -11,6 +11,7 @@ import DocumentAlignment from './pages/Services/DocumentAlignment/DocumentAlignm
 import BusinessFunding from './pages/Services/BusinessFunding/BusinessFunding';
 import BusinessConsultant from './pages/Services/BusinessConsultant/BusinessConsultant';
 import GrantsDonations from './pages/Services/GrantsDonations/GrantsDonations';
+import ProjectFundersInvestors from './pages/Services/ProjectFundersInvestors/ProjectFundersInvestors';
 import Reviews from './components/Reviews/Reviews';
 import Contact from './components/Contact/Contact';
 import Partners from './components/Partners/Partners';
@@ -24,16 +25,17 @@ function App() {
       <div className="app">
         <Header />
         <Routes>
-          <Route path="/"                                             element={<Home />} />
-          <Route path="/about"                                        element={<About />} />
-          <Route path="/services"                                     element={<Services />} />
-          <Route path="/services/project-funding"                     element={<ProjectFunding />} />
-          <Route path="/services/international-financial-advisor"     element={<InternationalFinancialAdvisor />} />
-          <Route path="/services/risk-compliance"                     element={<RiskCompliance />} />
-          <Route path="/services/document-alignment-services"         element={<DocumentAlignment />} />
-          <Route path="/services/business-funding-loans"              element={<BusinessFunding />} />
-          <Route path="/services/business-consultant"                 element={<BusinessConsultant />} />
-          <Route path="/services/grants-donations"                    element={<GrantsDonations />} />
+          <Route path="/"                                                  element={<Home />} />
+          <Route path="/about"                                             element={<About />} />
+          <Route path="/services"                                          element={<Services />} />
+          <Route path="/services/project-funding"                          element={<ProjectFunding />} />
+          <Route path="/services/international-financial-advisor"          element={<InternationalFinancialAdvisor />} />
+          <Route path="/services/risk-compliance"                          element={<RiskCompliance />} />
+          <Route path="/services/document-alignment-services"              element={<DocumentAlignment />} />
+          <Route path="/services/business-funding-loans"                   element={<BusinessFunding />} />
+          <Route path="/services/business-consultant"                      element={<BusinessConsultant />} />
+          <Route path="/services/grants-donations"                         element={<GrantsDonations />} />
+          <Route path="/services/project-funders-and-investors"            element={<ProjectFundersInvestors />} />
         </Routes>
         <Reviews />
         <Contact />

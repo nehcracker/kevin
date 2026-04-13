@@ -62,13 +62,13 @@
   box-shadow: -6px 6px 20px rgba(0, 0, 0, 0.25);
 }
 
-/* ── WhatsApp ─────────────────────────────────────────────────── */
-.floating-btn.whatsapp {
+/* ── IMO ─────────────────────────────────────────────────── */
+.floating-btn.imo {
   background: linear-gradient(135deg, #25D366, #128C7E);
   transition-delay: 0s; /* slides in first */
 }
 
-.floating-btn.whatsapp:hover {
+.floating-btn.imo:hover {
   background: linear-gradient(135deg, #2be070, #128C7E);
 }
 
@@ -146,7 +146,7 @@
    ═══════════════════════════════════════════════════════════════ */
 
 /* Overlay */
-.wa-overlay {
+.imo-overlay {
   position: fixed;
   background: rgba(0, 20, 60, 0.55);
   z-index: 10000;
@@ -154,32 +154,32 @@
   align-items: center;
   justify-content: center;
   padding: 16px;
-  animation: waOverlayIn 0.2s ease;
+  animation: imoOverlayIn 0.2s ease;
 }
 
-@keyframes waOverlayIn {
+@keyframes imoOverlayIn {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
 
 /* Modal card */
-.wa-modal {
+.imo-modal {
   background: #fff;
   border-radius: 16px;
   width: 100%;
   max-width: 420px;
   box-shadow: 0 24px 60px rgba(0, 30, 80, 0.22);
   overflow: hidden;
-  animation: waModalIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: imoModalIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-@keyframes waModalIn {
+@keyframes imoModalIn {
   from { opacity: 0; transform: scale(0.92) translateY(16px); }
   to   { opacity: 1; transform: scale(1)    translateY(0);    }
 }
 
 /* Header */
-.wa-modal__header {
+.imo-modal__header {
   display: flex;
   align-items: center;
   gap: 14px;
@@ -188,7 +188,7 @@
   color: white;
 }
 
-.wa-modal__icon {
+.imo-modal__icon {
   width: 44px;
   height: 44px;
   background: rgba(255,255,255,0.15);
@@ -200,9 +200,9 @@
   flex-shrink: 0;
 }
 
-.wa-modal__header-text { flex: 1; }
+.imo-modal__header-text { flex: 1; }
 
-.wa-modal__title {
+.imo-modal__title {
   margin: 0;
   font-size: 1.05rem;
   font-weight: 700;
@@ -210,14 +210,14 @@
   color: #fff;
 }
 
-.wa-modal__subtitle {
+.imo-modal__subtitle {
   margin: 2px 0 0;
   font-size: 0.8rem;
   color: rgba(255,255,255,0.8);
   font-family: 'Poppins', sans-serif;
 }
 
-.wa-modal__close {
+.imo-modal__close {
   background: rgba(255,255,255,0.15);
   border: none;
   color: white;
@@ -233,10 +233,10 @@
   flex-shrink: 0;
 }
 
-.wa-modal__close:hover { background: rgba(255,255,255,0.28); }
+.imo-modal__close:hover { background: rgba(255,255,255,0.28); }
 
 /* Service list */
-.wa-modal__services {
+.imo-modal__services {
   list-style: none;
   margin: 0;
   padding: 14px 16px;
@@ -245,7 +245,7 @@
   gap: 8px;
 }
 
-.wa-modal__service-item {
+.imo-modal__service-item {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -260,12 +260,12 @@
   transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
 }
 
-.wa-modal__service-item:hover {
+.imo-modal__service-item:hover {
   border-color: #0056b3;
   background: #f0f6ff;
 }
 
-.wa-modal__service-item.selected {
+.imo-modal__service-item.selected {
   border-color: #0056b3;
   background: linear-gradient(135deg, #e8f0fc, #f0f6ff);
   color: #003d82;
@@ -273,7 +273,7 @@
 }
 
 /* Custom radio dot */
-.wa-modal__radio {
+.imo-modal__radio {
   width: 18px;
   height: 18px;
   border-radius: 50%;
@@ -283,11 +283,11 @@
   transition: border-color 0.2s ease;
 }
 
-.wa-modal__service-item.selected .wa-modal__radio {
+.imo-modal__service-item.selected .imo-modal__radio {
   border-color: #0056b3;
 }
 
-.wa-modal__service-item.selected .wa-modal__radio::after {
+.imo-modal__service-item.selected .imo-modal__radio::after {
   content: '';
   position: absolute;
   background: #0056b3;
@@ -295,7 +295,7 @@
 }
 
 /* Timezone note */
-.wa-modal__note {
+.imo-modal__note {
   margin: 0 16px 14px;
   padding: 10px 14px;
   background: #f0f6ff;
@@ -310,16 +310,16 @@
   line-height: 1.5;
 }
 
-.wa-modal__note i { color: #0056b3; flex-shrink: 0; }
+.imo-modal__note i { color: #0056b3; flex-shrink: 0; }
 
 /* Actions */
-.wa-modal__actions {
+.imo-modal__actions {
   display: flex;
   gap: 10px;
   padding: 0 16px 20px;
 }
 
-.wa-modal__btn-cancel {
+.imo-modal__btn-cancel {
   flex: 1;
   padding: 11px;
   border-radius: 10px;
@@ -333,12 +333,12 @@
   transition: border-color 0.2s ease, color 0.2s ease;
 }
 
-.wa-modal__btn-cancel:hover {
+.imo-modal__btn-cancel:hover {
   border-color: #0056b3;
   color: #003d82;
 }
 
-.wa-modal__btn-proceed {
+.imo-modal__btn-proceed {
   flex: 2;
   padding: 11px 16px;
   border-radius: 10px;

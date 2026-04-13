@@ -215,14 +215,14 @@
               border-color 0.25s ease;
 }
 
-/* WhatsApp — primary */
-.hero-btn--wa {
+/* IMO — primary */
+.hero-btn--imo {
   background: linear-gradient(135deg, #25D366, #128C7E);
   color: #ffffff;
   box-shadow: 0 6px 22px rgba(37, 211, 102, 0.32);
 }
 
-.hero-btn--wa:hover {
+.hero-btn--imo:hover {
   transform: translateY(-3px);
   box-shadow: 0 12px 30px rgba(37, 211, 102, 0.48);
 }

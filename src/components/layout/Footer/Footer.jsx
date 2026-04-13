@@ -58,17 +58,17 @@ const Footer = () => {
                 <span className="icon-popup">Facebook</span>
               </a>
 
-              {/* wa.me requires no + prefix */}
+              {/* imo.im requires no + prefix */}
               <a
-                href="https://wa.me/447723339858"
+                href="https://imo.im/447723339858"
                 className="social-icon"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="WhatsApp"
-                title="WhatsApp"
+                aria-label="IMO"
+                title="IMO"
               >
-                <i className="fab fa-whatsapp"></i>
-                <span className="icon-popup">WhatsApp</span>
+                <i className="fas fa-comment-dots"></i>
+                <span className="icon-popup">IMO</span>
               </a>
 
               <a

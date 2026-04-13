@@ -10,14 +10,15 @@ const LINKEDIN = 'https://linkedin.com/in/kevingrahamkarimi';
 const FACEBOOK = 'https://www.facebook.com/kevingrahamkarimi';
 
 const SERVICES = [
-  { id: 'project-funding',      label: 'Project Funding' },
-  { id: 'intl-advisory',        label: 'Intl. Financial Advisory' },
-  { id: 'risk-compliance',      label: 'Risk & Compliance' },
-  { id: 'document-alignment',   label: 'Document Alignment' },
-  { id: 'business-funding',     label: 'Business Funding & Loans' },
-  { id: 'Business-Consultant',  label: 'Business Consultant' },
-  { id: 'grants-donations',     label: 'Grants & Donations' },
-  { id: 'general-enquiry',      label: 'General Enquiry' },
+  { id: 'project-funding',          label: 'Project Funding' },
+  { id: 'intl-advisory',            label: 'Intl. Financial Advisory' },
+  { id: 'risk-compliance',          label: 'Risk & Compliance' },
+  { id: 'document-alignment',       label: 'Document Alignment' },
+  { id: 'business-funding',         label: 'Business Funding & Loans' },
+  { id: 'Business-Consultant',      label: 'Business Consultant' },
+  { id: 'grants-donations',         label: 'Grants & Donations' },
+  { id: 'funders-investors',        label: 'Project Funders & Investors' },
+  { id: 'general-enquiry',          label: 'General Enquiry' },
 ];
 
 const RESET_DELAY = 3200; // ms before panel auto-resets after confirmation

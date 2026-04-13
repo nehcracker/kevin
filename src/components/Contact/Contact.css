@@ -188,12 +188,12 @@
   box-shadow: 0 16px 42px rgba(27,94,32,0.52);
 }
 
-/* WhatsApp */
-.contact-card--whatsapp {
+/* IMO */
+.contact-card--imo {
   background: linear-gradient(135deg, #006621, var(--c-wa));
   box-shadow: 0 8px 28px rgba(37,211,102,0.28);
 }
-.contact-card--whatsapp:hover {
+.contact-card--imo:hover {
   box-shadow: 0 14px 36px rgba(37,211,102,0.44);
 }
 

@@ -7,7 +7,7 @@ import './Home.css';
 const PHONE = '447723339858';
 const EMAIL  = 'kevin.uk@grahamkarimi.com';
 
-const WA_URL = `https://wa.me/${PHONE}?text=${encodeURIComponent(
+const IMO_URL = `https://imo.im/${PHONE}?text=${encodeURIComponent(
   "Hi Kevin, I'd like to discuss your financial advisory services. Please let me know your availability."
 )}`;
 
@@ -253,14 +253,14 @@ const Home = () => {
 
               <div className="hero-cta">
                 <a
-                  href={WA_URL}
+                  href={IMO_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hero-btn hero-btn--wa"
-                  aria-label="Contact Kevin via WhatsApp"
+                  className="hero-btn hero-btn--imo"
+                  aria-label="Contact Kevin via IMO"
                 >
-                  <i className="fab fa-whatsapp" aria-hidden="true" />
-                  WhatsApp Kevin
+                  <i className="fas fa-comment-dots" aria-hidden="true" />
+                  IMO Kevin
                 </a>
                 <a
                   href={`mailto:${EMAIL}`}

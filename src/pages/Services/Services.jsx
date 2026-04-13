@@ -224,6 +224,33 @@ const services = [
       'International Aid Grants',
     ],
   },
+  {
+    id: 'project-funders-investors',
+    number: '09',
+    title: 'Project Funders & Investors',
+    subtitle: 'Capital Introduction Advisory',
+    cardClass: 'card-indigo',
+    icon: 'fas fa-hand-holding-usd',
+    iconLabel: 'Capital Introduction',
+    bgClass: 'bg-white',
+    detailPath: '/services/project-funders-and-investors',
+    description:
+      'Kevin connects project sponsors and capital seekers directly with DFIs, development banks, institutional lenders, sovereign funds, and private capital sources — providing curated, mandate-driven introductions for projects from $10M upward across 40+ countries.',
+    solutions: [
+      'DFI & Development Bank Introductions',
+      'Institutional Lender Matching',
+      'Sovereign & Pension Fund Access',
+      'Family Office & UHNW Capital',
+      'ESG & Impact Fund Introductions',
+    ],
+    keywords: [
+      'Project Funders and Investors',
+      'Capital Introduction Advisory',
+      'DFI Funding Access',
+      'Institutional Lender Matching',
+      'Funder Introduction Service',
+    ],
+  },
 ];
 
 const Services = () => {
@@ -236,8 +263,8 @@ const Services = () => {
 
       <SEO
         title="Services – Project Funding, Risk Advisory & International Finance"
-        description="Explore Kevin Graham Karimi's eight core advisory services: international project funding, cross-border financial advisory, risk management, document alignment, global HR placement, business funding, business consulting, and grants & donations sourcing."
-        keywords="project funding services, international project finance, cross border finance advisory, international financial advisor, financial risk management, regulatory compliance advisory, document alignment services, business plan writing, international job placement, business funding loans, grants sourcing advisory, donations sourcing"
+        description="Explore Kevin Graham Karimi's nine core advisory services: international project funding, cross-border financial advisory, risk management, document alignment, global HR placement, business funding, business consulting, grants & donations sourcing, and project funders & investors capital introduction."
+        keywords="project funding services, international project finance, cross border finance advisory, international financial advisor, financial risk management, regulatory compliance advisory, document alignment services, business plan writing, international job placement, business funding loans, grants sourcing advisory, donations sourcing, project funders and investors, capital introduction advisory"
         canonical="https://grahamkarimi.com/services"
         schema={{
           '@context': 'https://schema.org',
@@ -245,7 +272,7 @@ const Services = () => {
           name: 'Kevin Graham Karimi Financial Advisory Services',
           url: 'https://grahamkarimi.com/services',
           description:
-            'Eight core advisory services: project funding, cross-border investment structuring, risk management, document alignment, global HR placement, business funding, business consulting, and grants & donations sourcing.',
+            'Nine core advisory services: project funding, cross-border investment structuring, risk management, document alignment, global HR placement, business funding, business consulting, grants & donations sourcing, and project funders & investors capital introduction.',
           provider: {
             '@type': 'Person',
             name: 'Kevin Graham Karimi',
@@ -265,7 +292,7 @@ const Services = () => {
             <p>
               Comprehensive financial solutions for corporations, project promoters, and high-net-worth
               clients, spanning funding, compliance, investment structuring, global workforce advisory,
-              and grants &amp; donations sourcing.
+              grants &amp; donations sourcing, and direct capital introduction.
             </p>
           </div>
         </section>
