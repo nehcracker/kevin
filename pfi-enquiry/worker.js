@@ -356,10 +356,10 @@ function buildAutoReply(f) {
                 Kevin Graham
               </p>
               <p style="margin:0 0 4px;font-size:13px;color:#546E7A;">
-                Director, Risk Management &amp; Compliance
+                Global Financial Advisor & Project Funding Specialist
               </p>
               <p style="margin:0;font-size:13px;color:#546E7A;">
-                InBest Consultant Solutions &nbsp;·&nbsp; London, UK
+                Cheapside , EC2V, London, United Kingdom.
               </p>
 
             </td>
@@ -462,7 +462,7 @@ const handler = {
         sendEmail({
           to:       fields.email,
           toName:   fields.name,
-          subject:  'Thank you for your enquiry — Kevin Graham, UK',
+          subject:  'Project Submission Requirements and Review Process | Kevin Graham, UK',
           htmlBody: buildAutoReply(fields),
           env,
         }),
