@@ -1,0 +1,21 @@
+name       = "pfi-enquiry"
+main       = "worker.js"
+compatibility_date = "2024-01-01"
+
+# ── Non-sensitive environment variables ───────────────────────────────────
+# Sensitive keys (ZEPTO_API_KEY) are set via:
+#   wrangler secret put ZEPTO_API_KEY
+# and NEVER stored in this file.
+
+[vars]
+FROM_ADDRESS   = "noreply@grahamkarimi.com"
+FROM_NAME      = "Kevin Graham"
+KEVIN_EMAIL    = "kevin.uk@grahamkarimi.com"
+KEVIN_NAME     = "Kevin Graham"
+ALLOWED_ORIGIN = "https://grahamkarimi.com"
+
+# ── Routes ────────────────────────────────────────────────────────────────
+# Uncomment and update once you have a custom domain attached in Cloudflare:
+# [[routes]]
+# pattern = "api.grahamkarimi.com/submit-enquiry"
+# zone_name = "grahamkarimi.com"
