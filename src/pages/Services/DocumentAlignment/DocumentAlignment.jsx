@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { fadeUp, staggerContainer, staggerItem, slideInLeft } from '../../../utils/motion';
 import SEO from '../../../components/common/SEO/SEO';
 import './DocumentAlignment.css';
 
@@ -246,42 +248,58 @@ const DocumentAlignment = () => {
               <span className="current">Document Alignment Services</span>
             </nav>
 
-            <div className="das-header-body">
-              <span className="das-header-label">Financial Advisory Service</span>
-              <h1>
+            <motion.div
+              className="das-header-body"
+              variants={staggerContainer}
+              initial="hidden"
+              animate="visible"
+            >
+              <motion.span className="das-header-label" variants={staggerItem}>Financial Advisory Service</motion.span>
+              <motion.h1 variants={staggerItem}>
                 Document Alignment Services
                 <span>DAS</span>
-              </h1>
-              <p className="das-header-tagline">
+              </motion.h1>
+              <motion.p className="das-header-tagline" variants={staggerItem}>
                 Lenders review structure before approving capital. Investors assess risk before
                 committing funds. Weak documentation delays approval and weakens your negotiating
                 position. DAS prepares, reviews, and aligns your documents to meet lender, investor,
                 and regulatory standards.
-              </p>
-              <div className="das-header-cta">
+              </motion.p>
+              <motion.div className="das-header-cta" variants={staggerItem}>
                 <a href="#contact" className="das-btn-primary">
                   <i className="fas fa-file-signature"></i> Request a Quote
                 </a>
                 <a href="#process" className="das-btn-outline">
                   <i className="fas fa-arrow-down"></i> How It Works
                 </a>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
         </section>
 
         {/* SECTION 2 — FOUR OBJECTIVES STRIP */}
         <section className="das-objectives-strip">
           <div className="container">
-            <div className="das-objectives-grid">
+            <motion.div
+              className="das-objectives-grid"
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-60px' }}
+            >
               {objectives.map((obj, i) => (
-                <div key={i} className="das-objective-card">
+                <motion.div
+                  key={i}
+                  className="das-objective-card"
+                  variants={staggerItem}
+                  whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                >
                   <i className={`${obj.icon} das-objective-icon`}></i>
                   <h3>{obj.title}</h3>
                   <p>{obj.desc}</p>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </section>
 
@@ -331,17 +349,23 @@ const DocumentAlignment = () => {
                 full submission pack preparation.
               </p>
             </div>
-            <div className="das-services-grid">
+            <motion.div
+              className="das-services-grid"
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-60px' }}
+            >
               {coreServices.map((svc, i) => (
-                <div key={i} className="das-service-card">
+                <motion.div key={i} className="das-service-card" variants={staggerItem}>
                   <div className="das-card-icon">
                     <i className={svc.icon}></i>
                   </div>
                   <h3>{svc.title}</h3>
                   <p>{svc.description}</p>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </section>
 
@@ -440,13 +464,21 @@ const DocumentAlignment = () => {
             </div>
             <div className="das-steps">
               {steps.map((step, i) => (
-                <div key={i} className="das-step">
+                <motion.div
+                  key={i}
+                  className="das-step"
+                  variants={slideInLeft}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.12 }}
+                >
                   <div className="das-step-number">{step.number}</div>
                   <div>
                     <h4>{step.title}</h4>
                     <p>{step.description}</p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -475,7 +507,13 @@ const DocumentAlignment = () => {
         </section>
 
         {/* SECTION 9 — THREE-ACTION CTA */}
-        <section className="das-cta-section">
+        <motion.section
+          className="das-cta-section"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-60px' }}
+        >
           <div className="container">
             <h2>Ready to Prepare Your Documentation?</h2>
             <p>
@@ -497,7 +535,7 @@ const DocumentAlignment = () => {
               ))}
             </div>
           </div>
-        </section>
+        </motion.section>
 
       </main>
     </div>
