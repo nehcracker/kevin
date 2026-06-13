@@ -1,0 +1,6 @@
+/* src/components/common/TiltCard/TiltCard.css */
+.tilt-card {
+  perspective: 800px;
+  display: inline-block;
+  will-change: transform;
+}
