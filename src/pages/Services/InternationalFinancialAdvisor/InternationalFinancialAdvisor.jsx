@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { fadeUp, staggerContainer, staggerItem, slideInLeft } from '../../../utils/motion';
 import SEO from '../../../components/common/SEO/SEO';
 import './InternationalFinancialAdvisor.css';
 
@@ -190,41 +192,52 @@ const InternationalFinancialAdvisor = () => {
               <span className="current">International Financial Advisor</span>
             </nav>
 
-            <div className="ifa-header-body">
-              <span className="ifa-header-label">Financial Advisory Service</span>
-              <h1>
+            <motion.div
+              className="ifa-header-body"
+              variants={staggerContainer}
+              initial="hidden"
+              animate="visible"
+            >
+              <motion.span variants={staggerItem} className="ifa-header-label">Financial Advisory Service</motion.span>
+              <motion.h1 variants={staggerItem}>
                 Cross Border Financial Advisory
                 <span>& Investment Structuring</span>
-              </h1>
-              <p className="ifa-header-tagline">
+              </motion.h1>
+              <motion.p variants={staggerItem} className="ifa-header-tagline">
                 You invest across jurisdictions. Poor structuring exposes you to regulatory risk,
                 capital loss, and delayed execution. This service focuses on structuring international
                 transactions with legal clarity, financial efficiency, and risk control.
-              </p>
-              <div className="ifa-header-cta">
+              </motion.p>
+              <motion.div variants={staggerItem} className="ifa-header-cta">
                 <a href="#contact" className="ifa-btn-primary">
                   <i className="fas fa-calendar-check"></i> Schedule Consultation
                 </a>
                 <a href="#process" className="ifa-btn-outline">
                   <i className="fas fa-arrow-down"></i> How It Works
                 </a>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
         </section>
 
         {/* SECTION 2 — THREE LENSES STRIP */}
         <section className="ifa-lenses-strip">
           <div className="container">
-            <div className="ifa-lenses-grid">
+            <motion.div
+              className="ifa-lenses-grid"
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-60px' }}
+            >
               {lenses.map((lens, i) => (
-                <div key={i} className="ifa-lens-card">
+                <motion.div key={i} variants={staggerItem} className="ifa-lens-card">
                   <i className={`${lens.icon} ifa-lens-icon`}></i>
                   <h3>{lens.title}</h3>
                   <p>{lens.desc}</p>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </section>
 
@@ -262,21 +275,38 @@ const InternationalFinancialAdvisor = () => {
         {/* SECTION 4 — CORE SERVICES */}
         <section className="ifa-core-services">
           <div className="container">
-            <div className="ifa-section-header">
+            <motion.div
+              className="ifa-section-header"
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-60px' }}
+            >
               <h2>Core Services</h2>
               <p>Six structured advisory solutions for every stage of international investment and cross-border structuring.</p>
-            </div>
-            <div className="ifa-services-grid">
+            </motion.div>
+            <motion.div
+              className="ifa-services-grid"
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-80px' }}
+            >
               {coreServices.map((svc, i) => (
-                <div key={i} className="ifa-service-card">
+                <motion.div
+                  key={i}
+                  className="ifa-service-card"
+                  variants={staggerItem}
+                  whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                >
                   <div className="ifa-card-icon">
                     <i className={svc.icon}></i>
                   </div>
                   <h3>{svc.title}</h3>
                   <p>{svc.description}</p>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </section>
 
@@ -289,13 +319,21 @@ const InternationalFinancialAdvisor = () => {
             </div>
             <div className="ifa-steps">
               {steps.map((step, i) => (
-                <div key={i} className="ifa-step">
+                <motion.div
+                  key={i}
+                  className="ifa-step"
+                  variants={slideInLeft}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.12 }}
+                >
                   <div className="ifa-step-number">{step.number}</div>
                   <div>
                     <h4>{step.title}</h4>
                     <p>{step.description}</p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -391,7 +429,13 @@ const InternationalFinancialAdvisor = () => {
         </section>
 
         {/* SECTION 9 — CTA */}
-        <section className="ifa-cta-section">
+        <motion.section
+          className="ifa-cta-section"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-60px' }}
+        >
           <div className="container">
             <h2>Ready to Protect Your Capital Across Borders?</h2>
             <p>
@@ -407,7 +451,7 @@ const InternationalFinancialAdvisor = () => {
               </a>
             </div>
           </div>
-        </section>
+        </motion.section>
 
       </main>
     </div>
