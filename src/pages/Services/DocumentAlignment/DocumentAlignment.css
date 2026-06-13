@@ -966,3 +966,125 @@
   .das-header-cta a  { width: 100%; justify-content: center; }
   .das-who-grid      { grid-template-columns: 1fr 1fr; }
 }
+
+/* ── Dark Navy Override ── */
+.das-page,
+.das-header,
+.das-hero   { background: var(--bg-deep) !important; color: var(--text-primary) !important; }
+
+.das-header-label,
+.das-hero-eyebrow,
+.das-eyebrow,
+.das-stag   { color: var(--accent) !important; }
+
+.das-header-body h1,
+.das-hero h1,
+.das-sTitle { color: var(--text-primary)   !important; }
+
+.das-header-tagline,
+.das-hero-body,
+.das-ssub,
+.das-overview-text p { color: var(--text-secondary) !important; }
+
+.das-btn-primary {
+  background: var(--accent-gradient) !important;
+  color: #fff !important;
+  border: none !important;
+}
+.das-btn-outline {
+  background: var(--glass-bg) !important;
+  border-color: var(--border-glow) !important;
+  color: var(--accent) !important;
+}
+
+/* Strip / pill bars */
+.das-focus-strip,
+.das-factors-strip,
+.das-pillars-strip,
+.das-lenses-strip,
+.das-objectives-strip,
+.das-trust-bar  {
+  background: var(--bg-card) !important;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.das-focus-card,
+.das-factor-card,
+.das-pillar-card,
+.das-lens-card,
+.das-objective-card,
+.das-ti          {
+  background: var(--glass-bg)    !important;
+  border-color: var(--border-subtle) !important;
+  color: var(--text-secondary)   !important;
+}
+
+/* Main content sections */
+.das-sec,
+.das-section,
+.das-overview,
+.das-core-services,
+.das-funding-types { background: var(--bg-deep) !important; }
+
+.das-sec-alt,
+.das-process      { background: var(--bg-card) !important; border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); }
+
+/* Cards in grids */
+.das-vc,
+.das-crit-card,
+.das-source-card,
+.das-service-card,
+.das-funding-card,
+.das-stat-card,
+.das-bc-stat-card {
+  background: var(--bg-card)    !important;
+  border: 1px solid var(--border-subtle) !important;
+  color: var(--text-secondary)  !important;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+.das-vc:hover,
+.das-crit-card:hover,
+.das-source-card:hover,
+.das-service-card:hover,
+.das-funding-card:hover {
+  transform: translateY(-4px) !important;
+  border-color: var(--accent) !important;
+  box-shadow: 0 12px 32px rgba(77,163,255,0.12) !important;
+  border-left: 3px solid var(--accent) !important;
+}
+
+.das-vc-t,
+.das-crit-t,
+.das-sc-name,
+.das-vc-num { color: var(--accent) !important; }
+
+.das-vc-d,
+.das-crit-d,
+.das-sc-desc,
+.das-sc-type { color: var(--text-secondary) !important; }
+
+/* Process steps */
+.das-steps,
+.das-step   { color: var(--text-secondary) !important; }
+.das-step-circle,
+.das-step-number { background: var(--bg-elevated) !important; border-color: var(--border-subtle) !important; color: var(--accent) !important; }
+.das-step-circle.active,
+.das-step-number.active { background: var(--accent-gradient) !important; color: #fff !important; }
+.das-step-t { color: var(--text-primary) !important; }
+
+/* Sector pills */
+.das-sector-pill,
+.das-sp     {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-subtle) !important;
+  color: var(--text-secondary) !important;
+}
+.das-sp-name { color: var(--text-primary) !important; }
+.das-sp-icon { color: var(--accent) !important; }
+
+/* CTA section */
+.das-cta    { background: var(--bg-elevated) !important; border-top: 1px solid var(--border-subtle); }
+.das-cta h2 { color: var(--text-primary) !important; }
+.das-cta p  { color: var(--text-secondary) !important; }

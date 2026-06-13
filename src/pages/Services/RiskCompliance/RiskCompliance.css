@@ -856,3 +856,125 @@
   .rc-cta-buttons a { width: 100%; justify-content: center; }
   .rc-industries-grid { grid-template-columns: 1fr 1fr; }
 }
+
+/* ── Dark Navy Override ── */
+.rc-page,
+.rc-header,
+.rc-hero   { background: var(--bg-deep) !important; color: var(--text-primary) !important; }
+
+.rc-header-label,
+.rc-hero-eyebrow,
+.rc-eyebrow,
+.rc-stag   { color: var(--accent) !important; }
+
+.rc-header-body h1,
+.rc-hero h1,
+.rc-sTitle { color: var(--text-primary)   !important; }
+
+.rc-header-tagline,
+.rc-hero-body,
+.rc-ssub,
+.rc-overview-text p { color: var(--text-secondary) !important; }
+
+.rc-btn-primary {
+  background: var(--accent-gradient) !important;
+  color: #fff !important;
+  border: none !important;
+}
+.rc-btn-outline {
+  background: var(--glass-bg) !important;
+  border-color: var(--border-glow) !important;
+  color: var(--accent) !important;
+}
+
+/* Strip / pill bars */
+.rc-focus-strip,
+.rc-factors-strip,
+.rc-pillars-strip,
+.rc-lenses-strip,
+.rc-objectives-strip,
+.rc-trust-bar  {
+  background: var(--bg-card) !important;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.rc-focus-card,
+.rc-factor-card,
+.rc-pillar-card,
+.rc-lens-card,
+.rc-objective-card,
+.rc-ti          {
+  background: var(--glass-bg)    !important;
+  border-color: var(--border-subtle) !important;
+  color: var(--text-secondary)   !important;
+}
+
+/* Main content sections */
+.rc-sec,
+.rc-section,
+.rc-overview,
+.rc-core-services,
+.rc-funding-types { background: var(--bg-deep) !important; }
+
+.rc-sec-alt,
+.rc-process      { background: var(--bg-card) !important; border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); }
+
+/* Cards in grids */
+.rc-vc,
+.rc-crit-card,
+.rc-source-card,
+.rc-service-card,
+.rc-funding-card,
+.rc-stat-card,
+.rc-bc-stat-card {
+  background: var(--bg-card)    !important;
+  border: 1px solid var(--border-subtle) !important;
+  color: var(--text-secondary)  !important;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+.rc-vc:hover,
+.rc-crit-card:hover,
+.rc-source-card:hover,
+.rc-service-card:hover,
+.rc-funding-card:hover {
+  transform: translateY(-4px) !important;
+  border-color: var(--accent) !important;
+  box-shadow: 0 12px 32px rgba(77,163,255,0.12) !important;
+  border-left: 3px solid var(--accent) !important;
+}
+
+.rc-vc-t,
+.rc-crit-t,
+.rc-sc-name,
+.rc-vc-num { color: var(--accent) !important; }
+
+.rc-vc-d,
+.rc-crit-d,
+.rc-sc-desc,
+.rc-sc-type { color: var(--text-secondary) !important; }
+
+/* Process steps */
+.rc-steps,
+.rc-step   { color: var(--text-secondary) !important; }
+.rc-step-circle,
+.rc-step-number { background: var(--bg-elevated) !important; border-color: var(--border-subtle) !important; color: var(--accent) !important; }
+.rc-step-circle.active,
+.rc-step-number.active { background: var(--accent-gradient) !important; color: #fff !important; }
+.rc-step-t { color: var(--text-primary) !important; }
+
+/* Sector pills */
+.rc-sector-pill,
+.rc-sp     {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-subtle) !important;
+  color: var(--text-secondary) !important;
+}
+.rc-sp-name { color: var(--text-primary) !important; }
+.rc-sp-icon { color: var(--accent) !important; }
+
+/* CTA section */
+.rc-cta    { background: var(--bg-elevated) !important; border-top: 1px solid var(--border-subtle); }
+.rc-cta h2 { color: var(--text-primary) !important; }
+.rc-cta p  { color: var(--text-secondary) !important; }

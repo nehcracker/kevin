@@ -640,3 +640,125 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ── Dark Navy Override ── */
+.bc-page,
+.bc-header,
+.bc-hero   { background: var(--bg-deep) !important; color: var(--text-primary) !important; }
+
+.bc-header-label,
+.bc-hero-eyebrow,
+.bc-eyebrow,
+.bc-stag   { color: var(--accent) !important; }
+
+.bc-header-body h1,
+.bc-hero h1,
+.bc-sTitle { color: var(--text-primary)   !important; }
+
+.bc-header-tagline,
+.bc-hero-body,
+.bc-ssub,
+.bc-overview-text p { color: var(--text-secondary) !important; }
+
+.bc-btn-primary {
+  background: var(--accent-gradient) !important;
+  color: #fff !important;
+  border: none !important;
+}
+.bc-btn-outline {
+  background: var(--glass-bg) !important;
+  border-color: var(--border-glow) !important;
+  color: var(--accent) !important;
+}
+
+/* Strip / pill bars */
+.bc-focus-strip,
+.bc-factors-strip,
+.bc-pillars-strip,
+.bc-lenses-strip,
+.bc-objectives-strip,
+.bc-trust-bar  {
+  background: var(--bg-card) !important;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.bc-focus-card,
+.bc-factor-card,
+.bc-pillar-card,
+.bc-lens-card,
+.bc-objective-card,
+.bc-ti          {
+  background: var(--glass-bg)    !important;
+  border-color: var(--border-subtle) !important;
+  color: var(--text-secondary)   !important;
+}
+
+/* Main content sections */
+.bc-sec,
+.bc-section,
+.bc-overview,
+.bc-core-services,
+.bc-funding-types { background: var(--bg-deep) !important; }
+
+.bc-sec-alt,
+.bc-process      { background: var(--bg-card) !important; border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); }
+
+/* Cards in grids */
+.bc-vc,
+.bc-crit-card,
+.bc-source-card,
+.bc-service-card,
+.bc-funding-card,
+.bc-stat-card,
+.bc-bc-stat-card {
+  background: var(--bg-card)    !important;
+  border: 1px solid var(--border-subtle) !important;
+  color: var(--text-secondary)  !important;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+.bc-vc:hover,
+.bc-crit-card:hover,
+.bc-source-card:hover,
+.bc-service-card:hover,
+.bc-funding-card:hover {
+  transform: translateY(-4px) !important;
+  border-color: var(--accent) !important;
+  box-shadow: 0 12px 32px rgba(77,163,255,0.12) !important;
+  border-left: 3px solid var(--accent) !important;
+}
+
+.bc-vc-t,
+.bc-crit-t,
+.bc-sc-name,
+.bc-vc-num { color: var(--accent) !important; }
+
+.bc-vc-d,
+.bc-crit-d,
+.bc-sc-desc,
+.bc-sc-type { color: var(--text-secondary) !important; }
+
+/* Process steps */
+.bc-steps,
+.bc-step   { color: var(--text-secondary) !important; }
+.bc-step-circle,
+.bc-step-number { background: var(--bg-elevated) !important; border-color: var(--border-subtle) !important; color: var(--accent) !important; }
+.bc-step-circle.active,
+.bc-step-number.active { background: var(--accent-gradient) !important; color: #fff !important; }
+.bc-step-t { color: var(--text-primary) !important; }
+
+/* Sector pills */
+.bc-sector-pill,
+.bc-sp     {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-subtle) !important;
+  color: var(--text-secondary) !important;
+}
+.bc-sp-name { color: var(--text-primary) !important; }
+.bc-sp-icon { color: var(--accent) !important; }
+
+/* CTA section */
+.bc-cta    { background: var(--bg-elevated) !important; border-top: 1px solid var(--border-subtle); }
+.bc-cta h2 { color: var(--text-primary) !important; }
+.bc-cta p  { color: var(--text-secondary) !important; }

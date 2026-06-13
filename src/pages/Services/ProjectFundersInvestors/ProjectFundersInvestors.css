@@ -1055,3 +1055,125 @@
     animation: none;
   }
 }
+
+/* ── Dark Navy Override ── */
+.pfi-page,
+.pfi-header,
+.pfi-hero   { background: var(--bg-deep) !important; color: var(--text-primary) !important; }
+
+.pfi-header-label,
+.pfi-hero-eyebrow,
+.pfi-eyebrow,
+.pfi-stag   { color: var(--accent) !important; }
+
+.pfi-header-body h1,
+.pfi-hero h1,
+.pfi-sTitle { color: var(--text-primary)   !important; }
+
+.pfi-header-tagline,
+.pfi-hero-body,
+.pfi-ssub,
+.pfi-overview-text p { color: var(--text-secondary) !important; }
+
+.pfi-btn-primary {
+  background: var(--accent-gradient) !important;
+  color: #fff !important;
+  border: none !important;
+}
+.pfi-btn-outline {
+  background: var(--glass-bg) !important;
+  border-color: var(--border-glow) !important;
+  color: var(--accent) !important;
+}
+
+/* Strip / pill bars */
+.pfi-focus-strip,
+.pfi-factors-strip,
+.pfi-pillars-strip,
+.pfi-lenses-strip,
+.pfi-objectives-strip,
+.pfi-trust-bar  {
+  background: var(--bg-card) !important;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.pfi-focus-card,
+.pfi-factor-card,
+.pfi-pillar-card,
+.pfi-lens-card,
+.pfi-objective-card,
+.pfi-ti          {
+  background: var(--glass-bg)    !important;
+  border-color: var(--border-subtle) !important;
+  color: var(--text-secondary)   !important;
+}
+
+/* Main content sections */
+.pfi-sec,
+.pfi-section,
+.pfi-overview,
+.pfi-core-services,
+.pfi-funding-types { background: var(--bg-deep) !important; }
+
+.pfi-sec-alt,
+.pfi-process      { background: var(--bg-card) !important; border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); }
+
+/* Cards in grids */
+.pfi-vc,
+.pfi-crit-card,
+.pfi-source-card,
+.pfi-service-card,
+.pfi-funding-card,
+.pfi-stat-card,
+.pfi-bc-stat-card {
+  background: var(--bg-card)    !important;
+  border: 1px solid var(--border-subtle) !important;
+  color: var(--text-secondary)  !important;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+.pfi-vc:hover,
+.pfi-crit-card:hover,
+.pfi-source-card:hover,
+.pfi-service-card:hover,
+.pfi-funding-card:hover {
+  transform: translateY(-4px) !important;
+  border-color: var(--accent) !important;
+  box-shadow: 0 12px 32px rgba(77,163,255,0.12) !important;
+  border-left: 3px solid var(--accent) !important;
+}
+
+.pfi-vc-t,
+.pfi-crit-t,
+.pfi-sc-name,
+.pfi-vc-num { color: var(--accent) !important; }
+
+.pfi-vc-d,
+.pfi-crit-d,
+.pfi-sc-desc,
+.pfi-sc-type { color: var(--text-secondary) !important; }
+
+/* Process steps */
+.pfi-steps,
+.pfi-step   { color: var(--text-secondary) !important; }
+.pfi-step-circle,
+.pfi-step-number { background: var(--bg-elevated) !important; border-color: var(--border-subtle) !important; color: var(--accent) !important; }
+.pfi-step-circle.active,
+.pfi-step-number.active { background: var(--accent-gradient) !important; color: #fff !important; }
+.pfi-step-t { color: var(--text-primary) !important; }
+
+/* Sector pills */
+.pfi-sector-pill,
+.pfi-sp     {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-subtle) !important;
+  color: var(--text-secondary) !important;
+}
+.pfi-sp-name { color: var(--text-primary) !important; }
+.pfi-sp-icon { color: var(--accent) !important; }
+
+/* CTA section */
+.pfi-cta    { background: var(--bg-elevated) !important; border-top: 1px solid var(--border-subtle); }
+.pfi-cta h2 { color: var(--text-primary) !important; }
+.pfi-cta p  { color: var(--text-secondary) !important; }

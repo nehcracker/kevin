@@ -822,3 +822,125 @@
   .ifa-cta-buttons a { width: 100%; justify-content: center; }
   .ifa-audience-mini { grid-template-columns: 1fr; }
 }
+
+/* ── Dark Navy Override ── */
+.ifa-page,
+.ifa-header,
+.ifa-hero   { background: var(--bg-deep) !important; color: var(--text-primary) !important; }
+
+.ifa-header-label,
+.ifa-hero-eyebrow,
+.ifa-eyebrow,
+.ifa-stag   { color: var(--accent) !important; }
+
+.ifa-header-body h1,
+.ifa-hero h1,
+.ifa-sTitle { color: var(--text-primary)   !important; }
+
+.ifa-header-tagline,
+.ifa-hero-body,
+.ifa-ssub,
+.ifa-overview-text p { color: var(--text-secondary) !important; }
+
+.ifa-btn-primary {
+  background: var(--accent-gradient) !important;
+  color: #fff !important;
+  border: none !important;
+}
+.ifa-btn-outline {
+  background: var(--glass-bg) !important;
+  border-color: var(--border-glow) !important;
+  color: var(--accent) !important;
+}
+
+/* Strip / pill bars */
+.ifa-focus-strip,
+.ifa-factors-strip,
+.ifa-pillars-strip,
+.ifa-lenses-strip,
+.ifa-objectives-strip,
+.ifa-trust-bar  {
+  background: var(--bg-card) !important;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.ifa-focus-card,
+.ifa-factor-card,
+.ifa-pillar-card,
+.ifa-lens-card,
+.ifa-objective-card,
+.ifa-ti          {
+  background: var(--glass-bg)    !important;
+  border-color: var(--border-subtle) !important;
+  color: var(--text-secondary)   !important;
+}
+
+/* Main content sections */
+.ifa-sec,
+.ifa-section,
+.ifa-overview,
+.ifa-core-services,
+.ifa-funding-types { background: var(--bg-deep) !important; }
+
+.ifa-sec-alt,
+.ifa-process      { background: var(--bg-card) !important; border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); }
+
+/* Cards in grids */
+.ifa-vc,
+.ifa-crit-card,
+.ifa-source-card,
+.ifa-service-card,
+.ifa-funding-card,
+.ifa-stat-card,
+.ifa-bc-stat-card {
+  background: var(--bg-card)    !important;
+  border: 1px solid var(--border-subtle) !important;
+  color: var(--text-secondary)  !important;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+.ifa-vc:hover,
+.ifa-crit-card:hover,
+.ifa-source-card:hover,
+.ifa-service-card:hover,
+.ifa-funding-card:hover {
+  transform: translateY(-4px) !important;
+  border-color: var(--accent) !important;
+  box-shadow: 0 12px 32px rgba(77,163,255,0.12) !important;
+  border-left: 3px solid var(--accent) !important;
+}
+
+.ifa-vc-t,
+.ifa-crit-t,
+.ifa-sc-name,
+.ifa-vc-num { color: var(--accent) !important; }
+
+.ifa-vc-d,
+.ifa-crit-d,
+.ifa-sc-desc,
+.ifa-sc-type { color: var(--text-secondary) !important; }
+
+/* Process steps */
+.ifa-steps,
+.ifa-step   { color: var(--text-secondary) !important; }
+.ifa-step-circle,
+.ifa-step-number { background: var(--bg-elevated) !important; border-color: var(--border-subtle) !important; color: var(--accent) !important; }
+.ifa-step-circle.active,
+.ifa-step-number.active { background: var(--accent-gradient) !important; color: #fff !important; }
+.ifa-step-t { color: var(--text-primary) !important; }
+
+/* Sector pills */
+.ifa-sector-pill,
+.ifa-sp     {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-subtle) !important;
+  color: var(--text-secondary) !important;
+}
+.ifa-sp-name { color: var(--text-primary) !important; }
+.ifa-sp-icon { color: var(--accent) !important; }
+
+/* CTA section */
+.ifa-cta    { background: var(--bg-elevated) !important; border-top: 1px solid var(--border-subtle); }
+.ifa-cta h2 { color: var(--text-primary) !important; }
+.ifa-cta p  { color: var(--text-secondary) !important; }
