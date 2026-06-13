@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { fadeUp, staggerContainer, staggerItem, slideInLeft } from '../../../utils/motion';
 import SEO from '../../../components/common/SEO/SEO';
 import './ProjectFunding.css';
 
@@ -137,25 +139,30 @@ const ProjectFunding = () => {
               <span className="separator"><i className="fas fa-chevron-right"></i></span>
               <span className="current">Project Funding</span>
             </nav>
-            <div className="pf-header-body">
-              <span className="pf-header-label">Financial Advisory Service</span>
-              <h1>
+            <motion.div
+              className="pf-header-body"
+              variants={staggerContainer}
+              initial="hidden"
+              animate="visible"
+            >
+              <motion.span variants={staggerItem} className="pf-header-label">Financial Advisory Service</motion.span>
+              <motion.h1 variants={staggerItem}>
                 International Project Funding
                 <span>& Debt Structuring</span>
-              </h1>
-              <p className="pf-header-tagline">
+              </motion.h1>
+              <motion.p variants={staggerItem} className="pf-header-tagline">
                 You need structured capital to execute large-scale projects. You need the right
                 structure to secure approval and protect long-term returns. Funding follows structure.
-              </p>
-              <div className="pf-header-cta">
+              </motion.p>
+              <motion.div variants={staggerItem} className="pf-header-cta">
                 <a href="#contact" className="pf-btn-primary">
                   <i className="fas fa-calendar-check"></i> Schedule Consultation
                 </a>
                 <a href="#process" className="pf-btn-outline">
                   <i className="fas fa-arrow-down"></i> How It Works
                 </a>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
         </section>
 
@@ -166,13 +173,19 @@ const ProjectFunding = () => {
               <p>Kevin Graham Karimi provides international project funding advisory and debt structuring solutions for corporations, developers, and high net worth investors. The focus is on bankable structures, clear repayment models, and cross-border compliance.</p>
               <p>Whether you are developing infrastructure, real estate, energy, manufacturing, or large trade operations, your funding structure must match your cash flow model and risk profile.</p>
             </div>
-            <div className="pf-sector-tags">
+            <motion.div
+              className="pf-sector-tags"
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-60px' }}
+            >
               {sectors.map((s, i) => (
-                <span key={i} className="pf-sector-tag">
+                <motion.span key={i} variants={staggerItem} className="pf-sector-tag">
                   <i className={s.icon}></i> {s.label}
-                </span>
+                </motion.span>
               ))}
-            </div>
+            </motion.div>
           </div>
         </section>
 
@@ -183,9 +196,20 @@ const ProjectFunding = () => {
               <h2>Core Services</h2>
               <p>Six structured advisory solutions covering every phase of project funding and debt management.</p>
             </div>
-            <div className="pf-services-grid">
+            <motion.div
+              className="pf-services-grid"
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-80px' }}
+            >
               {coreServices.map((svc, i) => (
-                <div key={i} className="pf-service-card">
+                <motion.div
+                  key={i}
+                  className="pf-service-card"
+                  variants={staggerItem}
+                  whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                >
                   <div className="pf-card-icon"><i className={svc.icon}></i></div>
                   <h3>{svc.title}</h3>
                   <p>{svc.description}</p>
@@ -194,9 +218,9 @@ const ProjectFunding = () => {
                       {svc.bullets.map((b, j) => <li key={j}>{b}</li>)}
                     </ul>
                   )}
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </section>
 
@@ -209,13 +233,21 @@ const ProjectFunding = () => {
             </div>
             <div className="pf-steps">
               {steps.map((step, i) => (
-                <div key={i} className="pf-step">
+                <motion.div
+                  key={i}
+                  className="pf-step"
+                  variants={slideInLeft}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.12 }}
+                >
                   <div className="pf-step-number">{step.number}</div>
                   <div>
                     <h4>{step.title}</h4>
                     <p>{step.description}</p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -292,7 +324,13 @@ const ProjectFunding = () => {
         </section>
 
         {/* CTA */}
-        <section className="pf-cta-section">
+        <motion.section
+          className="pf-cta-section"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-60px' }}
+        >
           <div className="container">
             <h2>Ready to Structure Your Funding?</h2>
             <p>If you are preparing to raise capital for a project, your first priority is structure. Let's build yours.</p>
@@ -305,7 +343,7 @@ const ProjectFunding = () => {
               </a>
             </div>
           </div>
-        </section>
+        </motion.section>
 
       </main>
     </div>
