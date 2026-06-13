@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { fadeUp, staggerContainer, staggerItem, slideInLeft } from '../../../utils/motion';
 import SEO from '../../../components/common/SEO/SEO';
 import './GrantsDonations.css';
 
@@ -184,42 +186,53 @@ const GrantsDonations = () => {
               <span className="current">Grants & Donations</span>
             </nav>
 
-            <div className="gd-header-body">
-              <span className="gd-header-label">Financial Advisory Service</span>
-              <h1>
+            <motion.div
+              className="gd-header-body"
+              variants={staggerContainer}
+              initial="hidden"
+              animate="visible"
+            >
+              <motion.span className="gd-header-label" variants={staggerItem}>Financial Advisory Service</motion.span>
+              <motion.h1 variants={staggerItem}>
                 Grants &amp; Donations
                 <span>Advisory</span>
-              </h1>
-              <p className="gd-header-tagline">
+              </motion.h1>
+              <motion.p className="gd-header-tagline" variants={staggerItem}>
                 Securing grants and donations requires expert knowledge of funding landscapes,
                 eligibility criteria, and application standards. Kevin sources opportunities from
                 government programmes, charitable foundations, corporate CSR budgets,
                 international aid networks, and prepares applications on your behalf.
-              </p>
-              <div className="gd-header-cta">
+              </motion.p>
+              <motion.div className="gd-header-cta" variants={staggerItem}>
                 <a href="#contact" className="gd-btn-primary">
                   <i className="fas fa-search-dollar"></i> Discuss Your Funding Need
                 </a>
                 <a href="#gd-process" className="gd-btn-outline">
                   <i className="fas fa-arrow-down"></i> How It Works
                 </a>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
         </section>
 
         {/* ── SECTION 2 — FOUR PILLARS STRIP ── */}
         <section className="gd-pillars-strip">
           <div className="container">
-            <div className="gd-pillars-grid">
+            <motion.div
+              className="gd-pillars-grid"
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
               {pillars.map((p, i) => (
-                <div key={i} className="gd-pillar-card">
+                <motion.div key={i} className="gd-pillar-card" variants={staggerItem}>
                   <i className={`${p.icon} gd-pillar-icon`}></i>
                   <h3>{p.title}</h3>
                   <p>{p.desc}</p>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </section>
 
@@ -247,19 +260,25 @@ const GrantsDonations = () => {
                 </p>
               </div>
 
-              <div className="gd-overview-stats">
+              <motion.div
+                className="gd-overview-stats"
+                variants={staggerContainer}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+              >
                 {[
                   { num: '40+',  label: 'Countries with Active Grant Networks' },
                   { num: '5',    label: 'Funding Source Categories' },
                   { num: '100%', label: 'Tailored to Your Project & Sector' },
                   { num: '24hr', label: 'Initial Response Guarantee' },
                 ].map((s, i) => (
-                  <div className="gd-stat-card" key={i}>
+                  <motion.div className="gd-stat-card" key={i} variants={staggerItem}>
                     <span className="gd-stat-num">{s.num}</span>
                     <span className="gd-stat-label">{s.label}</span>
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
             </div>
           </div>
         </section>
@@ -277,32 +296,54 @@ const GrantsDonations = () => {
             </div>
 
             {/* Row 1 — three cards */}
-            <div className="gd-types-grid">
+            <motion.div
+              className="gd-types-grid"
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
               {grantTypes.map((type, i) => (
-                <div key={i} className="gd-type-card">
+                <motion.div
+                  key={i}
+                  className="gd-type-card"
+                  variants={staggerItem}
+                  whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                >
                   <div className="gd-type-icon"><i className={type.icon}></i></div>
                   <h3>{type.title}</h3>
                   <p>{type.desc}</p>
                   <ul className="gd-type-examples">
                     {type.examples.map((ex, j) => <li key={j}>{ex}</li>)}
                   </ul>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
 
             {/* Row 2 — two cards centred */}
-            <div className="gd-types-row2">
+            <motion.div
+              className="gd-types-row2"
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
               {grantTypesRow2.map((type, i) => (
-                <div key={i} className="gd-type-card">
+                <motion.div
+                  key={i}
+                  className="gd-type-card"
+                  variants={staggerItem}
+                  whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                >
                   <div className="gd-type-icon"><i className={type.icon}></i></div>
                   <h3>{type.title}</h3>
                   <p>{type.desc}</p>
                   <ul className="gd-type-examples">
                     {type.examples.map((ex, j) => <li key={j}>{ex}</li>)}
                   </ul>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </section>
 
@@ -364,13 +405,21 @@ const GrantsDonations = () => {
             </div>
             <div className="gd-steps">
               {steps.map((step, i) => (
-                <div key={i} className="gd-step">
+                <motion.div
+                  key={i}
+                  className="gd-step"
+                  variants={slideInLeft}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.12 }}
+                >
                   <div className="gd-step-number">{step.number}</div>
                   <div>
                     <h4>{step.title}</h4>
                     <p>{step.description}</p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -400,7 +449,13 @@ const GrantsDonations = () => {
         </section>
 
         {/* ── SECTION 8 — CTA ── */}
-        <section className="gd-cta-section">
+        <motion.section
+          className="gd-cta-section"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
           <div className="container">
             <h2>Ready to Explore Grant Funding?</h2>
             <p>
@@ -416,7 +471,7 @@ const GrantsDonations = () => {
               </a>
             </div>
           </div>
-        </section>
+        </motion.section>
 
       </main>
     </div>
