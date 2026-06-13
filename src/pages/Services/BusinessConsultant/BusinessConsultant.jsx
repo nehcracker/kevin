@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { fadeUp, staggerContainer, staggerItem, slideInLeft } from '../../../utils/motion';
 import SEO from '../../../components/common/SEO/SEO';
 import './BusinessConsultant.css';
 
@@ -194,50 +196,66 @@ const BusinessConsultant = () => {
 
       {/* ── Hero ── */}
       <section className="bc-hero">
-        <span className="bc-hero-eyebrow">Professional Advisory Services</span>
-        <h1>Business <span>Consultant</span></h1>
-        <p className="bc-hero-subtitle">
-          End-to-end business consulting services — from company formation and accounting
-          to management strategy, HR, Finance, and specialist advisory — all under one expert roof.
-        </p>
-        <div className="bc-hero-ctas">
-          <Link to="/contact" className="bc-btn-primary">Schedule a Consultation</Link>
-          <a href="#bc-process" className="bc-btn-outline">How It Works</a>
-        </div>
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.span className="bc-hero-eyebrow" variants={staggerItem}>
+            Professional Advisory Services
+          </motion.span>
+          <motion.h1 variants={staggerItem}>
+            Business <span>Consultant</span>
+          </motion.h1>
+          <motion.p className="bc-hero-subtitle" variants={staggerItem}>
+            End-to-end business consulting services — from company formation and accounting
+            to management strategy, HR, Finance, and specialist advisory — all under one expert roof.
+          </motion.p>
+          <motion.div className="bc-hero-ctas" variants={staggerItem}>
+            <Link to="/contact" className="bc-btn-primary">Schedule a Consultation</Link>
+            <a href="#bc-process" className="bc-btn-outline">How It Works</a>
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* ── Trust Strip ── */}
       <div className="bc-trust-strip">
-        <div className="bc-trust-inner">
-          <div className="bc-trust-item">
+        <motion.div
+          className="bc-trust-inner"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <motion.div className="bc-trust-item" variants={staggerItem}>
             <span className="bc-trust-icon">🏛️</span>
             <div className="bc-trust-text">
               <strong>End-to-End Advisory</strong>
               <span>Registration to strategy</span>
             </div>
-          </div>
-          <div className="bc-trust-item">
+          </motion.div>
+          <motion.div className="bc-trust-item" variants={staggerItem}>
             <span className="bc-trust-icon">⚖️</span>
             <div className="bc-trust-text">
               <strong>Regulatory finance Compliance</strong>
               <span>Tax, HR &amp; statutory filings</span>
             </div>
-          </div>
-          <div className="bc-trust-item">
+          </motion.div>
+          <motion.div className="bc-trust-item" variants={staggerItem}>
             <span className="bc-trust-icon">📈</span>
             <div className="bc-trust-text">
               <strong>Financial Structure</strong>
               <span>Accounting &amp; cash-flow clarity</span>
             </div>
-          </div>
-          <div className="bc-trust-item">
+          </motion.div>
+          <motion.div className="bc-trust-item" variants={staggerItem}>
             <span className="bc-trust-icon">🎯</span>
             <div className="bc-trust-text">
               <strong>Growth Strategy</strong>
               <span>Management consulting expertise</span>
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
 
       {/* ── Overview ── */}
@@ -250,19 +268,25 @@ const BusinessConsultant = () => {
                 Business Consulting Services
               </h2>
               <p>
-                From business registration, accounting, and tax preparation to management consulting, HR advisory, 
-                and specialist support across AI, IT, and cyber security — we cover every dimension of your business, 
+                From business registration, accounting, and tax preparation to management consulting, HR advisory,
+                and specialist support across AI, IT, and cyber security — we cover every dimension of your business,
                 coordinated by one experienced consultant, so nothing falls through the gaps.
               </p>
             </div>
-            <div className="bc-overview-stats">
+            <motion.div
+              className="bc-overview-stats"
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
               {STATS.map((s, i) => (
-                <div className="bc-stat-card" key={i}>
+                <motion.div className="bc-stat-card" key={i} variants={staggerItem}>
                   <span className="bc-stat-num">{s.num}</span>
                   <span className="bc-stat-label">{s.label}</span>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -279,9 +303,20 @@ const BusinessConsultant = () => {
             From accounting services and bookkeeping to HR consulting and specialist advisory,
             you get the right knowledge applied to your specific challenge.
           </p>
-          <div className="bc-services-grid">
+          <motion.div
+            className="bc-services-grid"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
             {SERVICES.map((svc) => (
-              <div className="bc-service-card" key={svc.id}>
+              <motion.div
+                className="bc-service-card"
+                key={svc.id}
+                variants={staggerItem}
+                whileHover={{ y: -4, transition: { duration: 0.2 } }}
+              >
                 <div className="bc-service-card-top">
                   <div
                     className="bc-service-icon"
@@ -301,9 +336,9 @@ const BusinessConsultant = () => {
                     ))}
                   </ul>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -334,20 +369,35 @@ const BusinessConsultant = () => {
       <section className="bc-section bc-section--alt" id="bc-process">
         <div className="bc-section-inner">
           <span className="bc-section-label">Our Approach</span>
-          <h2 className="bc-section-title" style={{ textAlign: 'center' }}>
+          <motion.h2
+            className="bc-section-title"
+            style={{ textAlign: 'center' }}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
             The Consulting <span>Process</span>
-          </h2>
+          </motion.h2>
           <p className="bc-section-intro" style={{ margin: '0 auto 56px', textAlign: 'center' }}>
             A disciplined, five-stage methodology ensures every engagement delivers clear outcomes —
             not just recommendations that sit in a drawer.
           </p>
           <div className="bc-process-steps">
-            {STEPS.map((step) => (
-              <div className="bc-step" key={step.num}>
+            {STEPS.map((step, i) => (
+              <motion.div
+                className="bc-step"
+                key={step.num}
+                variants={slideInLeft}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.12 }}
+              >
                 <div className="bc-step-num">{step.num}</div>
                 <h3>{step.title}</h3>
                 <p>{step.desc}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -386,7 +436,13 @@ const BusinessConsultant = () => {
       </section>
 
       {/* ── CTA ── */}
-      <section className="bc-cta">
+      <motion.section
+        className="bc-cta"
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: '-60px' }}
+      >
         <h2>Ready to Work with a Business Consultant?</h2>
         <p>
           Get expert business consulting services tailored to your sector, scale, and ambitions.
@@ -396,7 +452,7 @@ const BusinessConsultant = () => {
           <Link to="/contact" className="bc-btn-primary">Book a Consultation</Link>
           <Link to="/services" className="bc-btn-outline">View All Services</Link>
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 };
