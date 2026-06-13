@@ -731,3 +731,60 @@
     padding: 0.52rem 1rem;
   }
 }
+
+/* ── Dark Navy Override ── */
+#contact,
+.contact-section,
+.contact-panel,
+[class*="contact"] {
+  background: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+}
+
+.contact-section {
+  border-top: 1px solid var(--border-subtle) !important;
+}
+
+[class*="contact"] h2,
+[class*="contact"] h3,
+[class*="contact"] h4 {
+  color: var(--text-primary) !important;
+}
+
+[class*="contact"] p,
+[class*="contact"] label,
+[class*="contact"] span {
+  color: var(--text-secondary) !important;
+}
+
+[class*="contact"] select,
+[class*="contact"] input,
+[class*="contact"] textarea {
+  background: var(--bg-elevated) !important;
+  border-color: var(--border-subtle) !important;
+  color: var(--text-primary) !important;
+}
+
+[class*="contact"] select:focus,
+[class*="contact"] input:focus {
+  border-color: var(--accent) !important;
+  outline: none;
+}
+
+[class*="contact-btn"],
+[class*="btn-wa"],
+[class*="btn-email"],
+[class*="btn-channel"] {
+  background: var(--glass-bg) !important;
+  border: 1px solid var(--border-subtle) !important;
+  color: var(--text-primary) !important;
+  transition: background 0.2s, border-color 0.2s !important;
+}
+
+[class*="contact-btn"]:hover,
+[class*="btn-wa"]:hover,
+[class*="btn-email"]:hover,
+[class*="btn-channel"]:hover {
+  background: var(--bg-elevated) !important;
+  border-color: var(--accent) !important;
+}
