@@ -458,7 +458,7 @@
     position: relative;
     z-index: 1001;
   }
-  
+
   /* Fix for Safari sticky hover issues */
   .bio-image:hover,
   .bio-highlights:hover,
@@ -466,3 +466,39 @@
     transform: translateY(-10px) translateZ(0);
   }
 }
+
+/* ── Dark Navy Override ── */
+.about-page          { background: var(--bg-deep); }
+.page-header         { background: var(--bg-card) !important; border-bottom: 1px solid var(--border-subtle); }
+.page-header h1,
+.page-header h2      { color: var(--text-primary) !important; }
+.page-header p       { color: var(--text-secondary) !important; }
+
+.bio-section         { background: var(--bg-deep) !important; }
+.bio-text h2         { color: var(--text-primary) !important; }
+.bio-text p          { color: var(--text-secondary) !important; }
+.bio-text .position  { color: var(--accent) !important; }
+.bio-highlights h3   { color: var(--text-primary) !important; }
+.bio-highlights li   { color: var(--text-secondary) !important; }
+
+.experience-badge {
+  background: var(--accent-gradient) !important;
+  color: #fff !important;
+}
+
+.philosophy-section  { background: var(--bg-card) !important; border-top: 1px solid var(--border-subtle); }
+.section-header h2   { color: var(--text-primary) !important; }
+.section-header p    { color: var(--text-secondary) !important; }
+
+.philosophy-card {
+  background: var(--glass-bg) !important;
+  border: 1px solid var(--border-subtle) !important;
+  color: var(--text-secondary) !important;
+}
+.philosophy-card h3  { color: var(--accent) !important; }
+.philosophy-card:hover { border-color: var(--accent) !important; }
+
+.about-cta-section   { background: var(--bg-elevated) !important; border-top: 1px solid var(--border-subtle); }
+.cta-content h2      { color: var(--text-primary) !important; }
+.cta-content p       { color: var(--text-secondary) !important; }
+.btn.btn-primary     { background: var(--accent-gradient) !important; color: #fff !important; border: none !important; }
