@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { fadeUp, staggerContainer, staggerItem, slideInLeft } from '../../../utils/motion';
 import SEO from '../../../components/common/SEO/SEO';
 import './BusinessFunding.css';
 
@@ -212,41 +214,54 @@ const BusinessFunding = () => {
               <span className="current">Business Funding & Loans</span>
             </nav>
 
-            <div className="bf-header-body">
-              <span className="bf-header-label">Financial Advisory Service</span>
-              <h1>
+            <motion.div
+              className="bf-header-body"
+              variants={staggerContainer}
+              initial="hidden"
+              animate="visible"
+            >
+              <motion.span className="bf-header-label" variants={staggerItem}>
+                Financial Advisory Service
+              </motion.span>
+              <motion.h1 variants={staggerItem}>
                 Business Funding
                 <span>& Long Term Loans</span>
-              </h1>
-              <p className="bf-header-tagline">
+              </motion.h1>
+              <motion.p className="bf-header-tagline" variants={staggerItem}>
                 You need capital to expand, acquire assets, execute contracts, or refinance existing
                 obligations. Funding must match your cash flow capacity and risk profile. Poor
                 structuring increases repayment pressure and approval delays.
-              </p>
-              <div className="bf-header-cta">
+              </motion.p>
+              <motion.div className="bf-header-cta" variants={staggerItem}>
                 <a href="#contact" className="bf-btn-primary">
                   <i className="fas fa-comments-dollar"></i> Discuss Your Funding Need
                 </a>
                 <a href="#process" className="bf-btn-outline">
                   <i className="fas fa-arrow-down"></i> How It Works
                 </a>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
         </section>
 
         {/* SECTION 2 — FIVE ALIGNMENT FACTORS STRIP */}
         <section className="bf-factors-strip">
           <div className="container">
-            <div className="bf-factors-grid">
+            <motion.div
+              className="bf-factors-grid"
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
               {alignmentFactors.map((factor, i) => (
-                <div key={i} className="bf-factor-card">
+                <motion.div key={i} className="bf-factor-card" variants={staggerItem}>
                   <i className={`${factor.icon} bf-factor-icon`}></i>
                   <h3>{factor.title}</h3>
                   <p>{factor.desc}</p>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </section>
 
@@ -277,10 +292,20 @@ const BusinessFunding = () => {
                 requirement, asset position, and repayment profile.
               </p>
             </div>
-            <div className="bf-funding-grid">
+            <motion.div
+              className="bf-funding-grid"
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
 
               {/* Secured */}
-              <div className="bf-funding-card secured">
+              <motion.div
+                className="bf-funding-card secured"
+                variants={staggerItem}
+                whileHover={{ y: -4, transition: { duration: 0.2 } }}
+              >
                 <div className="bf-funding-badge">
                   <i className="fas fa-lock"></i> Secured
                 </div>
@@ -305,10 +330,14 @@ const BusinessFunding = () => {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </motion.div>
 
               {/* Unsecured */}
-              <div className="bf-funding-card unsecured">
+              <motion.div
+                className="bf-funding-card unsecured"
+                variants={staggerItem}
+                whileHover={{ y: -4, transition: { duration: 0.2 } }}
+              >
                 <div className="bf-funding-badge">
                   <i className="fas fa-file-invoice"></i> Unsecured
                 </div>
@@ -332,10 +361,14 @@ const BusinessFunding = () => {
                     Established businesses with strong financial statements and stable cash flow
                   </li>
                 </ul>
-              </div>
+              </motion.div>
 
               {/* Long Term */}
-              <div className="bf-funding-card longterm">
+              <motion.div
+                className="bf-funding-card longterm"
+                variants={staggerItem}
+                whileHover={{ y: -4, transition: { duration: 0.2 } }}
+              >
                 <div className="bf-funding-badge">
                   <i className="fas fa-calendar-alt"></i> Long Term
                 </div>
@@ -357,9 +390,9 @@ const BusinessFunding = () => {
                   Tenors from <strong>3 to 15 years</strong> — depending on sector,
                   risk level, and lender appetite.
                 </div>
-              </div>
+              </motion.div>
 
-            </div>
+            </motion.div>
           </div>
         </section>
 
@@ -442,13 +475,21 @@ const BusinessFunding = () => {
             </div>
             <div className="bf-steps">
               {steps.map((step, i) => (
-                <div key={i} className="bf-step">
+                <motion.div
+                  key={i}
+                  className="bf-step"
+                  variants={slideInLeft}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.12 }}
+                >
                   <div className="bf-step-number">{step.number}</div>
                   <div>
                     <h4>{step.title}</h4>
                     <p>{step.description}</p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -477,7 +518,13 @@ const BusinessFunding = () => {
         </section>
 
         {/* SECTION 9 — CTA */}
-        <section className="bf-cta-section">
+        <motion.section
+          className="bf-cta-section"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-60px' }}
+        >
           <div className="container">
             <h2>Ready to Source Your Business Funding?</h2>
             <p>
@@ -499,7 +546,7 @@ const BusinessFunding = () => {
               </a>
             </div>
           </div>
-        </section>
+        </motion.section>
 
       </main>
     </div>
