@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { fadeUp, staggerContainer, staggerItem, slideInLeft } from '../../../utils/motion';
 import SEO from '../../../components/common/SEO/SEO';
 import './RiskCompliance.css';
 
@@ -189,41 +191,57 @@ const RiskCompliance = () => {
               <span className="current">Risk & Compliance</span>
             </nav>
 
-            <div className="rc-header-body">
-              <span className="rc-header-label">Financial Advisory Service</span>
-              <h1>
+            <motion.div
+              className="rc-header-body"
+              variants={staggerContainer}
+              initial="hidden"
+              animate="visible"
+            >
+              <motion.span className="rc-header-label" variants={staggerItem}>Financial Advisory Service</motion.span>
+              <motion.h1 variants={staggerItem}>
                 Risk Management &
                 <span>Regulatory Compliance Advisory</span>
-              </h1>
-              <p className="rc-header-tagline">
+              </motion.h1>
+              <motion.p className="rc-header-tagline" variants={staggerItem}>
                 You operate in regulated financial environments. One compliance failure exposes your
                 capital, reputation, and operations. This service protects your business through
                 structured risk management and regulatory compliance advisory.
-              </p>
-              <div className="rc-header-cta">
+              </motion.p>
+              <motion.div className="rc-header-cta" variants={staggerItem}>
                 <a href="#contact" className="rc-btn-primary">
                   <i className="fas fa-calendar-check"></i> Schedule Consultation
                 </a>
                 <a href="#process" className="rc-btn-outline">
                   <i className="fas fa-arrow-down"></i> How It Works
                 </a>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
         </section>
 
         {/* SECTION 2 — FOUR FOCUS STRIP */}
         <section className="rc-focus-strip">
           <div className="container">
-            <div className="rc-focus-grid">
+            <motion.div
+              className="rc-focus-grid"
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-60px' }}
+            >
               {focusPillars.map((pillar, i) => (
-                <div key={i} className="rc-focus-card">
+                <motion.div
+                  key={i}
+                  className="rc-focus-card"
+                  variants={staggerItem}
+                  whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                >
                   <i className={`${pillar.icon} rc-focus-icon`}></i>
                   <h3>{pillar.title}</h3>
                   <p>{pillar.desc}</p>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </section>
 
@@ -269,17 +287,23 @@ const RiskCompliance = () => {
               <div className="rc-sub-label">
                 <span>Risk Management</span>
               </div>
-              <div className="rc-services-grid">
+              <motion.div
+                className="rc-services-grid"
+                variants={staggerContainer}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: '-60px' }}
+              >
                 {riskServices.map((svc, i) => (
-                  <div key={i} className="rc-service-card">
+                  <motion.div key={i} className="rc-service-card" variants={staggerItem}>
                     <div className="rc-card-icon">
                       <i className={svc.icon}></i>
                     </div>
                     <h3>{svc.title}</h3>
                     <p>{svc.description}</p>
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
             </div>
 
             {/* Regulatory Compliance sub-section */}
@@ -287,20 +311,27 @@ const RiskCompliance = () => {
               <div className="rc-sub-label">
                 <span>Regulatory Compliance</span>
               </div>
-              <div className="rc-services-grid has-orphan">
+              <motion.div
+                className="rc-services-grid has-orphan"
+                variants={staggerContainer}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: '-60px' }}
+              >
                 {complianceServices.map((svc, i) => (
-                  <div
+                  <motion.div
                     key={i}
                     className={`rc-service-card${i === complianceServices.length - 1 && complianceServices.length % 2 !== 0 ? ' orphan' : ''}`}
+                    variants={staggerItem}
                   >
                     <div className="rc-card-icon">
                       <i className={svc.icon}></i>
                     </div>
                     <h3>{svc.title}</h3>
                     <p>{svc.description}</p>
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
+              </motion.div>
             </div>
           </div>
         </section>
@@ -317,13 +348,21 @@ const RiskCompliance = () => {
             </div>
             <div className="rc-steps">
               {steps.map((step, i) => (
-                <div key={i} className="rc-step">
+                <motion.div
+                  key={i}
+                  className="rc-step"
+                  variants={slideInLeft}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.12 }}
+                >
                   <div className="rc-step-number">{step.number}</div>
                   <div>
                     <h4>{step.title}</h4>
                     <p>{step.description}</p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -424,7 +463,13 @@ const RiskCompliance = () => {
         </section>
 
         {/* SECTION 9 — CTA */}
-        <section className="rc-cta-section">
+        <motion.section
+          className="rc-cta-section"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-60px' }}
+        >
           <div className="container">
             <h2>Ready to Strengthen Your Compliance Position?</h2>
             <p>
@@ -440,7 +485,7 @@ const RiskCompliance = () => {
               </a>
             </div>
           </div>
-        </section>
+        </motion.section>
 
       </main>
     </div>
