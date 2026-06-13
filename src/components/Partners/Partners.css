@@ -257,3 +257,29 @@
     display: none;
   }
 }
+
+/* ── Dark Navy Override ── */
+[class*="partner"],
+.partners-section,
+.partners {
+  background: var(--bg-card) !important;
+  border-top: 1px solid var(--border-subtle) !important;
+  border-bottom: 1px solid var(--border-subtle) !important;
+}
+
+[class*="partner"] h2,
+[class*="partner"] h3 {
+  color: var(--text-primary) !important;
+}
+
+[class*="partner-logo"] img,
+[class*="partner"] img {
+  filter: brightness(0) invert(1);
+  opacity: 0.55;
+  transition: opacity 0.2s;
+}
+
+[class*="partner-logo"]:hover img,
+[class*="partner"]:hover img {
+  opacity: 0.85;
+}

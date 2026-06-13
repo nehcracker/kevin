@@ -387,3 +387,37 @@
     order: 2;
   }
 }
+
+/* ── Dark Navy Override ── */
+.floating-btn {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-subtle) !important;
+  color: var(--text-primary) !important;
+}
+
+.floating-btn.whatsapp:hover { background: #25d366 !important; border-color: #25d366 !important; color: #fff !important; }
+.floating-btn.email:hover    { background: var(--accent) !important; border-color: var(--accent) !important; color: #fff !important; }
+
+.wa-overlay { background: rgba(0, 0, 0, 0.7) !important; }
+
+.wa-modal {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border-subtle) !important;
+  color: var(--text-primary) !important;
+}
+
+.wa-modal__title { color: var(--text-primary) !important; }
+.wa-modal__subtitle { color: var(--text-secondary) !important; }
+
+.wa-modal__service-item {
+  color: var(--text-secondary) !important;
+  border-bottom-color: var(--border-subtle) !important;
+}
+
+.wa-modal__service-item:hover,
+.wa-modal__service-item.selected { color: var(--accent) !important; }
+
+.wa-modal__btn-proceed.active {
+  background: #25d366 !important;
+  color: #fff !important;
+}

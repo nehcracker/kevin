@@ -177,3 +177,20 @@
     font-size: 1.75rem;
   }
 }
+
+/* ── Dark Navy Override ── */
+[class*="review"],
+.reviews-section,
+.reviews {
+  background: var(--bg-deep) !important;
+  border-top: 1px solid var(--border-subtle) !important;
+}
+
+[class*="review"] h2,
+[class*="review"] h3 {
+  color: var(--text-primary) !important;
+}
+
+[class*="review"] p {
+  color: var(--text-secondary) !important;
+}
