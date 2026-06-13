@@ -496,3 +496,77 @@
     padding: 0.78rem 0.9rem;
   }
 }
+
+/* ── Dark Navy Override ── */
+.home-page { background: var(--bg-deep); }
+
+.hero-section {
+  background: var(--bg-deep) !important;
+  color: var(--text-primary) !important;
+}
+
+.hero-glow--tr {
+  background: radial-gradient(circle, rgba(77,163,255,0.18), transparent 65%) !important;
+}
+.hero-glow--bl {
+  background: radial-gradient(circle, rgba(0,86,179,0.14), transparent 65%) !important;
+}
+
+.hero-name       { color: var(--text-primary)   !important; }
+.hero-name-accent{ color: var(--accent)          !important; }
+.hero-role       { color: var(--text-secondary)  !important; }
+.hero-eyebrow    { color: var(--accent)          !important; background: rgba(77,163,255,0.1) !important; border-color: var(--border-glow) !important; }
+.hero-eyebrow-dot{ background: var(--accent)     !important; }
+.hero-stat-num   { color: var(--accent)          !important; }
+.hero-stat-lbl   { color: var(--text-muted)      !important; }
+.hero-stat-sep   { background: var(--border-subtle) !important; }
+.hero-tagline    { color: var(--text-secondary)  !important; }
+
+.hero-btn--imo {
+  background: var(--accent-gradient) !important;
+  color: #fff !important;
+  border: none !important;
+}
+.hero-btn--email {
+  background: var(--glass-bg) !important;
+  border-color: var(--border-glow) !important;
+  color: var(--accent) !important;
+}
+
+.hero-trust-badge {
+  background: var(--glass-bg)    !important;
+  border-color: var(--border-subtle) !important;
+  color: var(--text-secondary)   !important;
+}
+
+.hero-svc-card {
+  background: var(--glass-bg)    !important;
+  border-color: var(--border-subtle) !important;
+  color: var(--text-primary)     !important;
+}
+.hero-svc-card:hover {
+  background: var(--bg-card)     !important;
+  border-color: var(--accent)    !important;
+}
+.hero-svc-title  { color: var(--text-primary)   !important; }
+.hero-svc-sub    { color: var(--text-secondary) !important; }
+.hero-svc-num    { color: var(--text-muted)     !important; }
+.hero-svc-arrow  { color: var(--accent)         !important; }
+
+.exp-section { background: var(--bg-deep) !important; }
+.exp-header h2   { color: var(--text-primary)   !important; }
+.exp-header p    { color: var(--text-secondary) !important; }
+.exp-eyebrow     { color: var(--accent)         !important; }
+
+.bio-section     { background: var(--bg-card)   !important; border-top: 1px solid var(--border-subtle); }
+.bio-lead, .bio-body { color: var(--text-secondary) !important; }
+.bio-milestone-year  { color: var(--accent)     !important; }
+.bio-milestone-text  { color: var(--text-secondary) !important; }
+.bio-milestone-dot   { background: var(--accent) !important; }
+.bio-chip {
+  background: var(--bg-elevated) !important;
+  border-color: var(--border-subtle) !important;
+  color: var(--text-primary) !important;
+}
+.bio-cred-item   { color: var(--text-secondary) !important; }
+.bio-cred-item i { color: var(--accent)         !important; }
