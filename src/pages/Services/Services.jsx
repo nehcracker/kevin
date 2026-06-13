@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { fadeUp, staggerContainer, staggerItem, slideInLeft, slideInRight } from '../../utils/motion';
 import SEO from '../../components/common/SEO/SEO';
 import './Services.css';
 
@@ -299,23 +301,33 @@ const Services = () => {
 
         <nav className="services-quicknav" aria-label="Services navigation">
           <div className="container">
-            <ul className="quicknav-pills">
+            <motion.ul
+              className="quicknav-pills"
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
               {services.map((s) => (
-                <li key={s.id}>
+                <motion.li key={s.id} variants={staggerItem}>
                   <a href={`#${s.id}`}>
                     {s.number} {s.title.split(' ').slice(0, 3).join(' ')}
                   </a>
-                </li>
+                </motion.li>
               ))}
-            </ul>
+            </motion.ul>
           </div>
         </nav>
 
-        {services.map((service) => (
-          <section
+        {services.map((service, idx) => (
+          <motion.section
             key={service.id}
             id={service.id}
             className={`service-section ${service.bgClass}`}
+            variants={idx % 2 === 0 ? slideInLeft : slideInRight}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-80px' }}
           >
             <div className="container">
               <div className={`service-layout${service.reverse ? ' reverse' : ''}`}>
@@ -366,32 +378,50 @@ const Services = () => {
                 </div>
               </div>
             </div>
-          </section>
+          </motion.section>
         ))}
 
         <section className="why-choose-section">
           <div className="container">
-            <div className="section-header">
+            <motion.div
+              className="section-header"
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-80px' }}
+            >
               <h2>Why Work With Kevin Graham</h2>
               <p>A track record built on results, relationships, and regulatory excellence.</p>
-            </div>
-            <div className="stats-grid">
+            </motion.div>
+            <motion.div
+              className="stats-grid"
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-80px' }}
+            >
               {[
                 { number: '15+',    label: 'Years Experience' },
                 { number: '$500M+', label: 'Managed Transactions' },
                 { number: '40+',    label: 'Countries Served' },
                 { number: '100+',   label: 'Corporate Clients' },
               ].map((stat, i) => (
-                <div key={i} className="stat-item">
+                <motion.div key={i} className="stat-item" variants={staggerItem}>
                   <span className="stat-number">{stat.number}</span>
                   <span className="stat-label">{stat.label}</span>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </section>
 
-        <section className="services-cta-section">
+        <motion.section
+          className="services-cta-section"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-60px' }}
+        >
           <div className="container">
             <h2>Ready to Explore the Right Solution?</h2>
             <p>Let's discuss how my expertise can support your goals and drive results.</p>
@@ -404,7 +434,7 @@ const Services = () => {
               </a>
             </div>
           </div>
-        </section>
+        </motion.section>
 
       </main>
     </div>
