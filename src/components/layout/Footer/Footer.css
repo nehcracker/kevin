@@ -166,3 +166,52 @@
     font-size: 0.72rem;
   }
 }
+
+/* ── Dark Navy Override ── */
+.site-footer {
+  background: var(--bg-card) !important;
+  border-top: 1px solid var(--border-subtle);
+  color: var(--text-secondary) !important;
+}
+
+.site-footer h3,
+.site-footer h4 {
+  color: var(--text-primary) !important;
+}
+
+.site-footer h3 a {
+  color: var(--accent) !important;
+  text-decoration: none;
+}
+
+.site-footer p,
+.site-footer li {
+  color: var(--text-secondary) !important;
+}
+
+.site-footer a {
+  color: var(--text-secondary) !important;
+  transition: color 0.2s ease;
+}
+
+.site-footer a:hover {
+  color: var(--accent) !important;
+}
+
+.footer-bottom {
+  border-top: 1px solid var(--border-subtle) !important;
+  color: var(--text-muted) !important;
+}
+
+.social-icon {
+  background: var(--glass-bg) !important;
+  border: 1px solid var(--border-subtle) !important;
+  color: var(--text-secondary) !important;
+  transition: background 0.2s, color 0.2s, border-color 0.2s !important;
+}
+
+.social-icon:hover {
+  background: var(--accent-dark) !important;
+  border-color: var(--accent) !important;
+  color: #fff !important;
+}
