@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { fadeUp, staggerContainer, staggerItem, slideInLeft } from '../../../utils/motion';
 import SEO from '../../../components/common/SEO/SEO';
 import './ProjectFundersInvestors.css';
 
@@ -430,52 +432,56 @@ const ProjectFundersInvestors = () => {
           </div>
 
           <div className="pfi-hi">
-            <div>
-              <nav className="pfi-breadcrumb" aria-label="Breadcrumb">
+            <motion.div
+              variants={staggerContainer}
+              initial="hidden"
+              animate="visible"
+            >
+              <motion.nav variants={staggerItem} className="pfi-breadcrumb" aria-label="Breadcrumb">
                 <Link to="/"><i className="fas fa-home" aria-hidden="true" /> Home</Link>
                 <span className="pfi-sep"><i className="fas fa-chevron-right" aria-hidden="true" /></span>
                 <Link to="/services">Services</Link>
                 <span className="pfi-sep"><i className="fas fa-chevron-right" aria-hidden="true" /></span>
                 <span className="pfi-cur">Project Funders & Investors</span>
-              </nav>
+              </motion.nav>
 
-              <div className="pfi-eyebrow" aria-hidden="true">
+              <motion.div variants={staggerItem} className="pfi-eyebrow" aria-hidden="true">
                 <div className="pfi-eyebrow-line" />
                 <div className="pfi-eyebrow-text">Capital Introduction Advisory</div>
-              </div>
+              </motion.div>
 
-              <h1 id="pfi-h1">
+              <motion.h1 variants={staggerItem} id="pfi-h1">
                 Project funders &amp;<br />
                 <em>investors, connected</em>
-              </h1>
+              </motion.h1>
 
-              <div className="pfi-hero-rule" aria-hidden="true" />
+              <motion.div variants={staggerItem} className="pfi-hero-rule" aria-hidden="true" />
 
-              <p className="pfi-hero-body">
+              <motion.p variants={staggerItem} className="pfi-hero-body">
                 Kevin Graham connects project sponsors and capital seekers directly with DFIs,
                 development banks, institutional lenders, sovereign funds, and private capital sources
                 across 40+ countries — providing structured, curated introductions for projects that
                 are commercially viable and ready for funder engagement.
-              </p>
+              </motion.p>
 
-              <div className="pfi-quals" aria-label="Key qualifications">
+              <motion.div variants={staggerItem} className="pfi-quals" aria-label="Key qualifications">
                 {QUALS.map((q, i) => (
                   <div key={i} className="pfi-qual-row">
                     <div className="pfi-qual-icon" aria-hidden="true" />
                     {q}
                   </div>
                 ))}
-              </div>
+              </motion.div>
 
-              <div className="pfi-hero-stats" aria-label="Key statistics">
+              <motion.div variants={staggerItem} className="pfi-hero-stats" aria-label="Key statistics">
                 {STATS.map((s) => (
                   <div key={s.n}>
                     <div className="pfi-hs-n">{s.n}</div>
                     <div className="pfi-hs-l">{s.l}</div>
                   </div>
                 ))}
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
 
             <EnquiryPanel />
           </div>
@@ -483,14 +489,20 @@ const ProjectFundersInvestors = () => {
 
         {/* TRUST BAR */}
         <div className="pfi-trust-bar" role="region" aria-label="Capital source categories">
-          <div className="pfi-trust-inner">
+          <motion.div
+            className="pfi-trust-inner"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
             {TRUST.map((t) => (
-              <div key={t.n} className="pfi-ti">
+              <motion.div key={t.n} className="pfi-ti" variants={staggerItem}>
                 <div className="pfi-ti-n">{t.n}</div>
                 <div className="pfi-ti-l">{t.l}</div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
 
         {/* ADVISORY ADVANTAGE */}
@@ -503,15 +515,26 @@ const ProjectFundersInvestors = () => {
               right structure. Kevin provides all three — connecting projects to verified capital
               sources with a curated, mandate-driven process.
             </p>
-            <div className="pfi-value-grid">
+            <motion.div
+              className="pfi-value-grid"
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-60px' }}
+            >
               {ADVANTAGE.map((a) => (
-                <div key={a.num} className="pfi-vc">
+                <motion.div
+                  key={a.num}
+                  className="pfi-vc"
+                  variants={staggerItem}
+                  whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                >
                   <div className="pfi-vc-num">{a.num}</div>
                   <div className="pfi-vc-t">{a.title}</div>
                   <div className="pfi-vc-d">{a.desc}</div>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </section>
 
@@ -525,15 +548,26 @@ const ProjectFundersInvestors = () => {
               requirements. If your project does not yet meet these, Kevin's other advisory
               services can help you get there.
             </p>
-            <div className="pfi-criteria-grid">
+            <motion.div
+              className="pfi-criteria-grid"
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-60px' }}
+            >
               {CRITERIA.map((c, i) => (
-                <div key={i} className="pfi-crit-card">
+                <motion.div
+                  key={i}
+                  className="pfi-crit-card"
+                  variants={staggerItem}
+                  whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                >
                   <div className="pfi-crit-icon" aria-hidden="true"><i className={c.icon} /></div>
                   <div className="pfi-crit-t">{c.title}</div>
                   <div className="pfi-crit-d">{c.desc}</div>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </section>
 
@@ -546,15 +580,21 @@ const ProjectFundersInvestors = () => {
               Funding mandates are not restricted by sector. If the project is commercially
               viable and appropriately scaled, it will be assessed.
             </p>
-            <div className="pfi-sectors-grid">
+            <motion.div
+              className="pfi-sectors-grid"
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
               {SECTORS.map((s) => (
-                <div key={s.name} className="pfi-sector-pill">
+                <motion.div key={s.name} className="pfi-sector-pill" variants={staggerItem}>
                   <span className="pfi-sp-icon" aria-hidden="true">{s.icon}</span>
                   <div className="pfi-sp-name">{s.name}</div>
                   <div className="pfi-sp-desc">{s.desc}</div>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </section>
 
@@ -568,12 +608,21 @@ const ProjectFundersInvestors = () => {
               interests and maximise funder alignment at every stage.
             </p>
             <div className="pfi-steps" role="list" aria-label="Process steps">
-              {STEPS.map((s) => (
-                <div key={s.n} className="pfi-step" role="listitem">
+              {STEPS.map((s, i) => (
+                <motion.div
+                  key={s.n}
+                  className="pfi-step"
+                  role="listitem"
+                  variants={slideInLeft}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.12 }}
+                >
                   <div className={`pfi-step-circle${s.active ? ' active' : ''}`} aria-hidden="true">{s.n}</div>
                   <div className="pfi-step-t">{s.title}</div>
                   <div className="pfi-step-d">{s.desc}</div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -588,20 +637,38 @@ const ProjectFundersInvestors = () => {
               Kevin works with a curated network of verified capital sources actively deploying
               into large-scale projects across all major sectors and geographies.
             </p>
-            <div className="pfi-sources-grid">
+            <motion.div
+              className="pfi-sources-grid"
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-60px' }}
+            >
               {SOURCES.map((s) => (
-                <div key={s.name} className="pfi-source-card">
+                <motion.div
+                  key={s.name}
+                  className="pfi-source-card"
+                  variants={staggerItem}
+                  whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                >
                   <div className="pfi-sc-type">{s.type}</div>
                   <div className="pfi-sc-name">{s.name}</div>
                   <div className="pfi-sc-desc">{s.desc}</div>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </section>
 
         {/* CTA */}
-        <section className="pfi-cta" aria-labelledby="pfi-cta-heading">
+        <motion.section
+          className="pfi-cta"
+          aria-labelledby="pfi-cta-heading"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-60px' }}
+        >
           <h2 id="pfi-cta-heading">
             Have a project requiring<br />substantial funding?
           </h2>
@@ -630,7 +697,7 @@ const ProjectFundersInvestors = () => {
             constitutes a guarantee of funding or a financial promotion for any specific
             product. All enquiries are subject to eligibility assessment.
           </p>
-        </section>
+        </motion.section>
 
       </main>
     </div>
