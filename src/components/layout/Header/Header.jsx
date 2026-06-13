@@ -1,17 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './Header.css';
-
-// logo image for header
 import logo from '../../../assets/images/Graham.png';
 
 const Header = () => {
-  const navigate = useNavigate();
+  const navigate   = useNavigate();
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 60);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   const goHomeAndScrollHero = (e) => {
     e.preventDefault();
-    // Force a full page navigation to the site root so the page reloads
-    // and always lands on the home page (refresh behavior requested).
     window.location.href = '/';
   };
 
@@ -34,7 +37,7 @@ const Header = () => {
   };
 
   return (
-    <header className="site-header">
+    <header className={`site-header${scrolled ? ' site-header--scrolled' : ''}`}>
       <div className="container">
         <div className="header-content">
           <div className="logo">
@@ -42,7 +45,6 @@ const Header = () => {
               <img src={logo} alt="Kevin Graham Logo" className="site-logo-image" />
             </Link>
           </div>
-
           <nav className="main-nav">
             <ul>
               <li><Link to="/" className="nav-link">Home</Link></li>
