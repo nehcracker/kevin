@@ -86,15 +86,6 @@ const ProjectFundingPanel = () => {
               ? <>Your enquiry has been submitted. A confirmation has been sent to <strong>{fields.email}</strong>. Kevin will review and respond within 48 hours.</>
               : 'Your message has been sent to Kevin on WhatsApp. He will review and respond within 48 hours.'}
           </p>
-          <a
-            href="https://calendly.com/kevingraham"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="pf-fp-btn pf-fp-btn-email"
-            style={{ marginTop: '1rem', display: 'inline-flex', width: 'auto', padding: '0.8rem 1.5rem' }}
-          >
-            <i className="fas fa-calendar-check" aria-hidden="true" /> &nbsp;Book a Consultation
-          </a>
         </div>
         <div className="pf-fp-foot">
           All enquiries are treated in strict confidence. Kevin responds within 48 hours.

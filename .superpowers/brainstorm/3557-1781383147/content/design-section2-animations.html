@@ -1,0 +1,112 @@
+<h2>Section 2 — Animation & Component Design</h2>
+<p class="subtitle">What gets built, page by page</p>
+
+<div style="display:flex;flex-direction:column;gap:16px;margin-top:24px;">
+
+  <!-- Shared system -->
+  <div style="background:rgba(77,163,255,0.06);border:1px solid rgba(77,163,255,0.2);border-radius:10px;padding:16px;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+      <div style="width:8px;height:8px;background:#4da3ff;border-radius:50%;"></div>
+      <h3 style="margin:0;font-size:13px;color:#4da3ff;text-transform:uppercase;letter-spacing:2px;">Shared System</h3>
+    </div>
+    <p style="margin:0 0 10px;font-size:12px;color:#aac;">One shared file <code style="background:rgba(255,255,255,0.08);padding:2px 6px;border-radius:4px;font-size:11px;">src/utils/motion.js</code> exports reusable Framer Motion variants used across all pages:</p>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+      <span style="background:#0d2240;border:1px solid #1a3a6b;color:#e8f2ff;padding:4px 10px;border-radius:4px;font-size:11px;">fadeUp — scroll reveal</span>
+      <span style="background:#0d2240;border:1px solid #1a3a6b;color:#e8f2ff;padding:4px 10px;border-radius:4px;font-size:11px;">staggerContainer — children delay</span>
+      <span style="background:#0d2240;border:1px solid #1a3a6b;color:#e8f2ff;padding:4px 10px;border-radius:4px;font-size:11px;">slideInLeft / slideInRight</span>
+      <span style="background:#0d2240;border:1px solid #1a3a6b;color:#e8f2ff;padding:4px 10px;border-radius:4px;font-size:11px;">scaleIn — pop-in</span>
+      <span style="background:#0d2240;border:1px solid #1a3a6b;color:#e8f2ff;padding:4px 10px;border-radius:4px;font-size:11px;">tiltCard — 3D mouse hover</span>
+    </div>
+  </div>
+
+  <!-- Home -->
+  <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:16px;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+      <div style="width:24px;height:24px;background:linear-gradient(135deg,#4da3ff,#0056b3);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;flex-shrink:0;">H</div>
+      <h3 style="margin:0;font-size:13px;color:#e8f2ff;">Home Page</h3>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+      <div style="background:#0d2240;border-radius:6px;padding:10px;">
+        <div style="font-size:11px;font-weight:600;color:#4da3ff;margin-bottom:4px;">Hero Section</div>
+        <ul style="margin:0;padding-left:14px;font-size:11px;color:#8899bb;line-height:1.7;">
+          <li>3D tilt card on Kevin's photo (mouse parallax)</li>
+          <li>Staggered text entrance (badge → name → tagline → CTAs)</li>
+          <li>Animated stat counters (count up on enter)</li>
+          <li>Floating ambient glow blobs</li>
+        </ul>
+      </div>
+      <div style="background:#0d2240;border-radius:6px;padding:10px;">
+        <div style="font-size:11px;font-weight:600;color:#4da3ff;margin-bottom:4px;">Below the Fold</div>
+        <ul style="margin:0;padding-left:14px;font-size:11px;color:#8899bb;line-height:1.7;">
+          <li>Swiper carousel for service cards (loop, autoplay)</li>
+          <li>fadeUp scroll reveals on all sections</li>
+          <li>Staggered expertise cards (cascade in)</li>
+          <li>Milestone timeline with slide-in items</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- About -->
+  <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:16px;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+      <div style="width:24px;height:24px;background:linear-gradient(135deg,#4da3ff,#0056b3);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;flex-shrink:0;">A</div>
+      <h3 style="margin:0;font-size:13px;color:#e8f2ff;">About Page</h3>
+    </div>
+    <ul style="margin:0;padding-left:14px;font-size:11px;color:#8899bb;line-height:1.8;">
+      <li>3D tilt on Kevin's photo (same component, reused)</li>
+      <li>Bio text slides in from left, photo from right</li>
+      <li>Philosophy cards stagger in as grid (6 cards, 0.1s delay each)</li>
+      <li>Experience badges count up (15 years, 40 countries)</li>
+    </ul>
+  </div>
+
+  <!-- Services Overview -->
+  <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:16px;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+      <div style="width:24px;height:24px;background:linear-gradient(135deg,#4da3ff,#0056b3);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;flex-shrink:0;">S</div>
+      <h3 style="margin:0;font-size:13px;color:#e8f2ff;">Services Overview <span style="color:#4a6a9a;font-weight:400;">(/services)</span></h3>
+    </div>
+    <ul style="margin:0;padding-left:14px;font-size:11px;color:#8899bb;line-height:1.8;">
+      <li>Service cards alternate left/right slide-in (existing layout preserved)</li>
+      <li>Each card has hover lift + border glow</li>
+      <li>Quick-nav pills animate in as a staggered row</li>
+      <li>"Why Choose Kevin" stats count up on scroll</li>
+    </ul>
+  </div>
+
+  <!-- Service Detail Pages -->
+  <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:16px;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+      <div style="width:24px;height:24px;background:linear-gradient(135deg,#4da3ff,#0056b3);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;flex-shrink:0;">8×</div>
+      <h3 style="margin:0;font-size:13px;color:#e8f2ff;">All 8 Service Detail Pages</h3>
+    </div>
+    <p style="font-size:11px;color:#6a8fbf;margin:0 0 8px;">Consistent pattern applied to all — no page looks forgotten:</p>
+    <ul style="margin:0;padding-left:14px;font-size:11px;color:#8899bb;line-height:1.8;">
+      <li>Page hero with fadeUp headline + glassmorphism stat strip</li>
+      <li>Sector/feature cards stagger in as grid</li>
+      <li>Process steps slide in sequentially (step 1 → 2 → 3 → 4)</li>
+      <li>Hover: cards lift + accent border glow on left edge</li>
+      <li>CTA section fades in last</li>
+    </ul>
+  </div>
+
+  <!-- Global components -->
+  <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:16px;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+      <div style="width:24px;height:24px;background:rgba(77,163,255,0.15);border:1px solid rgba(77,163,255,0.3);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#4da3ff;flex-shrink:0;">G</div>
+      <h3 style="margin:0;font-size:13px;color:#e8f2ff;">Global Shell Components</h3>
+    </div>
+    <ul style="margin:0;padding-left:14px;font-size:11px;color:#8899bb;line-height:1.8;">
+      <li>Header: dark navy bar with backdrop blur, scrolled state adds border glow</li>
+      <li>Footer: dark navy, same grid pattern as hero</li>
+      <li>FloatingContact: already works — just reskin to dark theme</li>
+      <li>Contact panel: glassmorphism dark card</li>
+      <li>Partners marquee: dark background, logos get brightness filter for contrast</li>
+      <li>Reviews: dark card wrapper around Trustpilot widget</li>
+    </ul>
+  </div>
+
+</div>
+
+<p style="text-align:center;margin-top:20px;font-size:13px;color:#888;">Does this animation plan look right? Confirm in terminal to move to the next section.</p>

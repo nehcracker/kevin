@@ -502,3 +502,17 @@ p { max-width: 72ch; }
   h1 { font-size: clamp(1.5rem, 7vw, 2rem); }
   h2 { font-size: clamp(1.25rem, 5.5vw, 1.6rem); }
 }
+
+/* ── WhatsApp button animations ── */
+@keyframes wa-breathe {
+  0%, 100% { box-shadow: 0 4px 16px rgba(37, 211, 102, 0.28); }
+  50%       { box-shadow: 0 6px 32px rgba(37, 211, 102, 0.62); }
+}
+
+@keyframes wa-hop {
+  0%   { transform: translateY(0)    scale(1);    }
+  35%  { transform: translateY(-8px) scale(1.06); }
+  65%  { transform: translateY(-3px) scale(1.02); }
+  85%  { transform: translateY(-6px) scale(1.04); }
+  100% { transform: translateY(-5px) scale(1.03); }
+}
