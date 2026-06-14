@@ -1,6 +1,17 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import './Contact.css';
 
+/* ── Conversion tracking ─────────────────────────────────────────────────── */
+const fireConversion = () => {
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', 'conversion', {
+      send_to: 'AW-18234308546/ame7COWvsb4cEMLv5fZD',
+      value: 1.0,
+      currency: 'USD',
+    });
+  }
+};
+
 /* ── Constants ───────────────────────────────────────────────────────────── */
 const PHONE    = '447723339858';
 const EMAIL    = 'kevin.uk@grahamkarimi.com';
@@ -69,6 +80,7 @@ const ContactPanel = () => {
     setChannel(ch);
     const url = ch === 'wa' ? buildWaUrl(service) : buildEmailUrl(service);
     window.open(url, '_blank', 'noopener,noreferrer');
+    fireConversion();
     goStage(3);
     clearTimeout(resetTimer.current);
     resetTimer.current = setTimeout(() => {

@@ -18,6 +18,16 @@ const sectors = [
 
 const WORKER_URL = 'https://pf-enquiry.nehlmac4.workers.dev';
 
+const fireConversion = () => {
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', 'conversion', {
+      send_to: 'AW-18234308546/ame7COWvsb4cEMLv5fZD',
+      value: 1.0,
+      currency: 'USD',
+    });
+  }
+};
+
 /* ── Enquiry Panel ───────────────────────────────────────────────────────────── */
 const ProjectFundingPanel = () => {
   const [fields, setFields] = useState({ name: '', email: '', phone: '', range: '', summary: '' });
@@ -42,6 +52,7 @@ const ProjectFundingPanel = () => {
       `Project Overview:\n${fields.summary}`
     );
     window.open(`https://wa.me/447723339858?text=${text}`, '_blank', 'noopener,noreferrer');
+    fireConversion();
     setStatus('success-wa');
   };
 
@@ -57,6 +68,7 @@ const ProjectFundingPanel = () => {
       });
       const data = await res.json();
       if (res.ok && data.success) {
+        fireConversion();
         setStatus('success-email');
       } else {
         setStatus('error');

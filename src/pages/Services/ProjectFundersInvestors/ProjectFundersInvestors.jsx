@@ -148,6 +148,16 @@ const inlineErr = {
   marginTop: '4px', fontWeight: 400, display: 'block',
 };
 
+const fireConversion = () => {
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', 'conversion', {
+      send_to: 'AW-18234308546/ame7COWvsb4cEMLv5fZD',
+      value: 1.0,
+      currency: 'USD',
+    });
+  }
+};
+
 /* ══════════════════════════════════════════════════════════════════════════
    ENQUIRY PANEL
    ══════════════════════════════════════════════════════════════════════════ */
@@ -215,6 +225,7 @@ const EnquiryPanel = () => {
       const data = await res.json();
 
       if (res.ok && data.success) {
+        fireConversion();
         setStatus('success');
       } else {
         setStatus('error');
