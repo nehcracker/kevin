@@ -183,7 +183,6 @@ function buildKevinEmail(f) {
                 ${row('Full Name',        f.name)}
                 ${row('Email',            f.email)}
                 ${row('Phone',            f.phone)}
-                ${row('Project Sector',   f.sector)}
                 ${row('Funding Required', f.range)}
                 ${rowFull('Project Overview', f.summary)}
               </table>
@@ -403,7 +402,7 @@ function buildAutoReply(f) {
 }
 
 /* ── Validation ───────────────────────────────────────────────────────────── */
-const REQUIRED = ['name', 'email', 'phone', 'sector', 'range', 'summary'];
+const REQUIRED = ['name', 'email', 'phone', 'range', 'summary'];
 
 function validateFields(f) {
   for (const key of REQUIRED) {
@@ -447,7 +446,7 @@ const handler = {
         sendEmail({
           to:       env.KEVIN_EMAIL || 'kevin.uk@grahamkarimi.com',
           toName:   env.KEVIN_NAME  || 'Kevin Graham',
-          subject:  `New Project Funding Enquiry — ${fields.sector} — ${fields.range}`,
+          subject:  `New Project Funding Enquiry — ${fields.range}`,
           htmlBody: buildKevinEmail(fields),
           replyTo:  fields.email,
           env,

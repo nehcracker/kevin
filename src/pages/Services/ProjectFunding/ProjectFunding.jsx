@@ -16,24 +16,11 @@ const sectors = [
   { icon: 'fas fa-chart-line', label: 'Corporate Expansion' },
 ];
 
-const SECTOR_OPTIONS = [
-  'Infrastructure',
-  'Real Estate & Development',
-  'Energy & Utilities',
-  'Manufacturing & Industrial',
-  'Large Trade Operations',
-  'Corporate Expansion & Acquisition',
-  'Agriculture & Agri-processing',
-  'Technology & Innovation',
-  'Healthcare',
-  'Other',
-];
-
 const WORKER_URL = 'https://pf-enquiry.nehlmac4.workers.dev';
 
 /* ── Enquiry Panel ───────────────────────────────────────────────────────────── */
 const ProjectFundingPanel = () => {
-  const [fields, setFields] = useState({ name: '', email: '', phone: '', sector: '', range: '', summary: '' });
+  const [fields, setFields] = useState({ name: '', email: '', phone: '', range: '', summary: '' });
   const [status, setStatus] = useState('idle'); // idle | sending | success-wa | success-email | error
   const [submitError, setSubmitError] = useState('');
 
@@ -42,7 +29,7 @@ const ProjectFundingPanel = () => {
     setFields(f => ({ ...f, [name]: value }));
   };
 
-  const canSubmit = fields.name && fields.email && fields.phone && fields.sector && fields.range && fields.summary;
+  const canSubmit = fields.name && fields.email && fields.phone && fields.range && fields.summary;
 
   const handleWhatsApp = () => {
     if (!canSubmit) return;
@@ -51,7 +38,6 @@ const ProjectFundingPanel = () => {
       `Name: ${fields.name}\n` +
       `Email: ${fields.email}\n` +
       `Phone: ${fields.phone}\n` +
-      `Sector: ${fields.sector}\n` +
       `Funding Required: ${fields.range}\n\n` +
       `Project Overview:\n${fields.summary}`
     );
@@ -140,16 +126,9 @@ const ProjectFundingPanel = () => {
             <input id="pf-fp-phone" name="phone" type="tel" placeholder="+44 7700 900000" value={fields.phone} onChange={onChange} />
           </div>
           <div className="pf-fp-field">
-            <label htmlFor="pf-fp-sector">Project Sector *</label>
-            <select id="pf-fp-sector" name="sector" value={fields.sector} onChange={onChange}>
-              <option value="">Select sector…</option>
-              {SECTOR_OPTIONS.map(s => <option key={s} value={s}>{s}</option>)}
-            </select>
+            <label htmlFor="pf-fp-range">Funding Required *</label>
+            <input id="pf-fp-range" name="range" type="text" placeholder="e.g. $5M, $50M, $200M" value={fields.range} onChange={onChange} />
           </div>
-        </div>
-        <div className="pf-fp-field">
-          <label htmlFor="pf-fp-range">Funding Required *</label>
-          <input id="pf-fp-range" name="range" type="text" placeholder="e.g. $5M, $50M, $200,000,000" value={fields.range} onChange={onChange} />
         </div>
         <div className="pf-fp-field">
           <label htmlFor="pf-fp-summary">Project Overview *</label>
