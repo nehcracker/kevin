@@ -21,27 +21,51 @@ const WORKER_URL = 'https://pf-enquiry.nehlmac4.workers.dev';
 const fireConversion = () => {
   if (typeof window.gtag === 'function') {
     window.gtag('event', 'conversion', {
-      send_to: 'AW-18234308546/ame7COWvsb4cEMLv5fZD',
+      send_to: 'AW-18234308546/oy6-CNmgiL8cEMLv5fZD',
       value: 1.0,
       currency: 'USD',
     });
   }
 };
 
+/* ── Validation helpers ──────────────────────────────────────────────────────── */
+const validateEmail = (v) => {
+  if (!v) return 'Email is required';
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) return 'Enter a valid email address';
+  return '';
+};
+
+const validatePhone = (v) => {
+  if (!v) return 'Phone is required';
+  const stripped = v.replace(/[\s\-().]/g, '');
+  if (!/^\+[1-9]\d{6,14}$/.test(stripped))
+    return 'Include your country code — e.g. +44 7700 900000';
+  return '';
+};
+
 /* ── Enquiry Panel ───────────────────────────────────────────────────────────── */
 const ProjectFundingPanel = () => {
   const [fields, setFields] = useState({ name: '', email: '', phone: '', range: '', summary: '' });
+  const [touched, setTouched] = useState({});
   const [status, setStatus] = useState('idle'); // idle | sending | success-wa | success-email | error
   const [submitError, setSubmitError] = useState('');
+
+  const emailErr = validateEmail(fields.email);
+  const phoneErr = validatePhone(fields.phone);
 
   const onChange = (e) => {
     const { name, value } = e.target;
     setFields(f => ({ ...f, [name]: value }));
   };
 
-  const canSubmit = fields.name && fields.email && fields.phone && fields.range && fields.summary;
+  const onBlur = (e) => {
+    setTouched(t => ({ ...t, [e.target.name]: true }));
+  };
+
+  const canSubmit = fields.name && !emailErr && !phoneErr && fields.range && fields.summary;
 
   const handleWhatsApp = () => {
+    setTouched({ name: true, email: true, phone: true, range: true, summary: true });
     if (!canSubmit) return;
     const text = encodeURIComponent(
       `*Project Funding Enquiry*\n\n` +
@@ -57,6 +81,7 @@ const ProjectFundingPanel = () => {
   };
 
   const handleEmail = async () => {
+    setTouched({ name: true, email: true, phone: true, range: true, summary: true });
     if (!canSubmit || status === 'sending') return;
     setSubmitError('');
     setStatus('sending');
@@ -120,13 +145,29 @@ const ProjectFundingPanel = () => {
           </div>
           <div className="pf-fp-field">
             <label htmlFor="pf-fp-email">Email Address *</label>
-            <input id="pf-fp-email" name="email" type="email" placeholder="your@email.com" value={fields.email} onChange={onChange} />
+            <input
+              id="pf-fp-email" name="email" type="email"
+              placeholder="your@email.com"
+              value={fields.email}
+              onChange={onChange}
+              onBlur={onBlur}
+              className={touched.email && emailErr ? 'pf-fp-input-err' : ''}
+            />
+            {touched.email && emailErr && <span className="pf-fp-field-msg">{emailErr}</span>}
           </div>
         </div>
         <div className="pf-fp-row">
           <div className="pf-fp-field">
-            <label htmlFor="pf-fp-phone">Phone (intl. format) *</label>
-            <input id="pf-fp-phone" name="phone" type="tel" placeholder="+44 7700 900000" value={fields.phone} onChange={onChange} />
+            <label htmlFor="pf-fp-phone">Phone (with country code) *</label>
+            <input
+              id="pf-fp-phone" name="phone" type="tel"
+              placeholder="+44 7700 900000"
+              value={fields.phone}
+              onChange={onChange}
+              onBlur={onBlur}
+              className={touched.phone && phoneErr ? 'pf-fp-input-err' : ''}
+            />
+            {touched.phone && phoneErr && <span className="pf-fp-field-msg">{phoneErr}</span>}
           </div>
           <div className="pf-fp-field">
             <label htmlFor="pf-fp-range">Funding Required *</label>
