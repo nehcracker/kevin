@@ -1,0 +1,20 @@
+name               = "pf-enquiry"
+main               = "worker.js"
+compatibility_date = "2024-01-01"
+
+# ── Non-sensitive environment variables ───────────────────────────────────
+# Sensitive keys (ZEPTO_API_KEY) are set via:
+#   wrangler secret put ZEPTO_API_KEY
+# and NEVER stored in this file.
+
+[vars]
+FROM_ADDRESS   = "noreply@grahamkarimi.com"
+FROM_NAME      = "Kevin Graham"
+KEVIN_EMAIL    = "kevin.uk@grahamkarimi.com"
+KEVIN_NAME     = "Kevin Graham"
+ALLOWED_ORIGIN = "https://grahamkarimi.com"
+
+# ── Deploy ────────────────────────────────────────────────────────────────
+# Deploy with: cd pf-enquiry && wrangler deploy
+# The worker URL will be: https://pf-enquiry.<your-subdomain>.workers.dev
+# Update WORKER_URL in ProjectFunding.jsx after first deploy.

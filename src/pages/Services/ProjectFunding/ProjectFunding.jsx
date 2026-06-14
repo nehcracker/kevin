@@ -29,10 +29,13 @@ const SECTOR_OPTIONS = [
   'Other',
 ];
 
+const WORKER_URL = 'https://pf-enquiry.nehlmac4.workers.dev';
+
 /* ── Enquiry Panel ───────────────────────────────────────────────────────────── */
 const ProjectFundingPanel = () => {
   const [fields, setFields] = useState({ name: '', email: '', phone: '', sector: '', range: '', summary: '' });
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState('idle'); // idle | sending | success-wa | success-email | error
+  const [submitError, setSubmitError] = useState('');
 
   const onChange = (e) => {
     const { name, value } = e.target;
@@ -41,7 +44,7 @@ const ProjectFundingPanel = () => {
 
   const canSubmit = fields.name && fields.email && fields.phone && fields.sector && fields.range && fields.summary;
 
-  const handleSubmit = () => {
+  const handleWhatsApp = () => {
     if (!canSubmit) return;
     const text = encodeURIComponent(
       `*Project Funding Enquiry*\n\n` +
@@ -53,21 +56,62 @@ const ProjectFundingPanel = () => {
       `Project Overview:\n${fields.summary}`
     );
     window.open(`https://wa.me/447723339858?text=${text}`, '_blank', 'noopener,noreferrer');
-    setSent(true);
+    setStatus('success-wa');
   };
 
-  if (sent) {
+  const handleEmail = async () => {
+    if (!canSubmit || status === 'sending') return;
+    setSubmitError('');
+    setStatus('sending');
+    try {
+      const res  = await fetch(WORKER_URL, {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify(fields),
+      });
+      const data = await res.json();
+      if (res.ok && data.success) {
+        setStatus('success-email');
+      } else {
+        setStatus('error');
+        setSubmitError(data.error || 'Something went wrong. Please try again.');
+      }
+    } catch {
+      setStatus('error');
+      setSubmitError('Network error — please check your connection and try again, or email kevin.uk@grahamkarimi.com directly.');
+    }
+  };
+
+  if (status === 'success-wa' || status === 'success-email') {
+    const byEmail = status === 'success-email';
     return (
       <div className="pf-fp">
         <div className="pf-fp-head">
-          <i className="fas fa-check-circle" aria-hidden="true" style={{ fontSize: '2rem', color: '#25D366', marginBottom: '0.75rem' }} />
-          <div className="pf-fp-head-title">Enquiry sent via WhatsApp</div>
-          <div className="pf-fp-head-sub">Kevin will review and respond within 48 hours.</div>
+          <div className="pf-fp-head-title">Submit a Project Enquiry</div>
+          <div className="pf-fp-head-sub">Confidential · Response within 48 hours</div>
         </div>
-        <div style={{ padding: '1.5rem', textAlign: 'center' }}>
-          <a href="https://calendly.com/kevingraham" target="_blank" rel="noopener noreferrer" className="pf-fp-submit" style={{ display: 'inline-flex', width: 'auto', padding: '0.9rem 1.75rem' }}>
+        <div className="pf-fp-confirm">
+          <div className="pf-fp-confirm-icon">
+            <i className={byEmail ? 'fas fa-envelope-open-text' : 'fab fa-whatsapp'} aria-hidden="true" />
+          </div>
+          <h4>{byEmail ? 'Enquiry submitted' : 'Sent via WhatsApp'}</h4>
+          <p>
+            {byEmail
+              ? <>Your enquiry has been submitted. A confirmation has been sent to <strong>{fields.email}</strong>. Kevin will review and respond within 48 hours.</>
+              : 'Your message has been sent to Kevin on WhatsApp. He will review and respond within 48 hours.'}
+          </p>
+          <a
+            href="https://calendly.com/kevingraham"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="pf-fp-btn pf-fp-btn-email"
+            style={{ marginTop: '1rem', display: 'inline-flex', width: 'auto', padding: '0.8rem 1.5rem' }}
+          >
             <i className="fas fa-calendar-check" aria-hidden="true" /> &nbsp;Book a Consultation
           </a>
+        </div>
+        <div className="pf-fp-foot">
+          All enquiries are treated in strict confidence. Kevin responds within 48 hours.
         </div>
       </div>
     );
@@ -111,14 +155,31 @@ const ProjectFundingPanel = () => {
           <label htmlFor="pf-fp-summary">Project Overview *</label>
           <textarea id="pf-fp-summary" name="summary" rows={3} placeholder="Brief description of your project and funding requirement…" value={fields.summary} onChange={onChange} />
         </div>
-        <button
-          className="pf-fp-submit"
-          onClick={handleSubmit}
-          disabled={!canSubmit}
-          aria-label="Submit project funding enquiry via WhatsApp"
-        >
-          <i className="fab fa-whatsapp" aria-hidden="true" /> &nbsp;Send via WhatsApp
-        </button>
+
+        {status === 'error' && (
+          <p className="pf-fp-error" role="alert">{submitError}</p>
+        )}
+
+        <div className="pf-fp-actions">
+          <button
+            className="pf-fp-btn pf-fp-btn-wa"
+            onClick={handleWhatsApp}
+            disabled={!canSubmit}
+            aria-label="Send enquiry via WhatsApp"
+          >
+            <i className="fab fa-whatsapp" aria-hidden="true" /> WhatsApp
+          </button>
+          <button
+            className="pf-fp-btn pf-fp-btn-email"
+            onClick={handleEmail}
+            disabled={!canSubmit || status === 'sending'}
+            aria-label="Submit enquiry by email"
+          >
+            {status === 'sending'
+              ? <><i className="fas fa-circle-notch fa-spin" aria-hidden="true" /> Sending…</>
+              : <><i className="fas fa-envelope" aria-hidden="true" /> Send by Email</>}
+          </button>
+        </div>
       </div>
       <div className="pf-fp-foot">
         All enquiries are treated in strict confidence. Kevin responds within 48 hours.
