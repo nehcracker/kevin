@@ -952,7 +952,11 @@
     gap: 48px;
   }
 
+  /* Form appears first on mobile for easier conversion */
+  .pfi-hi > *:first-child { order: 2; }
+
   .pfi-enquiry-panel {
+    order: 1;
     position: static;
     max-width: 520px;
     margin: 0 auto;

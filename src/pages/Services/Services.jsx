@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { fadeUp, staggerContainer, staggerItem, slideInLeft, slideInRight } from '../../utils/motion';
+import { fadeUp, staggerContainer, staggerItem } from '../../utils/motion';
 import SEO from '../../components/common/SEO/SEO';
 import './Services.css';
 
@@ -324,7 +324,7 @@ const Services = () => {
             key={service.id}
             id={service.id}
             className={`service-section ${service.bgClass}`}
-            variants={idx % 2 === 0 ? slideInLeft : slideInRight}
+            variants={fadeUp}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-80px' }}
