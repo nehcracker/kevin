@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { fadeUp, staggerContainer, staggerItem, slideInLeft } from '../../../utils/motion';
@@ -15,6 +15,117 @@ const sectors = [
   { icon: 'fas fa-ship',       label: 'Large Trade Operations' },
   { icon: 'fas fa-chart-line', label: 'Corporate Expansion' },
 ];
+
+const SECTOR_OPTIONS = [
+  'Infrastructure',
+  'Real Estate & Development',
+  'Energy & Utilities',
+  'Manufacturing & Industrial',
+  'Large Trade Operations',
+  'Corporate Expansion & Acquisition',
+  'Agriculture & Agri-processing',
+  'Technology & Innovation',
+  'Healthcare',
+  'Other',
+];
+
+/* ── Enquiry Panel ───────────────────────────────────────────────────────────── */
+const ProjectFundingPanel = () => {
+  const [fields, setFields] = useState({ name: '', email: '', phone: '', sector: '', range: '', summary: '' });
+  const [sent, setSent] = useState(false);
+
+  const onChange = (e) => {
+    const { name, value } = e.target;
+    setFields(f => ({ ...f, [name]: value }));
+  };
+
+  const canSubmit = fields.name && fields.email && fields.phone && fields.sector && fields.range && fields.summary;
+
+  const handleSubmit = () => {
+    if (!canSubmit) return;
+    const text = encodeURIComponent(
+      `*Project Funding Enquiry*\n\n` +
+      `Name: ${fields.name}\n` +
+      `Email: ${fields.email}\n` +
+      `Phone: ${fields.phone}\n` +
+      `Sector: ${fields.sector}\n` +
+      `Funding Required: ${fields.range}\n\n` +
+      `Project Overview:\n${fields.summary}`
+    );
+    window.open(`https://wa.me/447723339858?text=${text}`, '_blank', 'noopener,noreferrer');
+    setSent(true);
+  };
+
+  if (sent) {
+    return (
+      <div className="pf-fp">
+        <div className="pf-fp-head">
+          <i className="fas fa-check-circle" aria-hidden="true" style={{ fontSize: '2rem', color: '#25D366', marginBottom: '0.75rem' }} />
+          <div className="pf-fp-head-title">Enquiry sent via WhatsApp</div>
+          <div className="pf-fp-head-sub">Kevin will review and respond within 48 hours.</div>
+        </div>
+        <div style={{ padding: '1.5rem', textAlign: 'center' }}>
+          <a href="https://calendly.com/kevingraham" target="_blank" rel="noopener noreferrer" className="pf-fp-submit" style={{ display: 'inline-flex', width: 'auto', padding: '0.9rem 1.75rem' }}>
+            <i className="fas fa-calendar-check" aria-hidden="true" /> &nbsp;Book a Consultation
+          </a>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="pf-fp">
+      <div className="pf-fp-head">
+        <div className="pf-fp-head-title">Submit a Project Enquiry</div>
+        <div className="pf-fp-head-sub">Confidential · Response within 48 hours</div>
+      </div>
+      <div className="pf-fp-body">
+        <div className="pf-fp-row">
+          <div className="pf-fp-field">
+            <label htmlFor="pf-fp-name">Full Name *</label>
+            <input id="pf-fp-name" name="name" type="text" placeholder="Your full name" value={fields.name} onChange={onChange} />
+          </div>
+          <div className="pf-fp-field">
+            <label htmlFor="pf-fp-email">Email Address *</label>
+            <input id="pf-fp-email" name="email" type="email" placeholder="your@email.com" value={fields.email} onChange={onChange} />
+          </div>
+        </div>
+        <div className="pf-fp-row">
+          <div className="pf-fp-field">
+            <label htmlFor="pf-fp-phone">Phone (intl. format) *</label>
+            <input id="pf-fp-phone" name="phone" type="tel" placeholder="+44 7700 900000" value={fields.phone} onChange={onChange} />
+          </div>
+          <div className="pf-fp-field">
+            <label htmlFor="pf-fp-sector">Project Sector *</label>
+            <select id="pf-fp-sector" name="sector" value={fields.sector} onChange={onChange}>
+              <option value="">Select sector…</option>
+              {SECTOR_OPTIONS.map(s => <option key={s} value={s}>{s}</option>)}
+            </select>
+          </div>
+        </div>
+        <div className="pf-fp-field">
+          <label htmlFor="pf-fp-range">Funding Required *</label>
+          <input id="pf-fp-range" name="range" type="text" placeholder="e.g. $5M, $50M, $200,000,000" value={fields.range} onChange={onChange} />
+        </div>
+        <div className="pf-fp-field">
+          <label htmlFor="pf-fp-summary">Project Overview *</label>
+          <textarea id="pf-fp-summary" name="summary" rows={3} placeholder="Brief description of your project and funding requirement…" value={fields.summary} onChange={onChange} />
+        </div>
+        <button
+          className="pf-fp-submit"
+          onClick={handleSubmit}
+          disabled={!canSubmit}
+          aria-label="Submit project funding enquiry via WhatsApp"
+        >
+          <i className="fab fa-whatsapp" aria-hidden="true" /> &nbsp;Send via WhatsApp
+        </button>
+      </div>
+      <div className="pf-fp-foot">
+        All enquiries are treated in strict confidence. Kevin responds within 48 hours.
+      </div>
+    </div>
+  );
+};
 
 const coreServices = [
   {
@@ -139,30 +250,33 @@ const ProjectFunding = () => {
               <span className="separator"><i className="fas fa-chevron-right"></i></span>
               <span className="current">Project Funding</span>
             </nav>
-            <motion.div
-              className="pf-header-body"
-              variants={staggerContainer}
-              initial="hidden"
-              animate="visible"
-            >
-              <motion.span variants={staggerItem} className="pf-header-label">Financial Advisory Service</motion.span>
-              <motion.h1 variants={staggerItem}>
-                International Project Funding
-                <span>& Debt Structuring</span>
-              </motion.h1>
-              <motion.p variants={staggerItem} className="pf-header-tagline">
-                You need structured capital to execute large-scale projects. You need the right
-                structure to secure approval and protect long-term returns. Funding follows structure.
-              </motion.p>
-              <motion.div variants={staggerItem} className="pf-header-cta">
-                <a href="#contact" className="pf-btn-primary">
-                  <i className="fas fa-calendar-check"></i> Schedule Consultation
-                </a>
-                <a href="#process" className="pf-btn-outline">
-                  <i className="fas fa-arrow-down"></i> How It Works
-                </a>
+            <div className="pf-hero-layout">
+              <motion.div
+                className="pf-header-body"
+                variants={staggerContainer}
+                initial="hidden"
+                animate="visible"
+              >
+                <motion.span variants={staggerItem} className="pf-header-label">Financial Advisory Service</motion.span>
+                <motion.h1 variants={staggerItem}>
+                  International Project Funding
+                  <span>& Debt Structuring</span>
+                </motion.h1>
+                <motion.p variants={staggerItem} className="pf-header-tagline">
+                  You need structured capital to execute large-scale projects. You need the right
+                  structure to secure approval and protect long-term returns. Funding follows structure.
+                </motion.p>
+                <motion.div variants={staggerItem} className="pf-header-cta">
+                  <a href="https://calendly.com/kevingraham" target="_blank" rel="noopener noreferrer" className="pf-btn-primary">
+                    <i className="fas fa-calendar-check"></i> Schedule Consultation
+                  </a>
+                  <a href="#process" className="pf-btn-outline">
+                    <i className="fas fa-arrow-down"></i> How It Works
+                  </a>
+                </motion.div>
               </motion.div>
-            </motion.div>
+              <ProjectFundingPanel />
+            </div>
           </div>
         </section>
 
