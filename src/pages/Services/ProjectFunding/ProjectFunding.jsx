@@ -43,6 +43,12 @@ const validatePhone = (v) => {
   return '';
 };
 
+const validateSummary = (v) => {
+  if (!v || !v.trim()) return 'Project overview is required';
+  if (v.trim().length < 150) return `At least 150 characters required (${v.trim().length}/150)`;
+  return '';
+};
+
 /* ── Enquiry Panel ───────────────────────────────────────────────────────────── */
 const ProjectFundingPanel = () => {
   const [fields, setFields] = useState({ name: '', email: '', phone: '', range: '', summary: '' });
@@ -50,19 +56,21 @@ const ProjectFundingPanel = () => {
   const [status, setStatus] = useState('idle'); // idle | sending | success-wa | success-email | error
   const [submitError, setSubmitError] = useState('');
 
-  const emailErr = validateEmail(fields.email);
-  const phoneErr = validatePhone(fields.phone);
+  const emailErr   = validateEmail(fields.email);
+  const phoneErr   = validatePhone(fields.phone);
+  const summaryErr = validateSummary(fields.summary);
 
   const onChange = (e) => {
     const { name, value } = e.target;
-    setFields(f => ({ ...f, [name]: value }));
+    const cleaned = name === 'range' ? value.replace(/[^\d,.]/g, '') : value;
+    setFields(f => ({ ...f, [name]: cleaned }));
   };
 
   const onBlur = (e) => {
     setTouched(t => ({ ...t, [e.target.name]: true }));
   };
 
-  const canSubmit = fields.name && !emailErr && !phoneErr && fields.range && fields.summary;
+  const canSubmit = fields.name && !emailErr && !phoneErr && fields.range && !summaryErr;
 
   const handleWhatsApp = () => {
     setTouched({ name: true, email: true, phone: true, range: true, summary: true });
@@ -170,13 +178,21 @@ const ProjectFundingPanel = () => {
             {touched.phone && phoneErr && <span className="pf-fp-field-msg">{phoneErr}</span>}
           </div>
           <div className="pf-fp-field">
-            <label htmlFor="pf-fp-range">Funding Required *</label>
-            <input id="pf-fp-range" name="range" type="text" placeholder="e.g. $5M, $50M, $200M" value={fields.range} onChange={onChange} />
+            <label htmlFor="pf-fp-range">Funding Required (USD) *</label>
+            <input id="pf-fp-range" name="range" type="text" inputMode="numeric" placeholder="e.g. 5,000,000" value={fields.range} onChange={onChange} />
           </div>
         </div>
         <div className="pf-fp-field">
-          <label htmlFor="pf-fp-summary">Project Overview *</label>
-          <textarea id="pf-fp-summary" name="summary" rows={3} placeholder="Brief description of your project and funding requirement…" value={fields.summary} onChange={onChange} />
+          <label htmlFor="pf-fp-summary">Project Overview * <small style={{fontWeight:400,opacity:0.7}}>(min. 150 chars)</small></label>
+          <textarea
+            id="pf-fp-summary" name="summary" rows={4}
+            placeholder="Describe your project, sector, location, and the funding requirement in detail (minimum 150 characters)…"
+            value={fields.summary}
+            onChange={onChange}
+            onBlur={onBlur}
+            className={touched.summary && summaryErr ? 'pf-fp-input-err' : ''}
+          />
+          {touched.summary && summaryErr && <span className="pf-fp-field-msg">{summaryErr}</span>}
         </div>
 
         {status === 'error' && (

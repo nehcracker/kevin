@@ -166,17 +166,27 @@ const EnquiryPanel = () => {
     name: '', org: '', email: '', phone: '',
     country: '', sector: '', range: '', summary: '',
   });
-  const [agreed,       setAgreed]       = useState(false);
-  const [status,       setStatus]       = useState('idle'); // idle | sending | success | error
-  const [fundingError, setFundingError] = useState('');
-  const [phoneError,   setPhoneError]   = useState('');
-  const [submitError,  setSubmitError]  = useState('');
+  const [agreed,        setAgreed]        = useState(false);
+  const [status,        setStatus]        = useState('idle'); // idle | sending | success | error
+  const [fundingError,  setFundingError]  = useState('');
+  const [phoneError,    setPhoneError]    = useState('');
+  const [summaryError,  setSummaryError]  = useState('');
+  const [summaryTouched, setSummaryTouched] = useState(false);
+  const [submitError,   setSubmitError]   = useState('');
+
+  const validateSummaryField = (val) => {
+    if (!val || !val.trim()) return 'Project summary is required.';
+    if (val.trim().length < 150) return `At least 150 characters required (${val.trim().length}/150)`;
+    return '';
+  };
 
   const onChange = (e) => {
     const { name, value } = e.target;
-    setFields(f => ({ ...f, [name]: value }));
-    if (name === 'range') validateFunding(value);
-    if (name === 'phone') setPhoneError(validatePhone(value));
+    const cleaned = name === 'range' ? value.replace(/[^\d,.]/g, '') : value;
+    setFields(f => ({ ...f, [name]: cleaned }));
+    if (name === 'range')   validateFunding(cleaned);
+    if (name === 'phone')   setPhoneError(validatePhone(value));
+    if (name === 'summary') setSummaryError(validateSummaryField(value));
   };
 
   const validateFunding = (val) => {
@@ -197,18 +207,20 @@ const EnquiryPanel = () => {
   const canSubmit =
     fields.name && fields.org && fields.email && fields.phone &&
     fields.country && fields.sector && fields.range && fields.summary &&
-    !fundingError && !phoneError && agreed && status !== 'sending';
+    !fundingError && !phoneError && !summaryError && agreed && status !== 'sending';
 
   const handleSubmit = async () => {
-    const fundingOk = validateFunding(fields.range);
-    const phoneMsg  = validatePhone(fields.phone);
-    if (phoneMsg) setPhoneError(phoneMsg);
+    const fundingOk  = validateFunding(fields.range);
+    const phoneMsg   = validatePhone(fields.phone);
+    const summaryMsg = validateSummaryField(fields.summary);
+    if (phoneMsg)   setPhoneError(phoneMsg);
+    if (summaryMsg) { setSummaryError(summaryMsg); setSummaryTouched(true); }
 
     const allFilled =
       fields.name && fields.org && fields.email && fields.phone &&
       fields.country && fields.sector && fields.range && fields.summary;
 
-    if (!allFilled || !fundingOk || phoneMsg || !agreed) {
+    if (!allFilled || !fundingOk || phoneMsg || summaryMsg || !agreed) {
       setSubmitError('Please complete all required fields before submitting.');
       return;
     }
@@ -331,8 +343,8 @@ const EnquiryPanel = () => {
             </select>
           </div>
           <div className="pfi-ef">
-            <label htmlFor="pfi-range">Funding required *</label>
-            <input id="pfi-range" type="text" name="range" placeholder="e.g. $5M, $50M, $200M"
+            <label htmlFor="pfi-range">Funding required (USD) *</label>
+            <input id="pfi-range" type="text" name="range" inputMode="numeric" placeholder="e.g. 5,000,000"
               value={fields.range} onChange={onChange} required aria-required="true"
               disabled={status === 'sending'} />
             {fundingError && <span style={inlineErr}>{fundingError}</span>}
@@ -341,11 +353,14 @@ const EnquiryPanel = () => {
 
         {/* Summary */}
         <div className="pfi-ef">
-          <label htmlFor="pfi-summary">Brief project summary *</label>
+          <label htmlFor="pfi-summary">Brief project summary * <small style={{fontWeight:400,opacity:0.7}}>(min. 150 chars)</small></label>
           <textarea id="pfi-summary" name="summary"
-            placeholder="Describe the project, its stage of development, and the nature of funding required…"
+            placeholder="Describe the project, its sector, location, stage of development, and the nature of funding required (minimum 150 characters)…"
             value={fields.summary} onChange={onChange} required aria-required="true"
-            disabled={status === 'sending'} />
+            disabled={status === 'sending'}
+            onBlur={() => { setSummaryTouched(true); setSummaryError(validateSummaryField(fields.summary)); }}
+          />
+          {summaryTouched && summaryError && <span style={inlineErr}>{summaryError}</span>}
         </div>
 
         {/* Checkbox */}
