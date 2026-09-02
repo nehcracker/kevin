@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { fadeUp, staggerContainer, staggerItem, slideInLeft } from '../../../utils/motion';
 import SEO from '../../../components/common/SEO/SEO';
+import AnimatedCounter from '../../../components/common/AnimatedCounter/AnimatedCounter';
 import './ProjectFundersInvestors.css';
 
 /* ── Constants ───────────────────────────────────────────────────────────── */
@@ -20,10 +21,10 @@ const QUALS = [
 ];
 
 const STATS = [
-  { n: '$1M+',  l: 'Minimum project size' },
-  { n: '40+',   l: 'Countries covered' },
-  { n: '48hr',  l: 'Enquiry response' },
-  { n: '100+',  l: 'Capital relationships' },
+  { prefix: '$', value: 1,   suffix: 'M+', l: 'Minimum project size' },
+  { prefix: '',  value: 40,  suffix: '+',  l: 'Countries covered' },
+  { prefix: '',  value: 48,  suffix: 'hr', l: 'Enquiry response' },
+  { prefix: '',  value: 100, suffix: '+',  l: 'Capital relationships' },
 ];
 
 const TRUST = [
@@ -501,8 +502,8 @@ const ProjectFundersInvestors = () => {
 
               <motion.div variants={staggerItem} className="pfi-hero-stats" aria-label="Key statistics">
                 {STATS.map((s) => (
-                  <div key={s.n}>
-                    <div className="pfi-hs-n">{s.n}</div>
+                  <div key={s.l}>
+                    <div className="pfi-hs-n">{s.prefix}<AnimatedCounter target={s.value} suffix={s.suffix} /></div>
                     <div className="pfi-hs-l">{s.l}</div>
                   </div>
                 ))}
