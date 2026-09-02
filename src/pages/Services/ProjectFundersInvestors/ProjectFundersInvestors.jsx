@@ -104,6 +104,13 @@ const CRITERIA = [
   },
 ];
 
+const TRACK_RECORD = [
+  { prefix: '$', value: null, suffix: 'M+', label: 'Capital placed' },
+  { prefix: '',  value: null, suffix: '',   label: 'Deals closed' },
+  { prefix: '',  value: null, suffix: '',   label: 'Sectors funded' },
+  { prefix: '',  value: null, suffix: '',   label: 'Countries closed in' },
+];
+
 const SECTORS_DROPDOWN = [
   'Infrastructure',
   'Energy & utilities',
@@ -261,7 +268,7 @@ const EnquiryPanel = () => {
           <div className="pfi-ep-head-sub">Confidential · Reviewed within 48 hours</div>
         </div>
         <div className="pfi-ep-confirm">
-          <div className="pfi-ep-confirm-icon" style={{ background: 'linear-gradient(135deg,#1565C0,#0D1B4E)', color: '#fff' }}>
+          <div className="pfi-ep-confirm-icon">
             <i className="fas fa-check" aria-hidden="true" />
           </div>
           <h4>Enquiry received</h4>
@@ -447,17 +454,6 @@ const ProjectFundersInvestors = () => {
 
         {/* HERO */}
         <section className="pfi-hero" aria-labelledby="pfi-h1">
-          <div className="pfi-hero-lines" aria-hidden="true">
-            <svg viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-              <line x1="0"   y1="150" x2="1200" y2="150" stroke="#b5922e" strokeWidth="0.5" />
-              <line x1="0"   y1="300" x2="1200" y2="300" stroke="#b5922e" strokeWidth="0.5" />
-              <line x1="0"   y1="450" x2="1200" y2="450" stroke="#b5922e" strokeWidth="0.5" />
-              <line x1="200" y1="0"   x2="200"  y2="600" stroke="#b5922e" strokeWidth="0.5" />
-              <line x1="500" y1="0"   x2="500"  y2="600" stroke="#b5922e" strokeWidth="0.5" />
-              <line x1="900" y1="0"   x2="900"  y2="600" stroke="#b5922e" strokeWidth="0.5" />
-            </svg>
-          </div>
-
           <div className="pfi-hi">
             <motion.div
               variants={staggerContainer}
@@ -652,6 +648,36 @@ const ProjectFundersInvestors = () => {
                 </motion.div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* TRACK RECORD */}
+        <section className="pfi-sec" aria-labelledby="pfi-track-record-heading">
+          <div className="pfi-inner">
+            <span className="pfi-stag">Track record</span>
+            <h2 id="pfi-track-record-heading" className="pfi-stitle">Capital placed, deals closed</h2>
+            <p className="pfi-ssub">
+              A track record built across sectors and geographies — figures reflect
+              completed mandates, not aspirational targets.
+            </p>
+            <motion.div
+              className="pfi-tr-grid"
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-60px' }}
+            >
+              {TRACK_RECORD.map((t) => (
+                <motion.div key={t.label} className="pfi-tr-stat" variants={staggerItem}>
+                  <div className="pfi-tr-n">
+                    {t.value === null
+                      ? `${t.prefix}[X]${t.suffix}`
+                      : <>{t.prefix}<AnimatedCounter target={t.value} suffix={t.suffix} /></>}
+                  </div>
+                  <div className="pfi-tr-l">{t.label}</div>
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
         </section>
 

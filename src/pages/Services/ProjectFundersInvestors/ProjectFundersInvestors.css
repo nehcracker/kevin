@@ -912,6 +912,38 @@
 }
 
 /* ══════════════════════════════════════════════════════════════════════════
+   TRACK RECORD  (4-stat grid)
+   ══════════════════════════════════════════════════════════════════════════ */
+.pfi-tr-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.pfi-tr-stat {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--rl);
+  padding: 22px 18px;
+  text-align: center;
+}
+
+.pfi-tr-n {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.pfi-tr-l {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-top: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 300;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
    RESPONSIVE
    ══════════════════════════════════════════════════════════════════════════ */
 @media (max-width: 1000px) {
@@ -981,11 +1013,19 @@
   .pfi-criteria-grid {
     grid-template-columns: 1fr;
   }
+
+  .pfi-tr-grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 @media (max-width: 580px) {
   .pfi-hero-stats {
     gap: 20px;
+  }
+
+  .pfi-tr-grid {
+    grid-template-columns: 1fr;
   }
 
   .pfi-cta-btns {

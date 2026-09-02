@@ -46,3 +46,16 @@ test('CSS references the real Navy Executive tokens', () => {
   expect(css).toMatch(/var\(--text-primary\)/);
   expect(css).toMatch(/var\(--accent-gradient\)/);
 });
+
+test('hero no longer renders the bespoke gold SVG grid lines', () => {
+  const { container } = renderPage();
+  expect(container.querySelector('.pfi-hero-lines')).not.toBeInTheDocument();
+});
+
+test('track record section renders placeholder stats and labels', () => {
+  const { container } = renderPage();
+  const trNumbers = Array.from(container.querySelectorAll('.pfi-tr-n')).map(el => el.textContent);
+  expect(trNumbers).toEqual(['$[X]M+', '[X]', '[X]', '[X]']);
+  const trLabels = Array.from(container.querySelectorAll('.pfi-tr-l')).map(el => el.textContent);
+  expect(trLabels).toEqual(['Capital placed', 'Deals closed', 'Sectors funded', 'Countries closed in']);
+});
