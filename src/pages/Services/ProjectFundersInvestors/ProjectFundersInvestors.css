@@ -1,34 +1,16 @@
 /* ══════════════════════════════════════════════════════════════════════════
    ProjectFundersInvestors.css
    Prefix: pfi-
-   Palette: deep ink navy + gold — premium capital advisory aesthetic.
-   Incorporates the FCA lead-capture template's Libre Baskerville serif
-   typography alongside the site's existing Poppins body font.
+   Palette: Navy Executive design system
+   Uses Poppins body font throughout.
    ══════════════════════════════════════════════════════════════════════════ */
-
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
 
 /* ── Page-scoped tokens ────────────────────────────────────────────────── */
 .pfi-page {
-  --ink:      #0b1120;
-  --ink2:     #1a2640;
-  --ink3:     #253650;
-  --gold:     #b5922e;
-  --gold2:    #d4af55;
-  --gold3:    #ecdaa0;
-  --gold-dim: rgba(181, 146, 46, 0.14);
-  --ash:      #f6f7f9;
-  --fog:      #eef0f4;
-  --white:    #ffffff;
-  --mid:      #6b7a8d;
-  --lt:       #9aa5b4;
-  --bd:       rgba(11, 17, 32, 0.09);
-  --bds:      rgba(11, 17, 32, 0.16);
-  --navy:     #0D1B4E;
-  --blue:     #1565C0;
-  --r:        3px;
-  --rl:       8px;
-  color: var(--ink);
+  --r:  3px;
+  --rl: 8px;
+  color: var(--text-primary);
+  background: var(--bg-deep);
   font-family: 'Poppins', sans-serif;
 }
 
@@ -36,24 +18,17 @@
    HERO
    ══════════════════════════════════════════════════════════════════════════ */
 .pfi-hero {
-  background: var(--ink);
+  background: var(--bg-deep);
+  background-image:
+    linear-gradient(rgba(77,163,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(77,163,255,0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
   padding: 110px 28px 90px;
   position: relative;
   overflow: hidden;
 }
 
-.pfi-hero-lines {
-  position: absolute;
-  pointer-events: none;
-  opacity: 0.032;
-}
-
-.pfi-hero-lines svg {
-  width: 100%;
-  height: 100%;
-}
-
-/* Subtle gold radial glow top-right */
+/* Subtle blue radial glow top-right */
 .pfi-hero::after {
   content: '';
   position: absolute;
@@ -61,7 +36,7 @@
   right: -8%;
   width: 550px;
   height: 550px;
-  background: radial-gradient(circle, rgba(181, 146, 46, 0.08) 0%, transparent 65%);
+  background: radial-gradient(circle, rgba(77, 163, 255, 0.08) 0%, transparent 65%);
   border-radius: 50%;
   pointer-events: none;
 }
@@ -119,7 +94,7 @@
 .pfi-eyebrow-line {
   width: 28px;
   height: 0.5px;
-  background: var(--gold);
+  background: var(--accent);
   flex-shrink: 0;
 }
 
@@ -128,15 +103,14 @@
   font-weight: 500;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--accent);
 }
 
 /* ── H1 ── */
 .pfi-hero h1 {
-  font-family: 'Libre Baskerville', serif;
   font-size: clamp(30px, 3.8vw, 48px);
   font-weight: 700;
-  color: var(--white);
+  color: var(--text-primary);
   line-height: 1.15;
   margin-bottom: 6px;
 }
@@ -144,13 +118,13 @@
 .pfi-hero h1 em {
   font-style: italic;
   font-weight: 400;
-  color: var(--gold2);
+  color: var(--accent);
 }
 
 .pfi-hero-rule {
   width: 48px;
   height: 1px;
-  background: var(--gold);
+  background: var(--accent);
   margin: 22px 0;
 }
 
@@ -183,7 +157,7 @@
 .pfi-qual-icon {
   width: 16px;
   height: 16px;
-  border: 0.5px solid var(--gold);
+  border: 0.5px solid var(--accent);
   border-radius: 50%;
   display: grid;
   place-items: center;
@@ -195,7 +169,7 @@
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: var(--gold);
+  background: var(--accent);
   display: block;
 }
 
@@ -209,10 +183,9 @@
 }
 
 .pfi-hs-n {
-  font-family: 'Libre Baskerville', serif;
   font-size: 22px;
   font-weight: 700;
-  color: var(--white);
+  color: var(--text-primary);
 }
 
 .pfi-hs-l {
@@ -239,26 +212,27 @@
    ENQUIRY PANEL  (right column)
    ══════════════════════════════════════════════════════════════════════════ */
 .pfi-enquiry-panel {
-  background: var(--white);
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-radius: var(--rl);
   overflow: hidden;
-  border: 0.5px solid rgba(255, 255, 255, 0.10);
-  border-top: 4px solid var(--gold);
+  border: 1px solid var(--glass-border);
+  border-top: 4px solid var(--accent);
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
   top: 88px;
 }
 
 .pfi-ep-head {
-  background: var(--ink2);
+  background: var(--bg-card);
   padding: 20px 24px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .pfi-ep-head-title {
-  font-family: 'Libre Baskerville', serif;
   font-size: 15px;
   font-weight: 700;
-  color: var(--white);
+  color: var(--text-primary);
   margin-bottom: 3px;
 }
 
@@ -275,7 +249,7 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--gold);
+  background: var(--accent);
   margin-right: 7px;
   animation: pfiPulse 2s ease-in-out infinite;
   vertical-align: middle;
@@ -299,7 +273,7 @@
   display: block;
   font-size: 10px;
   font-weight: 500;
-  color: var(--mid);
+  color: var(--text-secondary);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   margin-bottom: 5px;
@@ -310,13 +284,13 @@
 .pfi-ef textarea {
   width: 100%;
   padding: 8px 11px;
-  border: 0.5px solid var(--bds);
+  border: 0.5px solid var(--border-subtle);
   border-radius: var(--r);
   font-family: 'Poppins', sans-serif;
   font-size: 13px;
   font-weight: 300;
-  color: var(--ink);
-  background: var(--white);
+  color: var(--text-primary);
+  background: var(--bg-elevated);
   outline: none;
   transition: border-color 0.2s;
 }
@@ -324,8 +298,8 @@
 .pfi-ef input:focus,
 .pfi-ef select:focus,
 .pfi-ef textarea:focus {
-  border-color: var(--ink3);
-  box-shadow: 0 0 0 3px rgba(181, 146, 46, 0.08);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(77, 163, 255, 0.15);
 }
 
 .pfi-ef textarea {
@@ -357,7 +331,7 @@
 
 .pfi-conf-row span {
   font-size: 11px;
-  color: var(--lt);
+  color: var(--text-secondary);
   font-weight: 300;
   line-height: 1.55;
 }
@@ -365,8 +339,8 @@
 /* Submit button */
 .pfi-ep-submit {
   width: 100%;
-  background: var(--gold);
-  color: var(--ink);
+  background: var(--accent-gradient);
+  color: #fff;
   padding: 12px;
   border-radius: var(--r);
   font-size: 13px;
@@ -383,7 +357,7 @@
 }
 
 .pfi-ep-submit:hover {
-  background: var(--gold2);
+  filter: brightness(1.08);
   transform: translateY(-1px);
 }
 
@@ -400,10 +374,10 @@
 /* Panel footer */
 .pfi-ep-foot {
   padding: 11px 22px;
-  background: var(--ash);
-  border-top: 0.5px solid var(--bd);
+  background: var(--bg-card);
+  border-top: 0.5px solid var(--border-subtle);
   font-size: 10px;
-  color: var(--lt);
+  color: var(--text-secondary);
   font-weight: 300;
   line-height: 1.6;
   letter-spacing: 0.02em;
@@ -413,10 +387,10 @@
    TRUST BAR
    ══════════════════════════════════════════════════════════════════════════ */
 .pfi-trust-bar {
-  border-top: 0.5px solid var(--bd);
-  border-bottom: 0.5px solid var(--bd);
+  border-top: 0.5px solid var(--border-subtle);
+  border-bottom: 0.5px solid var(--border-subtle);
   padding: 30px 28px;
-  background: var(--white);
+  background: var(--bg-card);
 }
 
 .pfi-trust-inner {
@@ -432,7 +406,7 @@
   min-width: 130px;
   text-align: center;
   padding: 8px 20px;
-  border-right: 0.5px solid var(--bd);
+  border-right: 0.5px solid var(--border-subtle);
 }
 
 .pfi-ti:last-child {
@@ -440,15 +414,14 @@
 }
 
 .pfi-ti-n {
-  font-family: 'Libre Baskerville', serif;
   font-size: 20px;
   font-weight: 700;
-  color: var(--ink);
+  color: var(--text-primary);
 }
 
 .pfi-ti-l {
   font-size: 11px;
-  color: var(--lt);
+  color: var(--text-secondary);
   margin-top: 3px;
   font-weight: 300;
   letter-spacing: 0.03em;
@@ -459,12 +432,12 @@
    ══════════════════════════════════════════════════════════════════════════ */
 .pfi-sec {
   padding: 80px 28px;
-  background: var(--white);
+  background: var(--bg-deep);
 }
 
 .pfi-sec-alt {
   padding: 80px 28px;
-  background: var(--ash);
+  background: var(--bg-card);
 }
 
 .pfi-inner {
@@ -477,23 +450,22 @@
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--accent);
   margin-bottom: 10px;
   display: block;
 }
 
 .pfi-stitle {
-  font-family: 'Libre Baskerville', serif;
   font-size: clamp(22px, 2.8vw, 32px);
   font-weight: 700;
-  color: var(--ink);
+  color: var(--text-primary);
   margin-bottom: 10px;
   line-height: 1.25;
 }
 
 .pfi-ssub {
   font-size: 14px;
-  color: var(--mid);
+  color: var(--text-secondary);
   font-weight: 300;
   max-width: 520px;
   line-height: 1.75;
@@ -524,7 +496,6 @@
 }
 
 .pfi-vc-num {
-  font-family: 'Libre Baskerville', serif;
   font-size: 38px;
   font-weight: 400;
   color: rgba(11, 17, 32, 0.06);
@@ -633,7 +604,6 @@
   display: grid;
   place-items: center;
   margin: 0 auto 18px;
-  font-family: 'Libre Baskerville', serif;
   font-size: 15px;
   font-weight: 700;
   color: var(--ink);
@@ -811,7 +781,6 @@
 }
 
 .pfi-cta h2 {
-  font-family: 'Libre Baskerville', serif;
   font-size: clamp(24px, 3vw, 36px);
   font-weight: 700;
   color: var(--white);
@@ -929,7 +898,6 @@
 }
 
 .pfi-ep-confirm h4 {
-  font-family: 'Libre Baskerville', serif;
   font-size: 15px;
   font-weight: 700;
   color: var(--ink);
