@@ -853,7 +853,7 @@
 
 .pfi-btn-outline:hover {
   border-color: rgba(255, 255, 255, 0.5);
-  color: var(--white);
+  color: var(--text-primary);
   transform: translateY(-2px);
 }
 
@@ -1010,7 +1010,7 @@
 
   .pfi-ti {
     flex: 0 0 50%;
-    border-bottom: 0.5px solid var(--bd);
+    border-bottom: 0.5px solid var(--border-subtle);
   }
 
   .pfi-ti:nth-child(even) {

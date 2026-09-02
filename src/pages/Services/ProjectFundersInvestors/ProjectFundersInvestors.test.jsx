@@ -30,9 +30,8 @@ test('CSS no longer references the old gold/ink token system, Libre Baskerville,
     path.join(__dirname, 'ProjectFundersInvestors.css'),
     'utf8'
   );
+  expect(css).not.toMatch(/var\(--(gold|ink|white|mid|lt|bd|bds|ash|fog|navy|blue)\b/);
   expect(css).not.toMatch(/Libre Baskerville/);
-  expect(css).not.toMatch(/--gold/);
-  expect(css).not.toMatch(/--ink\b/);
   expect(css).not.toMatch(/pfi-sTitle/);
   expect(css).not.toMatch(/Dark Navy Override/);
 });
