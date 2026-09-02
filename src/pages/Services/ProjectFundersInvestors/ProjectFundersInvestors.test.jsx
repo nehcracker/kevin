@@ -25,15 +25,19 @@ test('hero stats render through AnimatedCounter with correct prefix, value, and 
   expect(values).toEqual(['$1M+', '40+', '48hr', '100+']);
 });
 
-test('hero and enquiry-panel CSS no longer reference Libre Baskerville', () => {
+test('CSS no longer references the old gold/ink token system, Libre Baskerville, or the broken override', () => {
   const css = fs.readFileSync(
     path.join(__dirname, 'ProjectFundersInvestors.css'),
     'utf8'
   );
   expect(css).not.toMatch(/Libre Baskerville/);
+  expect(css).not.toMatch(/--gold/);
+  expect(css).not.toMatch(/--ink\b/);
+  expect(css).not.toMatch(/pfi-sTitle/);
+  expect(css).not.toMatch(/Dark Navy Override/);
 });
 
-test('hero and shared-section CSS reference the real Navy Executive tokens', () => {
+test('CSS references the real Navy Executive tokens', () => {
   const css = fs.readFileSync(
     path.join(__dirname, 'ProjectFundersInvestors.css'),
     'utf8'
@@ -41,4 +45,5 @@ test('hero and shared-section CSS reference the real Navy Executive tokens', () 
   expect(css).toMatch(/var\(--bg-deep\)/);
   expect(css).toMatch(/var\(--accent\)/);
   expect(css).toMatch(/var\(--text-primary\)/);
+  expect(css).toMatch(/var\(--accent-gradient\)/);
 });
