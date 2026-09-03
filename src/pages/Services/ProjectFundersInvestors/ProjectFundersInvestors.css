@@ -1,34 +1,16 @@
 /* ══════════════════════════════════════════════════════════════════════════
    ProjectFundersInvestors.css
    Prefix: pfi-
-   Palette: deep ink navy + gold — premium capital advisory aesthetic.
-   Incorporates the FCA lead-capture template's Libre Baskerville serif
-   typography alongside the site's existing Poppins body font.
+   Palette: Navy Executive design system
+   Uses Poppins body font throughout.
    ══════════════════════════════════════════════════════════════════════════ */
-
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
 
 /* ── Page-scoped tokens ────────────────────────────────────────────────── */
 .pfi-page {
-  --ink:      #0b1120;
-  --ink2:     #1a2640;
-  --ink3:     #253650;
-  --gold:     #b5922e;
-  --gold2:    #d4af55;
-  --gold3:    #ecdaa0;
-  --gold-dim: rgba(181, 146, 46, 0.14);
-  --ash:      #f6f7f9;
-  --fog:      #eef0f4;
-  --white:    #ffffff;
-  --mid:      #6b7a8d;
-  --lt:       #9aa5b4;
-  --bd:       rgba(11, 17, 32, 0.09);
-  --bds:      rgba(11, 17, 32, 0.16);
-  --navy:     #0D1B4E;
-  --blue:     #1565C0;
-  --r:        3px;
-  --rl:       8px;
-  color: var(--ink);
+  --r:  3px;
+  --rl: 8px;
+  color: var(--text-primary);
+  background: var(--bg-deep);
   font-family: 'Poppins', sans-serif;
 }
 
@@ -36,24 +18,17 @@
    HERO
    ══════════════════════════════════════════════════════════════════════════ */
 .pfi-hero {
-  background: var(--ink);
+  background: var(--bg-deep);
+  background-image:
+    linear-gradient(rgba(77,163,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(77,163,255,0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
   padding: 110px 28px 90px;
   position: relative;
   overflow: hidden;
 }
 
-.pfi-hero-lines {
-  position: absolute;
-  pointer-events: none;
-  opacity: 0.032;
-}
-
-.pfi-hero-lines svg {
-  width: 100%;
-  height: 100%;
-}
-
-/* Subtle gold radial glow top-right */
+/* Subtle blue radial glow top-right */
 .pfi-hero::after {
   content: '';
   position: absolute;
@@ -61,7 +36,7 @@
   right: -8%;
   width: 550px;
   height: 550px;
-  background: radial-gradient(circle, rgba(181, 146, 46, 0.08) 0%, transparent 65%);
+  background: radial-gradient(circle, rgba(77, 163, 255, 0.08) 0%, transparent 65%);
   border-radius: 50%;
   pointer-events: none;
 }
@@ -119,7 +94,7 @@
 .pfi-eyebrow-line {
   width: 28px;
   height: 0.5px;
-  background: var(--gold);
+  background: var(--accent);
   flex-shrink: 0;
 }
 
@@ -128,15 +103,14 @@
   font-weight: 500;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--accent);
 }
 
 /* ── H1 ── */
 .pfi-hero h1 {
-  font-family: 'Libre Baskerville', serif;
   font-size: clamp(30px, 3.8vw, 48px);
   font-weight: 700;
-  color: var(--white);
+  color: var(--text-primary);
   line-height: 1.15;
   margin-bottom: 6px;
 }
@@ -144,13 +118,13 @@
 .pfi-hero h1 em {
   font-style: italic;
   font-weight: 400;
-  color: var(--gold2);
+  color: var(--accent);
 }
 
 .pfi-hero-rule {
   width: 48px;
   height: 1px;
-  background: var(--gold);
+  background: var(--accent);
   margin: 22px 0;
 }
 
@@ -183,7 +157,7 @@
 .pfi-qual-icon {
   width: 16px;
   height: 16px;
-  border: 0.5px solid var(--gold);
+  border: 0.5px solid var(--accent);
   border-radius: 50%;
   display: grid;
   place-items: center;
@@ -195,7 +169,7 @@
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: var(--gold);
+  background: var(--accent);
   display: block;
 }
 
@@ -209,10 +183,9 @@
 }
 
 .pfi-hs-n {
-  font-family: 'Libre Baskerville', serif;
   font-size: 22px;
   font-weight: 700;
-  color: var(--white);
+  color: var(--text-primary);
 }
 
 .pfi-hs-l {
@@ -239,26 +212,27 @@
    ENQUIRY PANEL  (right column)
    ══════════════════════════════════════════════════════════════════════════ */
 .pfi-enquiry-panel {
-  background: var(--white);
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-radius: var(--rl);
   overflow: hidden;
-  border: 0.5px solid rgba(255, 255, 255, 0.10);
-  border-top: 4px solid var(--gold);
+  border: 1px solid var(--glass-border);
+  border-top: 4px solid var(--accent);
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
   top: 88px;
 }
 
 .pfi-ep-head {
-  background: var(--ink2);
+  background: var(--bg-card);
   padding: 20px 24px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .pfi-ep-head-title {
-  font-family: 'Libre Baskerville', serif;
   font-size: 15px;
   font-weight: 700;
-  color: var(--white);
+  color: var(--text-primary);
   margin-bottom: 3px;
 }
 
@@ -275,7 +249,7 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--gold);
+  background: var(--accent);
   margin-right: 7px;
   animation: pfiPulse 2s ease-in-out infinite;
   vertical-align: middle;
@@ -299,7 +273,7 @@
   display: block;
   font-size: 10px;
   font-weight: 500;
-  color: var(--mid);
+  color: var(--text-secondary);
   letter-spacing: 0.08em;
   text-transform: uppercase;
   margin-bottom: 5px;
@@ -310,13 +284,13 @@
 .pfi-ef textarea {
   width: 100%;
   padding: 8px 11px;
-  border: 0.5px solid var(--bds);
+  border: 0.5px solid var(--border-subtle);
   border-radius: var(--r);
   font-family: 'Poppins', sans-serif;
   font-size: 13px;
   font-weight: 300;
-  color: var(--ink);
-  background: var(--white);
+  color: var(--text-primary);
+  background: var(--bg-elevated);
   outline: none;
   transition: border-color 0.2s;
 }
@@ -324,8 +298,8 @@
 .pfi-ef input:focus,
 .pfi-ef select:focus,
 .pfi-ef textarea:focus {
-  border-color: var(--ink3);
-  box-shadow: 0 0 0 3px rgba(181, 146, 46, 0.08);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(77, 163, 255, 0.15);
 }
 
 .pfi-ef textarea {
@@ -357,7 +331,7 @@
 
 .pfi-conf-row span {
   font-size: 11px;
-  color: var(--lt);
+  color: var(--text-secondary);
   font-weight: 300;
   line-height: 1.55;
 }
@@ -365,8 +339,8 @@
 /* Submit button */
 .pfi-ep-submit {
   width: 100%;
-  background: var(--gold);
-  color: var(--ink);
+  background: var(--accent-gradient);
+  color: #fff;
   padding: 12px;
   border-radius: var(--r);
   font-size: 13px;
@@ -375,7 +349,7 @@
   border: none;
   font-family: 'Poppins', sans-serif;
   letter-spacing: 0.04em;
-  transition: background 0.2s, transform 0.15s;
+  transition: background 0.2s, transform 0.15s, filter 0.2s;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -383,7 +357,7 @@
 }
 
 .pfi-ep-submit:hover {
-  background: var(--gold2);
+  filter: brightness(1.08);
   transform: translateY(-1px);
 }
 
@@ -400,10 +374,10 @@
 /* Panel footer */
 .pfi-ep-foot {
   padding: 11px 22px;
-  background: var(--ash);
-  border-top: 0.5px solid var(--bd);
+  background: var(--bg-card);
+  border-top: 0.5px solid var(--border-subtle);
   font-size: 10px;
-  color: var(--lt);
+  color: var(--text-secondary);
   font-weight: 300;
   line-height: 1.6;
   letter-spacing: 0.02em;
@@ -413,10 +387,10 @@
    TRUST BAR
    ══════════════════════════════════════════════════════════════════════════ */
 .pfi-trust-bar {
-  border-top: 0.5px solid var(--bd);
-  border-bottom: 0.5px solid var(--bd);
+  border-top: 0.5px solid var(--border-subtle);
+  border-bottom: 0.5px solid var(--border-subtle);
   padding: 30px 28px;
-  background: var(--white);
+  background: var(--bg-card);
 }
 
 .pfi-trust-inner {
@@ -432,7 +406,7 @@
   min-width: 130px;
   text-align: center;
   padding: 8px 20px;
-  border-right: 0.5px solid var(--bd);
+  border-right: 0.5px solid var(--border-subtle);
 }
 
 .pfi-ti:last-child {
@@ -440,15 +414,14 @@
 }
 
 .pfi-ti-n {
-  font-family: 'Libre Baskerville', serif;
   font-size: 20px;
   font-weight: 700;
-  color: var(--ink);
+  color: var(--text-primary);
 }
 
 .pfi-ti-l {
   font-size: 11px;
-  color: var(--lt);
+  color: var(--text-secondary);
   margin-top: 3px;
   font-weight: 300;
   letter-spacing: 0.03em;
@@ -459,12 +432,12 @@
    ══════════════════════════════════════════════════════════════════════════ */
 .pfi-sec {
   padding: 80px 28px;
-  background: var(--white);
+  background: var(--bg-deep);
 }
 
 .pfi-sec-alt {
   padding: 80px 28px;
-  background: var(--ash);
+  background: var(--bg-card);
 }
 
 .pfi-inner {
@@ -477,23 +450,22 @@
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--accent);
   margin-bottom: 10px;
   display: block;
 }
 
 .pfi-stitle {
-  font-family: 'Libre Baskerville', serif;
   font-size: clamp(22px, 2.8vw, 32px);
   font-weight: 700;
-  color: var(--ink);
+  color: var(--text-primary);
   margin-bottom: 10px;
   line-height: 1.25;
 }
 
 .pfi-ssub {
   font-size: 14px;
-  color: var(--mid);
+  color: var(--text-secondary);
   font-weight: 300;
   max-width: 520px;
   line-height: 1.75;
@@ -507,27 +479,26 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 0;
-  border: 0.5px solid var(--bd);
+  border: 0.5px solid var(--border-subtle);
   border-radius: var(--rl);
   overflow: hidden;
-  background: var(--bd);
+  background: var(--border-subtle);
 }
 
 .pfi-vc {
-  background: var(--white);
+  background: var(--bg-card);
   padding: 30px 26px;
   transition: background 0.2s;
 }
 
 .pfi-vc:hover {
-  background: #fdfbf6;
+  background: var(--bg-elevated);
 }
 
 .pfi-vc-num {
-  font-family: 'Libre Baskerville', serif;
   font-size: 38px;
   font-weight: 400;
-  color: rgba(11, 17, 32, 0.06);
+  color: rgba(255, 255, 255, 0.06);
   line-height: 1;
   margin-bottom: 14px;
 }
@@ -535,13 +506,13 @@
 .pfi-vc-t {
   font-size: 14px;
   font-weight: 500;
-  color: var(--ink);
+  color: var(--accent);
   margin-bottom: 7px;
 }
 
 .pfi-vc-d {
   font-size: 13px;
-  color: var(--mid);
+  color: var(--text-secondary);
   line-height: 1.65;
   font-weight: 300;
 }
@@ -556,17 +527,17 @@
 }
 
 .pfi-sector-pill {
-  border: 0.5px solid var(--bd);
+  border: 0.5px solid var(--border-subtle);
   border-radius: var(--r);
   padding: 16px 18px;
-  background: var(--white);
+  background: var(--bg-card);
   transition: border-color 0.18s, background 0.18s, transform 0.18s;
   cursor: default;
 }
 
 .pfi-sector-pill:hover {
-  border-color: var(--gold);
-  background: rgba(181, 146, 46, 0.04);
+  border-color: var(--accent);
+  background: rgba(77, 163, 255, 0.06);
   transform: translateY(-2px);
 }
 
@@ -574,19 +545,19 @@
   font-size: 15px;
   margin-bottom: 8px;
   display: block;
-  color: var(--gold);
+  color: var(--accent);
 }
 
 .pfi-sp-name {
   font-size: 13px;
   font-weight: 500;
-  color: var(--ink);
+  color: var(--text-primary);
   margin-bottom: 3px;
 }
 
 .pfi-sp-desc {
   font-size: 11px;
-  color: var(--lt);
+  color: var(--text-secondary);
   font-weight: 300;
 }
 
@@ -610,7 +581,7 @@
   left: 10%;
   right: 10%;
   height: 0.5px;
-  background: linear-gradient(90deg, var(--gold), var(--gold2));
+  background: linear-gradient(90deg, var(--accent), var(--accent-dark));
   z-index: 0;
 }
 
@@ -628,44 +599,43 @@
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  border: 0.5px solid var(--bds);
-  background: var(--white);
+  border: 0.5px solid var(--border-subtle);
+  background: var(--bg-card);
   display: grid;
   place-items: center;
   margin: 0 auto 18px;
-  font-family: 'Libre Baskerville', serif;
   font-size: 15px;
   font-weight: 700;
-  color: var(--ink);
+  color: var(--text-primary);
   transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s,
               box-shadow 0.2s;
 }
 
 .pfi-step-circle.active {
-  background: var(--ink);
-  color: var(--white);
-  border-color: var(--ink);
+  background: var(--accent-gradient);
+  color: #fff;
+  border-color: transparent;
 }
 
 .pfi-step:hover .pfi-step-circle {
   transform: scale(1.12);
-  background: var(--gold);
-  color: var(--ink);
-  border-color: var(--gold);
-  box-shadow: 0 6px 20px rgba(181, 146, 46, 0.3);
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  box-shadow: 0 6px 20px rgba(77, 163, 255, 0.3);
 }
 
 .pfi-step-t {
   font-size: 13px;
   font-weight: 500;
-  color: var(--ink);
+  color: var(--text-primary);
   margin-bottom: 6px;
   line-height: 1.3;
 }
 
 .pfi-step-d {
   font-size: 12px;
-  color: var(--lt);
+  color: var(--text-secondary);
   font-weight: 300;
   line-height: 1.6;
 }
@@ -680,10 +650,10 @@
 }
 
 .pfi-source-card {
-  border: 0.5px solid var(--bd);
+  border: 0.5px solid var(--border-subtle);
   border-radius: var(--rl);
   padding: 22px;
-  background: var(--white);
+  background: var(--bg-card);
   transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
   position: relative;
   overflow: hidden;
@@ -696,15 +666,15 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--gold), transparent);
+  background: linear-gradient(90deg, var(--accent), transparent);
   opacity: 0;
   transition: opacity 0.2s;
 }
 
 .pfi-source-card:hover {
-  border-color: rgba(181, 146, 46, 0.45);
+  border-color: rgba(77, 163, 255, 0.45);
   transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(11, 17, 32, 0.08);
+  box-shadow: 0 12px 32px rgba(77, 163, 255, 0.12);
 }
 
 .pfi-source-card:hover::before {
@@ -716,21 +686,21 @@
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--accent);
   margin-bottom: 10px;
 }
 
 .pfi-sc-name {
   font-size: 14px;
   font-weight: 500;
-  color: var(--ink);
+  color: var(--accent);
   margin-bottom: 7px;
   line-height: 1.3;
 }
 
 .pfi-sc-desc {
   font-size: 12px;
-  color: var(--mid);
+  color: var(--text-secondary);
   font-weight: 300;
   line-height: 1.65;
 }
@@ -746,42 +716,42 @@
 }
 
 .pfi-crit-card {
-  background: var(--white);
+  background: var(--bg-card);
   border-radius: var(--rl);
   padding: 26px 22px;
-  border: 0.5px solid var(--bd);
-  border-top: 3px solid var(--gold);
+  border: 0.5px solid var(--border-subtle);
+  border-top: 3px solid var(--accent);
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .pfi-crit-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 10px 28px rgba(11, 17, 32, 0.08);
+  box-shadow: 0 10px 28px rgba(77, 163, 255, 0.12);
 }
 
 .pfi-crit-icon {
   width: 40px;
   height: 40px;
   border-radius: 8px;
-  background: var(--gold-dim);
+  background: var(--border-subtle);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.1rem;
-  color: var(--gold);
+  color: var(--accent);
   margin-bottom: 14px;
 }
 
 .pfi-crit-t {
   font-size: 14px;
   font-weight: 500;
-  color: var(--ink);
+  color: var(--accent);
   margin-bottom: 7px;
 }
 
 .pfi-crit-d {
   font-size: 13px;
-  color: var(--mid);
+  color: var(--text-secondary);
   font-weight: 300;
   line-height: 1.65;
 }
@@ -791,7 +761,7 @@
    Matches every other service page CTA gradient
    ══════════════════════════════════════════════════════════════════════════ */
 .pfi-cta {
-  background: linear-gradient(135deg, var(--ink) 0%, var(--ink2) 100%);
+  background: linear-gradient(135deg, var(--bg-deep) 0%, var(--bg-card) 100%);
   padding: 80px 28px;
   text-align: center;
   position: relative;
@@ -805,16 +775,15 @@
   right: -5%;
   width: 45%;
   height: 200%;
-  background: radial-gradient(circle, rgba(181, 146, 46, 0.06) 0%, transparent 65%);
+  background: radial-gradient(circle, rgba(77, 163, 255, 0.08) 0%, transparent 65%);
   border-radius: 50%;
   pointer-events: none;
 }
 
 .pfi-cta h2 {
-  font-family: 'Libre Baskerville', serif;
   font-size: clamp(24px, 3vw, 36px);
   font-weight: 700;
-  color: var(--white);
+  color: var(--text-primary);
   margin-bottom: 12px;
   position: relative;
   z-index: 1;
@@ -846,8 +815,8 @@
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
-  background: var(--gold);
-  color: var(--ink);
+  background: var(--accent-gradient);
+  color: #fff;
   padding: 13px 30px;
   border-radius: var(--r);
   font-size: 13px;
@@ -857,11 +826,11 @@
   font-family: 'Poppins', sans-serif;
   letter-spacing: 0.04em;
   text-decoration: none;
-  transition: background 0.2s, transform 0.15s;
+  transition: background 0.2s, transform 0.15s, filter 0.2s;
 }
 
 .pfi-btn-gold:hover {
-  background: var(--gold2);
+  filter: brightness(1.08);
   transform: translateY(-2px);
 }
 
@@ -884,7 +853,7 @@
 
 .pfi-btn-outline:hover {
   border-color: rgba(255, 255, 255, 0.5);
-  color: var(--white);
+  color: var(--text-primary);
   transform: translateY(-2px);
 }
 
@@ -913,12 +882,12 @@
   width: 52px;
   height: 52px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--gold), var(--gold2));
+  background: var(--accent-gradient);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.4rem;
-  color: var(--ink);
+  color: #fff;
   margin: 0 auto 14px;
   animation: pfiPopIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
@@ -929,18 +898,79 @@
 }
 
 .pfi-ep-confirm h4 {
-  font-family: 'Libre Baskerville', serif;
   font-size: 15px;
   font-weight: 700;
-  color: var(--ink);
+  color: var(--text-primary);
   margin-bottom: 7px;
 }
 
 .pfi-ep-confirm p {
   font-size: 12px;
-  color: var(--mid);
+  color: var(--text-secondary);
   font-weight: 300;
   line-height: 1.65;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   TRACK RECORD  (4-stat grid)
+   ══════════════════════════════════════════════════════════════════════════ */
+.pfi-tr-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.pfi-tr-stat {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--rl);
+  padding: 22px 18px;
+  text-align: center;
+}
+
+.pfi-tr-n {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.pfi-tr-l {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-top: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 300;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   NO-UPFRONT-FEES BANNER
+   ══════════════════════════════════════════════════════════════════════════ */
+.pfi-no-fee-banner {
+  border-top: 0.5px solid var(--border-subtle);
+  border-bottom: 0.5px solid var(--border-subtle);
+  background: var(--bg-elevated);
+  padding: 40px 28px;
+  text-align: center;
+}
+
+.pfi-nfb-inner {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.pfi-nfb-h {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.pfi-nfb-p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  font-weight: 300;
+  line-height: 1.7;
 }
 
 /* ══════════════════════════════════════════════════════════════════════════
@@ -1013,11 +1043,19 @@
   .pfi-criteria-grid {
     grid-template-columns: 1fr;
   }
+
+  .pfi-tr-grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 @media (max-width: 580px) {
   .pfi-hero-stats {
     gap: 20px;
+  }
+
+  .pfi-tr-grid {
+    grid-template-columns: 1fr;
   }
 
   .pfi-cta-btns {
@@ -1042,7 +1080,7 @@
 
   .pfi-ti {
     flex: 0 0 50%;
-    border-bottom: 0.5px solid var(--bd);
+    border-bottom: 0.5px solid var(--border-subtle);
   }
 
   .pfi-ti:nth-child(even) {
@@ -1059,125 +1097,3 @@
     animation: none;
   }
 }
-
-/* ── Dark Navy Override ── */
-.pfi-page,
-.pfi-header,
-.pfi-hero   { background: var(--bg-deep) !important; color: var(--text-primary) !important; }
-
-.pfi-header-label,
-.pfi-hero-eyebrow,
-.pfi-eyebrow,
-.pfi-stag   { color: var(--accent) !important; }
-
-.pfi-header-body h1,
-.pfi-hero h1,
-.pfi-stitle { color: var(--text-primary)   !important; }
-
-.pfi-header-tagline,
-.pfi-hero-body,
-.pfi-ssub,
-.pfi-overview-text p { color: var(--text-secondary) !important; }
-
-.pfi-btn-primary {
-  background: var(--accent-gradient) !important;
-  color: #fff !important;
-  border: none !important;
-}
-.pfi-btn-outline {
-  background: var(--glass-bg) !important;
-  border-color: var(--border-glow) !important;
-  color: var(--accent) !important;
-}
-
-/* Strip / pill bars */
-.pfi-focus-strip,
-.pfi-factors-strip,
-.pfi-pillars-strip,
-.pfi-lenses-strip,
-.pfi-objectives-strip,
-.pfi-trust-bar  {
-  background: var(--bg-card) !important;
-  border-top: 1px solid var(--border-subtle);
-  border-bottom: 1px solid var(--border-subtle);
-}
-
-.pfi-focus-card,
-.pfi-factor-card,
-.pfi-pillar-card,
-.pfi-lens-card,
-.pfi-objective-card,
-.pfi-ti          {
-  background: var(--glass-bg)    !important;
-  border-color: var(--border-subtle) !important;
-  color: var(--text-secondary)   !important;
-}
-
-/* Main content sections */
-.pfi-sec,
-.pfi-section,
-.pfi-overview,
-.pfi-core-services,
-.pfi-funding-types { background: var(--bg-deep) !important; }
-
-.pfi-sec-alt,
-.pfi-process      { background: var(--bg-card) !important; border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); }
-
-/* Cards in grids */
-.pfi-vc,
-.pfi-crit-card,
-.pfi-source-card,
-.pfi-service-card,
-.pfi-funding-card,
-.pfi-stat-card,
-.pfi-bc-stat-card {
-  background: var(--bg-card)    !important;
-  border: 1px solid var(--border-subtle) !important;
-  color: var(--text-secondary)  !important;
-  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease !important;
-}
-
-.pfi-vc:hover,
-.pfi-crit-card:hover,
-.pfi-source-card:hover,
-.pfi-service-card:hover,
-.pfi-funding-card:hover {
-  transform: translateY(-4px) !important;
-  border-color: var(--accent) !important;
-  box-shadow: 0 12px 32px rgba(77,163,255,0.12) !important;
-  border-left: 3px solid var(--accent) !important;
-}
-
-.pfi-vc-t,
-.pfi-crit-t,
-.pfi-sc-name,
-.pfi-vc-num { color: var(--accent) !important; }
-
-.pfi-vc-d,
-.pfi-crit-d,
-.pfi-sc-desc,
-.pfi-sc-type { color: var(--text-secondary) !important; }
-
-/* Process steps */
-.pfi-steps,
-.pfi-step   { color: var(--text-secondary) !important; }
-.pfi-step-circle,
-.pfi-step-number { background: var(--bg-elevated) !important; border-color: var(--border-subtle) !important; color: var(--accent) !important; }
-.pfi-step-circle.active,
-.pfi-step-number.active { background: var(--accent-gradient) !important; color: #fff !important; }
-.pfi-step-t { color: var(--text-primary) !important; }
-
-/* Sector pills */
-.pfi-sector-pill,
-.pfi-sp     {
-  background: var(--bg-card) !important;
-  border: 1px solid var(--border-subtle) !important;
-  color: var(--text-secondary) !important;
-}
-.pfi-sp-name { color: var(--text-primary) !important; }
-.pfi-sp-icon { color: var(--accent) !important; }
-
-/* CTA section */
-.pfi-cta    { background: var(--bg-elevated) !important; border-top: 1px solid var(--border-subtle); }
-.pfi-cta h2 { color: var(--text-primary) !important; }
-.pfi-cta p  { color: var(--text-secondary) !important; }
