@@ -498,7 +498,7 @@
 .pfi-vc-num {
   font-size: 38px;
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.06);
+  color: var(--text-primary);
   line-height: 1;
   margin-bottom: 14px;
 }
