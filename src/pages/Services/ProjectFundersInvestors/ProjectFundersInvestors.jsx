@@ -111,6 +111,11 @@ const TRACK_RECORD = [
   { prefix: '',  value: null, suffix: '',   label: 'Countries closed in' },
 ];
 
+const NO_FEE_BANNER = {
+  heading: 'No upfront fees.',
+  body: '[PLACEHOLDER — confirm fee policy wording with Kevin]',
+};
+
 const SECTORS_DROPDOWN = [
   'Infrastructure',
   'Energy & utilities',
@@ -682,7 +687,7 @@ const ProjectFundersInvestors = () => {
         </section>
 
         {/* CAPITAL SOURCES */}
-        <section className="pfi-sec" aria-labelledby="pfi-sources-heading">
+        <section className="pfi-sec-alt" aria-labelledby="pfi-sources-heading">
           <div className="pfi-inner">
             <span className="pfi-stag">Capital sources</span>
             <h2 id="pfi-sources-heading" className="pfi-stitle">Who provides the funding</h2>
@@ -712,6 +717,14 @@ const ProjectFundersInvestors = () => {
             </motion.div>
           </div>
         </section>
+
+        {/* NO UPFRONT FEES */}
+        <div className="pfi-no-fee-banner" role="region" aria-label="Fee policy">
+          <div className="pfi-nfb-inner">
+            <div className="pfi-nfb-h">{NO_FEE_BANNER.heading}</div>
+            <p className="pfi-nfb-p">{NO_FEE_BANNER.body}</p>
+          </div>
+        </div>
 
         {/* CTA */}
         <motion.section

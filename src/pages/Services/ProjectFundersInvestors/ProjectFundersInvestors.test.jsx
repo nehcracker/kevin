@@ -59,3 +59,17 @@ test('track record section renders placeholder stats and labels', () => {
   const trLabels = Array.from(container.querySelectorAll('.pfi-tr-l')).map(el => el.textContent);
   expect(trLabels).toEqual(['Capital placed', 'Deals closed', 'Sectors funded', 'Countries closed in']);
 });
+
+test('no-fee banner renders heading and placeholder body', () => {
+  renderPage();
+  expect(screen.getByText('No upfront fees.')).toBeInTheDocument();
+  expect(
+    screen.getByText('[PLACEHOLDER — confirm fee policy wording with Kevin]')
+  ).toBeInTheDocument();
+});
+
+test('capital sources section uses the alternate background class', () => {
+  const { container } = renderPage();
+  const sourcesSection = container.querySelector('#pfi-sources-heading').closest('section');
+  expect(sourcesSection).toHaveClass('pfi-sec-alt');
+});

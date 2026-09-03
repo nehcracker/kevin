@@ -944,6 +944,36 @@
 }
 
 /* ══════════════════════════════════════════════════════════════════════════
+   NO-UPFRONT-FEES BANNER
+   ══════════════════════════════════════════════════════════════════════════ */
+.pfi-no-fee-banner {
+  border-top: 0.5px solid var(--border-subtle);
+  border-bottom: 0.5px solid var(--border-subtle);
+  background: var(--bg-card);
+  padding: 40px 28px;
+  text-align: center;
+}
+
+.pfi-nfb-inner {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.pfi-nfb-h {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.pfi-nfb-p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
    RESPONSIVE
    ══════════════════════════════════════════════════════════════════════════ */
 @media (max-width: 1000px) {
