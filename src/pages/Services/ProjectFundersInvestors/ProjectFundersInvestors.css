@@ -1072,7 +1072,7 @@
 
 .pfi-header-body h1,
 .pfi-hero h1,
-.pfi-sTitle { color: var(--text-primary)   !important; }
+.pfi-stitle { color: var(--text-primary)   !important; }
 
 .pfi-header-tagline,
 .pfi-hero-body,

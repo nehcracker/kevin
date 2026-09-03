@@ -13,7 +13,7 @@ const MIN_FUNDING = 1_000_000; // $1M floor
 /* ── Data ────────────────────────────────────────────────────────────────── */
 
 const QUALS = [
-  'Minimum project value: $1M — no upper ceiling',
+  'Minimum project value: $500M — no upper ceiling',
   'Access to DFIs, sovereign funds & private capital desks',
   'All major sectors considered across 40+ countries',
   'Strictly confidential — NDA available on request',
