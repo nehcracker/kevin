@@ -73,3 +73,14 @@ test('capital sources section uses the alternate background class', () => {
   const sourcesSection = container.querySelector('#pfi-sources-heading').closest('section');
   expect(sourcesSection).toHaveClass('pfi-sec-alt');
 });
+
+test('every section heading except the CTA uses the pfi-stitle class', () => {
+  const { container } = renderPage();
+  const headings = container.querySelectorAll('h2');
+  expect(headings.length).toBeGreaterThan(0);
+  headings.forEach((h) => {
+    if (h.id !== 'pfi-cta-heading') {
+      expect(h).toHaveClass('pfi-stitle');
+    }
+  });
+});
