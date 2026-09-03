@@ -21,3 +21,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Claude Code superpowers session state (brainstorm mockups, worktrees, etc.)
+.superpowers/
