@@ -59,14 +59,19 @@ const ADVANTAGE = [
 ];
 
 const SECTORS = [
-  { icon: '◈', name: 'Infrastructure',     desc: 'Roads, ports, airports, rail' },
-  { icon: '◈', name: 'Energy & utilities', desc: 'Power, renewables, water' },
-  { icon: '◈', name: 'Real estate',        desc: 'Commercial, residential, mixed-use' },
-  { icon: '◈', name: 'Trade finance',      desc: 'Commodity, supply chain, export' },
-  { icon: '◈', name: 'Technology',         desc: 'Deep tech, telecoms, data' },
-  { icon: '◈', name: 'Agriculture',        desc: 'Food security, agri-processing' },
-  { icon: '◈', name: 'Healthcare',         desc: 'Hospitals, pharma, infrastructure' },
-  { icon: '◈', name: 'Mining & resources', desc: 'Extraction, processing, logistics' },
+  { icon: '◈', name: 'Infrastructure',          desc: 'Roads, ports, airports, rail' },
+  { icon: '◈', name: 'Energy & utilities',      desc: 'Power, renewables, water' },
+  { icon: '◈', name: 'Real estate',             desc: 'Commercial, residential, mixed-use' },
+  { icon: '◈', name: 'Trade finance',           desc: 'Commodity, supply chain, export' },
+  { icon: '◈', name: 'Technology',              desc: 'Deep tech, telecoms, data' },
+  { icon: '◈', name: 'Agriculture',             desc: 'Food security, agri-processing' },
+  { icon: '◈', name: 'Healthcare',              desc: 'Hospitals, pharma, infrastructure' },
+  { icon: '◈', name: 'Mining & resources',      desc: 'Extraction, processing, logistics' },
+  { icon: '◈', name: 'Manufacturing & industrial', desc: 'Factories, industrial parks, production' },
+  { icon: '◈', name: 'Transportation & logistics', desc: 'Shipping, freight, logistics hubs' },
+  { icon: '◈', name: 'Oil & gas',               desc: 'Upstream, midstream, downstream' },
+  { icon: '◈', name: 'Tourism & hospitality',   desc: 'Hotels, resorts, tourism infrastructure' },
+  { icon: '◈', name: 'Water & sanitation',      desc: 'Treatment, sanitation infrastructure' },
 ];
 
 const STEPS = [
@@ -125,6 +130,11 @@ const SECTORS_DROPDOWN = [
   'Agriculture & food security',
   'Healthcare',
   'Mining & resources',
+  'Manufacturing & industrial',
+  'Transportation & logistics',
+  'Oil & gas',
+  'Tourism & hospitality',
+  'Water & sanitation',
   'Other',
 ];
 
