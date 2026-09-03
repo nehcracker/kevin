@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import ProjectFundersInvestors from './ProjectFundersInvestors';
 import fs from 'fs';
@@ -18,7 +18,8 @@ function renderPage() {
 
 test('hero stats render through AnimatedCounter with correct prefix, value, and suffix', () => {
   const { container } = renderPage();
-  const counters = screen.getAllByTestId('animated-counter');
+  const heroStats = container.querySelector('.pfi-hero-stats');
+  const counters = within(heroStats).getAllByTestId('animated-counter');
   expect(counters.map(el => el.textContent)).toEqual(['1M+', '40+', '48hr', '100+']);
   const statNumbers = container.querySelectorAll('.pfi-hs-n');
   const values = Array.from(statNumbers).map(el => el.textContent);
@@ -30,7 +31,8 @@ test('CSS no longer references the old gold/ink token system, Libre Baskerville,
     path.join(__dirname, 'ProjectFundersInvestors.css'),
     'utf8'
   );
-  expect(css).not.toMatch(/var\(--(gold|ink|white|mid|lt|bd|bds|ash|fog|navy|blue)\b/);
+  expect(css).not.toMatch(/var\(--(gold|ink|white|mid|lt|bds?|ash|fog|navy|blue)[\w-]*\)/);
+  expect(css).not.toMatch(/^\s*--(gold|ink|ash|fog|bds?)\b/m);
   expect(css).not.toMatch(/Libre Baskerville/);
   expect(css).not.toMatch(/pfi-sTitle/);
   expect(css).not.toMatch(/Dark Navy Override/);

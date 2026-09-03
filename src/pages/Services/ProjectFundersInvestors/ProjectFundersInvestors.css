@@ -349,7 +349,7 @@
   border: none;
   font-family: 'Poppins', sans-serif;
   letter-spacing: 0.04em;
-  transition: background 0.2s, transform 0.15s;
+  transition: background 0.2s, transform 0.15s, filter 0.2s;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -826,7 +826,7 @@
   font-family: 'Poppins', sans-serif;
   letter-spacing: 0.04em;
   text-decoration: none;
-  transition: background 0.2s, transform 0.15s;
+  transition: background 0.2s, transform 0.15s, filter 0.2s;
 }
 
 .pfi-btn-gold:hover {
@@ -949,7 +949,7 @@
 .pfi-no-fee-banner {
   border-top: 0.5px solid var(--border-subtle);
   border-bottom: 0.5px solid var(--border-subtle);
-  background: var(--bg-card);
+  background: var(--bg-elevated);
   padding: 40px 28px;
   text-align: center;
 }
