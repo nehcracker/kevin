@@ -213,8 +213,8 @@
    ══════════════════════════════════════════════════════════════════════════ */
 .pfi-enquiry-panel {
   background: var(--glass-bg);
-  backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
   border-radius: var(--rl);
   overflow: hidden;
   border: 1px solid var(--glass-border);
