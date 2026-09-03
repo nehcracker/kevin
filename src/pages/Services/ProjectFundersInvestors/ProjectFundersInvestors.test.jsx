@@ -20,10 +20,10 @@ test('hero stats render through AnimatedCounter with correct prefix, value, and 
   const { container } = renderPage();
   const heroStats = container.querySelector('.pfi-hero-stats');
   const counters = within(heroStats).getAllByTestId('animated-counter');
-  expect(counters.map(el => el.textContent)).toEqual(['1M+', '40+', '48hr', '100+']);
+  expect(counters.map(el => el.textContent)).toEqual(['500M+', '40+', '48hr', '100+']);
   const statNumbers = container.querySelectorAll('.pfi-hs-n');
   const values = Array.from(statNumbers).map(el => el.textContent);
-  expect(values).toEqual(['$1M+', '40+', '48hr', '100+']);
+  expect(values).toEqual(['$500M+', '40+', '48hr', '100+']);
 });
 
 test('CSS no longer references the old gold/ink token system, Libre Baskerville, or the broken override', () => {
