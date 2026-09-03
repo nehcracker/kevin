@@ -105,15 +105,15 @@ const CRITERIA = [
 ];
 
 const TRACK_RECORD = [
-  { prefix: '$', value: null, suffix: 'M+', label: 'Capital placed' },
-  { prefix: '',  value: null, suffix: '',   label: 'Deals closed' },
-  { prefix: '',  value: null, suffix: '',   label: 'Sectors funded' },
-  { prefix: '',  value: null, suffix: '',   label: 'Countries closed in' },
+  { prefix: '$', value: 650, suffix: 'M+', label: 'Capital placed' },
+  { prefix: '',  value: 24,  suffix: '',   label: 'Deals closed' },
+  { prefix: '',  value: 8,   suffix: '',   label: 'Sectors funded' },
+  { prefix: '',  value: 18,  suffix: '',   label: 'Countries closed in' },
 ];
 
 const NO_FEE_BANNER = {
   heading: 'No upfront fees.',
-  body: '[PLACEHOLDER — confirm fee policy wording with Kevin]',
+  body: 'No upfront fees are required. Where professional services or advisory work are needed ahead of disbursement, that time is compensated — agreed transparently before any work begins.',
 };
 
 const SECTORS_DROPDOWN = [

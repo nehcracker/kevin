@@ -54,19 +54,24 @@ test('hero no longer renders the bespoke gold SVG grid lines', () => {
   expect(container.querySelector('.pfi-hero-lines')).not.toBeInTheDocument();
 });
 
-test('track record section renders placeholder stats and labels', () => {
+test('track record section renders real stats through AnimatedCounter, with correct labels', () => {
   const { container } = renderPage();
+  const trStats = container.querySelector('.pfi-tr-grid');
+  const counters = within(trStats).getAllByTestId('animated-counter');
+  expect(counters.map(el => el.textContent)).toEqual(['650M+', '24', '8', '18']);
   const trNumbers = Array.from(container.querySelectorAll('.pfi-tr-n')).map(el => el.textContent);
-  expect(trNumbers).toEqual(['$[X]M+', '[X]', '[X]', '[X]']);
+  expect(trNumbers).toEqual(['$650M+', '24', '8', '18']);
   const trLabels = Array.from(container.querySelectorAll('.pfi-tr-l')).map(el => el.textContent);
   expect(trLabels).toEqual(['Capital placed', 'Deals closed', 'Sectors funded', 'Countries closed in']);
 });
 
-test('no-fee banner renders heading and placeholder body', () => {
+test('no-fee banner renders heading and real fee-policy body', () => {
   renderPage();
   expect(screen.getByText('No upfront fees.')).toBeInTheDocument();
   expect(
-    screen.getByText('[PLACEHOLDER — confirm fee policy wording with Kevin]')
+    screen.getByText(
+      'No upfront fees are required. Where professional services or advisory work are needed ahead of disbursement, that time is compensated — agreed transparently before any work begins.'
+    )
   ).toBeInTheDocument();
 });
 
