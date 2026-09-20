@@ -9,19 +9,19 @@ import './ProjectFundersInvestors.css';
 /* ── Constants ───────────────────────────────────────────────────────────── */
 const CALENDLY    = 'https://calendly.com/kevingraham';
 const WORKER_URL  = 'https://pfi-enquiry.nehlmac4.workers.dev';
-const MIN_FUNDING = 500_000_000; // $500M floor
+const MIN_FUNDING = 500_000; // $500K floor
 
 /* ── Data ────────────────────────────────────────────────────────────────── */
 
 const QUALS = [
-  'Minimum project value: $500M — no upper ceiling',
+  'Minimum project value: $500K — no upper ceiling',
   'Access to DFIs, sovereign funds & private capital desks',
   'All major sectors considered across 40+ countries',
   'Strictly confidential — NDA available on request',
 ];
 
 const STATS = [
-  { prefix: '$', value: 500, suffix: 'M+', l: 'Minimum project size' },
+  { prefix: '$', value: 500, suffix: 'K+', l: 'Minimum project size' },
   { prefix: '',  value: 40,  suffix: '+',  l: 'Countries covered' },
   { prefix: '',  value: 48,  suffix: 'hr', l: 'Enquiry response' },
   { prefix: '',  value: 100, suffix: '+',  l: 'Capital relationships' },
@@ -94,8 +94,8 @@ const SOURCES = [
 const CRITERIA = [
   {
     icon: 'fas fa-dollar-sign',
-    title: 'Minimum project size: $500M',
-    desc: 'This service is designed for established projects requiring structured institutional or private capital. We do not secure funding for projects below $500M.',
+    title: 'Minimum project size: $500K',
+    desc: 'This service is designed for established projects requiring structured institutional or private capital. We do not secure funding for projects below $500K.',
   },
   {
     icon: 'fas fa-file-alt',
@@ -216,11 +216,11 @@ const EnquiryPanel = () => {
     if (!val.trim()) { setFundingError('Funding amount is required.'); return false; }
     const amount = parseFundingAmount(val);
     if (amount === null) {
-      setFundingError('Please enter a valid amount — e.g. $500M, $750M, $1,200,000,000');
+      setFundingError('Please enter a valid amount — e.g. $500K, $750K, $1,200,000,000');
       return false;
     }
     if (amount < MIN_FUNDING) {
-      setFundingError("We don't secure funding for projects under $500M.");
+      setFundingError("We don't secure funding for projects under $500K.");
       return false;
     }
     setFundingError('');
@@ -367,7 +367,7 @@ const EnquiryPanel = () => {
           </div>
           <div className="pfi-ef">
             <label htmlFor="pfi-range">Funding required (USD) *</label>
-            <input id="pfi-range" type="text" name="range" inputMode="numeric" placeholder="e.g. 500,000,000"
+            <input id="pfi-range" type="text" name="range" inputMode="numeric" placeholder="e.g. 500,000"
               value={fields.range} onChange={onChange} required aria-required="true"
               disabled={status === 'sending'} />
             {fundingError && <span style={inlineErr}>{fundingError}</span>}
@@ -444,7 +444,7 @@ const ProjectFundersInvestors = () => {
 
       <SEO
         title="Project Funders & Investors — Capital Introduction Advisory"
-        description="Kevin Graham connects project sponsors and capital seekers with DFIs, development banks, institutional lenders, sovereign funds, and private capital sources globally. Projects from $500M considered."
+        description="Kevin Graham connects project sponsors and capital seekers with DFIs, development banks, institutional lenders, sovereign funds, and private capital sources globally. Projects from $500K considered."
         keywords="project funders and investors, capital introduction advisory, project funding investors, DFI funding, development finance institutions, institutional lenders, sovereign wealth funds, private capital placement, project finance advisory, funder introduction, investors looking for projects to fund, international project investors, project funding sources, capital introduction service, project sponsor advisory, funder matching, infrastructure funding, energy project investors, real estate project funders"
         canonical="https://grahamkarimi.com/services/project-funders-and-investors"
         schema={{
