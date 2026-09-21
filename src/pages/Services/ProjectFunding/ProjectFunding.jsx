@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { fadeUp, staggerContainer, staggerItem, slideInLeft } from '../../../utils/motion';
 import SEO from '../../../components/common/SEO/SEO';
@@ -19,15 +19,7 @@ const sectors = [
 const WORKER_URL  = 'https://pf-enquiry.nehlmac4.workers.dev';
 const MIN_FUNDING = 500_000; // $500K floor
 
-const fireConversion = () => {
-  if (typeof window.gtag === 'function') {
-    window.gtag('event', 'conversion', {
-      send_to: 'AW-18234308546/oy6-CNmgiL8cEMLv5fZD',
-      value: 1.0,
-      currency: 'USD',
-    });
-  }
-};
+const makeConversionToken = () => `${Date.now()}-${Math.random().toString(36).slice(2)}`;
 
 /* ── Validation helpers ──────────────────────────────────────────────────────── */
 const parseFundingAmount = (raw) => {
@@ -75,9 +67,10 @@ const validateSummary = (v) => {
 
 /* ── Enquiry Panel ───────────────────────────────────────────────────────────── */
 const ProjectFundingPanel = () => {
+  const navigate = useNavigate();
   const [fields, setFields] = useState({ name: '', email: '', phone: '', range: '', summary: '' });
   const [touched, setTouched] = useState({});
-  const [status, setStatus] = useState('idle'); // idle | sending | success-wa | success-email | error
+  const [status, setStatus] = useState('idle'); // idle | sending | success-wa | error
   const [submitError, setSubmitError] = useState('');
 
   const emailErr   = validateEmail(fields.email);
@@ -109,7 +102,8 @@ const ProjectFundingPanel = () => {
       `Project Overview:\n${fields.summary}`
     );
     window.open(`https://wa.me/447723339858?text=${text}`, '_blank', 'noopener,noreferrer');
-    fireConversion();
+    // WhatsApp sends can't be confirmed from the browser, so this path is
+    // not tracked as a conversion — only the backend-confirmed email path is.
     setStatus('success-wa');
   };
 
@@ -126,8 +120,9 @@ const ProjectFundingPanel = () => {
       });
       const data = await res.json();
       if (res.ok && data.success) {
-        fireConversion();
-        setStatus('success-email');
+        const token = makeConversionToken();
+        sessionStorage.setItem('gk-conv-token', token);
+        navigate('/thank-you', { state: { token, source: 'project-funding', email: fields.email } });
       } else {
         setStatus('error');
         setSubmitError(data.error || 'Something went wrong. Please try again.');
@@ -138,8 +133,7 @@ const ProjectFundingPanel = () => {
     }
   };
 
-  if (status === 'success-wa' || status === 'success-email') {
-    const byEmail = status === 'success-email';
+  if (status === 'success-wa') {
     return (
       <div className="pf-fp">
         <div className="pf-fp-head">
@@ -148,13 +142,11 @@ const ProjectFundingPanel = () => {
         </div>
         <div className="pf-fp-confirm">
           <div className="pf-fp-confirm-icon">
-            <i className={byEmail ? 'fas fa-envelope-open-text' : 'fab fa-whatsapp'} aria-hidden="true" />
+            <i className="fab fa-whatsapp" aria-hidden="true" />
           </div>
-          <h4>{byEmail ? 'Enquiry submitted' : 'Sent via WhatsApp'}</h4>
+          <h4>Sent via WhatsApp</h4>
           <p>
-            {byEmail
-              ? <>Your enquiry has been submitted. A confirmation has been sent to <strong>{fields.email}</strong>. Kevin will review and respond within 48 hours.</>
-              : 'Your message has been sent to Kevin on WhatsApp. He will review and respond within 48 hours.'}
+            Your message has been sent to Kevin on WhatsApp. He will review and respond within 48 hours.
           </p>
         </div>
         <div className="pf-fp-foot">

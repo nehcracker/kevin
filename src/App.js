@@ -12,6 +12,7 @@ import BusinessFunding from './pages/Services/BusinessFunding/BusinessFunding';
 import BusinessConsultant from './pages/Services/BusinessConsultant/BusinessConsultant';
 import GrantsDonations from './pages/Services/GrantsDonations/GrantsDonations';
 import ProjectFundersInvestors from './pages/Services/ProjectFundersInvestors/ProjectFundersInvestors';
+import ThankYou from './pages/ThankYou/ThankYou';
 import Reviews from './components/Reviews/Reviews';
 import Contact from './components/Contact/Contact';
 import Partners from './components/Partners/Partners';
@@ -36,6 +37,7 @@ function App() {
           <Route path="/services/business-consultant"                      element={<BusinessConsultant />} />
           <Route path="/services/grants-donations"                         element={<GrantsDonations />} />
           <Route path="/services/project-funders-and-investors"            element={<ProjectFundersInvestors />} />
+          <Route path="/thank-you"                                         element={<ThankYou />} />
         </Routes>
         <Reviews />
         <Contact />

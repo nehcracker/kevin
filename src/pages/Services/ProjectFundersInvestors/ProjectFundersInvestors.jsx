@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { fadeUp, staggerContainer, staggerItem, slideInLeft } from '../../../utils/motion';
 import SEO from '../../../components/common/SEO/SEO';
@@ -171,26 +171,19 @@ const inlineErr = {
   marginTop: '4px', fontWeight: 400, display: 'block',
 };
 
-const fireConversion = () => {
-  if (typeof window.gtag === 'function') {
-    window.gtag('event', 'conversion', {
-      send_to: 'AW-18234308546/oy6-CNmgiL8cEMLv5fZD',
-      value: 1.0,
-      currency: 'USD',
-    });
-  }
-};
+const makeConversionToken = () => `${Date.now()}-${Math.random().toString(36).slice(2)}`;
 
 /* ══════════════════════════════════════════════════════════════════════════
    ENQUIRY PANEL
    ══════════════════════════════════════════════════════════════════════════ */
 const EnquiryPanel = () => {
+  const navigate = useNavigate();
   const [fields, setFields] = useState({
     name: '', org: '', email: '', phone: '',
     country: '', sector: '', range: '', summary: '',
   });
   const [agreed,        setAgreed]        = useState(false);
-  const [status,        setStatus]        = useState('idle'); // idle | sending | success | error
+  const [status,        setStatus]        = useState('idle'); // idle | sending | error
   const [fundingError,  setFundingError]  = useState('');
   const [phoneError,    setPhoneError]    = useState('');
   const [summaryError,  setSummaryError]  = useState('');
@@ -260,8 +253,9 @@ const EnquiryPanel = () => {
       const data = await res.json();
 
       if (res.ok && data.success) {
-        fireConversion();
-        setStatus('success');
+        const token = makeConversionToken();
+        sessionStorage.setItem('gk-conv-token', token);
+        navigate('/thank-you', { state: { token, source: 'pfi', email: fields.email } });
       } else {
         setStatus('error');
         setSubmitError(data.error || 'Something went wrong. Please try again.');
@@ -273,32 +267,6 @@ const EnquiryPanel = () => {
       );
     }
   };
-
-  /* Success */
-  if (status === 'success') {
-    return (
-      <div className="pfi-enquiry-panel">
-        <div className="pfi-ep-head">
-          <div className="pfi-ep-head-title">Submit a funding enquiry</div>
-          <div className="pfi-ep-head-sub">Confidential · Reviewed within 48 hours</div>
-        </div>
-        <div className="pfi-ep-confirm">
-          <div className="pfi-ep-confirm-icon">
-            <i className="fas fa-check" aria-hidden="true" />
-          </div>
-          <h4>Enquiry received</h4>
-          <p>
-            Your enquiry has been submitted successfully. A confirmation and next-steps
-            email has been sent to <strong>{fields.email}</strong>. Kevin will review your
-            project and respond within 48 hours (GMT/BST).
-          </p>
-        </div>
-        <div className="pfi-ep-foot">
-          All enquiries are treated in strict confidence and subject to eligibility assessment.
-        </div>
-      </div>
-    );
-  }
 
   /* Form */
   return (

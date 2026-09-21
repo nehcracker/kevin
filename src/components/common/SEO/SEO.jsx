@@ -79,6 +79,7 @@ const SEO = ({
   ogType      = 'website',
   ogImage     = OG_DEFAULT,
   schema      = null,
+  robots      = 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1',
 }) => {
   const fullTitle = title
     ? `${title} | ${SITE_NAME}`
@@ -94,7 +95,7 @@ const SEO = ({
     // ── Primary meta ──────────────────────────────────────────────────────────
     setMeta('description', description);
     setMeta('keywords',    keywords);
-    setMeta('robots',      'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1');
+    setMeta('robots',      robots);
 
     // ── Canonical ─────────────────────────────────────────────────────────────
     setCanonical(pageUrl);
@@ -125,7 +126,7 @@ const SEO = ({
     setJsonLd(schema);
 
   // Re-run every time any SEO value changes (i.e. on every page navigation)
-  }, [fullTitle, description, keywords, pageUrl, ogType, ogImage, schema]);
+  }, [fullTitle, description, keywords, pageUrl, ogType, ogImage, schema, robots]);
 
   // Renders nothing to the DOM — all work happens in useEffect
   return null;
