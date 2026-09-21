@@ -5,13 +5,11 @@ import './ThankYou.css';
 
 const CONVERSION_TOKEN_KEY = 'gk-conv-token';
 
+// Event snippet for Submit lead form (1) conversion page, fired only from
+// this thank-you page — see the token check in the effect below for why.
 const fireConversion = () => {
   if (typeof window.gtag === 'function') {
-    window.gtag('event', 'conversion', {
-      send_to: 'AW-18234308546/oy6-CNmgiL8cEMLv5fZD',
-      value: 1.0,
-      currency: 'USD',
-    });
+    window.gtag('event', 'conversion', { send_to: 'AW-18234308546/oy6-CNmgiL8cEMLv5fZD' });
   }
 };
 
