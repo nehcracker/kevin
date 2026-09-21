@@ -123,6 +123,24 @@
   max-width: 600px;
 }
 
+.pf-header-min {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.8);
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 50px;
+  padding: 0.5rem 1.1rem;
+  margin-bottom: 1.75rem;
+}
+
+.pf-header-min i {
+  color: #64B5F6;
+}
+
 .pf-header-cta {
   display: flex;
   gap: 1rem;

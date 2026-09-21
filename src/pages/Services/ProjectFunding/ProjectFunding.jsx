@@ -16,7 +16,8 @@ const sectors = [
   { icon: 'fas fa-chart-line', label: 'Corporate Expansion' },
 ];
 
-const WORKER_URL = 'https://pf-enquiry.nehlmac4.workers.dev';
+const WORKER_URL  = 'https://pf-enquiry.nehlmac4.workers.dev';
+const MIN_FUNDING = 500_000; // $500K floor
 
 const fireConversion = () => {
   if (typeof window.gtag === 'function') {
@@ -29,6 +30,29 @@ const fireConversion = () => {
 };
 
 /* ── Validation helpers ──────────────────────────────────────────────────────── */
+const parseFundingAmount = (raw) => {
+  if (!raw || !raw.trim()) return null;
+  const str = raw.trim().toLowerCase()
+    .replace(/,/g, '').replace(/\s+/g, '').replace(/^[$€£¥]/g, '');
+  const match = str.match(/^(\d+(?:\.\d+)?)(k|m|b|million|billion|thousand)?$/);
+  if (!match) return null;
+  const num    = parseFloat(match[1]);
+  const suffix = match[2] || '';
+  if (isNaN(num)) return null;
+  if (suffix === 'k' || suffix === 'thousand') return num * 1_000;
+  if (suffix === 'm' || suffix === 'million')  return num * 1_000_000;
+  if (suffix === 'b' || suffix === 'billion')  return num * 1_000_000_000;
+  return num;
+};
+
+const validateFunding = (v) => {
+  if (!v || !v.trim()) return 'Funding amount is required';
+  const amount = parseFundingAmount(v);
+  if (amount === null) return 'Please enter a valid amount — e.g. $500K, $2M, $10,000,000';
+  if (amount < MIN_FUNDING) return "We don't secure funding for projects under $500K.";
+  return '';
+};
+
 const validateEmail = (v) => {
   if (!v) return 'Email is required';
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)) return 'Enter a valid email address';
@@ -59,6 +83,7 @@ const ProjectFundingPanel = () => {
   const emailErr   = validateEmail(fields.email);
   const phoneErr   = validatePhone(fields.phone);
   const summaryErr = validateSummary(fields.summary);
+  const fundingErr = validateFunding(fields.range);
 
   const onChange = (e) => {
     const { name, value } = e.target;
@@ -70,7 +95,7 @@ const ProjectFundingPanel = () => {
     setTouched(t => ({ ...t, [e.target.name]: true }));
   };
 
-  const canSubmit = fields.name && !emailErr && !phoneErr && fields.range && !summaryErr;
+  const canSubmit = fields.name && !emailErr && !phoneErr && !fundingErr && !summaryErr;
 
   const handleWhatsApp = () => {
     setTouched({ name: true, email: true, phone: true, range: true, summary: true });
@@ -179,7 +204,15 @@ const ProjectFundingPanel = () => {
           </div>
           <div className="pf-fp-field">
             <label htmlFor="pf-fp-range">Funding Required (USD) *</label>
-            <input id="pf-fp-range" name="range" type="text" inputMode="numeric" placeholder="e.g. 5,000,000" value={fields.range} onChange={onChange} />
+            <input
+              id="pf-fp-range" name="range" type="text" inputMode="numeric"
+              placeholder="e.g. 500,000"
+              value={fields.range}
+              onChange={onChange}
+              onBlur={onBlur}
+              className={touched.range && fundingErr ? 'pf-fp-input-err' : ''}
+            />
+            {touched.range && fundingErr && <span className="pf-fp-field-msg">{fundingErr}</span>}
           </div>
         </div>
         <div className="pf-fp-field">
@@ -366,6 +399,10 @@ const ProjectFunding = () => {
                   You need structured capital to execute large-scale projects. You need the right
                   structure to secure approval and protect long-term returns. Funding follows structure.
                 </motion.p>
+                <motion.div variants={staggerItem} className="pf-header-min">
+                  <i className="fas fa-circle-dollar-to-slot" aria-hidden="true" />
+                  Minimum project value: $500K — no upper ceiling
+                </motion.div>
                 <motion.div variants={staggerItem} className="pf-header-cta">
                   <a href="https://calendly.com/kevingraham" target="_blank" rel="noopener noreferrer" className="pf-btn-primary">
                     <i className="fas fa-calendar-check"></i> Schedule Consultation
