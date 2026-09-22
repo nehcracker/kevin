@@ -1,17 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import './Contact.css';
 
-/* ── Conversion tracking ─────────────────────────────────────────────────── */
-const fireConversion = () => {
-  if (typeof window.gtag === 'function') {
-    window.gtag('event', 'conversion', {
-      send_to: 'AW-18234308546/oy6-CNmgiL8cEMLv5fZD',
-      value: 1.0,
-      currency: 'USD',
-    });
-  }
-};
-
 /* ── Constants ───────────────────────────────────────────────────────────── */
 const PHONE    = '447723339858';
 const EMAIL    = 'kevin.uk@grahamkarimi.com';
@@ -80,7 +69,10 @@ const ContactPanel = () => {
     setChannel(ch);
     const url = ch === 'wa' ? buildWaUrl(service) : buildEmailUrl(service);
     window.open(url, '_blank', 'noopener,noreferrer');
-    fireConversion();
+    // Neither channel here is backend-confirmed (WhatsApp and mailto: both
+    // just open an external app with no send confirmation), so this widget
+    // no longer fires a conversion — only the page-level enquiry forms do,
+    // via their /thank-you redirect after a real backend success.
     goStage(3);
     clearTimeout(resetTimer.current);
     resetTimer.current = setTimeout(() => {
