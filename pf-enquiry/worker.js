@@ -10,7 +10,7 @@
  *   TURNSTILE_SECRET_KEY  — Cloudflare Turnstile secret (enforced once set)
  *
  * Environment vars (set in wrangler.toml [vars]):
- *   FROM_ADDRESS    — noreply@grahamkarimi.com
+ *   FROM_ADDRESS    — kevin.uk@grahamkarimi.com
  *   FROM_NAME       — Kevin Graham
  *   KEVIN_EMAIL     — kevin.uk@grahamkarimi.com
  *   KEVIN_NAME      — Kevin Graham
@@ -36,7 +36,7 @@ const ZEPTO_ENDPOINT = 'https://api.zeptomail.com/v1.1/email';
 async function sendEmail({ to, toName, subject, htmlBody, replyTo, env }) {
   const payload = {
     from: {
-      address: env.FROM_ADDRESS || 'noreply@grahamkarimi.com',
+      address: env.FROM_ADDRESS || 'kevin.uk@grahamkarimi.com',
       name:    env.FROM_NAME    || 'Kevin Graham',
     },
     to: [
@@ -364,8 +364,8 @@ function buildAutoReply(f) {
                    style="color:#1565C0;text-decoration:none;">grahamkarimi.com</a>
               </p>
               <p style="margin:0;font-size:10px;color:#B0BEC5;">
-                This is an automated response. Please do not reply directly to this email.
-                Send your documents to kevin.uk@grahamkarimi.com
+                You can reply to this email directly with your documents attached,
+                or send them to kevin.uk@grahamkarimi.com.
               </p>
             </td>
           </tr>

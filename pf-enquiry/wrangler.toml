@@ -17,7 +17,7 @@ preview_urls = false
 # and NEVER stored in this file.
 
 [vars]
-FROM_ADDRESS   = "noreply@grahamkarimi.com"
+FROM_ADDRESS   = "kevin.uk@grahamkarimi.com"
 FROM_NAME      = "Kevin Graham"
 KEVIN_EMAIL    = "kevin.uk@grahamkarimi.com"
 KEVIN_NAME     = "Kevin Graham"
