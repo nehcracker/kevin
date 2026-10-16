@@ -605,10 +605,6 @@ const EquityFinancing = () => {
               </motion.p>
 
               <motion.div variants={staggerItem} className="pfi-cta-btns ef-hero-btns">
-                <a href={CALENDLY} target="_blank" rel="noopener noreferrer" className="pfi-btn-gold">
-                  <i className="fas fa-calendar-check" aria-hidden="true" />
-                  Book a Funding Readiness Review
-                </a>
                 <button type="button" className="pfi-btn-outline" onClick={() => scrollToId('readiness')}>
                   <i className="fas fa-clipboard-list" aria-hidden="true" />
                   Check If Your Project Qualifies
