@@ -539,8 +539,8 @@ const EquityFinancing = () => {
     <div className="pfi-page ef-page">
 
       <SEO
-        title="Equity Financing for Businesses and Project Sponsors"
-        description="Equity financing advisory for growth companies and project sponsors. Funding readiness review, investor materials and introductions to private equity and growth investors."
+        title="Equity Financing for Growing Businesses"
+        description="Equity financing advisory for growth companies and project sponsors: funding readiness review, investor materials and introductions to private equity investors."
         keywords="equity financing, private equity financing, equity investors, growth equity, private business funding, structured equity finance, mezzanine financing, equity bridge financing, debt and equity financing"
         canonical={CANONICAL}
         schema={{
@@ -560,6 +560,14 @@ const EquityFinancing = () => {
               serviceType: 'Equity Financing Advisory',
               areaServed: { '@type': 'Country', name: 'Global' },
               url: CANONICAL,
+            },
+            {
+              '@type': 'BreadcrumbList',
+              itemListElement: [
+                { '@type': 'ListItem', position: 1, name: 'Home',             item: 'https://grahamkarimi.com/' },
+                { '@type': 'ListItem', position: 2, name: 'Services',         item: 'https://grahamkarimi.com/services' },
+                { '@type': 'ListItem', position: 3, name: 'Equity Financing', item: CANONICAL },
+              ],
             },
             {
               '@type': 'FAQPage',

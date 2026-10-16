@@ -1,6 +1,4 @@
 import { useEffect } from 'react';
-// default social preview image imported from assets; CRA will handle hashing
-import ogImageAsset from '../../../assets/images/Kevin-graham.png';
 
 /**
  * SEO Component — Direct DOM Meta Tag Manager
@@ -24,7 +22,9 @@ import ogImageAsset from '../../../assets/images/Kevin-graham.png';
 
 const SITE_NAME      = 'Kevin Graham';
 const BASE_URL       = 'https://grahamkarimi.com';
-const OG_DEFAULT     = ogImageAsset;
+// Absolute, stable URL (public/Kevin-graham.png): social scrapers don't run JS
+// and can't resolve CRA's relative hashed asset paths.
+const OG_DEFAULT     = `${BASE_URL}/Kevin-graham.png`;
 const TWITTER_HANDLE = '@kevingrahamkarimi';
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
@@ -108,13 +108,13 @@ const SEO = ({
     setProperty('og:url',              pageUrl);
     setProperty('og:image',            ogImage);
     setProperty('og:image:secure_url', ogImage);
-    setProperty('og:image:width',      '1200');
-    setProperty('og:image:height',     '630');
+    setProperty('og:image:width',      '422');
+    setProperty('og:image:height',     '422');
     setProperty('og:image:alt',        `${SITE_NAME} – Global Financial Advisor`);
     setProperty('og:locale',           'en_US');
 
     // ── Twitter Card ──────────────────────────────────────────────────────────
-    setMeta('twitter:card',        'summary_large_image');
+    setMeta('twitter:card',        'summary'); // square image
     setMeta('twitter:site',        TWITTER_HANDLE);
     setMeta('twitter:creator',     TWITTER_HANDLE);
     setMeta('twitter:title',       fullTitle);

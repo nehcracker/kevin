@@ -14,6 +14,7 @@ import GrantsDonations from './pages/Services/GrantsDonations/GrantsDonations';
 import ProjectFundersInvestors from './pages/Services/ProjectFundersInvestors/ProjectFundersInvestors';
 import EquityFinancing from './pages/Services/EquityFinancing/EquityFinancing';
 import ThankYou from './pages/ThankYou/ThankYou';
+import NotFound from './pages/NotFound/NotFound';
 import Reviews from './components/Reviews/Reviews';
 import Contact from './components/Contact/Contact';
 import Partners from './components/Partners/Partners';
@@ -42,6 +43,7 @@ function App() {
           {/* Short ad landing URL; canonical points at /services/equity-financing */}
           <Route path="/equity-financing"                                element={<EquityFinancing />} />
           <Route path="/thank-you"                                         element={<ThankYou />} />
+          <Route path="*"                                                  element={<NotFound />} />
         </Routes>
         <Reviews />
         <Contact />
