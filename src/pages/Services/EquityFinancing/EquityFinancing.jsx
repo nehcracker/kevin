@@ -13,6 +13,7 @@ const CALENDLY    = 'https://calendly.com/kevingraham';
 const WORKER_URL  = 'https://pfi-enquiry.nehlmac4.workers.dev';
 const MIN_FUNDING = 500_000; // $500K floor — matches the PFI enquiry form
 const CANONICAL   = 'https://grahamkarimi.com/services/equity-financing';
+const FCA_REGISTER = 'https://register.fca.org.uk/s/individual?id=003b000000LUZUPAA5'; // same link as Footer
 
 /* ── Data ────────────────────────────────────────────────────────────────── */
 
@@ -943,6 +944,13 @@ const EquityFinancing = () => {
             make investment decisions, and we cannot guarantee that any raise will succeed.
             Nothing on this page constitutes a financial promotion for any specific product.
             All enquiries are subject to eligibility assessment.
+          </p>
+          <p className="pfi-cta-disc ef-reg">
+            Kevin Graham is listed on the{' '}
+            <a href={FCA_REGISTER} target="_blank" rel="noopener noreferrer">FCA Financial Services Register</a>{' '}
+            (reference KXG00024) as an individual certified/assessed by an authorised firm that is
+            regulated for certain activities. The FCA does not directly approve certified
+            individuals. No FCA or PRA disciplinary or regulatory action is recorded.
           </p>
         </motion.section>
 

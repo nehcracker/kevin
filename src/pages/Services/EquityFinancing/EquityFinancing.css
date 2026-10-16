@@ -400,6 +400,15 @@
   line-height: 1.75;
 }
 
+/* ── Regulatory statement ─────────────────────────────────────────────── */
+.ef-reg { margin-top: 12px; }
+
+.ef-reg a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 /* ── Enquiry panel (hero right column) ────────────────────────────────── */
 .ef-enquiry-panel { scroll-margin-top: 96px; }
 
