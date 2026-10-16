@@ -11,7 +11,7 @@ import './EquityFinancing.css';
 
 /* ── Constants ───────────────────────────────────────────────────────────── */
 const CALENDLY    = 'https://calendly.com/kevingraham';
-const WORKER_URL  = 'https://pfi-enquiry.nehlmac4.workers.dev';
+const WORKER_URL  = 'https://pfi-enquiry.grahamkarimi.com';
 const MIN_FUNDING = 500_000; // $500K floor — matches the PFI enquiry form
 const CANONICAL   = 'https://grahamkarimi.com/services/equity-financing';
 const FCA_REGISTER = 'https://register.fca.org.uk/s/individual?id=003b000000LUZUPAA5'; // same link as Footer

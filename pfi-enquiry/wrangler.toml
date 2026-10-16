@@ -2,6 +2,14 @@ name       = "pfi-enquiry"
 main       = "worker.js"
 compatibility_date = "2024-01-01"
 
+# ── Custom domain ─────────────────────────────────────────────────────────
+# Served at https://pfi-enquiry.grahamkarimi.com (DNS + certificate managed by
+# Cloudflare). Listed here so `wrangler deploy` keeps it attached.
+# workers_dev stays on until the site build that calls the custom domain is
+# live; then set it to false so the *.workers.dev URL stops answering.
+routes = [{ pattern = "pfi-enquiry.grahamkarimi.com", custom_domain = true }]
+workers_dev = true
+
 # ── Non-sensitive environment variables ───────────────────────────────────
 # Sensitive keys (ZEPTO_API_KEY) are set via:
 #   wrangler secret put ZEPTO_API_KEY
@@ -31,8 +39,3 @@ simple = { limit = 2, period = 60 }
 
 # TURNSTILE_SECRET_KEY is a secret: wrangler secret put TURNSTILE_SECRET_KEY
 
-# ── Routes ────────────────────────────────────────────────────────────────
-# Uncomment and update once you have a custom domain attached in Cloudflare:
-# [[routes]]
-# pattern = "api.grahamkarimi.com/submit-enquiry"
-# zone_name = "grahamkarimi.com"

@@ -2,6 +2,14 @@ name               = "pf-enquiry"
 main               = "worker.js"
 compatibility_date = "2024-01-01"
 
+# ── Custom domain ─────────────────────────────────────────────────────────
+# Served at https://pf-enquiry.grahamkarimi.com (DNS + certificate managed by
+# Cloudflare). Listed here so `wrangler deploy` keeps it attached.
+# workers_dev stays on until the site build that calls the custom domain is
+# live; then set it to false so the *.workers.dev URL stops answering.
+routes = [{ pattern = "pf-enquiry.grahamkarimi.com", custom_domain = true }]
+workers_dev = true
+
 # ── Non-sensitive environment variables ───────────────────────────────────
 # Sensitive keys (ZEPTO_API_KEY) are set via:
 #   wrangler secret put ZEPTO_API_KEY
@@ -31,7 +39,3 @@ simple = { limit = 2, period = 60 }
 
 # TURNSTILE_SECRET_KEY is a secret: wrangler secret put TURNSTILE_SECRET_KEY
 
-# ── Deploy ────────────────────────────────────────────────────────────────
-# Deploy with: cd pf-enquiry && wrangler deploy
-# The worker URL will be: https://pf-enquiry.<your-subdomain>.workers.dev
-# Update WORKER_URL in ProjectFunding.jsx after first deploy.

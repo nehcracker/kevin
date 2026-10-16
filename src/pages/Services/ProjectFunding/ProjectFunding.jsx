@@ -17,7 +17,7 @@ const sectors = [
   { icon: 'fas fa-chart-line', label: 'Corporate Expansion' },
 ];
 
-const WORKER_URL  = 'https://pf-enquiry.nehlmac4.workers.dev';
+const WORKER_URL  = 'https://pf-enquiry.grahamkarimi.com';
 const MIN_FUNDING = 500_000; // $500K floor
 
 const makeConversionToken = () => `${Date.now()}-${Math.random().toString(36).slice(2)}`;

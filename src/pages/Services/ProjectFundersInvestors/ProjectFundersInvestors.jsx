@@ -9,7 +9,7 @@ import './ProjectFundersInvestors.css';
 
 /* ── Constants ───────────────────────────────────────────────────────────── */
 const CALENDLY    = 'https://calendly.com/kevingraham';
-const WORKER_URL  = 'https://pfi-enquiry.nehlmac4.workers.dev';
+const WORKER_URL  = 'https://pfi-enquiry.grahamkarimi.com';
 const MIN_FUNDING = 500_000; // $500K floor
 
 /* ── Data ────────────────────────────────────────────────────────────────── */
