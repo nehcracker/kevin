@@ -253,6 +253,34 @@ const services = [
       'Funder Introduction Service',
     ],
   },
+  {
+    id: 'equity-financing',
+    number: '10',
+    title: 'Equity Financing',
+    subtitle: 'Advisory for Growth Companies & Project Sponsors',
+    cardClass: 'card-purple',
+    icon: 'fas fa-chart-pie',
+    iconLabel: 'Equity Financing',
+    bgClass: 'bg-light',
+    reverse: true,
+    detailPath: '/services/equity-financing',
+    description:
+      'Kevin helps growth companies and project sponsors raise capital from private equity, growth equity, family office and strategic investors — from funding readiness assessment and investor materials through to introductions and term sheet negotiation.',
+    solutions: [
+      'Funding Readiness Assessment',
+      'Private Equity & Growth Equity',
+      'Structured & Quasi Equity Finance',
+      'Mezzanine & Equity Bridge Financing',
+      'Investor Introductions & Negotiation',
+    ],
+    keywords: [
+      'Equity Financing',
+      'Private Equity Financing',
+      'Growth Equity',
+      'Mezzanine Financing',
+      'Equity Investors',
+    ],
+  },
 ];
 
 const Services = () => {

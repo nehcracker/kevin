@@ -89,4 +89,12 @@
     <priority>0.85</priority>
   </url>
 
+  <!-- Service: Equity Financing Advisory -->
+  <url>
+    <loc>https://grahamkarimi.com/services/equity-financing</loc>
+    <lastmod>2026-10-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
 </urlset>
