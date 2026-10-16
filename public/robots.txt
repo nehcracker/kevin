@@ -6,9 +6,8 @@
 User-agent: *
 Allow: /
 
-# Block access to CRA build internals (not useful to index)
-Disallow: /static/
-Disallow: /*.json$
+# /static/ must stay crawlable: it holds the JS/CSS Google needs to render
+# this single-page app. Only source maps are excluded.
 Disallow: /*.map$
 
 # Sitemap location

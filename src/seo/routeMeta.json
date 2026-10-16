@@ -1,0 +1,73 @@
+{
+  "/": {
+    "title": "Global Financial Advisor & Project Funding Specialist",
+    "description": "Kevin Graham brings over a decade of strategic insight and execution in global finance, with a focus on risk management, compliance, and debt advisory.",
+    "canonical": "https://grahamkarimi.com/"
+  },
+  "/about": {
+    "title": "Financial Advisor & Risk Management Director",
+    "description": "With international experience, he advises corporations & high-net-worth investors on regulatory compliance, risk frameworks, and global financial strategy.",
+    "canonical": "https://grahamkarimi.com/about"
+  },
+  "/services": {
+    "title": "Services – Project Funding, Risk Advisory & International Finance",
+    "description": "Explore Kevin Graham Karimi's nine core advisory services: international project funding, cross-border financial advisory, risk management, document alignment, global HR placement, business funding, business consulting, grants & donations sourcing, and project funders & investors capital introduction.",
+    "canonical": "https://grahamkarimi.com/services"
+  },
+  "/services/project-funding": {
+    "title": "International Project Funding & Debt Structuring",
+    "description": "project funding & debt structuring for infrastructure, energy, real estate, private capital placement, debt restructuring, & cross border funding solution.",
+    "canonical": "https://grahamkarimi.com/services/project-funding"
+  },
+  "/services/international-financial-advisor": {
+    "title": "Financial Advisor & Cross Border Investment Structuring",
+    "description": "Structured project funding & debt structuring for infrastructure, energy, real estate, & manufacturing, including project finance and cross border funding.",
+    "canonical": "https://grahamkarimi.com/services/international-financial-advisor"
+  },
+  "/services/risk-compliance": {
+    "title": "Risk Management & Regulatory Compliance Advisory",
+    "description": "financial risk management and regulatory compliance advisory for corporations, project sponsors, and investors.",
+    "canonical": "https://grahamkarimi.com/services/risk-compliance"
+  },
+  "/services/document-alignment-services": {
+    "title": "Document Alignment Services DAS Business Plan & Funding Prep",
+    "description": "Document Alignment Services for project funding, business plans, financial model review, feasibility studies, and full investor ready submission packs.",
+    "canonical": "https://grahamkarimi.com/services/document-alignment-services"
+  },
+  "/services/business-funding-loans": {
+    "title": "Business Funding & Long Term Loans – financial Advisor",
+    "description": "business funding and long term loans from banks, private financiers, and institutional partners | secured loans, unsecured business financing.",
+    "canonical": "https://grahamkarimi.com/services/business-funding-loans"
+  },
+  "/services/business-consultant": {
+    "title": "Business Consultant – Business Consulting Services",
+    "description": "Expert business consulting services covering registration, accounting, tax, HR, management strategy, and specialist advisory for SMEs and corporations.",
+    "canonical": "https://grahamkarimi.com/services/business-consultant"
+  },
+  "/services/grants-donations": {
+    "title": "Grants & Donations Sourcing | NGOs, Non-Profits & Projects",
+    "description": "Kevin secures grants and donations for NGOs, nonprofits, infrastructure developers, and groups from government, corporate, and key global funding networks.",
+    "canonical": "https://grahamkarimi.com/services/grants-donations"
+  },
+  "/services/project-funders-and-investors": {
+    "title": "Project Funders & Investors — Capital Introduction Advisory",
+    "description": "Kevin Graham connects project sponsors and capital seekers with DFIs, development banks, institutional lenders, sovereign funds, and private capital sources globally. Projects from $500K considered.",
+    "canonical": "https://grahamkarimi.com/services/project-funders-and-investors"
+  },
+  "/services/equity-financing": {
+    "title": "Equity Financing for Growing Businesses",
+    "description": "Equity financing advisory for growth companies and project sponsors: funding readiness review, investor materials and introductions to private equity investors.",
+    "canonical": "https://grahamkarimi.com/services/equity-financing"
+  },
+  "/equity-financing": {
+    "title": "Equity Financing for Growing Businesses",
+    "description": "Equity financing advisory for growth companies and project sponsors: funding readiness review, investor materials and introductions to private equity investors.",
+    "canonical": "https://grahamkarimi.com/services/equity-financing"
+  },
+  "/thank-you": {
+    "title": "Enquiry Received",
+    "description": "Your enquiry has been received.",
+    "canonical": "https://grahamkarimi.com/thank-you",
+    "robots": "noindex, nofollow"
+  }
+}
