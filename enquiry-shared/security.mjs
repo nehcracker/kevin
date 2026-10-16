@@ -147,6 +147,11 @@ export async function verifyTurnstile(token, ip, env, fetchImpl = fetch) {
   try {
     const res  = await fetchImpl(TURNSTILE_VERIFY_URL, { method: 'POST', body: form });
     const data = await res.json();
+    if (data.success !== true) {
+      // Error codes only (no token, no PII). "invalid-input-secret" means the
+      // Worker's secret doesn't belong to the widget whose site key the page uses.
+      console.warn('Turnstile rejected:', JSON.stringify(data['error-codes'] || []));
+    }
     return data.success === true;
   } catch {
     return false;
