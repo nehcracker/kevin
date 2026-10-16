@@ -2,6 +2,14 @@ name       = "pfi-enquiry"
 main       = "worker.js"
 compatibility_date = "2024-01-01"
 
+# ── Custom domain ─────────────────────────────────────────────────────────
+# Served at https://pfi-enquiry.grahamkarimi.com (DNS + certificate managed by
+# Cloudflare). Listed here so `wrangler deploy` keeps it attached.
+# workers_dev stays on until the site build that calls the custom domain is
+# live; then set it to false so the *.workers.dev URL stops answering.
+routes = [{ pattern = "pfi-enquiry.grahamkarimi.com", custom_domain = true }]
+workers_dev = true
+
 # ── Non-sensitive environment variables ───────────────────────────────────
 # Sensitive keys (ZEPTO_API_KEY) are set via:
 #   wrangler secret put ZEPTO_API_KEY
@@ -12,10 +20,22 @@ FROM_ADDRESS   = "noreply@grahamkarimi.com"
 FROM_NAME      = "Kevin Graham"
 KEVIN_EMAIL    = "kevin.uk@grahamkarimi.com"
 KEVIN_NAME     = "Kevin Graham"
-ALLOWED_ORIGIN = "https://grahamkarimi.com"
+# Origins allowed to submit (checked server-side, not just via CORS).
+# For local testing put ALLOWED_ORIGINS="http://localhost:3000" in .dev.vars.
+ALLOWED_ORIGINS = "https://grahamkarimi.com"
 
-# ── Routes ────────────────────────────────────────────────────────────────
-# Uncomment and update once you have a custom domain attached in Cloudflare:
-# [[routes]]
-# pattern = "api.grahamkarimi.com/submit-enquiry"
-# zone_name = "grahamkarimi.com"
+# ── Abuse protection ──────────────────────────────────────────────────────
+# Per client IP, and per submitted email address (stops the auto-reply
+# being used to flood a third party's inbox). Period must be 10 or 60.
+[[ratelimits]]
+name = "SUBMIT_LIMITER"
+namespace_id = "1001"
+simple = { limit = 5, period = 60 }
+
+[[ratelimits]]
+name = "RECIPIENT_LIMITER"
+namespace_id = "1002"
+simple = { limit = 2, period = 60 }
+
+# TURNSTILE_SECRET_KEY is a secret: wrangler secret put TURNSTILE_SECRET_KEY
+

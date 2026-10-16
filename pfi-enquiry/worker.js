@@ -5,47 +5,31 @@
  *   2. Auto-reply to the enquirer
  *
  * Environment secrets (set via: wrangler secret put <NAME>):
- *   ZEPTO_API_KEY   — ZeptoMail encoded API key
+ *   ZEPTO_API_KEY         — ZeptoMail encoded API key
+ *   TURNSTILE_SECRET_KEY  — Cloudflare Turnstile secret (enforced once set)
  *
  * Environment vars (set in wrangler.toml [vars]):
  *   FROM_ADDRESS    — noreply@grahamkarimi.com
  *   FROM_NAME       — Graham Karimi
  *   KEVIN_EMAIL     — kevin.uk@grahamkarimi.com
  *   KEVIN_NAME      — Kevin Graham
- *   ALLOWED_ORIGIN  — https://grahamkarimi.com
+ *   ALLOWED_ORIGINS — comma-separated origins allowed to submit
+ *
+ * Rate-limit bindings (wrangler.toml [[ratelimits]]):
+ *   SUBMIT_LIMITER, RECIPIENT_LIMITER
+ *
+ * Request hardening (origin allowlist, validation, HTML escaping, rate
+ * limits, honeypot, Turnstile) lives in ../enquiry-shared/security.mjs.
+ * Email builders receive only HTML-escaped values.
  */
 
+import {
+  createEnquiryHandler,
+  EMAIL_PATTERN,
+  PHONE_PATTERN,
+} from '../enquiry-shared/security.mjs';
+
 const ZEPTO_ENDPOINT = 'https://api.zeptomail.com/v1.1/email';
-
-/* ── CORS headers ─────────────────────────────────────────────────────────── */
-function corsHeaders(origin, env) {
-  const allowed = env.ALLOWED_ORIGIN || 'https://grahamkarimi.com';
-  const isAllowed =
-    origin === allowed ||
-    origin === 'http://localhost:3000' ||
-    origin === 'http://localhost:3001';
-
-  return {
-    'Access-Control-Allow-Origin':  isAllowed ? origin : allowed,
-    'Access-Control-Allow-Methods': 'POST, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type',
-    'Access-Control-Max-Age':       '86400',
-  };
-}
-
-function optionsResponse(origin, env) {
-  return new Response(null, { status: 204, headers: corsHeaders(origin, env) });
-}
-
-function jsonResponse(body, status, origin, env) {
-  return new Response(JSON.stringify(body), {
-    status,
-    headers: {
-      'Content-Type': 'application/json',
-      ...corsHeaders(origin, env),
-    },
-  });
-}
 
 /* ── ZeptoMail sender ─────────────────────────────────────────────────────── */
 async function sendEmail({ to, toName, subject, htmlBody, replyTo, env }) {
@@ -72,6 +56,7 @@ async function sendEmail({ to, toName, subject, htmlBody, replyTo, env }) {
 
   const res = await fetch(ZEPTO_ENDPOINT, {
     method:  'POST',
+    signal:  AbortSignal.timeout(10_000),
     headers: {
       Accept:         'application/json',
       'Content-Type': 'application/json',
@@ -81,8 +66,7 @@ async function sendEmail({ to, toName, subject, htmlBody, replyTo, env }) {
   });
 
   if (!res.ok) {
-    const err = await res.text();
-    throw new Error(`ZeptoMail error ${res.status}: ${err}`);
+    throw new Error(`ZeptoMail error ${res.status}`);
   }
 
   return res.json();
@@ -403,84 +387,40 @@ function checklist(items, color = '#1565C0') {
 }
 
 /* ── Validation ───────────────────────────────────────────────────────────── */
-const REQUIRED = ['name', 'org', 'email', 'phone', 'country', 'sector', 'range', 'summary'];
-
-function validateFields(f) {
-  for (const key of REQUIRED) {
-    if (!f[key] || !String(f[key]).trim()) {
-      return `Missing required field: ${key}`;
-    }
-  }
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email)) {
-    return 'Invalid email address.';
-  }
-  return null;
-}
-
-/* ── Main handler ─────────────────────────────────────────────────────────── */
-const handler = {
-  async fetch(request, env) {
-    const origin = request.headers.get('Origin') || '';
-
-    // Preflight
-    if (request.method === 'OPTIONS') {
-      return optionsResponse(origin, env);
-    }
-
-    // Only POST allowed
-    if (request.method !== 'POST') {
-      return jsonResponse({ error: 'Method not allowed.' }, 405, origin, env);
-    }
-
-    // Parse body
-    let fields;
-    try {
-      fields = await request.json();
-    } catch {
-      return jsonResponse({ error: 'Invalid JSON body.' }, 400, origin, env);
-    }
-
-    // Validate
-    const validationError = validateFields(fields);
-    if (validationError) {
-      return jsonResponse({ error: validationError }, 422, origin, env);
-    }
-
-    // Send both emails in parallel
-    try {
-      await Promise.all([
-        // 1. Notification to Kevin
-        sendEmail({
-          to:       env.KEVIN_EMAIL || 'kevin.uk@grahamkarimi.com',
-          toName:   env.KEVIN_NAME  || 'Kevin Graham',
-          subject:  `New Funding Enquiry — ${fields.sector} — ${fields.range}`,
-          htmlBody: buildKevinEmail(fields),
-          replyTo:  fields.email,
-          env,
-        }),
-        // 2. Auto-reply to enquirer
-        sendEmail({
-          to:       fields.email,
-          toName:   fields.name,
-          subject:  'Project Submission Requirements and Review Process | Kevin Graham, UK',
-          htmlBody: buildAutoReply(fields),
-          env,
-        }),
-      ]);
-
-      return jsonResponse({ success: true }, 200, origin, env);
-
-    } catch (err) {
-      console.error('Email send failed:', err.message);
-      return jsonResponse(
-        { error: 'Failed to send email. Please try again or contact us directly.' },
-        500,
-        origin,
-        env
-      );
-    }
-  },
+const SCHEMA = {
+  name:    { label: 'Name',            required: true, max: 100 },
+  org:     { label: 'Organisation',    required: true, max: 150 },
+  email:   { label: 'Email',           required: true, max: 254, pattern: EMAIL_PATTERN },
+  phone:   { label: 'Phone',           required: true, max: 32,  pattern: PHONE_PATTERN },
+  country: { label: 'Country',         required: true, max: 80 },
+  sector:  { label: 'Sector',          required: true, max: 80 },
+  range:   { label: 'Funding amount',  required: true, max: 40 },
+  summary: { label: 'Project summary', required: true, max: 5000, min: 20, multiline: true },
 };
 
-export default handler;
-
+/* ── Main handler ─────────────────────────────────────────────────────────── */
+export default createEnquiryHandler({
+  schema: SCHEMA,
+  // `fields` is plain text (subjects, API params); `html` is escaped for templates.
+  async send(fields, html, env) {
+    await Promise.all([
+      // 1. Notification to Kevin
+      sendEmail({
+        to:       env.KEVIN_EMAIL || 'kevin.uk@grahamkarimi.com',
+        toName:   env.KEVIN_NAME  || 'Kevin Graham',
+        subject:  `New Funding Enquiry — ${fields.sector} — ${fields.range}`,
+        htmlBody: buildKevinEmail(html),
+        replyTo:  fields.email,
+        env,
+      }),
+      // 2. Auto-reply to enquirer
+      sendEmail({
+        to:       fields.email,
+        toName:   fields.name,
+        subject:  'Project Submission Requirements and Review Process | Kevin Graham, UK',
+        htmlBody: buildAutoReply(html),
+        env,
+      }),
+    ]);
+  },
+});

@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { fadeUp, staggerContainer, staggerItem, slideInLeft } from '../../../utils/motion';
 import SEO from '../../../components/common/SEO/SEO';
+import { Honeypot, Turnstile, TURNSTILE_ENABLED } from '../../../components/common/FormGuard/FormGuard';
 import './ProjectFunding.css';
 
 // ── Data ──────────────────────────────────────────────────────────────────────
@@ -16,7 +17,7 @@ const sectors = [
   { icon: 'fas fa-chart-line', label: 'Corporate Expansion' },
 ];
 
-const WORKER_URL  = 'https://pf-enquiry.nehlmac4.workers.dev';
+const WORKER_URL  = 'https://pf-enquiry.grahamkarimi.com';
 const MIN_FUNDING = 500_000; // $500K floor
 
 const makeConversionToken = () => `${Date.now()}-${Math.random().toString(36).slice(2)}`;
@@ -72,6 +73,9 @@ const ProjectFundingPanel = () => {
   const [touched, setTouched] = useState({});
   const [status, setStatus] = useState('idle'); // idle | sending | success-wa | error
   const [submitError, setSubmitError] = useState('');
+  const [website, setWebsite] = useState('');           // honeypot
+  const [turnstileToken, setTurnstileToken] = useState('');
+  const [turnstileKey, setTurnstileKey] = useState(0);   // remount → fresh single-use token
 
   const emailErr   = validateEmail(fields.email);
   const phoneErr   = validatePhone(fields.phone);
@@ -89,6 +93,9 @@ const ProjectFundingPanel = () => {
   };
 
   const canSubmit = fields.name && !emailErr && !phoneErr && !fundingErr && !summaryErr;
+  const canEmail  = canSubmit && (!TURNSTILE_ENABLED || turnstileToken);
+
+  const resetTurnstile = () => { setTurnstileToken(''); setTurnstileKey(k => k + 1); };
 
   const handleWhatsApp = () => {
     setTouched({ name: true, email: true, phone: true, range: true, summary: true });
@@ -109,14 +116,14 @@ const ProjectFundingPanel = () => {
 
   const handleEmail = async () => {
     setTouched({ name: true, email: true, phone: true, range: true, summary: true });
-    if (!canSubmit || status === 'sending') return;
+    if (!canEmail || status === 'sending') return;
     setSubmitError('');
     setStatus('sending');
     try {
       const res  = await fetch(WORKER_URL, {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify(fields),
+        body:    JSON.stringify({ ...fields, website, turnstileToken }),
       });
       const data = await res.json();
       if (res.ok && data.success) {
@@ -125,10 +132,12 @@ const ProjectFundingPanel = () => {
         navigate('/thank-you', { state: { token, source: 'project-funding', email: fields.email } });
       } else {
         setStatus('error');
+        resetTurnstile();
         setSubmitError(data.error || 'Something went wrong. Please try again.');
       }
     } catch {
       setStatus('error');
+      resetTurnstile();
       setSubmitError('Network error — please check your connection and try again, or email kevin.uk@grahamkarimi.com directly.');
     }
   };
@@ -220,6 +229,9 @@ const ProjectFundingPanel = () => {
           {touched.summary && summaryErr && <span className="pf-fp-field-msg">{summaryErr}</span>}
         </div>
 
+        <Honeypot value={website} onChange={setWebsite} />
+        <Turnstile key={turnstileKey} onToken={setTurnstileToken} />
+
         {status === 'error' && (
           <p className="pf-fp-error" role="alert">{submitError}</p>
         )}
@@ -236,7 +248,7 @@ const ProjectFundingPanel = () => {
           <button
             className="pf-fp-btn pf-fp-btn-email"
             onClick={handleEmail}
-            disabled={!canSubmit || status === 'sending'}
+            disabled={!canEmail || status === 'sending'}
             aria-label="Submit enquiry by email"
           >
             {status === 'sending'

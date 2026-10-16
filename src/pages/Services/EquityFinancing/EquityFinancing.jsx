@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { fadeUp, staggerContainer, staggerItem, slideInLeft } from '../../../utils/motion';
 import SEO from '../../../components/common/SEO/SEO';
+import { Honeypot, Turnstile, TURNSTILE_ENABLED } from '../../../components/common/FormGuard/FormGuard';
 // Shares the Navy Executive layout primitives (hero, sections, enquiry panel)
 // with the PFI page; ef- classes in EquityFinancing.css cover what's unique here.
 import '../ProjectFundersInvestors/ProjectFundersInvestors.css';
@@ -10,7 +11,7 @@ import './EquityFinancing.css';
 
 /* ── Constants ───────────────────────────────────────────────────────────── */
 const CALENDLY    = 'https://calendly.com/kevingraham';
-const WORKER_URL  = 'https://pfi-enquiry.nehlmac4.workers.dev';
+const WORKER_URL  = 'https://pfi-enquiry.grahamkarimi.com';
 const MIN_FUNDING = 500_000; // $500K floor — matches the PFI enquiry form
 const CANONICAL   = 'https://grahamkarimi.com/services/equity-financing';
 const FCA_REGISTER = 'https://register.fca.org.uk/s/individual?id=003b000000LUZUPAA5'; // same link as Footer
@@ -270,6 +271,11 @@ const EnquiryPanel = () => {
   const [descError,   setDescError]   = useState('');
   const [descTouched, setDescTouched] = useState(false);
   const [submitError, setSubmitError] = useState('');
+  const [website,     setWebsite]     = useState(''); // honeypot
+  const [turnstileToken, setTurnstileToken] = useState('');
+  const [turnstileKey, setTurnstileKey] = useState(0); // remount → fresh single-use token
+
+  const resetTurnstile = () => { setTurnstileToken(''); setTurnstileKey(k => k + 1); };
 
   const validateAmount = (val) => {
     if (!val.trim()) { setAmountError('Amount sought is required.'); return false; }
@@ -299,7 +305,8 @@ const EnquiryPanel = () => {
   const sending   = status === 'sending';
 
   const canSubmit =
-    allFilled && !amountError && !phoneError && !descError && agreed && !sending;
+    allFilled && !amountError && !phoneError && !descError && agreed && !sending &&
+    (!TURNSTILE_ENABLED || turnstileToken);
 
   const handleSubmit = async () => {
     const amountOk = validateAmount(fields.amount);
@@ -325,6 +332,8 @@ const EnquiryPanel = () => {
       sector:  fields.sector,
       range:   fields.amount,
       summary: `[Equity Financing enquiry — Stage: ${fields.stage}]\n\n${fields.description}`,
+      website,
+      turnstileToken,
     };
 
     try {
@@ -341,10 +350,12 @@ const EnquiryPanel = () => {
         navigate('/thank-you', { state: { token, source: 'equity', email: fields.email } });
       } else {
         setStatus('error');
+        resetTurnstile();
         setSubmitError(data.error || 'Something went wrong. Please try again.');
       }
     } catch {
       setStatus('error');
+      resetTurnstile();
       setSubmitError(
         'Network error — please check your connection and try again, or email kevin.uk@grahamkarimi.com directly.'
       );
@@ -452,6 +463,9 @@ const EnquiryPanel = () => {
             contacted about equity financing options. *
           </label>
         </div>
+
+        <Honeypot value={website} onChange={setWebsite} />
+        <Turnstile key={turnstileKey} onToken={setTurnstileToken} />
 
         {submitError && (
           <p style={{ ...inlineErr, marginBottom: '10px' }} role="alert">{submitError}</p>

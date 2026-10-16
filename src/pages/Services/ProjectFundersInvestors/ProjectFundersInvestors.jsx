@@ -4,11 +4,12 @@ import { motion } from 'framer-motion';
 import { fadeUp, staggerContainer, staggerItem, slideInLeft } from '../../../utils/motion';
 import SEO from '../../../components/common/SEO/SEO';
 import AnimatedCounter from '../../../components/common/AnimatedCounter/AnimatedCounter';
+import { Honeypot, Turnstile, TURNSTILE_ENABLED } from '../../../components/common/FormGuard/FormGuard';
 import './ProjectFundersInvestors.css';
 
 /* ── Constants ───────────────────────────────────────────────────────────── */
 const CALENDLY    = 'https://calendly.com/kevingraham';
-const WORKER_URL  = 'https://pfi-enquiry.nehlmac4.workers.dev';
+const WORKER_URL  = 'https://pfi-enquiry.grahamkarimi.com';
 const MIN_FUNDING = 500_000; // $500K floor
 
 /* ── Data ────────────────────────────────────────────────────────────────── */
@@ -189,6 +190,11 @@ const EnquiryPanel = () => {
   const [summaryError,  setSummaryError]  = useState('');
   const [summaryTouched, setSummaryTouched] = useState(false);
   const [submitError,   setSubmitError]   = useState('');
+  const [website,       setWebsite]       = useState(''); // honeypot
+  const [turnstileToken, setTurnstileToken] = useState('');
+  const [turnstileKey,  setTurnstileKey]  = useState(0);  // remount → fresh single-use token
+
+  const resetTurnstile = () => { setTurnstileToken(''); setTurnstileKey(k => k + 1); };
 
   const validateSummaryField = (val) => {
     if (!val || !val.trim()) return 'Project summary is required.';
@@ -223,7 +229,8 @@ const EnquiryPanel = () => {
   const canSubmit =
     fields.name && fields.org && fields.email && fields.phone &&
     fields.country && fields.sector && fields.range && fields.summary &&
-    !fundingError && !phoneError && !summaryError && agreed && status !== 'sending';
+    !fundingError && !phoneError && !summaryError && agreed && status !== 'sending' &&
+    (!TURNSTILE_ENABLED || turnstileToken);
 
   const handleSubmit = async () => {
     const fundingOk  = validateFunding(fields.range);
@@ -248,7 +255,7 @@ const EnquiryPanel = () => {
       const res  = await fetch(WORKER_URL, {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify(fields),
+        body:    JSON.stringify({ ...fields, website, turnstileToken }),
       });
       const data = await res.json();
 
@@ -258,10 +265,12 @@ const EnquiryPanel = () => {
         navigate('/thank-you', { state: { token, source: 'pfi', email: fields.email } });
       } else {
         setStatus('error');
+        resetTurnstile();
         setSubmitError(data.error || 'Something went wrong. Please try again.');
       }
     } catch {
       setStatus('error');
+      resetTurnstile();
       setSubmitError(
         'Network error — please check your connection and try again, or email kevin.uk@grahamkarimi.com directly.'
       );
@@ -364,6 +373,9 @@ const EnquiryPanel = () => {
             contacted regarding funding options. *
           </span>
         </div>
+
+        <Honeypot value={website} onChange={setWebsite} />
+        <Turnstile key={turnstileKey} onToken={setTurnstileToken} />
 
         {submitError && (
           <p style={{ ...inlineErr, marginBottom: '10px' }}>{submitError}</p>
