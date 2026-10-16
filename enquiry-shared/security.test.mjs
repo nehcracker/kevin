@@ -87,14 +87,31 @@ test('user input is HTML-escaped in both emails', async () => {
   assert.ok(sent[0].htmlbody.includes('&lt;a href=&quot;https://phish.test&quot;&gt;'));
 });
 
-test('project-funding auto-reply escapes the greeting name', async () => {
+test('auto-replies never echo the submitted name to the recipient', async () => {
+  // The auto-reply goes to whatever address was submitted, so any free text
+  // it repeats is a relay for someone else's message. Greeting is fixed.
   const res = await pfWorker.fetch(post({
-    name: '<b>Evil</b>', email: 'jane@acme.test', phone: '+44 7700 900000',
+    name: 'Click http://phish.test now', email: 'jane@acme.test', phone: '+44 7700 900000',
     range: '1,000,000', summary: VALID_PFI.summary,
   }), ENV);
   assert.equal(res.status, 200);
   const reply = sent.find(m => m.to[0].email_address.address === 'jane@acme.test');
-  assert.ok(reply.htmlbody.includes('Dear &lt;b&gt;Evil&lt;/b&gt;'));
+  assert.ok(reply.htmlbody.includes('Dear Sir / Madam'));
+  assert.ok(!reply.htmlbody.includes('phish.test'));
+});
+
+test('PFI auto-reply names the sector (escaped) and the equity route', async () => {
+  await pfiWorker.fetch(post({ ...VALID_PFI, sector: '<b>Health</b>' }), ENV);
+  const pfiReply = sent.find(m => m.to[0].email_address.address === VALID_PFI.email);
+  assert.ok(pfiReply.htmlbody.includes('project financing requirement in the &lt;b&gt;health&lt;/b&gt; sector'));
+
+  sent.length = 0;
+  await pfiWorker.fetch(post({
+    ...VALID_PFI, sector: 'Other',
+    summary: '[Equity Financing enquiry — Stage: Growth]\n\n' + VALID_PFI.summary,
+  }), ENV);
+  const eqReply = sent.find(m => m.to[0].email_address.address === VALID_PFI.email);
+  assert.ok(/regarding your equity financing requirement./.test(eqReply.htmlbody));
 });
 
 test('rejects disallowed origins, without CORS headers', async () => {

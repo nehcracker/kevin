@@ -187,8 +187,17 @@ function rowFull(label, value) {
     </tr>`;
 }
 
+/* Sector phrase for the auto-reply: "in the healthcare sector", or nothing
+   when the enquirer picked "Other". Input is already HTML-escaped. */
+function sectorPhrase(sector) {
+  return sector && !/^other/i.test(sector) ? ` in the ${sector.toLowerCase()} sector` : '';
+}
+
 /* ── Email 2: Auto-reply to enquirer ─────────────────────────────────────── */
 function buildAutoReply(f) {
+  const requirement = f.summary.startsWith('[Equity Financing enquiry')
+    ? 'equity financing requirement'
+    : 'project financing requirement';
   return `
 <!DOCTYPE html>
 <html lang="en">
@@ -237,19 +246,18 @@ function buildAutoReply(f) {
               </p>
 
               <p style="margin:0 0 20px;font-size:14px;color:#37474F;line-height:1.8;">
-                Thank you for contacting Mr Kevin Graham, UK.
+                Thank you for contacting us regarding your ${requirement}${sectorPhrase(f.sector)}.
               </p>
 
               <p style="margin:0 0 20px;font-size:14px;color:#37474F;line-height:1.8;">
-                I work with project sponsors, intermediaries, board representatives, and
-                consultants seeking funding or investor participation across industries and
-                countries. I focus on identifying suitable financiers and facilitating
-                introductions between project owners and funding partners for commercially
-                viable projects.
+                We understand that you are seeking financing for your project and would like to
+                understand the financing conditions, payment terms, and application process.
               </p>
 
               <p style="margin:0 0 16px;font-size:14px;color:#37474F;line-height:1.8;">
-                To proceed, kindly send the following for the project you wish to present:
+                To proceed with the initial assessment, kindly send us your
+                <strong>Investment-Grade Pitch Deck, Business Plan, or Project Proposal</strong>
+                outlining:
               </p>
 
               <!-- Checklist -->
@@ -260,25 +268,18 @@ function buildAutoReply(f) {
                 <tr>
                   <td style="padding:20px 24px;">
                     ${checklist([
-                      'Comprehensive pitch deck',
-                      'Funding amount required',
-                      'Brief explanation of the project and industry',
-                      'Country of operation',
-                      'Current stage of the project',
-                      'Expected investor return or repayment structure',
-                      'Certificate of incorporation or registration',
-                      'Shareholding structure showing beneficial owners',
-                      'Recent bank statement — at least 6 months — showing account name and detailed transactions',
-                      'Board resolution approving external financing and / or borrowing',
+                      'Project overview',
+                      'Funding requirement and use of funds',
+                      'Business model',
+                      'Market opportunity',
+                      'Implementation plan',
+                      'Financial projections',
+                      'Management team',
+                      'Expected returns, where applicable',
                     ])}
                   </td>
                 </tr>
               </table>
-
-              <p style="margin:0 0 16px;font-size:14px;font-weight:600;
-                          color:#1a2340;line-height:1.7;">
-                Please ensure all documents are:
-              </p>
 
               <!-- Document rules -->
               <table width="100%" cellpadding="0" cellspacing="0"
@@ -287,21 +288,32 @@ function buildAutoReply(f) {
                             margin:0 0 24px;">
                 <tr>
                   <td style="padding:20px 24px;">
-                    ${checklist([
-                      'PDF format only',
-                      'In English language only',
-                      'Not password protected',
-                      'Clear scanned copies for ease of review',
-                    ], '#D97706')}
-                    <p style="margin:14px 0 0;font-size:13px;color:#92400E;
-                               font-weight:500;line-height:1.6;">
-                      For security reasons, we do not accept links or other file formats.
+                    <p style="margin:0;font-size:13px;color:#92400E;line-height:1.75;">
+                      Please submit the document in <strong>PDF format</strong>, in
+                      <strong>English</strong>, and <strong>without password protection</strong>
+                      for ease of review, to
+                      <a href="mailto:kevin.uk@grahamkarimi.com"
+                         style="color:#92400E;font-weight:600;">kevin.uk@grahamkarimi.com</a>.
                     </p>
                   </td>
                 </tr>
               </table>
 
-              <!-- Additionally block -->
+              <p style="margin:0 0 20px;font-size:14px;color:#37474F;line-height:1.8;">
+                Once received, we will provide a <strong>complimentary initial review and
+                advisory assessment</strong>. This will help us assess the project's funding
+                position and advise on the appropriate financing route and next steps.
+              </p>
+
+              <p style="margin:0 0 20px;font-size:14px;color:#37474F;line-height:1.8;">
+                Financing conditions, repayment structure, payment terms, pricing, tenor,
+                security requirements, and other commercial terms depend on the project and the
+                financing route identified during assessment. These terms are therefore discussed
+                after the initial review rather than presented as standard terms before the
+                project has been assessed.
+              </p>
+
+              <!-- Pitch deck service -->
               <table width="100%" cellpadding="0" cellspacing="0"
                      style="background:#F0F4FF;border:1px solid #C5CAE9;
                             border-left:4px solid #1565C0;border-radius:6px;
@@ -311,22 +323,14 @@ function buildAutoReply(f) {
                     <p style="margin:0 0 10px;font-size:13px;font-weight:700;
                                color:#1a2340;letter-spacing:0.04em;
                                text-transform:uppercase;">
-                      Additionally
-                    </p>
-                    <p style="margin:0 0 12px;font-size:13px;color:#37474F;line-height:1.75;">
-                      Once I receive your documents, I will review them and provide a
-                      <strong>complimentary assessment report</strong> outlining gaps, risks,
-                      and alignment with funding requirements.
-                    </p>
-                    <p style="margin:0 0 12px;font-size:13px;color:#37474F;line-height:1.75;">
-                      If the submission does not meet the required standard for a financier
-                      presentation, I will advise on the necessary adjustments. I will also
-                      offer to align and restructure the documentation to a fundable standard
-                      at an agreed-upon upfront cost, subject to your approval.
+                      No pitch deck yet?
                     </p>
                     <p style="margin:0;font-size:13px;color:#37474F;line-height:1.75;">
-                      Once I receive the project information, our team will review each
-                      opportunity and advise on the suitable funding pathway and next steps.
+                      If you do not have an Investment-Grade Pitch Deck, Mr. Kevin Graham provides a
+                      professional <strong>Investment-Grade Pitch Deck Development Service</strong>.
+                      Email <a href="mailto:kevin.uk@grahamkarimi.com"
+                         style="color:#1565C0;font-weight:600;">kevin.uk@grahamkarimi.com</a>
+                      to request it.
                     </p>
                   </td>
                 </tr>
