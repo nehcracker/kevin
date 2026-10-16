@@ -576,8 +576,8 @@ const EquityFinancing = () => {
 
         {/* HERO */}
         <section className="pfi-hero ef-hero" aria-labelledby="top">
-          <div className="pfi-inner">
-            <motion.div variants={staggerContainer} initial="hidden" animate="visible" className="ef-hero-copy">
+          <div className="pfi-hi">
+            <motion.div variants={staggerContainer} initial="hidden" animate="visible">
               <motion.nav variants={staggerItem} className="pfi-breadcrumb" aria-label="Breadcrumb">
                 <Link to="/"><i className="fas fa-home" aria-hidden="true" /> Home</Link>
                 <span className="pfi-sep"><i className="fas fa-chevron-right" aria-hidden="true" /></span>
@@ -624,6 +624,8 @@ const EquityFinancing = () => {
                 ))}
               </motion.div>
             </motion.div>
+
+            <EnquiryPanel />
           </div>
         </section>
 
@@ -926,25 +928,26 @@ const EquityFinancing = () => {
           whileInView="visible"
           viewport={{ once: true, margin: '-60px' }}
         >
-          <div className="ef-start-grid">
-            <div className="ef-start-copy">
-              <h2 id="ef-start-heading">Start Your Equity Financing Process</h2>
-              <p>
-                Tell us about your business or project. We will reply within 48 hours with next steps.
-              </p>
-              <a href={CALENDLY} target="_blank" rel="noopener noreferrer" className="pfi-btn-outline">
-                <i className="fas fa-calendar-check" aria-hidden="true" />
-                Prefer to talk? Schedule a call
-              </a>
-              <p className="pfi-cta-disc">
-                Kevin Graham provides corporate finance advisory services. We do not lend money or
-                make investment decisions, and we cannot guarantee that any raise will succeed.
-                Nothing on this page constitutes a financial promotion for any specific product.
-                All enquiries are subject to eligibility assessment.
-              </p>
-            </div>
-            <EnquiryPanel />
+          <h2 id="ef-start-heading">Start Your Equity Financing Process</h2>
+          <p>
+            Tell us about your business or project. We will reply within 48 hours with next steps.
+          </p>
+          <div className="pfi-cta-btns">
+            <button type="button" className="pfi-btn-gold" onClick={() => scrollToId('enquiry')}>
+              <i className="fas fa-file-signature" aria-hidden="true" />
+              Start your enquiry
+            </button>
+            <a href={CALENDLY} target="_blank" rel="noopener noreferrer" className="pfi-btn-outline">
+              <i className="fas fa-calendar-check" aria-hidden="true" />
+              Prefer to talk? Schedule a call
+            </a>
           </div>
+          <p className="pfi-cta-disc">
+            Kevin Graham provides corporate finance advisory services. We do not lend money or
+            make investment decisions, and we cannot guarantee that any raise will succeed.
+            Nothing on this page constitutes a financial promotion for any specific product.
+            All enquiries are subject to eligibility assessment.
+          </p>
         </motion.section>
 
       </main>

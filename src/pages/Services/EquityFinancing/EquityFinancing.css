@@ -9,9 +9,7 @@
 .ef-anchor { scroll-margin-top: 96px; }
 
 /* ── Hero ─────────────────────────────────────────────────────────────── */
-.ef-hero-copy { max-width: 720px; }
-
-.ef-hero-body { max-width: 600px; }
+.ef-hero-body { max-width: 560px; }
 
 .ef-hero-btns {
   justify-content: flex-start;
@@ -402,27 +400,8 @@
   line-height: 1.75;
 }
 
-/* ── Start / enquiry ──────────────────────────────────────────────────── */
-.ef-start { text-align: left; }
-
-.ef-start-grid {
-  max-width: 1060px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 440px;
-  gap: 64px;
-  align-items: start;
-  position: relative;
-  z-index: 1;
-}
-
-.ef-start-copy p { margin-left: 0; margin-right: 0; }
-
-.ef-start-copy .pfi-btn-outline { margin: 4px 0 28px; }
-
-.ef-start .pfi-cta-disc { text-align: left; }
-
-.ef-enquiry-panel { animation: none; }
+/* ── Enquiry panel (hero right column) ────────────────────────────────── */
+.ef-enquiry-panel { scroll-margin-top: 96px; }
 
 .ef-enquiry-panel .pfi-conf-row label {
   font-size: 11px;
@@ -438,11 +417,6 @@
    RESPONSIVE
    ══════════════════════════════════════════════════════════════════════════ */
 @media (max-width: 1000px) {
-  .ef-start-grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
   .ef-checklist { grid-template-columns: 1fr; }
 
   .ef-check-result { position: static; }
