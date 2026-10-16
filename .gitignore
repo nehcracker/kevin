@@ -24,3 +24,6 @@ yarn-error.log*
 
 # Claude Code superpowers session state (brainstorm mockups, worktrees, etc.)
 .superpowers/
+
+# wrangler dev local state
+.wrangler/
