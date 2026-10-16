@@ -27,3 +27,7 @@ yarn-error.log*
 
 # wrangler dev local state
 .wrangler/
+
+# wrangler local secrets
+.dev.vars
+**/.dev.vars

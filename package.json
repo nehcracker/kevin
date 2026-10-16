@@ -14,7 +14,7 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-helmet-async": "^2.0.5",
-    "react-router-dom": "^7.5.3",
+    "react-router-dom": "^7.18.4",
     "react-scripts": "5.0.1",
     "swiper": "^12.2.0",
     "web-vitals": "^2.1.4"
@@ -25,6 +25,9 @@
     "build": "react-scripts build",
     "postbuild": "node scripts/prerender-meta.js",
     "test": "react-scripts test",
+    "test:workers": "node --test enquiry-shared/security.test.mjs",
+    "deploy:pfi-enquiry": "wrangler deploy -c pfi-enquiry/wrangler.toml",
+    "deploy:pf-enquiry": "wrangler deploy -c pf-enquiry/wrangler.toml",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
