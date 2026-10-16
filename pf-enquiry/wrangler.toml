@@ -5,10 +5,11 @@ compatibility_date = "2024-01-01"
 # ── Custom domain ─────────────────────────────────────────────────────────
 # Served at https://pf-enquiry.grahamkarimi.com (DNS + certificate managed by
 # Cloudflare). Listed here so `wrangler deploy` keeps it attached.
-# workers_dev stays on until the site build that calls the custom domain is
-# live; then set it to false so the *.workers.dev URL stops answering.
+# workers_dev is off: the *.workers.dev URL does not answer, so the Worker
+# is reachable only at its custom domain.
 routes = [{ pattern = "pf-enquiry.grahamkarimi.com", custom_domain = true }]
-workers_dev = true
+workers_dev = false
+preview_urls = false
 
 # ── Non-sensitive environment variables ───────────────────────────────────
 # Sensitive keys (ZEPTO_API_KEY) are set via:
