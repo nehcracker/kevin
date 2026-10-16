@@ -5,8 +5,8 @@
  * everything between the raw request and that callback:
  *
  *   origin allowlist → method / content-type / body-size limits → per-IP rate
- *   limit → JSON parse → honeypot → schema validation → Turnstile verification
- *   → per-recipient rate limit → send
+ *   limit → JSON parse → honeypot → fill-time check → schema validation (incl.
+ *   link limits) → Turnstile verification → per-recipient rate limit → send
  *
  * `send` receives two views of the submission:
  *   fields — trimmed, control-character-free plain text (subjects, API params)
@@ -23,6 +23,10 @@
 export const MAX_BODY_BYTES = 16 * 1024;
 export const HONEYPOT_FIELD = 'website';
 export const TURNSTILE_FIELD = 'turnstileToken';
+// Milliseconds between the form rendering and submit, sent by the page.
+// Scripts posting directly omit it; form-filling bots submit near-instantly.
+export const FILL_TIME_FIELD = 'fillMs';
+export const MIN_FILL_MS = 3000;
 const TURNSTILE_VERIFY_URL = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
 const DEFAULT_ORIGINS = ['https://grahamkarimi.com'];
 
@@ -52,10 +56,15 @@ export function cleanText(value, { multiline = false } = {}) {
   return String(value).replace(/\r\n?/g, '\n').replace(pattern, multiline ? '' : ' ').trim();
 }
 
+export function countLinks(value) {
+  return (String(value).match(/https?:\/\/|\bwww\./gi) || []).length;
+}
+
 /* ── Validation ────────────────────────────────────────────────────────── */
 
 /**
- * schema: { [field]: { label, required?, max, min?, multiline?, pattern? } }
+ * schema: { [field]: { label, required?, max, min?, multiline?, pattern?, maxLinks? } }
+ * maxLinks caps http(s):// and www. links — spam's main payload.
  * Unknown keys in the body are ignored. Returns { fields } or { error }.
  */
 export function validate(body, schema) {
@@ -74,6 +83,13 @@ export function validate(body, schema) {
     if (value.length > rule.max) return { error: `${rule.label} must be ${rule.max} characters or fewer.` };
     if (rule.min && value.length < rule.min) return { error: `${rule.label} must be at least ${rule.min} characters.` };
     if (rule.pattern && !rule.pattern.test(value)) return { error: `${rule.label} is not valid.` };
+    if (rule.maxLinks !== undefined && countLinks(value) > rule.maxLinks) {
+      return {
+        error: rule.maxLinks === 0
+          ? `${rule.label} must not contain links.`
+          : `${rule.label} may contain at most ${rule.maxLinks} links.`,
+      };
+    }
     fields[key] = value;
   }
   return { fields };
@@ -184,6 +200,16 @@ export function createEnquiryHandler({ schema, send, fetchImpl }) {
       // Bots fill every field; humans never see this one. Pretend success so
       // the bot gets no signal, but send nothing.
       if (typeof body[HONEYPOT_FIELD] === 'string' && body[HONEYPOT_FIELD].trim()) {
+        return json({ success: true }, 200, origin, env);
+      }
+
+      // A page that predates the fill timer (stale tab) gets a visible prompt;
+      // a too-fast submission gets the same silent success as the honeypot.
+      const fillMs = body[FILL_TIME_FIELD];
+      if (typeof fillMs !== 'number' || !Number.isFinite(fillMs)) {
+        return json({ error: 'Please refresh the page and try again.' }, 400, origin, env);
+      }
+      if (fillMs < MIN_FILL_MS) {
         return json({ success: true }, 200, origin, env);
       }
 

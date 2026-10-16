@@ -16,6 +16,16 @@ const SCRIPT_SRC = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render
 export const TURNSTILE_ENABLED = Boolean(SITE_KEY);
 export const HONEYPOT_FIELD    = 'website'; // must match HONEYPOT_FIELD in security.mjs
 
+/**
+ * Returns a function giving milliseconds since the form first rendered. Sent
+ * as `fillMs` (FILL_TIME_FIELD in security.mjs); the Workers drop submissions
+ * under MIN_FILL_MS and refuse ones without it.
+ */
+export const useFillTimer = () => {
+  const startedAt = useRef(Date.now());
+  return () => Date.now() - startedAt.current;
+};
+
 const offscreen = {
   position: 'absolute', left: '-10000px', top: 'auto',
   width: '1px', height: '1px', overflow: 'hidden',

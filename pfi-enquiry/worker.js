@@ -392,14 +392,14 @@ function checklist(items, color = '#1565C0') {
 
 /* ── Validation ───────────────────────────────────────────────────────────── */
 const SCHEMA = {
-  name:    { label: 'Name',            required: true, max: 100 },
-  org:     { label: 'Organisation',    required: true, max: 150 },
+  name:    { label: 'Name',            required: true, max: 100, maxLinks: 0 },
+  org:     { label: 'Organisation',    required: true, max: 150, maxLinks: 0 },
   email:   { label: 'Email',           required: true, max: 254, pattern: EMAIL_PATTERN },
   phone:   { label: 'Phone',           required: true, max: 32,  pattern: PHONE_PATTERN },
   country: { label: 'Country',         required: true, max: 80 },
   sector:  { label: 'Sector',          required: true, max: 80 },
   range:   { label: 'Funding amount',  required: true, max: 40 },
-  summary: { label: 'Project summary', required: true, max: 5000, min: 20, multiline: true },
+  summary: { label: 'Project summary', required: true, max: 5000, min: 20, multiline: true, maxLinks: 2 },
 };
 
 /* ── Main handler ─────────────────────────────────────────────────────────── */
