@@ -1,7 +1,7 @@
 // Run: npm run test:workers  (node --test, no extra dependencies)
 import { test, beforeEach } from 'node:test';
 import assert from 'node:assert/strict';
-import { escapeHtml, cleanText, validate, verifyTurnstile, EMAIL_PATTERN } from './security.mjs';
+import { escapeHtml, cleanText, validate, verifyTurnstile, countLinks, EMAIL_PATTERN } from './security.mjs';
 import pfiWorker from '../pfi-enquiry/worker.js';
 import pfWorker from '../pf-enquiry/worker.js';
 
@@ -30,7 +30,8 @@ function post(body, { origin = ORIGIN, type = 'application/json', headers = {} }
   return new Request('https://pfi-enquiry.example/', {
     method: 'POST',
     headers: { Origin: origin, 'Content-Type': type, 'CF-Connecting-IP': '203.0.113.9', ...headers },
-    body: typeof body === 'string' ? body : JSON.stringify(body),
+    // Real pages send how long the form took to fill; default to a human pace.
+    body: typeof body === 'string' ? body : JSON.stringify({ fillMs: 8000, ...body }),
   });
 }
 
@@ -77,27 +78,27 @@ test('valid submission sends both emails', async () => {
 });
 
 test('user input is HTML-escaped in both emails', async () => {
-  const payload = { ...VALID_PFI, name: '<a href="https://phish.test">Click</a>', summary: `${VALID_PFI.summary} <img src=x onerror=alert(1)>` };
+  const payload = { ...VALID_PFI, name: '<a href="#claim">Click</a>', summary: `${VALID_PFI.summary} <img src=x onerror=alert(1)>` };
   const res = await pfiWorker.fetch(post(payload), ENV);
   assert.equal(res.status, 200);
   for (const mail of sent) {
-    assert.ok(!mail.htmlbody.includes('<a href="https://phish.test">'), 'raw link leaked into email');
+    assert.ok(!mail.htmlbody.includes('<a href="#claim">'), 'raw link leaked into email');
     assert.ok(!mail.htmlbody.includes('<img src=x'), 'raw img leaked into email');
   }
-  assert.ok(sent[0].htmlbody.includes('&lt;a href=&quot;https://phish.test&quot;&gt;'));
+  assert.ok(sent[0].htmlbody.includes('&lt;a href=&quot;#claim&quot;&gt;'));
 });
 
 test('auto-replies never echo the submitted name to the recipient', async () => {
   // The auto-reply goes to whatever address was submitted, so any free text
   // it repeats is a relay for someone else's message. Greeting is fixed.
   const res = await pfWorker.fetch(post({
-    name: 'Click http://phish.test now', email: 'jane@acme.test', phone: '+44 7700 900000',
+    name: 'Call 555 0100 to claim', email: 'jane@acme.test', phone: '+44 7700 900000',
     range: '1,000,000', summary: VALID_PFI.summary,
   }), ENV);
   assert.equal(res.status, 200);
   const reply = sent.find(m => m.to[0].email_address.address === 'jane@acme.test');
   assert.ok(reply.htmlbody.includes('Dear Sir / Madam'));
-  assert.ok(!reply.htmlbody.includes('phish.test'));
+  assert.ok(!reply.htmlbody.includes('to claim'));
 });
 
 test('PFI auto-reply names the sector (escaped) and the equity route', async () => {
@@ -168,4 +169,53 @@ test('provider failures return a generic 502 without leaking details', async () 
   } finally {
     console.error = original;
   }
+});
+
+/* ── Bot filters: fill time and links ─────────────────────────────────── */
+
+test('countLinks counts http(s) and www. links', () => {
+  assert.equal(countLinks('see https://a.test and http://b.test or www.c.test'), 3);
+  assert.equal(countLinks('a 5,000,000 solar plant'), 0);
+});
+
+test('submissions faster than the minimum fill time are silently dropped', async () => {
+  const res = await pfiWorker.fetch(post({ ...VALID_PFI, fillMs: 400 }), ENV);
+  assert.equal(res.status, 200);
+  assert.deepEqual(await res.json(), { success: true });
+  assert.equal(sent.length, 0);
+});
+
+test('a missing fill time (direct POST or stale page) is refused, not sent', async () => {
+  const req = new Request('https://x/', {
+    method: 'POST',
+    headers: { Origin: ORIGIN, 'Content-Type': 'application/json' },
+    body: JSON.stringify(VALID_PFI),
+  });
+  const res = await pfiWorker.fetch(req, ENV);
+  assert.equal(res.status, 400);
+  assert.equal(sent.length, 0);
+  assert.equal((await pfiWorker.fetch(post({ ...VALID_PFI, fillMs: '9000' }), ENV)).status, 400);
+});
+
+test('links are refused in names and capped in the project text', async () => {
+  const nameLink = await pfWorker.fetch(post({
+    name: 'Win www.prize.test', email: 'jane@acme.test', phone: '+44 7700 900000',
+    range: '1,000,000', summary: VALID_PFI.summary,
+  }), ENV);
+  assert.equal(nameLink.status, 422);
+  assert.match((await nameLink.json()).error, /Name must not contain links/);
+
+  const orgLink = await pfiWorker.fetch(post({ ...VALID_PFI, org: 'https://spam.test' }), ENV);
+  assert.equal(orgLink.status, 422);
+
+  const threeLinks = await pfiWorker.fetch(post({
+    ...VALID_PFI, summary: VALID_PFI.summary + ' https://a.test https://b.test https://c.test',
+  }), ENV);
+  assert.equal(threeLinks.status, 422);
+
+  const twoLinks = await pfiWorker.fetch(post({
+    ...VALID_PFI, summary: VALID_PFI.summary + ' https://acme.test www.acme.test/deck',
+  }), ENV);
+  assert.equal(twoLinks.status, 200);
+  assert.equal(sent.length, 2);
 });

@@ -380,11 +380,11 @@ function buildAutoReply(f) {
 
 /* ── Validation ───────────────────────────────────────────────────────────── */
 const SCHEMA = {
-  name:    { label: 'Name',             required: true, max: 100 },
+  name:    { label: 'Name',             required: true, max: 100, maxLinks: 0 },
   email:   { label: 'Email',            required: true, max: 254, pattern: EMAIL_PATTERN },
   phone:   { label: 'Phone',            required: true, max: 32,  pattern: PHONE_PATTERN },
   range:   { label: 'Funding amount',   required: true, max: 40 },
-  summary: { label: 'Project overview', required: true, max: 5000, min: 20, multiline: true },
+  summary: { label: 'Project overview', required: true, max: 5000, min: 20, multiline: true, maxLinks: 2 },
 };
 
 /* ── Main handler ─────────────────────────────────────────────────────────── */

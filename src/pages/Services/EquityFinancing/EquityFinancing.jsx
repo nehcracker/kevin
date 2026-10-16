@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { fadeUp, staggerContainer, staggerItem, slideInLeft } from '../../../utils/motion';
 import SEO from '../../../components/common/SEO/SEO';
-import { Honeypot, Turnstile, TURNSTILE_ENABLED } from '../../../components/common/FormGuard/FormGuard';
+import { Honeypot, Turnstile, TURNSTILE_ENABLED, useFillTimer } from '../../../components/common/FormGuard/FormGuard';
 // Shares the Navy Executive layout primitives (hero, sections, enquiry panel)
 // with the PFI page; ef- classes in EquityFinancing.css cover what's unique here.
 import '../ProjectFundersInvestors/ProjectFundersInvestors.css';
@@ -272,6 +272,7 @@ const EnquiryPanel = () => {
   const [descTouched, setDescTouched] = useState(false);
   const [submitError, setSubmitError] = useState('');
   const [website,     setWebsite]     = useState(''); // honeypot
+  const fillMs = useFillTimer();
   const [turnstileToken, setTurnstileToken] = useState('');
   const [turnstileKey, setTurnstileKey] = useState(0); // remount → fresh single-use token
 
@@ -334,6 +335,7 @@ const EnquiryPanel = () => {
       summary: `[Equity Financing enquiry — Stage: ${fields.stage}]\n\n${fields.description}`,
       website,
       turnstileToken,
+      fillMs: fillMs(),
     };
 
     try {

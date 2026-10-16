@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { fadeUp, staggerContainer, staggerItem, slideInLeft } from '../../../utils/motion';
 import SEO from '../../../components/common/SEO/SEO';
-import { Honeypot, Turnstile, TURNSTILE_ENABLED } from '../../../components/common/FormGuard/FormGuard';
+import { Honeypot, Turnstile, TURNSTILE_ENABLED, useFillTimer } from '../../../components/common/FormGuard/FormGuard';
 import './ProjectFunding.css';
 
 // ── Data ──────────────────────────────────────────────────────────────────────
@@ -74,6 +74,7 @@ const ProjectFundingPanel = () => {
   const [status, setStatus] = useState('idle'); // idle | sending | success-wa | error
   const [submitError, setSubmitError] = useState('');
   const [website, setWebsite] = useState('');           // honeypot
+  const fillMs = useFillTimer();
   const [turnstileToken, setTurnstileToken] = useState('');
   const [turnstileKey, setTurnstileKey] = useState(0);   // remount → fresh single-use token
 
@@ -123,7 +124,7 @@ const ProjectFundingPanel = () => {
       const res  = await fetch(WORKER_URL, {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify({ ...fields, website, turnstileToken }),
+        body:    JSON.stringify({ ...fields, website, turnstileToken, fillMs: fillMs() }),
       });
       const data = await res.json();
       if (res.ok && data.success) {
