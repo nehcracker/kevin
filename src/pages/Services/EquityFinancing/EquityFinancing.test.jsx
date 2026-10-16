@@ -2,6 +2,20 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { MemoryRouter, Routes, Route } from 'react-router-dom';
 import EquityFinancing from './EquityFinancing';
 
+// Turnstile is enabled when the build has a site key (.env). Stand in for the
+// widget with one that passes immediately, so tests don't load Cloudflare.
+jest.mock('../../../components/common/FormGuard/FormGuard', () => {
+  const React = require('react');
+  const actual = jest.requireActual('../../../components/common/FormGuard/FormGuard');
+  return {
+    ...actual,
+    Turnstile: ({ onToken }) => {
+      React.useEffect(() => { onToken('test-turnstile-pass'); }, [onToken]);
+      return null;
+    },
+  };
+});
+
 function renderPage() {
   return render(
     <MemoryRouter initialEntries={['/services/equity-financing']}>
