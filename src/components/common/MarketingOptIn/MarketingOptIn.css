@@ -1,4 +1,4 @@
-/* Matches the forms' consent rows; colour inherits so it suits light and dark panels. */
+/* Matches the forms' consent rows (all three enquiry panels are dark). */
 .mkt-optin {
   display: flex;
   align-items: flex-start;
@@ -18,6 +18,6 @@
   font-size: 11px;
   font-weight: 300;
   line-height: 1.55;
-  opacity: 0.8;
+  color: var(--text-secondary);
   cursor: pointer;
 }
