@@ -7,6 +7,7 @@
  *   origin allowlist → method / content-type / body-size limits → per-IP rate
  *   limit → JSON parse → honeypot → fill-time check → schema validation (incl.
  *   link limits) → Turnstile verification → per-recipient rate limit → send
+ *   → store (D1, also when sending fails)
  *
  * `send` receives two views of the submission:
  *   fields — trimmed, control-character-free plain text (subjects, API params)
@@ -18,6 +19,7 @@
  *   TURNSTILE_SECRET_KEY  secret; when set, a valid Turnstile token is required
  *   SUBMIT_LIMITER        rate-limit binding keyed by client IP
  *   RECIPIENT_LIMITER     rate-limit binding keyed by submitted email address
+ *   DB                    D1 enquiry store; skipped when absent (local dev)
  */
 
 export const MAX_BODY_BYTES = 16 * 1024;
@@ -27,6 +29,8 @@ export const TURNSTILE_FIELD = 'turnstileToken';
 // Scripts posting directly omit it; form-filling bots submit near-instantly.
 export const FILL_TIME_FIELD = 'fillMs';
 export const MIN_FILL_MS = 3000;
+// Optional, unticked-by-default opt-in box. Only `true` counts as consent.
+export const MARKETING_FIELD = 'marketingOptIn';
 const TURNSTILE_VERIFY_URL = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
 const DEFAULT_ORIGINS = ['https://grahamkarimi.com'];
 
@@ -158,9 +162,46 @@ export async function verifyTurnstile(token, ip, env, fetchImpl = fetch) {
   }
 }
 
+/* ── Enquiry store (D1) ────────────────────────────────────────────────── */
+
+/**
+ * Saves one accepted enquiry to the DB binding (table: migrations/0001).
+ * Stores plain-text values; escape again wherever they are displayed.
+ * Never throws: a storage fault must not lose the email or the visitor's
+ * success response, so it is logged (without personal data) instead.
+ */
+export async function storeEnquiry(env, { form, fields, marketingOptIn, emailSent }) {
+  if (!env.DB) return;
+  try {
+    await env.DB.prepare(
+      `INSERT INTO enquiries
+         (form, name, email, phone, org, country, sector, amount, summary, marketing_opt_in, email_sent)
+       VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7, ?8, ?9, ?10, ?11)`
+    ).bind(
+      form,
+      fields.name || '',
+      fields.email || '',
+      fields.phone || null,
+      fields.org || null,
+      fields.country || null,
+      fields.sector || null,
+      fields.range || null,
+      fields.summary || null,
+      marketingOptIn ? 1 : 0,
+      emailSent ? 1 : 0,
+    ).run();
+  } catch (err) {
+    console.error('Enquiry store failed:', err && err.message);
+  }
+}
+
 /* ── Handler factory ───────────────────────────────────────────────────── */
 
-export function createEnquiryHandler({ schema, send, fetchImpl }) {
+/**
+ * formOf(fields) names the source form for the enquiry store
+ * (project-funding | pfi | equity).
+ */
+export function createEnquiryHandler({ schema, send, fetchImpl, formOf = () => 'unknown' }) {
   return {
     async fetch(request, env) {
       const origin  = request.headers.get('Origin') || '';
@@ -233,12 +274,18 @@ export function createEnquiryHandler({ schema, send, fetchImpl }) {
         Object.entries(fields).map(([k, v]) => [k, escapeHtml(v)])
       );
 
+      const marketingOptIn = body[MARKETING_FIELD] === true;
+      const record = { form: formOf(fields), fields, marketingOptIn };
+
       try {
-        await send(fields, html, env);
+        await send(fields, html, env, { marketingOptIn });
+        await storeEnquiry(env, { ...record, emailSent: true });
         return json({ success: true }, 200, origin, env);
       } catch (err) {
         // Log the provider error only — never the submission's personal data.
         console.error('Enquiry send failed:', err && err.message);
+        // Keep the lead even though no email went out, so it can be followed up.
+        await storeEnquiry(env, { ...record, emailSent: false });
         return json(
           { error: 'Failed to send your enquiry. Please try again or email kevin.uk@grahamkarimi.com.' },
           502,

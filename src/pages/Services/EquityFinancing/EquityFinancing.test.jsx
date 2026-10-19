@@ -102,7 +102,37 @@ test('valid submission posts worker-shaped payload and redirects to thank-you', 
     country: 'Kenya',
     sector: 'Healthcare',
     range: '2,500,000',
+    marketingOptIn: false,
   });
   expect(body.summary).toMatch(/Stage: Operating/);
   expect(sessionStorage.getItem('gk-conv-token')).toBeTruthy();
+});
+
+test('marketing opt-in is optional, unticked by default, and sent when ticked', async () => {
+  global.fetch = jest.fn().mockResolvedValue({
+    ok: true,
+    json: () => Promise.resolve({ success: true }),
+  });
+  const { container } = renderPage();
+
+  const optIn = screen.getByLabelText(/keep me informed/i);
+  expect(optIn).not.toBeChecked();
+  expect(optIn).not.toBeRequired();
+
+  const fill = (id, value) => fireEvent.change(container.querySelector(`#ef-${id}`), { target: { value } });
+  fill('name', 'Jane Doe');
+  fill('company', 'Acme Ltd');
+  fill('email', 'jane@acme.test');
+  fill('phone', '+44 7700 900000');
+  fill('country', 'Kenya');
+  fill('sector', 'Healthcare');
+  fill('amount', '2,500,000');
+  fill('stage', 'Operating');
+  fill('description', 'A chain of diagnostic clinics raising growth capital to open six new sites.');
+  fireEvent.click(screen.getByLabelText(/consent to being contacted/i));
+  fireEvent.click(optIn);
+  fireEvent.click(screen.getByRole('button', { name: /Book a Funding Readiness Review/i }));
+
+  await waitFor(() => expect(screen.getByText('thank-you-page')).toBeInTheDocument());
+  expect(JSON.parse(global.fetch.mock.calls[0][1].body).marketingOptIn).toBe(true);
 });

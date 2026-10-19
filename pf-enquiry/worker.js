@@ -119,7 +119,7 @@ function checklist(items, color = '#1565C0') {
 }
 
 /* ── Email 1: Notification to Kevin ──────────────────────────────────────── */
-function buildKevinEmail(f) {
+function buildKevinEmail(f, optIn) {
   return `
 <!DOCTYPE html>
 <html lang="en">
@@ -168,6 +168,7 @@ function buildKevinEmail(f) {
                 ${row('Email',            f.email)}
                 ${row('Phone',            f.phone)}
                 ${row('Funding Required', f.range)}
+                ${row('Marketing Opt-in', optIn ? 'Yes' : 'No')}
                 ${rowFull('Project Overview', f.summary)}
               </table>
 
@@ -390,15 +391,16 @@ const SCHEMA = {
 /* ── Main handler ─────────────────────────────────────────────────────────── */
 export default createEnquiryHandler({
   schema: SCHEMA,
+  formOf: () => 'project-funding',
   // `fields` is plain text (subjects, API params); `html` is escaped for templates.
-  async send(fields, html, env) {
+  async send(fields, html, env, { marketingOptIn }) {
     await Promise.all([
       // 1. Notification to Kevin
       sendEmail({
         to:       env.KEVIN_EMAIL || 'kevin.uk@grahamkarimi.com',
         toName:   env.KEVIN_NAME  || 'Kevin Graham',
         subject:  `New Project Funding Enquiry — ${fields.range}`,
-        htmlBody: buildKevinEmail(html),
+        htmlBody: buildKevinEmail(html, marketingOptIn),
         replyTo:  fields.email,
         env,
       }),

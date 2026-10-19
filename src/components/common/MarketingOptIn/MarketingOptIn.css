@@ -1,0 +1,23 @@
+/* Matches the forms' consent rows; colour inherits so it suits light and dark panels. */
+.mkt-optin {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.mkt-optin input[type="checkbox"] {
+  width: 14px;
+  height: 14px;
+  margin-top: 2px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.mkt-optin label {
+  font-size: 11px;
+  font-weight: 300;
+  line-height: 1.55;
+  opacity: 0.8;
+  cursor: pointer;
+}

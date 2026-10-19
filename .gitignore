@@ -31,3 +31,6 @@ yarn-error.log*
 # wrangler local secrets
 .dev.vars
 **/.dev.vars
+
+# Enquiry CSV exports (personal data; never commit)
+/exports/

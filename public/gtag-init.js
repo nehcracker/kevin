@@ -4,6 +4,8 @@ window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 
-gtag('config', 'AW-18234308546');
+// allow_enhanced_conversions: the thank-you page attaches a hashed email
+// (opted-in leads only) to the lead conversion.
+gtag('config', 'AW-18234308546', { allow_enhanced_conversions: true });
 // GA4 shares the gtag.js loaded in index.html (one script serves both IDs).
 gtag('config', 'G-563YDBBFPE');

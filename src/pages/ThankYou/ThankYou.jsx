@@ -7,8 +7,14 @@ const CONVERSION_TOKEN_KEY = 'gk-conv-token';
 
 // Event snippet for Submit lead form (1) conversion page, fired only from
 // this thank-you page — see the token check in the effect below for why.
-const fireConversion = () => {
+// Enhanced Conversions: for visitors who ticked the marketing opt-in, the
+// email is attached as user_data — gtag normalises and SHA-256 hashes it in
+// the browser, so Google never receives it in plain text.
+const fireConversion = ({ email, marketingOptIn } = {}) => {
   if (typeof window.gtag === 'function') {
+    if (marketingOptIn === true && email) {
+      window.gtag('set', 'user_data', { email });
+    }
     window.gtag('event', 'conversion', { send_to: 'AW-18234308546/oy6-CNmgiL8cEMLv5fZD' });
   }
 };
@@ -35,7 +41,7 @@ const ThankYou = () => {
       // back/forward navigation back to this page can't re-fire the
       // conversion or re-verify — only the genuine redirect that set it can.
       sessionStorage.removeItem(CONVERSION_TOKEN_KEY);
-      fireConversion();
+      fireConversion(state);
       setVerified(true);
     } else {
       // No matching token: this page wasn't reached via a real form
