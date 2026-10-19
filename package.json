@@ -28,6 +28,7 @@
     "test:workers": "node --test enquiry-shared/security.test.mjs",
     "deploy:pfi-enquiry": "wrangler deploy -c pfi-enquiry/wrangler.toml",
     "deploy:pf-enquiry": "wrangler deploy -c pf-enquiry/wrangler.toml",
+    "export:enquiries": "node scripts/export-enquiries.mjs",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

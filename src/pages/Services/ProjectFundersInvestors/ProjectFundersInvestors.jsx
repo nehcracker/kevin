@@ -5,6 +5,7 @@ import { fadeUp, staggerContainer, staggerItem, slideInLeft } from '../../../uti
 import SEO from '../../../components/common/SEO/SEO';
 import AnimatedCounter from '../../../components/common/AnimatedCounter/AnimatedCounter';
 import { Honeypot, Turnstile, TURNSTILE_ENABLED, useFillTimer } from '../../../components/common/FormGuard/FormGuard';
+import MarketingOptIn from '../../../components/common/MarketingOptIn/MarketingOptIn';
 import './ProjectFundersInvestors.css';
 
 /* ── Constants ───────────────────────────────────────────────────────────── */
@@ -192,6 +193,7 @@ const EnquiryPanel = () => {
   const [submitError,   setSubmitError]   = useState('');
   const [website,       setWebsite]       = useState(''); // honeypot
   const fillMs = useFillTimer();
+  const [marketingOptIn, setMarketingOptIn] = useState(false);
   const [turnstileToken, setTurnstileToken] = useState('');
   const [turnstileKey,  setTurnstileKey]  = useState(0);  // remount → fresh single-use token
 
@@ -256,14 +258,14 @@ const EnquiryPanel = () => {
       const res  = await fetch(WORKER_URL, {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify({ ...fields, website, turnstileToken, fillMs: fillMs() }),
+        body:    JSON.stringify({ ...fields, website, turnstileToken, fillMs: fillMs(), marketingOptIn }),
       });
       const data = await res.json();
 
       if (res.ok && data.success) {
         const token = makeConversionToken();
         sessionStorage.setItem('gk-conv-token', token);
-        navigate('/thank-you', { state: { token, source: 'pfi', email: fields.email } });
+        navigate('/thank-you', { state: { token, source: 'pfi', email: fields.email, marketingOptIn } });
       } else {
         setStatus('error');
         resetTurnstile();
@@ -374,6 +376,9 @@ const EnquiryPanel = () => {
             contacted regarding funding options. *
           </span>
         </div>
+
+        <MarketingOptIn id="pfi-optin" checked={marketingOptIn}
+          onChange={setMarketingOptIn} disabled={status === 'sending'} />
 
         <Honeypot value={website} onChange={setWebsite} />
         <Turnstile key={turnstileKey} onToken={setTurnstileToken} />

@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { fadeUp, staggerContainer, staggerItem, slideInLeft } from '../../../utils/motion';
 import SEO from '../../../components/common/SEO/SEO';
 import { Honeypot, Turnstile, TURNSTILE_ENABLED, useFillTimer } from '../../../components/common/FormGuard/FormGuard';
+import MarketingOptIn from '../../../components/common/MarketingOptIn/MarketingOptIn';
 import './ProjectFunding.css';
 
 // ── Data ──────────────────────────────────────────────────────────────────────
@@ -75,6 +76,7 @@ const ProjectFundingPanel = () => {
   const [submitError, setSubmitError] = useState('');
   const [website, setWebsite] = useState('');           // honeypot
   const fillMs = useFillTimer();
+  const [marketingOptIn, setMarketingOptIn] = useState(false);
   const [turnstileToken, setTurnstileToken] = useState('');
   const [turnstileKey, setTurnstileKey] = useState(0);   // remount → fresh single-use token
 
@@ -124,13 +126,13 @@ const ProjectFundingPanel = () => {
       const res  = await fetch(WORKER_URL, {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify({ ...fields, website, turnstileToken, fillMs: fillMs() }),
+        body:    JSON.stringify({ ...fields, website, turnstileToken, fillMs: fillMs(), marketingOptIn }),
       });
       const data = await res.json();
       if (res.ok && data.success) {
         const token = makeConversionToken();
         sessionStorage.setItem('gk-conv-token', token);
-        navigate('/thank-you', { state: { token, source: 'project-funding', email: fields.email } });
+        navigate('/thank-you', { state: { token, source: 'project-funding', email: fields.email, marketingOptIn } });
       } else {
         setStatus('error');
         resetTurnstile();
@@ -229,6 +231,9 @@ const ProjectFundingPanel = () => {
           />
           {touched.summary && summaryErr && <span className="pf-fp-field-msg">{summaryErr}</span>}
         </div>
+
+        <MarketingOptIn id="pf-fp-optin" checked={marketingOptIn}
+          onChange={setMarketingOptIn} disabled={status === 'sending'} />
 
         <Honeypot value={website} onChange={setWebsite} />
         <Turnstile key={turnstileKey} onToken={setTurnstileToken} />

@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { fadeUp, staggerContainer, staggerItem, slideInLeft } from '../../../utils/motion';
 import SEO from '../../../components/common/SEO/SEO';
 import { Honeypot, Turnstile, TURNSTILE_ENABLED, useFillTimer } from '../../../components/common/FormGuard/FormGuard';
+import MarketingOptIn from '../../../components/common/MarketingOptIn/MarketingOptIn';
 // Shares the Navy Executive layout primitives (hero, sections, enquiry panel)
 // with the PFI page; ef- classes in EquityFinancing.css cover what's unique here.
 import '../ProjectFundersInvestors/ProjectFundersInvestors.css';
@@ -273,6 +274,7 @@ const EnquiryPanel = () => {
   const [submitError, setSubmitError] = useState('');
   const [website,     setWebsite]     = useState(''); // honeypot
   const fillMs = useFillTimer();
+  const [marketingOptIn, setMarketingOptIn] = useState(false);
   const [turnstileToken, setTurnstileToken] = useState('');
   const [turnstileKey, setTurnstileKey] = useState(0); // remount → fresh single-use token
 
@@ -336,6 +338,7 @@ const EnquiryPanel = () => {
       website,
       turnstileToken,
       fillMs: fillMs(),
+      marketingOptIn,
     };
 
     try {
@@ -349,7 +352,7 @@ const EnquiryPanel = () => {
       if (res.ok && data.success) {
         const token = makeConversionToken();
         sessionStorage.setItem('gk-conv-token', token);
-        navigate('/thank-you', { state: { token, source: 'equity', email: fields.email } });
+        navigate('/thank-you', { state: { token, source: 'equity', email: fields.email, marketingOptIn } });
       } else {
         setStatus('error');
         resetTurnstile();
@@ -465,6 +468,9 @@ const EnquiryPanel = () => {
             contacted about equity financing options. *
           </label>
         </div>
+
+        <MarketingOptIn id="ef-optin" checked={marketingOptIn}
+          onChange={setMarketingOptIn} disabled={sending} />
 
         <Honeypot value={website} onChange={setWebsite} />
         <Turnstile key={turnstileKey} onToken={setTurnstileToken} />

@@ -219,3 +219,89 @@ test('links are refused in names and capped in the project text', async () => {
   assert.equal(twoLinks.status, 200);
   assert.equal(sent.length, 2);
 });
+
+/* ── Enquiry store (D1) ───────────────────────────────────────────────── */
+
+// Minimal stand-in for a D1 binding: records each INSERT's bound values.
+function fakeDb({ fail = false } = {}) {
+  const rows = [];
+  return {
+    rows,
+    prepare: (sql) => ({
+      bind: (...values) => ({
+        run: async () => {
+          if (fail) throw new Error('D1_ERROR: no such table');
+          assert.match(sql, /INSERT INTO enquiries/);
+          rows.push(values);
+        },
+      }),
+    }),
+  };
+}
+// Column order of the INSERT in storeEnquiry.
+const row = v => ({ form: v[0], name: v[1], email: v[2], amount: v[7], optIn: v[9], emailSent: v[10] });
+
+test('accepted enquiries are stored with form name and opt-in flag', async () => {
+  const DB = fakeDb();
+  await pfiWorker.fetch(post(VALID_PFI), { ...ENV, DB });
+  await pfiWorker.fetch(post({
+    ...VALID_PFI, marketingOptIn: true,
+    summary: '[Equity Financing enquiry — Stage: Growth]\n\n' + VALID_PFI.summary,
+  }), { ...ENV, DB });
+  await pfWorker.fetch(post({
+    name: 'Sam Lee', email: 'sam@acme.test', phone: '+44 7700 900001',
+    range: '1,000,000', summary: VALID_PFI.summary, marketingOptIn: 'yes',
+  }), { ...ENV, DB });
+
+  assert.deepEqual(DB.rows.map(row), [
+    { form: 'pfi', name: 'Jane Doe', email: 'jane@acme.test', amount: '2,500,000', optIn: 0, emailSent: 1 },
+    { form: 'equity', name: 'Jane Doe', email: 'jane@acme.test', amount: '2,500,000', optIn: 1, emailSent: 1 },
+    // Only boolean true counts as consent.
+    { form: 'project-funding', name: 'Sam Lee', email: 'sam@acme.test', amount: '1,000,000', optIn: 0, emailSent: 1 },
+  ]);
+});
+
+test('Kevin\'s notification shows the opt-in choice', async () => {
+  await pfiWorker.fetch(post({ ...VALID_PFI, marketingOptIn: true }), ENV);
+  const kevin = sent.find(m => m.to[0].email_address.address === 'kevin.uk@grahamkarimi.com');
+  assert.match(kevin.htmlbody, /Marketing Opt-in[\s\S]*?Yes/);
+});
+
+test('rejected and bot submissions are not stored', async () => {
+  const DB = fakeDb();
+  const env = { ...ENV, DB };
+  await pfiWorker.fetch(post({ ...VALID_PFI, website: 'x' }), env);          // honeypot
+  await pfiWorker.fetch(post({ ...VALID_PFI, fillMs: 400 }), env);           // too fast
+  await pfiWorker.fetch(post({ ...VALID_PFI, email: 'bad' }), env);          // invalid
+  await pfiWorker.fetch(post(VALID_PFI), { ...env, TURNSTILE_SECRET_KEY: 's' }); // no token
+  assert.equal(DB.rows.length, 0);
+});
+
+test('a failed email still stores the lead, marked unsent', async () => {
+  globalThis.fetch = async () => new Response('down', { status: 500 });
+  const DB = fakeDb();
+  const original = console.error;
+  console.error = () => {};
+  try {
+    const res = await pfiWorker.fetch(post(VALID_PFI), { ...ENV, DB });
+    assert.equal(res.status, 502);
+  } finally {
+    console.error = original;
+  }
+  assert.equal(row(DB.rows[0]).emailSent, 0);
+});
+
+test('a storage fault never breaks the enquiry or logs personal data', async () => {
+  const errors = [];
+  const original = console.error;
+  console.error = (...args) => errors.push(args.join(' '));
+  try {
+    const res = await pfiWorker.fetch(post(VALID_PFI), { ...ENV, DB: fakeDb({ fail: true }) });
+    assert.equal(res.status, 200);
+    assert.equal(sent.length, 2);
+  } finally {
+    console.error = original;
+  }
+  assert.match(errors.join(' '), /Enquiry store failed/);
+  assert.ok(!errors.join(' ').includes('jane@acme.test'));
+});

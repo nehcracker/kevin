@@ -40,3 +40,12 @@ simple = { limit = 2, period = 60 }
 
 # TURNSTILE_SECRET_KEY is a secret: wrangler secret put TURNSTILE_SECRET_KEY
 
+
+# ── Enquiry store ─────────────────────────────────────────────────────────
+# Shared D1 database: every accepted enquiry from all three forms, with the
+# marketing opt-in flag. Export: npm run export:enquiries (see scripts/).
+[[d1_databases]]
+binding = "DB"
+database_name = "enquiries"
+database_id = "5480a235-0eb7-4ce4-a497-9383a7b8f999"
+migrations_dir = "../enquiry-shared/migrations"
