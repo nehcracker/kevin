@@ -25,6 +25,14 @@
     <priority>0.7</priority>
   </url>
 
+  <!-- Client Results -->
+  <url>
+    <loc>https://grahamkarimi.com/client-results</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Services index -->
   <url>
     <loc>https://grahamkarimi.com/services</loc>
