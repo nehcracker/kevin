@@ -50,6 +50,7 @@ const Header = () => {
               <li><Link to="/" className="nav-link">Home</Link></li>
               <li><Link to="/about" className="nav-link" onClick={goToAboutAndScrollTop}>About</Link></li>
               <li><Link to="/services" className="nav-link" onClick={goToServicesAndScrollTop}>Services</Link></li>
+              <li><Link to="/client-results" className="nav-link">Results</Link></li>
               <li><a href="#contact" className="nav-link contact-link">Contact</a></li>
             </ul>
           </nav>
