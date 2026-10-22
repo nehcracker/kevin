@@ -10,8 +10,6 @@
   --c-blue-bright:  #1976D2;
   --c-gold:         #facc15;
   --c-gold-dim:     rgba(250, 204, 21, 0.35);
-  --c-wa:           #25D366;
-  --c-wa-dark:      #128C7E;
   --c-white:        #ffffff;
   --c-white-90:     rgba(255,255,255,0.90);
   --c-white-70:     rgba(255,255,255,0.70);
@@ -180,15 +178,6 @@
 }
 .contact-card--schedule:hover {
   box-shadow: 0 16px 42px rgba(27,94,32,0.52);
-}
-
-/* IMO */
-.contact-card--imo {
-  background: linear-gradient(135deg, #006621, var(--c-wa));
-  box-shadow: 0 8px 28px rgba(37,211,102,0.28);
-}
-.contact-card--imo:hover {
-  box-shadow: 0 14px 36px rgba(37,211,102,0.44);
 }
 
 /* Email */

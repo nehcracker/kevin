@@ -405,7 +405,7 @@ const EnquiryPanel = () => {
           </div>
           <div className="pfi-ef">
             <label htmlFor="ef-phone">Phone (intl. format) *</label>
-            <input id="ef-phone" type="tel" name="phone" placeholder="+44 7723 339858"
+            <input id="ef-phone" type="tel" name="phone" placeholder="+44 7700 900000"
               value={fields.phone} onChange={onChange} required aria-required="true"
               disabled={sending} />
             {phoneError && <span style={inlineErr}>{phoneError}</span>}

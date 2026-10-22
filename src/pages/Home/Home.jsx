@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import SEO from '../../components/common/SEO/SEO';
 import TiltCard from '../../components/common/TiltCard/TiltCard';
@@ -8,11 +9,10 @@ import Graham from '../../assets/images/Graham.png';
 import { fadeUp, fadeIn, slideInLeft, slideInRight, staggerContainer, staggerItem } from '../../utils/motion';
 import './Home.css';
 
-const PHONE = '447723339858';
-const EMAIL  = 'kevin.uk@grahamkarimi.com';
-const IMO_URL = `https://imo.im/${PHONE}?text=${encodeURIComponent(
-  "Hi Kevin, I'd like to discuss your financial advisory services. Please let me know your availability."
-)}`;
+// Chat channels (WhatsApp, IMO, Telegram) and direct calls were removed: they
+// can't be tracked as conversions and drew unqualified enquiries. The primary
+// CTA sends visitors to a tracked enquiry form instead.
+const EMAIL = 'kevin.uk@grahamkarimi.com';
 
 const SERVICES = [
   { number: '01', icon: 'fas fa-landmark',      title: 'International Project Funding',      sub: '& Debt Structuring',                    path: '/services/project-funding',                      accent: '#1565C0' },
@@ -127,9 +127,9 @@ const Home = () => {
               </motion.p>
 
               <motion.div variants={staggerItem} className="hero-cta">
-                <a href={IMO_URL} target="_blank" rel="noopener noreferrer" className="hero-btn hero-btn--imo" aria-label="Contact Kevin via IMO">
-                  <i className="fas fa-comment-dots" aria-hidden="true" /> IMO Kevin
-                </a>
+                <Link to="/services/project-funding" className="hero-btn hero-btn--primary">
+                  <i className="fas fa-paper-plane" aria-hidden="true" /> Submit a Funding Enquiry
+                </Link>
                 <a href={`mailto:${EMAIL}`} className="hero-btn hero-btn--email" aria-label="Send Kevin an email">
                   <i className="fas fa-envelope" aria-hidden="true" /> Send an Email
                 </a>

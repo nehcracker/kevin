@@ -2,10 +2,8 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import './Contact.css';
 
 /* ── Constants ───────────────────────────────────────────────────────────── */
-const PHONE    = '447723339858';
 const EMAIL    = 'kevin.uk@grahamkarimi.com';
 const CALENDLY = 'https://calendly.com/kevingraham';
-const TELEGRAM = 'https://t.me/kevingrahamUK';
 const LINKEDIN = 'https://linkedin.com/in/kevingrahamkarimi';
 const FACEBOOK = 'https://www.facebook.com/kevingrahamkarimi';
 
@@ -24,8 +22,8 @@ const SERVICES = [
 const RESET_DELAY = 3200; // ms before panel auto-resets after confirmation
 
 /* ── Helpers ─────────────────────────────────────────────────────────────── */
-// WhatsApp was removed: chats can't be tracked as conversions and drew
-// unqualified enquiries. Serious leads go through the tracked enquiry forms.
+// WhatsApp, IMO, Telegram and direct calls were removed: they can't be tracked
+// as conversions and drew unqualified enquiries. Serious leads go through the tracked enquiry forms.
 function buildEmailUrl(service) {
   const subject = encodeURIComponent(`Enquiry: ${service}`);
   const body    = encodeURIComponent(
@@ -242,14 +240,6 @@ const Contact = () => (
 
           {/* Secondary pills */}
           <div className="contact-pills">
-            <a href={`tel:+${PHONE}`} className="contact-pill contact-pill--phone">
-              <i className="fas fa-phone" aria-hidden="true"></i>
-              <span>Call Direct</span>
-            </a>
-            <a href={TELEGRAM} target="_blank" rel="noopener noreferrer" className="contact-pill contact-pill--telegram">
-              <i className="fab fa-telegram" aria-hidden="true"></i>
-              <span>Telegram</span>
-            </a>
             <a href={LINKEDIN} target="_blank" rel="noopener noreferrer" className="contact-pill contact-pill--linkedin">
               <i className="fab fa-linkedin" aria-hidden="true"></i>
               <span>LinkedIn</span>

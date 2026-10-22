@@ -212,17 +212,16 @@
               border-color 0.25s ease;
 }
 
-/* IMO — primary */
-.hero-btn--imo {
-  background: linear-gradient(135deg, #25D366, #128C7E);
+/* Enquiry form — primary */
+.hero-btn--primary {
+  background: linear-gradient(135deg, #1565C0, #4DA3FF);
   color: #ffffff;
-  animation: wa-breathe 2.2s ease-in-out infinite;
+  box-shadow: 0 6px 20px rgba(21, 101, 192, 0.35);
 }
 
-.hero-btn--imo:hover {
-  background: linear-gradient(135deg, #2be070, #16a085);
-  animation: wa-hop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-  box-shadow: 0 12px 34px rgba(37, 211, 102, 0.55);
+.hero-btn--primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 34px rgba(77, 163, 255, 0.45);
 }
 
 /* Email — secondary ghost */

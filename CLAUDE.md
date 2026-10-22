@@ -53,9 +53,9 @@ When adding a new service page, copy the structure of an existing one (e.g. `Pro
 
 ### Contact Flow
 
-WhatsApp has been removed from the site on purpose: chats can't be tracked as Google Ads conversions and attracted unqualified leads. Don't re-add it. Tracked leads come only from the service-page enquiry forms (Worker POST → `/thank-you`).
+WhatsApp, IMO, Telegram and the "Call Direct" `tel:` link have been removed from the site on purpose: they can't be tracked as Google Ads conversions and attracted unqualified leads. Don't re-add them, and don't show Kevin's phone number in visible UI (form placeholders use the fictional `+44 7700 900000`). The number stays only in JSON-LD `telephone` fields for search. Tracked leads come only from the service-page enquiry forms (Worker POST → `/thank-you`); the Home hero's primary CTA links to the Project Funding form.
 
-- `src/components/Contact/Contact.jsx` — inline panel (global shell): Calendly, email card, pills, and a service picker that opens a pre-filled `mailto:`
+- `src/components/Contact/Contact.jsx` — inline panel (global shell): Calendly, email card, LinkedIn/Facebook pills, and a service picker that opens a pre-filled `mailto:`
 - `src/components/common/FloatingContact/FloatingContact.jsx` — fixed-position Email button
 
 ### Styling

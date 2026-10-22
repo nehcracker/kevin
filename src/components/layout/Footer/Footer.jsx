@@ -59,19 +59,6 @@ const Footer = () => {
                 <span className="icon-popup">Facebook</span>
               </a>
 
-              {/* imo.im requires no + prefix */}
-              <a
-                href="https://imo.im/447723339858"
-                className="social-icon"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="IMO"
-                title="IMO"
-              >
-                <i className="fas fa-comment-dots"></i>
-                <span className="icon-popup">IMO</span>
-              </a>
-
               <a
                 href="mailto:kevin.uk@grahamkarimi.com"
                 className="social-icon"
