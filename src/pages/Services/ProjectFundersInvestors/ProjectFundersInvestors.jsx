@@ -121,7 +121,7 @@ const TRACK_RECORD = [
 // Keep in sync with FEES in EquityFinancing.jsx and FEE_NOTICE in ThankYou.jsx.
 const FEE_BANNER = {
   heading: 'Transparent fees.',
-  body: 'Reviewing your enquiry is free. Where your pitch deck, business plan or financial model needs preparing or restructuring before financier engagement, a fixed documentation alignment fee of USD 1,350 applies. Every client we deliver funding for pays a standard 1% success fee when the funding is delivered. If you are required to meet financiers or funders in person, travel costs — tickets, accommodation and logistics — are at your own expense. Scope, fees and timelines are confirmed in a written engagement letter before any work begins. Fees are not a guarantee of funding.',
+  body: 'Reviewing your enquiry is free. Where your pitch deck, business plan or financial model needs preparing or restructuring before financier engagement, a documentation alignment fee from USD 1,350 applies. Every client we deliver funding for pays a standard 1% success fee when the funding is delivered. If you are required to meet financiers or funders in person, travel costs — tickets, accommodation and logistics — are at your own expense. Scope, fees and timelines are confirmed in a written engagement letter before any work begins. Fees are not a guarantee of funding.',
 };
 
 const SECTORS_DROPDOWN = [

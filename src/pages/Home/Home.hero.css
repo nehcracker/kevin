@@ -309,14 +309,28 @@
 
 .hero-notice-text strong { color: #ffffff; }
 
-.hero-notice-link {
-  font-size: 0.82rem;
+.hero-notice-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.25rem;
+  background: #FFB300;
+  color: #0d1b4e;
+  border-radius: 8px;
+  font-size: 0.85rem;
   font-weight: 700;
-  color: #FFB300;
   text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.hero-notice-link:hover { text-decoration: underline; }
+.hero-notice-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(255, 179, 0, 0.35);
+}
+
+@media (max-width: 580px) {
+  .hero-notice-btn { width: 100%; justify-content: center; }
+}
 
 /* ── Individual service card ── */
 .hero-svc-card {

@@ -14,6 +14,16 @@ import './Home.css';
 // CTA sends visitors to a tracked enquiry form instead.
 const EMAIL = 'kevin.uk@grahamkarimi.com';
 
+// GA4 event for the hero "Send Your Documents" button. GA4 shares the gtag.js
+// loaded in public/index.html; to count it in Google Ads, mark the event as a
+// key event in GA4 and import it into Ads as a secondary conversion — a mailto
+// click isn't a confirmed lead, so it shouldn't drive bidding.
+const trackSendDocuments = () => {
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', 'send_documents_click', { cta_location: 'home_hero_notice' });
+  }
+};
+
 const SERVICES = [
   { number: '01', icon: 'fas fa-landmark',      title: 'International Project Funding', sub: '& Debt Structuring',                path: '/services/project-funding',             accent: '#1565C0' },
   { number: '02', icon: 'fas fa-search-dollar', title: 'Grants & Donations',            sub: 'Sourcing Advisory',                 path: '/services/grants-donations',            accent: '#D97706' },
@@ -174,19 +184,20 @@ const Home = () => {
 
               <motion.div variants={staggerItem} className="hero-notice" role="note" aria-labelledby="hero-notice-title">
                 <p id="hero-notice-title" className="hero-notice-title">
-                  <i className="fas fa-info-circle" aria-hidden="true" /> Before your initial assessment
+                  <i className="fas fa-info-circle" aria-hidden="true" /> To proceed with the initial assessment
                 </p>
                 <p className="hero-notice-text">
-                  To proceed, please send us your <strong>investment-grade pitch deck, business plan or project
-                  proposal</strong>. If you don't have one yet, or yours doesn't meet the financing threshold, a
-                  minimum fee of <strong>USD 1,350</strong> applies for preparing and aligning your documents
+                  Please send us your <strong>investment-grade pitch deck, business plan or project
+                  proposal</strong>. If you don't have one yet, or yours doesn't meet the financing threshold,
+                  fees from <strong>USD 1,350</strong> apply for preparing and aligning your documents
                   before funding is realised.
                 </p>
                 <a
                   href={`mailto:${EMAIL}?subject=${encodeURIComponent('Initial assessment — documents')}`}
-                  className="hero-notice-link"
+                  className="hero-notice-btn"
+                  onClick={trackSendDocuments}
                 >
-                  Send your documents <i className="fas fa-arrow-right" aria-hidden="true" />
+                  <i className="fas fa-paper-plane" aria-hidden="true" /> Send Your Documents
                 </a>
               </motion.div>
             </motion.div>

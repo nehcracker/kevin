@@ -413,11 +413,11 @@ const DocumentAlignment = () => {
             <div className="das-funding-track-note" role="note" aria-label="Funding track alignment fee">
               <h3>
                 <i className="fas fa-info-circle" aria-hidden="true"></i>
-                Funding track clients: USD 1,350 alignment fee
+                Funding track clients: alignment fee from USD 1,350
               </h3>
               <p>
                 If you have enquired about funding and your pitch deck, business plan or financial model needs
-                preparing before financier engagement, a fixed documentation alignment fee of USD 1,350 applies.
+                preparing before financier engagement, a documentation alignment fee from USD 1,350 applies.
                 Every client we deliver funding for pays a standard 1% success fee when the funding is delivered,
                 and any travel to meet financiers or funders — tickets, accommodation and logistics — is at the
                 client's own expense. The services below are for standalone or larger-scope document work. All

@@ -37,7 +37,7 @@ const DOCUMENTS = [
 const FEE_NOTICE = {
   heading: 'Fees and costs',
   body: 'Financiers only engage with complete, investor-ready documentation. Where your pitch deck, business plan, financial model or supporting documents need to be prepared or restructured, this is carried out as a paid documentation alignment engagement before funding is realised. The fee compensates the professional time and commitment involved as we proceed with funding lobbying and financier engagement on your behalf.',
-  fee: 'USD 1,350',
+  fee: 'From USD 1,350',
   feeLabel: 'Professional input & documentation alignment',
   successFee: '1%',
   successFeeLabel: 'Success fee on every funded client, paid when funding is delivered',
