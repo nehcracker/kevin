@@ -343,6 +343,13 @@ function buildAutoReply(f) {
                 </tr>
               </table>
 
+              <!-- Success fee — applies to every funded client -->
+              <p style="margin:0 0 28px;font-size:14px;color:#37474F;line-height:1.8;">
+                <strong>Success fee:</strong> every client we deliver funding for pays a standard
+                <strong>1% success fee</strong> when the funding is delivered. This applies whether
+                or not your documents needed alignment.
+              </p>
+
               <!-- Sign-off -->
               <p style="margin:0 0 6px;font-size:14px;color:#37474F;line-height:1.7;">
                 Kind regards,
