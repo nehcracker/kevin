@@ -171,6 +171,24 @@ const Home = () => {
                   </motion.a>
                 ))}
               </nav>
+
+              <motion.div variants={staggerItem} className="hero-notice" role="note" aria-labelledby="hero-notice-title">
+                <p id="hero-notice-title" className="hero-notice-title">
+                  <i className="fas fa-info-circle" aria-hidden="true" /> Before your initial assessment
+                </p>
+                <p className="hero-notice-text">
+                  To proceed, please send us your <strong>investment-grade pitch deck, business plan or project
+                  proposal</strong>. If you don't have one yet, or yours doesn't meet the financing threshold, a
+                  minimum fee of <strong>USD 1,350</strong> applies for preparing and aligning your documents
+                  before funding is realised.
+                </p>
+                <a
+                  href={`mailto:${EMAIL}?subject=${encodeURIComponent('Initial assessment — documents')}`}
+                  className="hero-notice-link"
+                >
+                  Send your documents <i className="fas fa-arrow-right" aria-hidden="true" />
+                </a>
+              </motion.div>
             </motion.div>
 
           </div>
