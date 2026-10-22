@@ -32,16 +32,19 @@ const DOCUMENTS = [
   'Feasibility study (for project funding)',
 ];
 
-const ALIGNMENT_NOTICE = {
-  heading: 'Documentation alignment fee',
+// Keep in sync with FEE_BANNER in ProjectFundersInvestors.jsx, FEES in
+// EquityFinancing.jsx and the funding-track note in DocumentAlignment.jsx.
+const FEE_NOTICE = {
+  heading: 'Fees and costs',
   body: 'Financiers only engage with complete, investor-ready documentation. Where your pitch deck, business plan, financial model or supporting documents need to be prepared or restructured, this is carried out as a paid documentation alignment engagement before funding is realised. The fee compensates the professional time and commitment involved as we proceed with funding lobbying and financier engagement on your behalf.',
   fee: 'USD 1,350',
   feeLabel: 'Professional input & documentation alignment',
   successFee: '1%',
-  successFeeLabel: 'Standard fee, deducted only once funding is secured',
+  successFeeLabel: 'Success fee on every funded client, paid when funding is delivered',
   points: [
     'Reviewing your enquiry is free of charge.',
     'If your documents are already financier-ready, no alignment fee applies.',
+    'If you are required to meet financiers or funders in person, travel costs — tickets, accommodation and logistics — are at your own expense.',
     'Scope, fee and timeline are confirmed in a written engagement letter before any work begins.',
     'The fee covers professional work on your documentation — it is not a guarantee of funding.',
   ],
@@ -147,21 +150,21 @@ const ThankYou = () => {
 
           <div className="ty-notice" role="note" aria-labelledby="ty-notice-heading">
             <h2 id="ty-notice-heading">
-              <i className="fas fa-info-circle" aria-hidden="true" /> {ALIGNMENT_NOTICE.heading}
+              <i className="fas fa-info-circle" aria-hidden="true" /> {FEE_NOTICE.heading}
             </h2>
-            <p>{ALIGNMENT_NOTICE.body}</p>
+            <p>{FEE_NOTICE.body}</p>
             <dl className="ty-fees">
               <div>
-                <dt>{ALIGNMENT_NOTICE.fee}</dt>
-                <dd>{ALIGNMENT_NOTICE.feeLabel}</dd>
+                <dt>{FEE_NOTICE.fee}</dt>
+                <dd>{FEE_NOTICE.feeLabel}</dd>
               </div>
               <div>
-                <dt>{ALIGNMENT_NOTICE.successFee}</dt>
-                <dd>{ALIGNMENT_NOTICE.successFeeLabel}</dd>
+                <dt>{FEE_NOTICE.successFee}</dt>
+                <dd>{FEE_NOTICE.successFeeLabel}</dd>
               </div>
             </dl>
             <ul>
-              {ALIGNMENT_NOTICE.points.map((point) => (
+              {FEE_NOTICE.points.map((point) => (
                 <li key={point}>
                   <i className="fas fa-check" aria-hidden="true" /> {point}
                 </li>

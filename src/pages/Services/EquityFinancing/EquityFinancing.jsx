@@ -183,8 +183,8 @@ const FAQS = [
 
 const FEES = {
   heading: 'Fees and engagement',
-  // Keep in sync with FEE_BANNER in ProjectFundersInvestors.jsx and ALIGNMENT_NOTICE in ThankYou.jsx.
-  body: 'Reviewing your enquiry is free. Where your pitch deck, business plan or financial model needs preparing or restructuring before investor engagement, a fixed documentation alignment fee of USD 1,350 applies, plus a standard 1% deducted only once funding is secured. You receive a written engagement letter setting out scope, fees and timelines before any work starts. Fees are not a guarantee of funding.',
+  // Keep in sync with FEE_BANNER in ProjectFundersInvestors.jsx and FEE_NOTICE in ThankYou.jsx.
+  body: 'Reviewing your enquiry is free. Where your pitch deck, business plan or financial model needs preparing or restructuring before investor engagement, a fixed documentation alignment fee of USD 1,350 applies. Every client we deliver funding for pays a standard 1% success fee when the funding is delivered. If you are required to meet investors or funders in person, travel costs — tickets, accommodation and logistics — are at your own expense. You receive a written engagement letter setting out scope, fees and timelines before any work starts. Fees are not a guarantee of funding.',
 };
 
 const SECTORS_DROPDOWN = [

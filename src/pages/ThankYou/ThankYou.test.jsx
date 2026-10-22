@@ -28,11 +28,12 @@ test('verified visit shows next steps, document checklist and alignment-fee noti
   expect(screen.getByText('Pitch deck or investment presentation')).toBeInTheDocument();
 
   const notice = screen.getByRole('note');
-  expect(notice).toHaveTextContent('Documentation alignment fee');
+  expect(notice).toHaveTextContent('Fees and costs');
+  expect(notice).toHaveTextContent(/1%.*every funded client.*when funding is delivered/);
+  expect(notice).toHaveTextContent(/tickets, accommodation and logistics.*at your own expense/);
   expect(notice).toHaveTextContent(/paid documentation alignment engagement before funding is realised/);
   expect(notice).toHaveTextContent('written engagement letter before any work begins');
   expect(notice).toHaveTextContent('USD 1,350');
-  expect(notice).toHaveTextContent(/1%.*deducted only once funding is secured/);
   expect(screen.getByRole('link', { name: /document alignment services/i }))
     .toHaveAttribute('href', '/services/document-alignment-services');
 });
@@ -41,6 +42,6 @@ test('unverified visit redirects home without showing the notice', () => {
   renderPage({ token: 'forged' });
 
   expect(screen.getByText('home-page')).toBeInTheDocument();
-  expect(screen.queryByText('Documentation alignment fee')).not.toBeInTheDocument();
+  expect(screen.queryByText('Fees and costs')).not.toBeInTheDocument();
   expect(window.gtag).not.toHaveBeenCalled();
 });

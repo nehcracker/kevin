@@ -417,10 +417,12 @@ const DocumentAlignment = () => {
               </h3>
               <p>
                 If you have enquired about funding and your pitch deck, business plan or financial model needs
-                preparing before financier engagement, a fixed documentation alignment fee of USD 1,350 applies,
-                plus a standard 1% deducted only once funding is secured. The services below are for standalone
-                or larger-scope document work. All fees are confirmed in a written engagement letter before any
-                work begins and are not a guarantee of funding.
+                preparing before financier engagement, a fixed documentation alignment fee of USD 1,350 applies.
+                Every client we deliver funding for pays a standard 1% success fee when the funding is delivered,
+                and any travel to meet financiers or funders — tickets, accommodation and logistics — is at the
+                client's own expense. The services below are for standalone or larger-scope document work. All
+                fees are confirmed in a written engagement letter before any work begins and are not a guarantee
+                of funding.
               </p>
             </div>
 
