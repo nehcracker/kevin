@@ -5,6 +5,51 @@ import './ThankYou.css';
 
 const CONVERSION_TOKEN_KEY = 'gk-conv-token';
 
+const NEXT_STEPS = [
+  {
+    icon: 'fa-search',
+    title: 'Enquiry review',
+    text: 'Kevin reviews your project and responds within 48 hours.',
+  },
+  {
+    icon: 'fa-clipboard-check',
+    title: 'Documentation readiness check',
+    text: 'We confirm whether your pitch deck, business plan and financial model meet financier standards.',
+  },
+  {
+    icon: 'fa-handshake',
+    title: 'Funding lobbying & financier engagement',
+    text: 'Once your documentation is financier-ready, we present your project to suitable funders and investors.',
+  },
+];
+
+const DOCUMENTS = [
+  'Pitch deck or investment presentation',
+  'Business plan',
+  'Financial model and 3–5 year projections',
+  'Company registration and ownership documents',
+  'Recent financial statements (if trading)',
+  'Feasibility study (for project funding)',
+];
+
+// Keep in sync with FEE_BANNER in ProjectFundersInvestors.jsx, FEES in
+// EquityFinancing.jsx and the funding-track note in DocumentAlignment.jsx.
+const FEE_NOTICE = {
+  heading: 'Fees and costs',
+  body: 'Financiers only engage with complete, investor-ready documentation. Where your pitch deck, business plan, financial model or supporting documents need to be prepared or restructured, this is carried out as a paid documentation alignment engagement before funding is realised. The fee compensates the professional time and commitment involved as we proceed with funding lobbying and financier engagement on your behalf.',
+  fee: 'USD 1,350',
+  feeLabel: 'Professional input & documentation alignment',
+  successFee: '1%',
+  successFeeLabel: 'Success fee on every funded client, paid when funding is delivered',
+  points: [
+    'Reviewing your enquiry is free of charge.',
+    'If your documents are already financier-ready, no alignment fee applies.',
+    'If you are required to meet financiers or funders in person, travel costs — tickets, accommodation and logistics — are at your own expense.',
+    'Scope, fee and timeline are confirmed in a written engagement letter before any work begins.',
+    'The fee covers professional work on your documentation — it is not a guarantee of funding.',
+  ],
+};
+
 // Event snippet for Submit lead form (1) conversion page, fired only from
 // this thank-you page — see the token check in the effect below for why.
 // Enhanced Conversions: for visitors who ticked the marketing opt-in, the
@@ -62,7 +107,7 @@ const ThankYou = () => {
         robots="noindex, nofollow"
       />
       <main id="main-content">
-        <section className="ty-hero">
+        <section className="ty-hero ty-hero--compact">
           <div className="ty-card">
             <div className="ty-icon">
               <i className="fas fa-check" aria-hidden="true" />
@@ -75,6 +120,58 @@ const ThankYou = () => {
             </p>
             <Link to="/" className="ty-btn">
               <i className="fas fa-home" aria-hidden="true" /> Back to Home
+            </Link>
+          </div>
+        </section>
+
+        <section className="ty-info" aria-labelledby="ty-next-heading">
+          <h2 id="ty-next-heading">What happens next</h2>
+          <ol className="ty-steps">
+            {NEXT_STEPS.map((step) => (
+              <li key={step.title} className="ty-step">
+                <i className={`fas ${step.icon}`} aria-hidden="true" />
+                <div>
+                  <h3>{step.title}</h3>
+                  <p>{step.text}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+
+          <h2>Prepare your documents</h2>
+          <p className="ty-lead">Having these ready speeds up your review and financier engagement:</p>
+          <ul className="ty-docs">
+            {DOCUMENTS.map((doc) => (
+              <li key={doc}>
+                <i className="fas fa-file-alt" aria-hidden="true" /> {doc}
+              </li>
+            ))}
+          </ul>
+
+          <div className="ty-notice" role="note" aria-labelledby="ty-notice-heading">
+            <h2 id="ty-notice-heading">
+              <i className="fas fa-info-circle" aria-hidden="true" /> {FEE_NOTICE.heading}
+            </h2>
+            <p>{FEE_NOTICE.body}</p>
+            <dl className="ty-fees">
+              <div>
+                <dt>{FEE_NOTICE.fee}</dt>
+                <dd>{FEE_NOTICE.feeLabel}</dd>
+              </div>
+              <div>
+                <dt>{FEE_NOTICE.successFee}</dt>
+                <dd>{FEE_NOTICE.successFeeLabel}</dd>
+              </div>
+            </dl>
+            <ul>
+              {FEE_NOTICE.points.map((point) => (
+                <li key={point}>
+                  <i className="fas fa-check" aria-hidden="true" /> {point}
+                </li>
+              ))}
+            </ul>
+            <Link to="/services/document-alignment-services" className="ty-notice-link">
+              Learn about document alignment services <i className="fas fa-arrow-right" aria-hidden="true" />
             </Link>
           </div>
         </section>
