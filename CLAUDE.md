@@ -27,7 +27,7 @@ The app renders a fixed shell that wraps all pages:
   <Contact />             ← multi-stage contact panel (below every page)
   <Partners />            ← marquee carousel (below every page)
   <Footer />
-  <FloatingContact />     ← fixed-position WhatsApp/Email buttons
+  <FloatingContact />     ← fixed-position Email button
 </BrowserRouter>
 ```
 
@@ -51,13 +51,12 @@ All 8 service detail pages follow an identical pattern:
 
 When adding a new service page, copy the structure of an existing one (e.g. `ProjectFundersInvestors.jsx`).
 
-### Contact & WhatsApp Flow
+### Contact Flow
 
-Two contact entry points share the same pattern:
-- `src/components/Contact/Contact.jsx` — inline panel (rendered in the global shell)
-- `src/components/common/FloatingContact/FloatingContact.jsx` — fixed-position widget
+WhatsApp, IMO, Telegram and the "Call Direct" `tel:` link have been removed from the site on purpose: they can't be tracked as Google Ads conversions and attracted unqualified leads. Don't re-add them, and don't show Kevin's phone number in visible UI (form placeholders use the fictional `+44 7700 900000`). The number stays only in JSON-LD `telephone` fields for search. Tracked leads come only from the service-page enquiry forms (Worker POST → `/thank-you`); the Home hero's primary CTA links to the Project Funding form.
 
-Both build a `wa.me/447723339858?text=...` URL with a pre-filled message encoding the selected service, then open it in a new tab. The phone number and service list must be kept in sync across both files if changed.
+- `src/components/Contact/Contact.jsx` — inline panel (global shell): Calendly, email card, LinkedIn/Facebook pills, and a service picker that opens a pre-filled `mailto:`
+- `src/components/common/FloatingContact/FloatingContact.jsx` — fixed-position Email button
 
 ### Styling
 
@@ -68,7 +67,7 @@ Both build a `wa.me/447723339858?text=...` URL with a pre-filled message encodin
 
 ### No Global State
 
-There is no Context, Redux, Zustand, or other state manager. Components are self-contained with local `useState`/`useRef`. Shared data (service lists, contact info) is duplicated across files by design — the `SERVICES` list in `FloatingContact.jsx` and the one in `Contact.jsx` are separate constants.
+There is no Context, Redux, Zustand, or other state manager. Components are self-contained with local `useState`/`useRef`. Shared data (service lists, contact info) is duplicated across files by design.
 
 ### External Integrations
 
@@ -76,7 +75,6 @@ There is no Context, Redux, Zustand, or other state manager. Components are self
 |---|---|
 | Google Tag Manager (AW-18234308546) | `public/index.html` |
 | Trustpilot widget | `src/components/Reviews/Reviews.jsx` (script injected via useEffect) |
-| WhatsApp | `wa.me/447723339858` — in `FloatingContact.jsx` and `Contact.jsx` |
 | Calendly | `https://calendly.com/kevingraham` — hardcoded in service pages |
 | Cloudflare Worker (PFI enquiry form) | `WORKER_URL` in `ProjectFundersInvestors.jsx` |
 | Google Fonts | Preloaded in `public/index.html` |

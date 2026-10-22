@@ -72,7 +72,7 @@ const ProjectFundingPanel = () => {
   const navigate = useNavigate();
   const [fields, setFields] = useState({ name: '', email: '', phone: '', range: '', summary: '' });
   const [touched, setTouched] = useState({});
-  const [status, setStatus] = useState('idle'); // idle | sending | success-wa | error
+  const [status, setStatus] = useState('idle'); // idle | sending | error
   const [submitError, setSubmitError] = useState('');
   const [website, setWebsite] = useState('');           // honeypot
   const fillMs = useFillTimer();
@@ -99,23 +99,6 @@ const ProjectFundingPanel = () => {
   const canEmail  = canSubmit && (!TURNSTILE_ENABLED || turnstileToken);
 
   const resetTurnstile = () => { setTurnstileToken(''); setTurnstileKey(k => k + 1); };
-
-  const handleWhatsApp = () => {
-    setTouched({ name: true, email: true, phone: true, range: true, summary: true });
-    if (!canSubmit) return;
-    const text = encodeURIComponent(
-      `*Project Funding Enquiry*\n\n` +
-      `Name: ${fields.name}\n` +
-      `Email: ${fields.email}\n` +
-      `Phone: ${fields.phone}\n` +
-      `Funding Required: ${fields.range}\n\n` +
-      `Project Overview:\n${fields.summary}`
-    );
-    window.open(`https://wa.me/447723339858?text=${text}`, '_blank', 'noopener,noreferrer');
-    // WhatsApp sends can't be confirmed from the browser, so this path is
-    // not tracked as a conversion — only the backend-confirmed email path is.
-    setStatus('success-wa');
-  };
 
   const handleEmail = async () => {
     setTouched({ name: true, email: true, phone: true, range: true, summary: true });
@@ -144,29 +127,6 @@ const ProjectFundingPanel = () => {
       setSubmitError('Network error — please check your connection and try again, or email kevin.uk@grahamkarimi.com directly.');
     }
   };
-
-  if (status === 'success-wa') {
-    return (
-      <div className="pf-fp">
-        <div className="pf-fp-head">
-          <div className="pf-fp-head-title">Submit a Project Enquiry</div>
-          <div className="pf-fp-head-sub">Confidential · Response within 48 hours</div>
-        </div>
-        <div className="pf-fp-confirm">
-          <div className="pf-fp-confirm-icon">
-            <i className="fab fa-whatsapp" aria-hidden="true" />
-          </div>
-          <h4>Sent via WhatsApp</h4>
-          <p>
-            Your message has been sent to Kevin on WhatsApp. He will review and respond within 48 hours.
-          </p>
-        </div>
-        <div className="pf-fp-foot">
-          All enquiries are treated in strict confidence. Kevin responds within 48 hours.
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="pf-fp">
@@ -243,14 +203,6 @@ const ProjectFundingPanel = () => {
         )}
 
         <div className="pf-fp-actions">
-          <button
-            className="pf-fp-btn pf-fp-btn-wa"
-            onClick={handleWhatsApp}
-            disabled={!canSubmit}
-            aria-label="Send enquiry via WhatsApp"
-          >
-            <i className="fab fa-whatsapp" aria-hidden="true" /> WhatsApp
-          </button>
           <button
             className="pf-fp-btn pf-fp-btn-email"
             onClick={handleEmail}

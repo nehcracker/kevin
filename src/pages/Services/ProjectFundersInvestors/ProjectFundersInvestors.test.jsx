@@ -69,7 +69,7 @@ test('fee banner renders heading and real fee-policy body', () => {
   renderPage();
   expect(screen.getByText('Transparent fees.')).toBeInTheDocument();
   const banner = screen.getByRole('region', { name: 'Fee policy' });
-  expect(banner).toHaveTextContent('documentation alignment fee of USD 1,350');
+  expect(banner).toHaveTextContent('documentation alignment fee from USD 1,350');
   expect(banner).toHaveTextContent('Every client we deliver funding for pays a standard 1% success fee');
   expect(banner).toHaveTextContent('tickets, accommodation and logistics — are at your own expense');
   expect(banner).not.toHaveTextContent(/no upfront fees/i);

@@ -331,7 +331,7 @@ $sl = @(
  @("Account","ALL CAMPAIGNS","Investor Access","Connect with global project funders","Private capital & DFI access","https://grahamkarimi.com/services/project-funders-and-investors"),
  @("Account","ALL CAMPAIGNS","Book Consultation","Schedule a free 30-minute call","Speak directly with Kevin Graham","https://calendly.com/kevingraham"),
  @("Account","ALL CAMPAIGNS","About Kevin Graham","Director, Risk & Compliance","20+ years international finance","https://grahamkarimi.com/about"),
- @("Account","ALL CAMPAIGNS","Contact Us","WhatsApp, email or enquiry form","Response guaranteed in 48 hours","https://grahamkarimi.com"),
+ @("Account","ALL CAMPAIGNS","Contact Us","Enquiry form or email","Response guaranteed in 48 hours","https://grahamkarimi.com"),
  @("Account","ALL CAMPAIGNS","All Services","Finance & compliance advisory","Kevin Graham's full service range","https://grahamkarimi.com/services"),
  @("Campaign","C1 - Core Project Finance","Debt Structuring","Expert mezzanine & senior debt","Fundable structures, fast close","https://grahamkarimi.com/services/project-funding"),
  @("Campaign","C1 - Core Project Finance","Syndicated Loans","Multi-lender loan arrangement","Large ticket funding solutions","https://grahamkarimi.com/services/project-funding"),
