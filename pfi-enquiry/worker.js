@@ -314,24 +314,29 @@ function buildAutoReply(f) {
                 project has been assessed.
               </p>
 
-              <!-- Pitch deck service -->
+              <!-- Documentation fee notice — keep in sync with the Home hero notice -->
               <table width="100%" cellpadding="0" cellspacing="0"
-                     style="background:#F0F4FF;border:1px solid #C5CAE9;
-                            border-left:4px solid #1565C0;border-radius:6px;
+                     style="background:#FFF8E1;border:1px solid #FFE082;
+                            border-left:4px solid #FFB300;border-radius:6px;
                             margin:0 0 28px;">
                 <tr>
                   <td style="padding:20px 24px;">
                     <p style="margin:0 0 10px;font-size:13px;font-weight:700;
-                               color:#1a2340;letter-spacing:0.04em;
+                               color:#7A4F00;letter-spacing:0.04em;
                                text-transform:uppercase;">
-                      No pitch deck yet?
+                      No pitch deck yet, or not at financing standard?
                     </p>
-                    <p style="margin:0;font-size:13px;color:#37474F;line-height:1.75;">
-                      If you do not have an Investment-Grade Pitch Deck, Mr. Kevin Graham provides a
-                      professional <strong>Investment-Grade Pitch Deck Development Service</strong>.
-                      Email <a href="mailto:kevin.uk@grahamkarimi.com"
-                         style="color:#1565C0;font-weight:600;">kevin.uk@grahamkarimi.com</a>
-                      to request it.
+                    <p style="margin:0 0 10px;font-size:13px;color:#5D4300;line-height:1.75;">
+                      If you don't have an Investment-Grade Pitch Deck, Business Plan or Project
+                      Proposal yet, or yours doesn't meet the financing threshold, fees from
+                      <strong>USD 1,350</strong> apply for preparing and aligning your documents
+                      before funding is realised. Scope, fee and timeline are confirmed in a written
+                      engagement letter before any work begins.
+                    </p>
+                    <p style="margin:0;font-size:13px;color:#5D4300;line-height:1.75;">
+                      To request this service, email
+                      <a href="mailto:kevin.uk@grahamkarimi.com"
+                         style="color:#7A4F00;font-weight:600;">kevin.uk@grahamkarimi.com</a>.
                     </p>
                   </td>
                 </tr>
