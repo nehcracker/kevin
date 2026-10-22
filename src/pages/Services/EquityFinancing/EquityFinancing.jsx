@@ -183,7 +183,8 @@ const FAQS = [
 
 const FEES = {
   heading: 'Fees and engagement',
-  body: 'No upfront fees are required. Where professional services or advisory work are needed ahead of disbursement, that time is compensated — agreed transparently before any work begins. You receive a written engagement letter setting out scope, fees and timelines before any work starts.',
+  // Keep in sync with FEE_BANNER in ProjectFundersInvestors.jsx and ALIGNMENT_NOTICE in ThankYou.jsx.
+  body: 'Reviewing your enquiry is free. Where your pitch deck, business plan or financial model needs preparing or restructuring before investor engagement, a fixed documentation alignment fee of USD 1,350 applies, plus a standard 1% deducted only once funding is secured. You receive a written engagement letter setting out scope, fees and timelines before any work starts. Fees are not a guarantee of funding.',
 };
 
 const SECTORS_DROPDOWN = [

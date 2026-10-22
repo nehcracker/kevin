@@ -65,14 +65,13 @@ test('track record section renders real stats through AnimatedCounter, with corr
   expect(trLabels).toEqual(['Capital placed', 'Deals closed', 'Sectors funded', 'Countries closed in']);
 });
 
-test('no-fee banner renders heading and real fee-policy body', () => {
+test('fee banner renders heading and real fee-policy body', () => {
   renderPage();
-  expect(screen.getByText('No upfront fees.')).toBeInTheDocument();
-  expect(
-    screen.getByText(
-      'No upfront fees are required. Where professional services or advisory work are needed ahead of disbursement, that time is compensated — agreed transparently before any work begins.'
-    )
-  ).toBeInTheDocument();
+  expect(screen.getByText('Transparent fees.')).toBeInTheDocument();
+  const banner = screen.getByRole('region', { name: 'Fee policy' });
+  expect(banner).toHaveTextContent('documentation alignment fee of USD 1,350');
+  expect(banner).toHaveTextContent('standard 1% deducted only once funding is secured');
+  expect(banner).not.toHaveTextContent(/no upfront fees/i);
 });
 
 test('capital sources section uses the alternate background class', () => {
