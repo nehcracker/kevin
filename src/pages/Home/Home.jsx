@@ -15,13 +15,10 @@ import './Home.css';
 const EMAIL = 'kevin.uk@grahamkarimi.com';
 
 const SERVICES = [
-  { number: '01', icon: 'fas fa-landmark',      title: 'International Project Funding',      sub: '& Debt Structuring',                    path: '/services/project-funding',                      accent: '#1565C0' },
-  { number: '02', icon: 'fas fa-globe-americas', title: 'Cross Border Financial Advisory',    sub: '& Investment Structuring',              path: '/services/international-financial-advisor',      accent: '#0891b2' },
-  { number: '03', icon: 'fas fa-shield-alt',     title: 'Risk Management',                    sub: '& Regulatory Compliance Advisory',      path: '/services/risk-compliance',                      accent: '#7c3aed' },
-  { number: '04', icon: 'fas fa-file-contract',  title: 'Document Alignment Services',        sub: 'DAS — Lender-Ready Documentation',      path: '/services/document-alignment-services',          accent: '#b45309' },
-  { number: '05', icon: 'fas fa-users',          title: 'Global HR & International',          sub: 'Job Placement Services',                path: '/services/global-hr',                            accent: '#059669' },
-  { number: '06', icon: 'fas fa-briefcase',      title: 'Business Consultant',                sub: 'Registration · Accounting · Tax · HR',  path: '/services/business-consultant',                  accent: '#facc15' },
-  { number: '07', icon: 'fas fa-search-dollar',  title: 'Grants & Donations',                 sub: 'Sourcing Advisory',                     path: '/services/grants-donations',                     accent: '#D97706' },
+  { number: '01', icon: 'fas fa-landmark',      title: 'International Project Funding', sub: '& Debt Structuring',                path: '/services/project-funding',             accent: '#1565C0' },
+  { number: '02', icon: 'fas fa-search-dollar', title: 'Grants & Donations',            sub: 'Sourcing Advisory',                 path: '/services/grants-donations',            accent: '#D97706' },
+  { number: '03', icon: 'fas fa-chart-line',    title: 'Equity Financing',              sub: 'Growth Capital & Investor Raising', path: '/services/equity-financing',            accent: '#7c3aed' },
+  { number: '04', icon: 'fas fa-handshake',     title: 'Project Funders & Investors',   sub: 'Capital for Large-Scale Projects',  path: '/services/project-funders-and-investors', accent: '#0891b2' },
 ];
 
 const STATS = [
@@ -149,7 +146,7 @@ const Home = () => {
               initial="hidden"
               animate="visible"
             >
-              <p className="hero-services-label" aria-hidden="true">7 Core Services</p>
+              <p className="hero-services-label" aria-hidden="true">{SERVICES.length} Core Services</p>
               <nav aria-label="Core services">
                 {SERVICES.map(svc => (
                   <motion.a
