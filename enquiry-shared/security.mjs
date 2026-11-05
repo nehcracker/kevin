@@ -199,7 +199,7 @@ export async function storeEnquiry(env, { form, fields, marketingOptIn, emailSen
 
 /**
  * formOf(fields) names the source form for the enquiry store
- * (project-funding | pfi | equity).
+ * (project-funding | pfi | equity | mineral).
  */
 export function createEnquiryHandler({ schema, send, fetchImpl, formOf = () => 'unknown' }) {
   return {

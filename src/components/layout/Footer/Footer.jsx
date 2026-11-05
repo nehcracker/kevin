@@ -28,6 +28,7 @@ const Footer = () => {
               <li><a href="/services/business-consultant">Business Consultant</a></li>
               <li><a href="/services/document-alignment-services">Document Alignment Services</a></li>
               <li><a href="/services/equity-financing">Equity Financing</a></li>
+              <li><a href="/services/mineral-trade-finance">Mineral Trade Finance</a></li>
             </ul>
           </div>
 

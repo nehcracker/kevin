@@ -64,6 +64,16 @@
     "description": "Equity financing advisory for growth companies and project sponsors: funding readiness review, investor materials and introductions to private equity investors.",
     "canonical": "https://grahamkarimi.com/services/equity-financing"
   },
+  "/services/mineral-trade-finance": {
+    "title": "Mineral Trade Finance",
+    "description": "Kevin Graham provides mineral trade finance advisory and capital-sourcing support for eligible gold, copper, cobalt, lithium and commodity transactions.",
+    "canonical": "https://grahamkarimi.com/services/mineral-trade-finance"
+  },
+  "/mineral-trade-finance": {
+    "title": "Mineral Trade Finance",
+    "description": "Kevin Graham provides mineral trade finance advisory and capital-sourcing support for eligible gold, copper, cobalt, lithium and commodity transactions.",
+    "canonical": "https://grahamkarimi.com/services/mineral-trade-finance"
+  },
   "/thank-you": {
     "title": "Enquiry Received",
     "description": "Your enquiry has been received.",

@@ -281,6 +281,33 @@ const services = [
       'Equity Investors',
     ],
   },
+  {
+    id: 'mineral-trade-finance',
+    number: '11',
+    title: 'Mineral Trade Finance',
+    subtitle: 'Financing Advisory for Mineral & Commodity Transactions',
+    cardClass: 'card-amber',
+    icon: 'fas fa-gem',
+    iconLabel: 'Mineral Trade Finance',
+    bgClass: 'bg-white',
+    detailPath: '/services/mineral-trade-finance',
+    description:
+      'Kevin provides independent advisory and capital-sourcing support for eligible gold, copper, cobalt, lithium and other mineral transactions — assessing financing requirements, reviewing transaction structures and connecting qualified traders, exporters and producers with banks, private credit providers and institutional financiers.',
+    solutions: [
+      'Mineral Purchase Financing',
+      'Commodity Trade Finance',
+      'Pre-Export & Working Capital Finance',
+      'Offtake-Backed Financing',
+      'Letters of Credit & Bank Guarantees',
+    ],
+    keywords: [
+      'Mineral Trade Finance',
+      'Gold Trade Finance',
+      'Commodity Trade Finance',
+      'Pre-Export Finance',
+      'Mining Working Capital',
+    ],
+  },
 ];
 
 const Services = () => {
