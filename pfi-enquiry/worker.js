@@ -198,7 +198,9 @@ function sectorPhrase(sector) {
 function buildAutoReply(f) {
   const requirement = f.summary.startsWith('[Equity Financing enquiry')
     ? 'equity financing requirement'
-    : 'project financing requirement';
+    : f.summary.startsWith('[Mineral Trade Finance enquiry')
+      ? 'mineral trade finance requirement'
+      : 'project financing requirement';
   return `
 <!DOCTYPE html>
 <html lang="en">
@@ -418,8 +420,12 @@ const SCHEMA = {
 /* ── Main handler ─────────────────────────────────────────────────────────── */
 export default createEnquiryHandler({
   schema: SCHEMA,
-  // This Worker serves both the PFI and Equity Financing forms.
-  formOf: f => (f.summary.startsWith('[Equity Financing enquiry') ? 'equity' : 'pfi'),
+  // This Worker serves the PFI, Equity Financing and Mineral Trade Finance forms.
+  formOf: f => {
+    if (f.summary.startsWith('[Equity Financing enquiry'))      return 'equity';
+    if (f.summary.startsWith('[Mineral Trade Finance enquiry')) return 'mineral';
+    return 'pfi';
+  },
   // `fields` is plain text (subjects, API params); `html` is escaped for templates.
   async send(fields, html, env, { marketingOptIn }) {
     await Promise.all([

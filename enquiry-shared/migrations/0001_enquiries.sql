@@ -6,7 +6,7 @@
 CREATE TABLE enquiries (
   id               INTEGER PRIMARY KEY AUTOINCREMENT,
   created_at       TEXT    NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%SZ', 'now')),
-  form             TEXT    NOT NULL,            -- project-funding | pfi | equity
+  form             TEXT    NOT NULL,            -- project-funding | pfi | equity | mineral
   name             TEXT    NOT NULL,
   email            TEXT    NOT NULL,
   phone            TEXT,

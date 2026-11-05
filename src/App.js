@@ -13,6 +13,7 @@ import BusinessConsultant from './pages/Services/BusinessConsultant/BusinessCons
 import GrantsDonations from './pages/Services/GrantsDonations/GrantsDonations';
 import ProjectFundersInvestors from './pages/Services/ProjectFundersInvestors/ProjectFundersInvestors';
 import EquityFinancing from './pages/Services/EquityFinancing/EquityFinancing';
+import MineralTradeFinance from './pages/Services/MineralTradeFinance/MineralTradeFinance';
 import ThankYou from './pages/ThankYou/ThankYou';
 import NotFound from './pages/NotFound/NotFound';
 import Reviews from './components/Reviews/Reviews';
@@ -42,6 +43,9 @@ function App() {
           <Route path="/services/equity-financing"                       element={<EquityFinancing />} />
           {/* Short ad landing URL; canonical points at /services/equity-financing */}
           <Route path="/equity-financing"                                element={<EquityFinancing />} />
+          <Route path="/services/mineral-trade-finance"                    element={<MineralTradeFinance />} />
+          {/* Short ad landing URL; canonical points at /services/mineral-trade-finance */}
+          <Route path="/mineral-trade-finance"                             element={<MineralTradeFinance />} />
           <Route path="/thank-you"                                         element={<ThankYou />} />
           <Route path="*"                                                  element={<NotFound />} />
         </Routes>
